@@ -1,0 +1,22 @@
+{
+  "name": "yogstationhub",
+  "version": "1.0.0",
+  "description": "The yogstation hub for admins and players alike.",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "Ashleigh Carr",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^1.0.2",
+    "body-parser": "^1.17.1",
+    "discord.js": "^11.0.0",
+    "express": "^4.15.2",
+    "jspack": "0.0.4",
+    "mysql": "^2.13.0",
+    "pug": "^2.0.0-beta.12",
+    "recaptcha": "^1.2.1",
+    "twig": "^1.10.4"
+  }
+}

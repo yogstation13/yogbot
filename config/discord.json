@@ -1,0 +1,28 @@
+{
+	"roles": {
+    "council": {
+			"inherits": "tribunal",
+			"permissions": ["config"]
+		},
+    "headcoder": {
+			"inherits": "tribunal",
+			"permissions": ["config"]
+		},
+		"tribunal": {
+			"inherits": "staff",
+			"permissions": ["addao"]
+		},
+    "staff": {
+			"inherits": "retmin",
+			"permissions": []
+		},
+    "retmin": {
+			"inherits": false,
+			"permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "playerinfo"]
+		},
+    "@everyone": {
+			"inherits": false,
+			"permissions": ["ping", "adminwho", "info"]
+		}
+	}
+}

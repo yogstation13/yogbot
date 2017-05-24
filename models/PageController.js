@@ -1,0 +1,9 @@
+class PageController {
+  constructor() {
+
+  }
+
+  calculatePages() {
+
+  }
+}
