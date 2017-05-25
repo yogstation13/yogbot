@@ -1,4 +1,5 @@
 const DiscordCommand = require('../DiscordCommand.js');
+const spawn = require('child_process').spawn;
 
 class DiscordCommandReboot extends DiscordCommand {
 
@@ -17,9 +18,24 @@ class DiscordCommandReboot extends DiscordCommand {
 
     switch (rebootOption) {
       case 'hard':
-        //kill daeon
+        var taskkill = spawn('taskkill', ['/F', '/IM', 'dreamdaemon.exe']);
+        taskkill.on('exit', (code) => {
+          message.reply("Hard reboot exited with exit code: " + code);
+        });
+        break;
+      case 'soft':
+        var request = "?reboot&key=" + config.server_key;
+        byondConnector.request(request, function(results) {
+          if('error' in results) {
+            message.reply(results.error);
+          } else {
+            message.reply(results.data);
+          }
+        });
         break;
       default:
+        message.reply("Use either the `hard` or `soft` option");
+        break;
 
     }
   }
