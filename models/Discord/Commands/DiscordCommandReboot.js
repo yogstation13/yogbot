@@ -10,7 +10,7 @@ class DiscordCommandReboot extends DiscordCommand {
   onRun(message, permissions, args) {
     var config = this.subsystem.manager.getSubsystem("Config").config;
     if(args.length < 1) {
-      message.reply("Available reboot commands: \n     `" + config.discord_command_character + "reboot hard` Kills the server daemon and starts a new daemon. \n     `" + config.discord_command_character + "!reboot soft` tells the server daemon to restart.");
+      message.reply("Available reboot commands: \n     `" + config.discord_command_character + "reboot hard` Kills the server daemon and starts a new daemon. \n     `" + config.discord_command_character + "reboot soft` tells the server daemon to restart. \n     `" + config.discord_command_character + "reboot bot` tells the bot daemon to restart and update.");
       return;
     }
 
@@ -41,7 +41,7 @@ class DiscordCommandReboot extends DiscordCommand {
         });
         break;
       default:
-        message.reply("Use either the `hard` or `soft` option");
+        message.reply("Use either the `hard`, `soft` or `bot` option");
         break;
 
     }
