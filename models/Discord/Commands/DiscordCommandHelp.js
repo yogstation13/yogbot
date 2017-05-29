@@ -12,12 +12,10 @@ class DiscordCommandHelp extends DiscordCommand {
 
     for (var command of this.subsystem.commands) {
         if(command.hidden) {
-            //this is just here because I'm not good at coding :thumbsup:
+            continue;
         }
-        else {
-            if(command.hasPermission(permissions)) {
+        if(command.hasPermission(permissions)) {
                 response += "    `" + config.discord_command_character + command.name + "` - " + command.description + "\n";
-            }
         }
     }
 
