@@ -15,7 +15,7 @@ class DiscordCommandHelp extends DiscordCommand {
             //this is just here because I'm not good at coding :thumbsup:
         }
         else {
-            if (command.hasPermission(permissions)) {
+            if(command.hasPermission(permissions)) {
                 response += "    `" + config.discord_command_character + command.name + "` - " + command.description + "\n";
             }
         }
