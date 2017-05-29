@@ -34,8 +34,10 @@ class DiscordCommandReboot extends DiscordCommand {
         });
         break;
       case 'bot':
-        this.subsystem.manager.getSubsystem("Updater").update((data) => {
-          message.reply(data);
+        message.reply("Updating & Rebooting Bot.").then(() => {
+          this.subsystem.manager.getSubsystem("Updater").update((data) => {
+            message.reply(data);
+          });
         });
         break;
       default:

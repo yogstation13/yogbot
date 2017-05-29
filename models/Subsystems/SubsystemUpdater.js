@@ -4,7 +4,6 @@ const spawn = require('child_process').spawn;
 class SubsystemUpdater extends Subsystem {
   constructor(manager) {
     super("Updater", manager);
-    this.byondConnector;
   }
 
   setup() {
