@@ -3,7 +3,7 @@ const DiscordCommand = require('../DiscordCommand.js');
 class DiscordCommandOisin extends DiscordCommand {
 
   constructor(subsystem) {
-    super("oisin", "Pictures of our friendly neighbourhood onion", undefined, subsystem);
+    super("oisin", "Pictures of our friendly neighbourhood onion", undefined, subsystem, true);
   }
 
   onRun(message, permissions, args) {
