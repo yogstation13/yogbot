@@ -40,7 +40,7 @@ class DiscordBanManager {
 
       guildMember.user.sendMessage(banMessage);
 
-      feedbackChannel.sendMessage("**" + guildMember.user.username + "#" + guildMember.user.discriminator + "** Was " + (config.discord_softban ? "soft" : "hard") + "banned from the server for `" + reason + "` it will " +  (time ? "expire in **" + time + "** seconds" : "not expire.") + ".")
+      feedbackChannel.send("**" + guildMember.user.username + "#" + guildMember.user.discriminator + "** Was " + (config.discord_softban ? "soft" : "hard") + "banned from the server for `" + reason + "` it will " +  (time ? "expire in **" + time + "** seconds" : "not expire.") + ".")
 
       if(config.discord_softban) {
         guildMember.addRole(config.discord_softban_role).then(
@@ -72,7 +72,7 @@ class DiscordBanManager {
 
       for (var ban of this.bans) {
         if(ban.userID === member.user.id) {
-          feedbackChannel.sendMessage("**" + member.user.username + "#" + member.user.discriminator + "** Was unbanned from the server for `" + reason + "`.")
+          feedbackChannel.send("**" + member.user.username + "#" + member.user.discriminator + "** Was unbanned from the server for `" + reason + "`.")
           this.bans = newBans;
           this.save();
           member.removeRole(config.discord_softban_role);

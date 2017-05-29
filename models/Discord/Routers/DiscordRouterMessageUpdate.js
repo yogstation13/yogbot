@@ -22,7 +22,7 @@ class DiscordRouterMessageDelete extends DiscordRouter {
         response += "     Old: `" + oldMessage.content + "`\n";
         response += "     New: `" + newMessage.content + "`";
 
-        logChannel.sendMessage(response);
+        logChannel.send(response);
       }
 
   });

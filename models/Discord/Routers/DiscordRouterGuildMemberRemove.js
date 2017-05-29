@@ -12,7 +12,7 @@ class DiscordRouterGuildMemberRemove extends DiscordRouter {
       var date = new Date();
       var response = "`[" + date.getFullYear() + ":" + date.getMonth() + ":" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "]` ";
 
-      feedbackChannel.sendMessage(response + "**" + member.user.username + "#" + member.user.discriminator + "** left the server.");
+      feedbackChannel.send(response + "**" + member.user.username + "#" + member.user.discriminator + "** left the server.");
     });
   }
 

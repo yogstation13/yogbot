@@ -61,7 +61,7 @@ class DiscordRouterGuildMemberUpdate extends DiscordRouter {
           response += "_none_";
         }
 
-        logChannel.sendMessage(response);
+        logChannel.send(response);
       }
     });
   }
