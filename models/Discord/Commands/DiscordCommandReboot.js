@@ -33,6 +33,11 @@ class DiscordCommandReboot extends DiscordCommand {
           }
         });
         break;
+      case 'bot':
+        this.subsystem.manager.getSubsystem("Updater").update((data) => {
+          message.reply(data);
+        });
+        break;
       default:
         message.reply("Use either the `hard` or `soft` option");
         break;
