@@ -11,7 +11,7 @@ class DiscordCommandHelp extends DiscordCommand {
     var config = this.subsystem.manager.getSubsystem("Config").config;
 
     for (var command of this.subsystem.commands) {
-        if (command.hidden) {
+        if(command.hidden) {
             //this is just here because I'm not good at coding :thumbsup:
         }
         else {
