@@ -3,7 +3,7 @@ const DiscordCommand = require('../DiscordCommand.js');
 class DiscordCommandCodey extends DiscordCommand {
 
 	constructor(subsystem) {
-		super("edd", "Pictures of the most depressed player", undefined, subsystem);
+		super("edd", "Pictures of the most depressed player", undefined, subsystem, true);
 	}
 
 	onRun(message, permissions, args) {

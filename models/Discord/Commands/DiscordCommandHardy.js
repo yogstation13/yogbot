@@ -3,7 +3,7 @@ const DiscordCommand = require('../DiscordCommand.js');
 class DiscordCommandHardy extends DiscordCommand {
 
   constructor(subsystem) {
-    super("hardy", "Pictures of our overlord", undefined, subsystem);
+    super("hardy", "Pictures of our overlord", undefined, subsystem, true);
   }
 
   onRun(message, permissions, args) {

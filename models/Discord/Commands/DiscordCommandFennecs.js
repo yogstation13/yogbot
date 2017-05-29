@@ -3,7 +3,7 @@ const DiscordCommand = require('../DiscordCommand.js');
 class DiscordCommandFennecs extends DiscordCommand {
 
     constructor(subsystem) {
-        super("fennec", "Pictures of the cutest animals in africa", undefined, subsystem);
+        super("fennec", "Pictures of the cutest animals in africa", undefined, subsystem, true);
     }
 
     onRun(message, permissions, args) {
