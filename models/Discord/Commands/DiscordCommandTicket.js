@@ -86,7 +86,7 @@ class DiscordCommandTicket extends DiscordCommand {
         var response = "Available ticket commands:\n";
         response += "     `" + config.discord_command_character + "ticket help` - View ticket commands.\n";
         response += "     `" + config.discord_command_character + "ticket list` - List open tickets.\n";
-        response += "     `" + config.discord_command_character + "ticket view` - View ticket replies.\n";
+        response += "     `" + config.discord_command_character + "ticket log` - View ticket replies.\n";
         response += "     `" + config.discord_command_character + "ticket reply` - Reply to ticket.\n";
         message.reply(response);
         break;
