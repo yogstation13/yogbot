@@ -19,4 +19,4 @@ class DiscordCommandArcticfox extends DiscordCommand {
 
 }
 
-module.exports = DiscordCommandArcticFox;
+module.exports = DiscordCommandArcticfox;
