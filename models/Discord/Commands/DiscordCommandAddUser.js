@@ -1,9 +1,9 @@
 const DiscordCommand = require('../DiscordCommand.js');
-
+//I think this command is entirely useless, due to !whitelist
 class DiscordCommandAddUser extends DiscordCommand {
 
   constructor(subsystem) {
-    super("addao", "Add an admin to the game.", 'adduser', subsystem);
+    super("adduser", "Add an admin to the game.", 'adduser', subsystem);
   }
 
   onRun(message, permissions, args) {
