@@ -12,7 +12,7 @@ class DiscordCommandSubscribe extends DiscordCommand {
             var response = "You are already subscribed"
         }
         else {
-            message.author.addRole(config.discord_subscriber_role);
+            message.member.addRole(config.discord_subscriber_role);
             var response = "You are now a subscriber"
         }
 
