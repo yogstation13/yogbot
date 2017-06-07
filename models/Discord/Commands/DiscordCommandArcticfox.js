@@ -19,4 +19,8 @@ class DiscordCommandArcticfox extends DiscordCommand {
 
 }
 
+<<<<<<< HEAD
 module.exports = DiscordCommandArcticfox;
+=======
+module.exports = DiscordCommandArcticfox;
+>>>>>>> fixd
