@@ -10,10 +10,12 @@ class DiscordCommandPing extends DiscordCommand {
     var config = this.subsystem.manager.getSubsystem("Config").config;
     var byondConnector = this.subsystem.manager.getSubsystem("Byond Connector").byondConnector;
 
-    byondConnector.request("?ping", function(results, error) {
-      if(error) return message.reply(error);
-
-      message.reply("There are **" + results + "** players online, join them now with " + config.server_join_address);
+    byondConnector.request("?ping", function(results) {
+      if('error' in results) {
+        message.reply(results.error);
+      } else {
+        message.reply("There are **" + results.data + "** players online, join them now with " + config.server_join_address);
+      }
     });
   }
 
