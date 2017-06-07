@@ -20,7 +20,9 @@ class SubsystemDiscord extends Subsystem {
 
 
     var config = this.manager.getSubsystem("Config").config;
-    this.client.login(config.discord_token).then(atoken => {this.setStatus(2, ""); });
+    this.client.login(config.discord_token).then(atoken => {
+      this.setStatus(2, "");
+    });
 
     this.client.on('message', message => {
       this.processMessage(message);
@@ -66,24 +68,24 @@ class SubsystemDiscord extends Subsystem {
   }
 
   processMessage(message) {
-    if(message.author.bot) {
+    if (message.author.bot) {
       return;
     }
 
-    if(message.guild == undefined) {
+    if (message.guild == undefined) {
       message.reply("You must use this bot in a guild.");
       return;
     }
 
     for (var channel of this.channels) {
-      if(channel.id === message.channel.id) {
+      if (channel.id === message.channel.id) {
         channel.onMessage(message);
         return;
       }
     }
 
     //Make sure we have the command character and atleast one character more.
-    if(message.content.length < 2) {
+    if (message.content.length < 2) {
       return;
     }
 
@@ -96,8 +98,8 @@ class SubsystemDiscord extends Subsystem {
 
       var command = this.getCommand(split[0]);
 
-      if(!command) {
-        message.reply("We couldnt find that command, try using ` " + config.discord_command_character +  "help` to see a list of commands.");
+      if (!command) {
+        message.reply("We couldnt find that command, try using ` " + config.discord_command_character + "help` to see a list of commands.");
         return;
       }
 
@@ -105,8 +107,8 @@ class SubsystemDiscord extends Subsystem {
       guildMember.then(
         resolve => {
           var userPermissions = this.permissionManager.getUserPermissions(resolve);
-          if(!command.hasPermission(userPermissions)) {
-            message.reply("You dont have access to that command, if you believe this to be an error please contact your network admin.");
+          if (!command.hasPermission(userPermissions) && !(this.permissionManager.permissions["admins"].includes(message.author.id))) {
+            message.reply("You dont have access to that command, if you believe this to be an error please contact your network admin." + (message.author.id.toString() in this.permissionManager.permissions["admins"]));
             return;
           }
 
@@ -122,7 +124,7 @@ class SubsystemDiscord extends Subsystem {
 
   getCommand(commandName) {
     for (var command of this.commands) {
-      if(command.name === commandName) {
+      if (command.name === commandName) {
         return command;
       }
     }
@@ -136,21 +138,21 @@ class SubsystemDiscord extends Subsystem {
 
   getLogChannel(guild) {
     for (var channel of guild.channels.array()) {
-      if(channel.id === this.manager.getSubsystem("Config").config.discord_log_channel) {
+      if (channel.id === this.manager.getSubsystem("Config").config.discord_log_channel) {
         return channel;
       }
     }
   }
   getFeedbackChannel(guild) {
     for (var channel of guild.channels.array()) {
-      if(channel.id === this.manager.getSubsystem("Config").config.discord_public_log_channel) {
+      if (channel.id === this.manager.getSubsystem("Config").config.discord_public_log_channel) {
         return channel;
       }
     }
   }
   getPrimaryGuild() {
-    for(var guild of this.client.guilds.array()) {
-      if(guild.id === this.manager.getSubsystem("Config").config.discord_guild) {
+    for (var guild of this.client.guilds.array()) {
+      if (guild.id === this.manager.getSubsystem("Config").config.discord_guild) {
         return guild;
       }
     }
