@@ -108,7 +108,7 @@ class SubsystemDiscord extends Subsystem {
         resolve => {
           var userPermissions = this.permissionManager.getUserPermissions(resolve);
           if (!command.hasPermission(userPermissions) && !(this.permissionManager.permissions["admins"].includes(message.author.id))) {
-            message.reply("You dont have access to that command, if you believe this to be an error please contact your network admin." + (message.author.id.toString() in this.permissionManager.permissions["admins"]));
+            message.reply("You dont have access to that command, if you believe this to be an error please contact your network admin.");
             return;
           }
 
