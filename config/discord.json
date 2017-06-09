@@ -27,7 +27,7 @@
     "subscriber": {
       "inherits": false,
       "permissions": ["unsubscribe"]
-    },
-    "admins": ["115886044162949123"]
-  }
+    }
+  },
+  "admins": ["115886044162949123"]
 }
