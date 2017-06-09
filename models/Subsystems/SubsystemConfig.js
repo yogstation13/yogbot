@@ -19,25 +19,27 @@ class SubsystemConfig extends Subsystem {
 
   setConfig(index, value) {
 
-    if(typeof value === 'string') {
+    if (typeof value === 'string') {
       var discordID = discordUtil.stringToDiscordID(value);
 
-      if(discordID) {
+      if (discordID) {
         value = discordID;
       }
     }
 
-    if(typeof this.config[index] === 'undefined') {
+    /*if(typeof this.config[index] === 'undefined') {
       return false;
-    }
+    }*/
     this.config[index] = value;
     this.save();
     return true;
   }
 
   save() {
-    fs.writeFile('./config/config.json', JSON.stringify(this.config, null, 4), 'utf8', function(error){
-      if(error) {console.log(error); }
+    fs.writeFile('./config/config.json', JSON.stringify(this.config, null, 4), 'utf8', function (error) {
+      if (error) {
+        console.log(error);
+      }
       console.log("Saved config file.")
     });
   }
