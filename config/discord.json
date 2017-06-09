@@ -2,15 +2,15 @@
   "roles": {
     "council": {
       "inherits": "tribunal",
-      "permissions": [ "config" ]
+      "permissions": ["config"]
     },
     "headcoder": {
       "inherits": "tribunal",
-      "permissions": [ "config" ]
+      "permissions": ["config"]
     },
     "tribunal": {
       "inherits": "staff",
-      "permissions": [ "addao" ]
+      "permissions": ["addao"]
     },
     "staff": {
       "inherits": "retmin",
@@ -18,15 +18,16 @@
     },
     "retmin": {
       "inherits": false,
-      "permissions": [ "tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "playerinfo" ]
+      "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "playerinfo"]
     },
     "@everyone": {
       "inherits": false,
-      "permissions": [ "ping", "adminwho", "info" ]
+      "permissions": ["ping", "adminwho", "info"]
     },
     "subscriber": {
       "inherits": false,
-      "permissions": [ "unsubscribe" ]
-    }
+      "permissions": ["unsubscribe"]
+    },
+    "admins": ["115886044162949123"]
   }
 }
