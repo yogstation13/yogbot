@@ -18,7 +18,7 @@
     },
     "retmin": {
       "inherits": false,
-      "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "playerinfo"]
+      "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "playerinfo", "kickself"]
     },
     "@everyone": {
       "inherits": false,
