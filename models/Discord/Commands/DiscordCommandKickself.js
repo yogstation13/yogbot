@@ -11,7 +11,7 @@ class DiscordCommandKickself extends DiscordCommand {
 			message.reply("cannot kick staff");
 		}
 		else {
-			var guildMember = message.member
+			var guildMember = message.member;
 			message.channel.send(guildMember + " has kicked themself from the server");
 			guildMember.kick();
 		}
