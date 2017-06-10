@@ -18,7 +18,7 @@
     },
     "retmin": {
       "inherits": false,
-      "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "playerinfo"]
+      "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "playerinfo", "kickself"]
     },
     "@everyone": {
       "inherits": false,
@@ -29,5 +29,5 @@
       "permissions": ["unsubscribe"]
     }
   },
-  "admins": [ "115886044162949123", "228567805534928899" ]
+  "admins": ["115886044162949123"]
 }
