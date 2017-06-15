@@ -30,8 +30,8 @@ class DiscordCommandKick extends DiscordCommand {
           function (resolve) {
               if (resolve.id == message.member.id) {
                   message.reply("You cannot kick yourself");
+                  return;
               }
-              else {
                   args.shift();
 
               var reason = "No reason given.";
@@ -48,7 +48,6 @@ class DiscordCommandKick extends DiscordCommand {
                     message.reply("An error occured.");
                 }
               );
-            }
           },
           function (reject) {
               message.reply("I could not find that user, Make sure that member is part of this guild.");
