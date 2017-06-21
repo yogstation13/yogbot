@@ -8,7 +8,7 @@ class DiscordCommandWhitelist extends DiscordCommand {
 
   onRun(message, permissions, args) {
     var config = this.subsystem.manager.getSubsystem("Config").config;
-    if(args.length < 1) {
+    if (args.length < 1) {
       message.reply("Usage is `" + config.discord_command_character + "addao [ckey]`");
       return;
     }
@@ -17,8 +17,8 @@ class DiscordCommandWhitelist extends DiscordCommand {
 
     var dbSubsystem = this.subsystem.manager.getSubsystem("Database");
 
-    dbSubsystem.pool.getConnection(function(err, connection) {
-      if(err) {
+    dbSubsystem.pool.getConnection(function (err, connection) {
+      if (err) {
         message.reply("Error contacting database, try again later.");
       }
       connection.query('SELECT * FROM `web_admins` WHERE `username` = ?', [ckey], function (error, results, fields) {
@@ -26,19 +26,21 @@ class DiscordCommandWhitelist extends DiscordCommand {
           message.reply("Error running select query, try again later.");
         }
 
-        if(results.length > 0) {
+        if (results.length > 0) {
           message.reply("Player already has a rank.");
-        } else {
-          connection.query("INSERT INTO `web_admins` (`username`, `password`, `salt`, `rank`) VALUES (?, '', '', 2);", [ckey], function (error, results, fields) {
+        }
+        else {
+          connection.query("INSERT INTO `web_admins` (`username`, `password`, `salt`, `rank`) VALUES (?, '', '', 12);", [ckey], function (error, results, fields) {
             connection.release();
 
             if (error) {
               message.reply("Error running insert query, try again later.");
             }
 
-            if(results.affectedRows  < 1) {
+            if (results.affectedRows < 1) {
               message.reply("Player was not inserted.");
-            } else {
+            }
+            else {
               message.reply("`" + ckey + "` has been give the AO role.");
             }
           });
