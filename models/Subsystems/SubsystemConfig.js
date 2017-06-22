@@ -36,7 +36,7 @@ class SubsystemConfig extends Subsystem {
   }
 
   save() {
-    fs.writeFile('./config/config.json', JSON.stringify(this.config, null, 4), 'utf8', function (error) {
+    fs.writeFile('./config/config.json', JSON.stringify(this.config, null, 4), 'utf8', (error) => {
       if (error) {
         console.log(error);
       }

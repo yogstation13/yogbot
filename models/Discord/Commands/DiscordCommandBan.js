@@ -44,7 +44,7 @@ class DiscordCommandBan extends DiscordCommand {
           message.reply("An error occured, perhaps the bot cant ban that user.")
         }
       },
-      function(reject) {
+      (reject) => {
         message.reply("I could not find that user, Make sure that member is part of this guild.");
       }
     );

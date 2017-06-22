@@ -25,7 +25,7 @@ class DiscordCommandReboot extends DiscordCommand {
         break;
       case 'soft':
         var request = "?reboot&key=" + config.server_key;
-        byondConnector.request(request, function(results) {
+        byondConnector.request(request, (results) => {
           if('error' in results) {
             message.reply(results.error);
           } else {

@@ -17,11 +17,11 @@ class DiscordCommandWhitelist extends DiscordCommand {
 
     var dbSubsystem = this.subsystem.manager.getSubsystem("Database");
 
-    dbSubsystem.pool.getConnection(function (err, connection) {
+    dbSubsystem.pool.getConnection((err, connection) => {
       if (err) {
         message.reply("Error contacting database, try again later.");
       }
-      connection.query('SELECT * FROM `web_admins` WHERE `username` = ?', [ckey], function (error, results, fields) {
+      connection.query('SELECT * FROM `web_admins` WHERE `username` = ?', [ckey], (error, results, fields) => {
         if (error) {
           message.reply("Error running select query, try again later.");
         }
@@ -30,7 +30,7 @@ class DiscordCommandWhitelist extends DiscordCommand {
           message.reply("Player already has a rank.");
         }
         else {
-          connection.query("INSERT INTO `web_admins` (`username`, `password`, `salt`, `rank`) VALUES (?, '', '', 12);", [ckey], function (error, results, fields) {
+          connection.query("INSERT INTO `web_admins` (`username`, `password`, `salt`, `rank`) VALUES (?, '', '', 12);", [ckey], (error, results, fields) => {
             connection.release();
 
             if (error) {

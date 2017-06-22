@@ -10,7 +10,7 @@ class DiscordCommandAdminWho extends DiscordCommand {
     var config = this.subsystem.manager.getSubsystem("Config").config;
     var byondConnector = this.subsystem.manager.getSubsystem("Byond Connector").byondConnector;
 
-    byondConnector.request("?adminwho", function(results) {
+    byondConnector.request("?adminwho", (results) => {
       if('error' in results) {
         message.reply(results.error);
       } else {

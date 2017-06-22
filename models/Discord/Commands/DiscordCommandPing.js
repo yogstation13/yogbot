@@ -10,7 +10,7 @@ class DiscordCommandPing extends DiscordCommand {
     var config = this.subsystem.manager.getSubsystem("Config").config;
     var byondConnector = this.subsystem.manager.getSubsystem("Byond Connector").byondConnector;
 
-    byondConnector.request("?ping", function(results) {
+    byondConnector.request("?ping", (results) => {
       if('error' in results) {
         message.reply(results.error);
       } else {

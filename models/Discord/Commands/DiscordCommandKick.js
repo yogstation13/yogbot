@@ -27,7 +27,7 @@ class DiscordCommandKick extends DiscordCommand {
 
         var guildMember = message.guild.fetchMember(user);
         guildMember.then(
-          function (resolve) {
+          (resolve) => {
               if (resolve.id == message.member.id) {
                   message.reply("You cannot kick yourself");
                   return;
@@ -41,15 +41,15 @@ class DiscordCommandKick extends DiscordCommand {
               }
 
               resolve.kick(0).then(
-                function (resolve) {
+                (resolve) => {
                     message.reply(resolve.user.username + " Was kicked from the server for `" + reason + "`.");
                 },
-                function (reject) {
+                (reject) => {
                     message.reply("An error occured.");
                 }
               );
           },
-          function (reject) {
+          (reject) => {
               message.reply("I could not find that user, Make sure that member is part of this guild.");
           }
         );

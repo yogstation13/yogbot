@@ -9,7 +9,7 @@ class DiscordChannelAsay extends DiscordRouter {
 
   register() {
     var config = this.subsystem.manager.getSubsystem("Config").config;
-    byondConnector.request("?asay=" + message.content + "&author=" + message.author.username + "&key=" + config.server_key, function(results) {
+    byondConnector.request("?asay=" + message.content + "&author=" + message.author.username + "&key=" + config.server_key, (results) => {
       if('error' in results) {
         message.reply(results.error);
       }

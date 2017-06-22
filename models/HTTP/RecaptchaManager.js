@@ -14,19 +14,19 @@ class RecaptchaManager {
       path: '/recaptcha/api/siteverify',
       method: 'GET',
       headers: {
-          'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
       }
     };
 
-    var req = http.request(options, function(res) {
+    var req = http.request(options, (res) => {
       res.setEncoding('utf8');
-      res.on('data', function (body) {
+      res.on('data', (body) => {
         console.log(body)
         callback(undefined, body);
       });
     });
 
-    req.on('error', function(error) {
+    req.on('error', (error) => {
       callback(error, undefined);
       console.log('problem with request: ' + e.message);
     });

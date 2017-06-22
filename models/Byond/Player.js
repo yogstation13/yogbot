@@ -1,4 +1,3 @@
-
 class ByondPlayer {
   constructor(subsystemManager, details) {
     this.ckey = details.ckey;
@@ -19,28 +18,29 @@ class ByondPlayer {
 
     details.ckey = ckey;
 
-    dbSubsystem.pool.getConnection(function(err, connection) {
-      if(err) {
+    dbSubsystem.pool.getConnection((err, connection) => {
+      if (err) {
         results(true, undefined);
         return;
       }
 
       var error = false
 
-      connection.query('SELECT * FROM `erro_player` WHERE `ckey` = ?', [ckey], function (error, rows, fields) {
+      connection.query('SELECT * FROM `erro_player` WHERE `ckey` = ?', [ckey], (error, rows, fields) => {
         if (error) {
           error = true;
         }
 
-        if(rows.affectedRows  < 1) {
+        if (rows.affectedRows < 1) {
           error = true
-        } else {
+        }
+        else {
           details.firstseen = rows[0].firstseen
           details.lastseen = rows[0].lastseen
           details.job_whitelisted = rows[0].job_whitelisted
         }
 
-        connection.query('SELECT DISTINCT `computerid` FROM `erro_connection_log` WHERE `ckey` = ?', [ckey], function (error, rows, fields) {
+        connection.query('SELECT DISTINCT `computerid` FROM `erro_connection_log` WHERE `ckey` = ?', [ckey], (error, rows, fields) => {
           if (error) {
             error = true;
           }
@@ -51,7 +51,7 @@ class ByondPlayer {
             details.cidhistory.push(row.computerid)
           }
 
-          connection.query('SELECT DISTINCT `ip` FROM `erro_connection_log` WHERE `ckey` = ?', [ckey], function (error, rows, fields) {
+          connection.query('SELECT DISTINCT `ip` FROM `erro_connection_log` WHERE `ckey` = ?', [ckey], (error, rows, fields) => {
             if (error) {
               error = true;
             }
@@ -62,9 +62,10 @@ class ByondPlayer {
               details.iphistory.push(row.ip)
             }
 
-            if(error) {
+            if (error) {
               results(true, undefined);
-            } else {
+            }
+            else {
               results(false, new ByondPlayer(subsystemManager, details));
             }
             connection.release();
