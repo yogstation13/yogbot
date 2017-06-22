@@ -1,8 +1,8 @@
 {
   "roles": {
     "council": {
-      "inherits": "tribunal",
-      "permissions": ["config"]
+      "inherits": "headcoder",
+      "permissions": []
     },
     "headcoder": {
       "inherits": "tribunal",
