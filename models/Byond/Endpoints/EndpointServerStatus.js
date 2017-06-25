@@ -28,8 +28,8 @@ class EndpointASayMessage extends APIEndpoint {
       embed.setDescription("A new round is about to begin! Join now at " + config.server_join_address);
       embed.addField("Map Name", data.map_name, true);
       embed.addField("Revsision", data.revision, true);
-      embed.addField("Round Number", data.round_number, true);
-      embed.addField("Changelog", data.changelog_hash, true);
+      embed.addField("Round Number", data.round, true);
+      embed.addField("Changelog", "No Changes", true);
       embed.setColor("62f442");
 
       for (var channel of discord.getPrimaryGuild().channels.array()) {
