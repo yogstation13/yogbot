@@ -27,7 +27,7 @@ class EndpointASayMessage extends APIEndpoint {
     var config = this.manager.subsystemManager.getSubsystem("Config").config;
     var discord = this.manager.subsystemManager.getSubsystem("Discord");
     for (var channel of discord.getPrimaryGuild().channels.array()) {
-      if (channel.id == config.discord_ooc_channel) {
+      if (channel.id == config.discord_asay_channel) {
         channel.send("**" + data.ckey + "**: " + data.message);
       }
     }
