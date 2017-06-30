@@ -38,6 +38,14 @@ class DiscordCommandKick extends DiscordCommand {
                   return;
               }
 
+              args.shift();
+
+              var reason = "No reason given.";
+
+              if (args.length > 0) {
+                  reason = args.join(" ");
+              }
+
               resolve.kick(0).then(
                 (resolve) => {
                     message.reply(resolve.user.username + " Was kicked from the server for `" + reason + "`.");
