@@ -19,4 +19,4 @@ class DiscordChannelOOC extends DiscordChannel {
 
 }
 
-module.exports = DiscordChannelOO;
+module.exports = DiscordChannelOOC;
