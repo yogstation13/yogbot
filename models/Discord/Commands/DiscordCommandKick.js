@@ -8,8 +8,10 @@ class DiscordCommandKick extends DiscordCommand {
 
     onRun(message, permissions, args) {
         var config = this.subsystem.manager.getSubsystem("Config").config;
+
         if(args.length < 1) {
             message.reply("Usage is `" + config.discord_command_character + "kick [@UserName] <reason>`");
+            return;
         }
 
         var user = undefined;
