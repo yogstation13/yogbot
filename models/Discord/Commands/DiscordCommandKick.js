@@ -28,11 +28,17 @@ class DiscordCommandKick extends DiscordCommand {
         var guildMember = message.guild.fetchMember(user);
         guildMember.then(
           (resolve) => {
+              var kickeeperms = this.subsystem.permissionManager.getUserPermissions(resolve);
               if (resolve.id == message.member.id) {
                   message.reply("You cannot kick yourself");
                   return;
               }
-                  args.shift();
+              if (kickeeperms.includes("kick")) {
+                  message.reply("You cannot kick staff");
+                  return;
+              }
+
+              args.shift();
 
               var reason = "No reason given.";
 
