@@ -27,7 +27,7 @@ class EndpointASayMessage extends APIEndpoint {
       embed.setAuthor("New round notifier", "http://i.imgur.com/GPZgtbe.png");
       embed.setDescription("<@&" + config.discord_subscriber_role + "> A new round is about to begin! Join now at " + config.server_join_address);
       embed.addField("Map Name", data.map_name, true);
-      embed.addField("Revsision", data.revision, true);
+      embed.addField("Revision", data.revision, true);
       embed.addField("Round Number", data.round, true);
       embed.addField("Changelog", "No Changes", true);
       embed.setColor("62f442");
