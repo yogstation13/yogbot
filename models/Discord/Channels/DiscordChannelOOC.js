@@ -4,7 +4,7 @@ class DiscordChannelOOC extends DiscordChannel {
 
     constructor(subsystem) {
         var config = subsystem.manager.getSubsystem("Config").config;
-        super(subsystem, config.discord_asay_channel);
+        super(subsystem, config.discord_ooc_channel);
     }
 
     onMessage(message) {
