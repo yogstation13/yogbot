@@ -3,7 +3,7 @@ const DiscordCommand = require('../DiscordCommand.js');
 class DiscordCommandDuck extends DiscordCommand {
 
   constructor(subsystem) {
-    super("duck", "Pictures of the quack", undefined, subsystem, false);
+    super("duck", "Pictures of the quack", undefined, subsystem, true);
   }
 
   onRun(message, permissions, args) {
