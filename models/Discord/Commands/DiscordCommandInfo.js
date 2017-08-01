@@ -17,6 +17,8 @@ class DiscordCommandInfo extends DiscordCommand {
 				message.reply(resultsadmin.error);
 			}
 			else {
+				var adminwho = resultsadmin.data;
+				var adminwho = adminwho.split(":")[1];
 				byondConnector.request("?ping", (results) => {
 					if ('error' in results) {
 						message.reply(results.error);
@@ -24,8 +26,8 @@ class DiscordCommandInfo extends DiscordCommand {
 						var embed = new Discord.RichEmbed();
 
 			      embed.setAuthor("Information", "http://i.imgur.com/GPZgtbe.png");
-			      embed.setDescription("Join now using " + config.server_join_address);
-			      embed.addField("Admins online", resultsadmin.data, true);
+			      embed.setDescription("Join the server now by using " + config.server_join_address);
+			      embed.addField("Admins online", adminwho, true);
 						embed.addField("Playercount", results.data, true);
 			      embed.setColor("62f442");
 
