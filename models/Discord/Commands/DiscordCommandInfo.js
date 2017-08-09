@@ -28,9 +28,9 @@ class DiscordCommandInfo extends DiscordCommand {
 
 				embed.setAuthor("Information", "http://i.imgur.com/GPZgtbe.png");
 				embed.setDescription("Join the server now by using " + config.server_join_address);
-				embed.addField("Playercount", results.data, true);
+				embed.addField("Players Online", results.data, true);
 				embed.addField("Round Number", byondSS.roundNumber, true);
-				embed.addField("Admins online", adminwho, true);
+				embed.addField("Admins Online", adminwho, false);
 				embed.setColor("62f442");
 
 				var channel = config.discord_public_channel;
