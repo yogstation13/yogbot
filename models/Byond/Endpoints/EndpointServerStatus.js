@@ -19,7 +19,7 @@ class EndpointASayMessage extends APIEndpoint {
 
     var config = this.manager.subsystemManager.getSubsystem("Config").config;
     var discord = this.manager.subsystemManager.getSubsystem("Discord");
-    var byondSS = this.manager.subsystemManager.getsubsystem("Byond Connector");
+    var byondSS = this.manager.subsystemManager.getSubsystem("Byond Connector");
 
     if (data.status == "lobby") {
       byondSS.roundNumber = data.round;
