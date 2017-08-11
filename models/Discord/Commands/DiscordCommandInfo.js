@@ -23,6 +23,14 @@ class DiscordCommandInfo extends DiscordCommand {
 				if ('error' in results) {
 					return message.reply(results.error);
 				}
+				var colour = "";
+				var colours = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+				var count = 0;
+
+				for(count = 0; count < 6; count++) {
+						var colour = colour + colours[Math.floor(Math.random() * colours.length)];
+						//picks a colour from the array "colours" then proceeds to add it to "colour", and stops once "colour" has 6 digits
+				}
 
 				var embed = new Discord.RichEmbed();
 
@@ -31,7 +39,7 @@ class DiscordCommandInfo extends DiscordCommand {
 				embed.addField("Players online:", results.data, true);
 				embed.addField("Current round:", byondSS.roundNumber, true);
 				embed.addField("Admins online:", adminwho, false);
-				embed.setColor("9541a5");
+				embed.setColor(colour);
 
 				var channel = config.discord_public_channel;
 				message.channel.send({embed});
