@@ -1,9 +1,9 @@
 const DiscordCommand = require('../DiscordCommand.js');
 
-class DiscordCommandOisin extends DiscordCommand {
+class DiscordCommandAsh extends DiscordCommand {
 
   constructor(subsystem) {
-    super("oisin", "Pictures of our friendly neighbourhood onion", undefined, subsystem, true);
+    super("ash", "Pictures of our friendly neighbourhood onion", undefined, subsystem, true);
   }
 
   onRun(message, permissions, args) {
@@ -19,4 +19,4 @@ class DiscordCommandOisin extends DiscordCommand {
 
 }
 
-module.exports = DiscordCommandOisin;
+module.exports = DiscordCommandAsh;
