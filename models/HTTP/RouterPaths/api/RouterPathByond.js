@@ -3,11 +3,15 @@ const ByondAPI = require("../../../Byond/ByondAPI.js");
 
 class RouterPathByond extends RouterPath {
   constructor(subsystem, router) {
-    super(subsystem, router, "/byond");
+    super(subsystem, router);
 
     var config = subsystem.manager.getSubsystem("Config").config;
 
     this.byondAPI = new ByondAPI(subsystem.manager);
+
+    this.router.get("/byond", (req, res) => {
+      this.get(req, res);
+    });
   }
 
   get(req, res) {

@@ -9,8 +9,8 @@ class StringUtils {
 
     var alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@;,./?#~{}[]()*&^%$£!<>|+-=0123456789"
 
-    for(var i = 0; i < len; i++)
-        string += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+    for (var i = 0; i < len; i++)
+      string += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
 
     return string;
   }
@@ -22,7 +22,28 @@ class StringUtils {
   static validateEmail(email) {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
-}
+  }
+
+  //
+  // https://stackoverflow.com/questions/1144783/how-to-replace-all-occurrences-of-a-string-in-javascript
+  //
+
+  static replaceAll(str, find, replace) {
+    return str.replace(new RegExp(find, 'g'), replace);
+  }
+  static replaceAllArray(str, find, replace) {
+    if (find.length != replace.length) {
+      return;
+    }
+
+    for (var i = 0; i < find.length; i++) {
+      var stringSearch = find[i];
+      var stringReplace = replace[i];
+      str = this.replaceAll(str, stringSearch, stringReplace);
+    }
+
+    return str;
+  }
 }
 
 module.exports = StringUtils;
