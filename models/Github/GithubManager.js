@@ -1,8 +1,8 @@
 const crypto = require('crypto');
-const StringUtils = require('../Utils/String.js');
 const fs = require('fs');
 const request = require('request-promise-native');
 const discord = require('discord.js');
+const StringUtils = require('../Utils/String.js');
 
 class GithubManager {
   constructor(subsystemManager) {
@@ -333,10 +333,6 @@ class GithubManager {
       return { error: "Changelog closing tag was never found" };
     }
 
-    if (username == undefined) {
-
-    }
-
     var compiledChangelog = { "username": username, "changelog": changelog };
     return compiledChangelog;
   }
@@ -345,10 +341,12 @@ class GithubManager {
     var changelogFile = "author: \"" + StringUtils.replaceAllArray(changelog.username, ['\\\\', '"', "<"], ['\\\\', '\\\\\"', '']) + "\"\n"; //Add the author
     changelogFile += "delete-after: true \n"; // I dont see why you would ever have a changelog that doesnt delete itself.
     changelogFile += "changes: \n";
+
     for (var change of changelog.changelog) {
       var sanitizedBody = StringUtils.replaceAllArray(change.body, ['\\\\', '"'], ['\\\\\\', '\\\\\"']);
       changelogFile += "  - " + change.type + ": \"" + sanitizedBody + "\"\n";
     }
+
     return changelogFile;
   }
 

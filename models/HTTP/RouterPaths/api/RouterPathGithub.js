@@ -1,8 +1,5 @@
 const RouterPath = require("../../RouterPath.js");
-const crypto = require('crypto');
 const bodyParser = require('body-parser');
-const Discord = require('discord.js');
-const StringUtils = require('../../../Utils/String.js')
 const GithubManager = require('../../../Github/GithubManager.js');
 
 class RouterPathGithub extends RouterPath {

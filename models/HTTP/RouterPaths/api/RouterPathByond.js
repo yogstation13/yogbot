@@ -1,15 +1,13 @@
 const RouterPath = require("../../RouterPath.js");
 const ByondAPI = require("../../../Byond/ByondAPI.js");
+const bodyParser = require('body-parser');
 
 class RouterPathByond extends RouterPath {
   constructor(subsystem, router) {
     super(subsystem, router);
 
-    var config = subsystem.manager.getSubsystem("Config").config;
-
     this.byondAPI = new ByondAPI(subsystem.manager);
-
-    this.router.get("/byond", (req, res) => {
+    this.router.get("/byond", bodyParser.json(), (req, res) => {
       this.get(req, res);
     });
   }
@@ -19,7 +17,7 @@ class RouterPathByond extends RouterPath {
       var error = {
         response: "No `data` query.",
         status: 400
-      }
+      };
 
       return res.status(400).send(JSON.stringify(error));
     }
@@ -28,7 +26,7 @@ class RouterPathByond extends RouterPath {
       var error = {
         response: "No `method` query.",
         status: 400
-      }
+      };
 
       return res.status(400).send(JSON.stringify(error));
     }
@@ -37,7 +35,7 @@ class RouterPathByond extends RouterPath {
       var error = {
         response: "No `key` query.",
         status: 400
-      }
+      };
 
       return res.status(400).send(JSON.stringify(error));
     }
@@ -54,7 +52,7 @@ class RouterPathByond extends RouterPath {
         var error = {
           response: "Error parsing json.",
           status: 400
-        }
+        };
 
         return res.send(JSON.stringify(error));
       }
@@ -71,7 +69,7 @@ class RouterPathByond extends RouterPath {
       var error = {
         response: "Invalid key.",
         status: 401
-      }
+      };
 
       return res.status(401).send(JSON.stringify(error));
     }
