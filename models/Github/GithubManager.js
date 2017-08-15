@@ -4,6 +4,8 @@ const request = require('request-promise-native');
 const discord = require('discord.js');
 const StringUtils = require('../Utils/String.js');
 
+const MAXIMUM_CHANGELOG_LENGTH = 800;
+
 class GithubManager {
   constructor(subsystemManager) {
     this.subsystemManager = subsystemManager;
@@ -113,7 +115,11 @@ class GithubManager {
     embed.addField("Author", payload.pull_request.user.login, true);
     embed.addField("Number", "#" + payload.pull_request.number, true);
     embed.addField("Github Link", payload.pull_request.html_url, false);
+
     if (changelogString != "") {
+      if (changelogString.length > MAXIMUM_CHANGELOG_LENGTH) {
+        changelogString = "Too long to display.";
+      }
       embed.addField("Changelog", changelogString, false);
     }
     embed.setColor(embedColor);
