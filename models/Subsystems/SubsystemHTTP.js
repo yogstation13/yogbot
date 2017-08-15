@@ -22,7 +22,7 @@ class SubsystemHTTP extends Subsystem {
     super.setup();
 
     this.app.set('view engine', 'pug')
-    this.app.use(bodyparser.json());
+    //this.app.use(bodyparser.json());
 
     var config = this.manager.getSubsystem("Config").config;
 
