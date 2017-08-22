@@ -1,0 +1,33 @@
+{
+  "roles": {
+    "council": {
+      "inherits": "headcoder",
+      "permissions": []
+    },
+    "headcoder": {
+      "inherits": "tribunal",
+      "permissions": ["config"]
+    },
+    "tribunal": {
+      "inherits": "staff",
+      "permissions": ["addao"]
+    },
+    "staff": {
+      "inherits": "retmin",
+      "permissions": []
+    },
+    "retmin": {
+      "inherits": false,
+      "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "playerinfo", "kickself"]
+    },
+    "@everyone": {
+      "inherits": false,
+      "permissions": ["ping", "adminwho", "info"]
+    },
+    "subscriber": {
+      "inherits": false,
+      "permissions": ["unsubscribe"]
+    }
+  },
+  "admins": ["115886044162949123"]
+}
