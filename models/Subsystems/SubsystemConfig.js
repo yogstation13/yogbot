@@ -1,5 +1,5 @@
-var fs = require('fs');
-var discordUtil = require('../Discord/DiscordUtils.js');
+const fs = require('fs');
+const discordUtil = require('../Discord/DiscordUtils.js');
 
 const Subsystem = require('../Subsystem.js');
 
@@ -8,13 +8,22 @@ class SubsystemConfig extends Subsystem {
     super("Config", manager);
     this.priority = 2;
 
-    this.config = require("../../config/config.json");
+    this.config = {};
   }
 
   setup() {
     super.setup();
-    this.setStatus(2, "");
 
+    var files = fs.readdirSync("./config/");
+
+    files.forEach(file => {
+      var configFile = require('../../config/' + file);
+      for (var key in configFile) {
+        this.config[key] = configFile[key];
+      }
+    });
+
+    this.setStatus(2, "");
   }
 
   setConfig(index, value) {

@@ -3,7 +3,7 @@ var fs = require('fs');
 class DiscordBanManager {
   constructor(subsystem) {
     this.subsystem = subsystem;
-    this.bans = require("../../config/softbans.json");
+    this.bans = require("../../data/softbans.json");
 
 
   }
