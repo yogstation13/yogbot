@@ -69,6 +69,9 @@ class GithubManager {
     this.setPullRequestFlags(payload, changelog);
 
     if (action == "merged") {
+      if (changelog.error) {
+        return;
+      }
       var builtChangelog = this.buildChangelogObject(changelog);
       var branch = payload.pull_request.base.ref;
       var repo = payload.pull_request.base.repo.url;
@@ -337,6 +340,10 @@ class GithubManager {
 
     if (foundOpeningTag && !foundClosingTag) {
       return { error: "Changelog closing tag was never found" };
+    }
+
+    if (!foundOpeningTag) {
+      return { error: "Changelog not found" };
     }
 
     var compiledChangelog = { "username": username, "changelog": changelog };
