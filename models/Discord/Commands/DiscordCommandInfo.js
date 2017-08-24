@@ -1,4 +1,5 @@
 const DiscordCommand = require('../DiscordCommand.js');
+const StringUtils = require('../../Utils/String.js');
 var Discord = require('discord.js');
 
 class DiscordCommandInfo extends DiscordCommand {
@@ -19,6 +20,8 @@ class DiscordCommandInfo extends DiscordCommand {
 
 			var adminwho = resultsadmin.data;
 			var adminwho = adminwho.split(":")[1];
+			var adminwho = StringUtils.replaceAll(adminwho, "\t", "");
+			var adminwho = StringUtils.replaceAll(adminwho, "\0", "");
 			byondSS.byondConnector.request("?ping", (results) => {
 				if ('error' in results) {
 					return message.reply(results.error);
