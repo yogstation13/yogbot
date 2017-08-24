@@ -10,6 +10,7 @@ class GithubManager {
   constructor(subsystemManager) {
     this.subsystemManager = subsystemManager;
     this.flags = [];
+    this.knownUsers = require("../../data/github.json");
 
     this.loadFlags();
   }
@@ -64,8 +65,12 @@ class GithubManager {
     }
 
     var changelog = this.compileChangelog(payload);
+    var githubUser = this.getGithubUser(payload.pull_request.user.login);
 
-    this.sendDiscordPullRequestMessage(action, payload, changelog);
+    if (githubUser.prs) {
+      this.sendDiscordPullRequestMessage(action, payload, changelog);
+    }
+
     this.setPullRequestFlags(payload, changelog);
 
     if (action == "merged") {
@@ -78,9 +83,10 @@ class GithubManager {
       var fileName = "html/changelogs/AutoChangelog-pr-" + payload.pull_request.number + ".yml";
       var commit = "Automatic changelog generation #" + payload.pull_request.number + " [ci skip]";
       this.commitFile(repo, branch, commit, fileName, builtChangelog);
+
+      githubUser.prs++;
+      this.setGithubUser(payload.pull_request.user.login, githubUser);
     }
-
-
   }
 
   sendDiscordPullRequestMessage(action, payload, changelog) {
@@ -408,6 +414,34 @@ class GithubManager {
       }).catch((error) => {
         reject(error);
       });
+    });
+  }
+
+  getGithubUser(username) {
+    var githubUser = this.knownUsers[username];
+    if (!githubUser) {
+      githubUser = {
+        prs: 0,
+        discord: undefined
+      };
+
+      this.knownUsers[username] = githubUser;
+    }
+
+    return githubUser;
+  }
+
+  setGithubUser(username, options) {
+    this.knownUsers[username] = options;
+    this.saveGithubUsers();
+  }
+
+  saveGithubUsers() {
+    fs.writeFile('./data/github.json', JSON.stringify(this.bans, null, 4), 'utf8', (error) => {
+      if (error) {
+        console.log(error);
+      }
+      console.log("Saved github users file.")
     });
   }
 }
