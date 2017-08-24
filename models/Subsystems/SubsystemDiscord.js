@@ -143,6 +143,7 @@ class SubsystemDiscord extends Subsystem {
       }
     }
   }
+
   getFeedbackChannel(guild) {
     for (var channel of guild.channels.array()) {
       if (channel.id === this.manager.getSubsystem("Config").config.discord_public_log_channel) {
@@ -150,12 +151,18 @@ class SubsystemDiscord extends Subsystem {
       }
     }
   }
+
   getPrimaryGuild() {
     for (var guild of this.client.guilds.array()) {
       if (guild.id === this.manager.getSubsystem("Config").config.discord_guild) {
         return guild;
       }
     }
+  }
+
+  isChannelRestricted(channel) {
+    var restrictedChannels = this.manager.getSubsystem("Config").config.discord_restricted_channels;
+    return restrictedChannels.includes(channel);
   }
 }
 
