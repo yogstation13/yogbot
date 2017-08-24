@@ -74,6 +74,9 @@ class GithubManager {
     this.setPullRequestFlags(payload, changelog);
 
     if (action == "merged") {
+
+      githubUser.prs++;
+      this.setGithubUser(payload.pull_request.user.login, githubUser);
       if (changelog.error) {
         return;
       }
@@ -84,8 +87,6 @@ class GithubManager {
       var commit = "Automatic changelog generation #" + payload.pull_request.number + " [ci skip]";
       this.commitFile(repo, branch, commit, fileName, builtChangelog);
 
-      githubUser.prs++;
-      this.setGithubUser(payload.pull_request.user.login, githubUser);
     }
   }
 
