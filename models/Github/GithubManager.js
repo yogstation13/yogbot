@@ -437,7 +437,7 @@ class GithubManager {
   }
 
   saveGithubUsers() {
-    fs.writeFile('./data/github.json', JSON.stringify(this.bans, null, 4), 'utf8', (error) => {
+    fs.writeFile('./data/github.json', JSON.stringify(this.knownUsers, null, 4), 'utf8', (error) => {
       if (error) {
         console.log(error);
       }
