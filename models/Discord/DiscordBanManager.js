@@ -15,7 +15,7 @@ class DiscordBanManager {
   }
 
   save() {
-    fs.writeFile('./config/softbans.json', JSON.stringify(this.bans, null, 4), 'utf8', (error) => {
+    fs.writeFile('./data/softbans.json', JSON.stringify(this.bans, null, 4), 'utf8', (error) => {
       if (error) {
         console.log(error);
       }
