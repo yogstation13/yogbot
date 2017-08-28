@@ -41,6 +41,27 @@ class StringUtils {
     string = string.substring(0, string.length - 1);
     return string.replace(/u[a-fA-F0-9]{4}/g, "");
   }
+  //
+  // https://stackoverflow.com/questions/1144783/how-to-replace-all-occurrences-of-a-string-in-javascript
+  //
+
+  static replaceAll(str, find, replace) {
+    return str.replace(new RegExp(find, 'g'), replace);
+  }
+
+  static replaceAllArray(str, find, replace) {
+    if (find.length != replace.length) {
+      return;
+    }
+
+    for (var i = 0; i < find.length; i++) {
+      var stringSearch = find[i];
+      var stringReplace = replace[i];
+      str = this.replaceAll(str, stringSearch, stringReplace);
+    }
+
+    return str;
+  }
 }
 
 module.exports = StringUtils;

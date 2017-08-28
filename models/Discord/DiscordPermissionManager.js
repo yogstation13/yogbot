@@ -2,17 +2,18 @@ class DiscordPermissionManager {
   constructor(subsystemManager) {
     this.manager = subsystemManager;
 
-    this.permissions = require('../../config/discord.json');
+    this.permissions = require('../../data/discord.json');
   }
 
   getInheritedPermissions(group, currentPermissions) {
-    if(group in this.permissions['roles']) {
+    if (group in this.permissions['roles']) {
       var groupConfig = this.permissions['roles'][group];
       currentPermissions = currentPermissions.concat(groupConfig.permissions);
-      if(groupConfig.inherits) {
+      if (groupConfig.inherits) {
 
         return this.getInheritedPermissions(groupConfig.inherits, currentPermissions);
-      } else {
+      }
+      else {
         return currentPermissions;
       }
     }

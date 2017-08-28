@@ -6,6 +6,7 @@ class SubsystemByondConnector extends Subsystem {
     super("Byond Connector", manager);
     this.byondConnector;
     this.priority = 1;
+    this.roundNumber = "Unknown";
   }
 
   setup() {

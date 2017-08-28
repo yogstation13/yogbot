@@ -19,22 +19,26 @@ class EndpointASayMessage extends APIEndpoint {
 
     var config = this.manager.subsystemManager.getSubsystem("Config").config;
     var discord = this.manager.subsystemManager.getSubsystem("Discord");
+    var byondSS = this.manager.subsystemManager.getSubsystem("Byond Connector");
 
     if (data.status == "lobby") {
+      byondSS.roundNumber = data.round;
 
       var embed = new Discord.RichEmbed();
 
       embed.setAuthor("New round notifier", "http://i.imgur.com/GPZgtbe.png");
       embed.setDescription("A new round is about to begin! Join now at " + config.server_join_address);
       embed.addField("Map Name", data.map_name, true);
-      embed.addField("Revsision", data.revision, true);
+      embed.addField("Revision", data.revision, true);
       embed.addField("Round Number", data.round, true);
       embed.addField("Changelog", "No Changes", true);
       embed.setColor("62f442");
 
+      var embedmessage = "<@&" + config.discord_subscriber_role + ">";
+
       for (var channel of discord.getPrimaryGuild().channels.array()) {
         if (channel.id == config.discord_public_channel) {
-          channel.sendEmbed(embed);
+          channel.sendEmbed(embed, embedmessage);
         }
       }
       discord.client.user.setGame("Round Starting");

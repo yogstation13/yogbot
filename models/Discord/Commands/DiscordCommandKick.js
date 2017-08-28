@@ -8,8 +8,10 @@ class DiscordCommandKick extends DiscordCommand {
 
     onRun(message, permissions, args) {
         var config = this.subsystem.manager.getSubsystem("Config").config;
+
         if(args.length < 1) {
             message.reply("Usage is `" + config.discord_command_character + "kick [@UserName] <reason>`");
+            return;
         }
 
         var user = undefined;
@@ -28,11 +30,17 @@ class DiscordCommandKick extends DiscordCommand {
         var guildMember = message.guild.fetchMember(user);
         guildMember.then(
           (resolve) => {
+              var kickeeperms = this.subsystem.permissionManager.getUserPermissions(resolve);
               if (resolve.id == message.member.id) {
                   message.reply("You cannot kick yourself");
                   return;
               }
-                  args.shift();
+              if (kickeeperms.includes("kick")) {
+                  message.reply("You cannot kick staff");
+                  return;
+              }
+
+              args.shift();
 
               var reason = "No reason given.";
 

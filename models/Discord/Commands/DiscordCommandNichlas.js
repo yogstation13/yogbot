@@ -9,7 +9,8 @@ class DiscordCommandNichlas extends DiscordCommand {
   onRun(message, permissions, args) {
     var responses = [
       "http://i.imgur.com/RA0v3cW.jpg",
-      "https://lh3.googleusercontent.com/-qRmDvvvSw70/V1JQ54e1lyI/AAAAAAAAAXs/INTs7fIUgug9O8UmuKeeUy9xJgE4TnkGw/w426-h409/Potato.png"
+      "http://i.imgur.com/ugbj0m1.png",
+      "http://i.imgur.com/pmgSHjz.png"
     ];
     var response = responses[Math.floor(Math.random() * responses.length)];
     message.reply(response);
