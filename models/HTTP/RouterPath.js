@@ -12,12 +12,12 @@ class RouterPath {
     //router.get('/', function(req, res) {
     //  res.json({ message: 'hooray! welcome to our api!'});
     //});
-    this.router.get(this.routerPath, (req, res) => {
+    /*this.router.get(this.routerPath, (req, res) => {
       this.get(req, res);
     });
     this.router.post(this.routerPath, (req, res) => {
       this.post(req, res);
-    });
+    });*/
   }
 
   get(req, res) {

@@ -1,0 +1,39 @@
+.brand-logo img {
+  height: 64px;
+}
+
+.bg {
+  background-image: url(https://cdn.discordapp.com/attachments/269923781705859073/270351881052749825/Sprite-0007_resized.png);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.intro {
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+.page-footer {
+  padding-top: 0px;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  vertical-align: top;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+label {
+  width: 100%;
+}

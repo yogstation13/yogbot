@@ -5,7 +5,9 @@ var fs = require('fs');
 
 const Subsystem = require('../Subsystem.js');
 const UserManager = require('../HTTP/UserManager.js')
+const UserPermissionManager = require('../HTTP/UserPermissionsManager.js')
 const CaptchaManager = require('../HTTP/RecaptchaManager.js')
+const ByondAPI = require("../Byond/ByondAPI.js");
 
 
 class SubsystemHTTP extends Subsystem {
@@ -15,7 +17,9 @@ class SubsystemHTTP extends Subsystem {
 
     this.app = express();
     this.userManager = undefined;
+    this.UserPermissionManager = undefined;
     this.captchaManager = undefined;
+    this.byondAPI = undefined;
   }
 
   setup() {
@@ -27,7 +31,8 @@ class SubsystemHTTP extends Subsystem {
     var config = this.manager.getSubsystem("Config").config;
 
     this.userManager = new UserManager(this);
-    this.captchaManager = new CaptchaManager(config.recaptcha_token);
+    this.userPermissionManager = new UserPermissionManager();
+    this.captchaManager = new CaptchaManager(config.captcha_token_private, config.captcha_token_public);
 
     fs.readdir("./models/HTTP/Routers/", (err, files) => {
       files.forEach(file => {
@@ -42,6 +47,8 @@ class SubsystemHTTP extends Subsystem {
 
     this.app.listen(config.http_port);
     console.log('HTTP Server started on port ' + config.http_port);
+
+    this.byondAPI = new ByondAPI(this.manager);
 
     this.setStatus(2, "");
   }

@@ -5,6 +5,7 @@
     "sql_user": "user",
     "sql_password": "password",
     "sql_database": "database",
+    "sql_prefix": "erro_",
     "discord_token": "younoseeme",
     "discord_command_character": "!",
     "discord_softban": "true",

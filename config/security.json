@@ -1,0 +1,5 @@
+{
+  "http_jwt_private": "randomstringhere"
+  "captcha_token_public": "getthisfromgoogle",
+  "captcha_token_private": "getthisfromgoogle"
+}

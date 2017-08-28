@@ -1,43 +1,28 @@
 var http = require('http');
-var recaptcha = require('recaptcha');
+var ReCAPTCHA = require('recaptcha2');
 
 class RecaptchaManager {
 
-  constructor(secret) {
-    this.secret = secret;
+  constructor(secret, publict) {
+    this.recaptcha = new ReCAPTCHA({
+      siteKey: publict,
+      secretKey: secret
+    });
   }
 
   verifyCaptcha(token, callback) {
-    var options = {
-      host: 'www.google.com',
-      port: 80,
-      path: '/recaptcha/api/siteverify',
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    };
 
-    var req = http.request(options, (res) => {
-      res.setEncoding('utf8');
-      res.on('data', (body) => {
-        console.log(body)
-        callback(undefined, body);
-      });
+    var data = {
+      challenge: undefined,
+      response: token,
+      remoteip: undefined
+    }
+
+    this.recaptcha.validate(token).then(() => {
+      callback(undefined, true);
+    }).catch((errorCode) => {
+      callback(errorCode, false);
     });
-
-    req.on('error', (error) => {
-      callback(error, undefined);
-      console.log('problem with request: ' + e.message);
-    });
-
-    //var content = {
-    //  secret: this.secret,
-    //  response: token
-    //};
-
-    //req.write(JSON.stringify(content));
-    req.end();
   }
 }
 

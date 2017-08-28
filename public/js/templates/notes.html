@@ -1,0 +1,47 @@
+<div style="width: 99% !important;" class="container" ng-controller="NoteViewController">
+  <div class="row">
+    <div class="valign-wrapper">
+      <div class="col s9">
+        <h3>Your Notes</h3>
+      </div>
+      <div class="col s3">
+        <div class="input-field">
+          <select ng-model="category" ng-change="categorySelected()">
+            <option value="25" selected>25</option>
+            <option value="50">50</option>
+            <option value="75">75</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class=" col s12 ">
+      <table class="bordered ">
+        <thead>
+          <tr>
+            <td style="width: 20%; ">Contents</td>
+            <td style="width: 30%; ">Date</td>
+            <td ng-show="hasPermission('notes')" style="width: 10%; ">Admin</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="note in notes">
+            <td><small>{{note.notetext}}</small></td>
+            <td><small>{{note.timestamp_human}}</small></td>
+            <td ng-show="hasPermission('notes')"><small>{{note.adminckey}}</small></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col s12 ">
+      <ul class="pagination center-align ">
+        <li ng-show=" currentPage> 1" class="disabled white-text"><a class="white-text" href="/user/notes/{{category}}/{{currentPage-1}}/{{pageLimit}}"><i class="material-icons">chevron_left</i></a></li>
+        <li ng-show="currentPage > 2" class="waves-effect white-text"><a class="white-text" href="/user/notes/{{category}}/{{currentPage-1}}/{{pageLimit}}">{{currentPage-1}}</a></li>
+        <li class="active"><a class="white-text" href="/user/notes/{{category}}/{{currentPage}}/{{pageLimit}}">{{currentPage}}</a></li>
+        <li class="waves-effect"><a class="white-text" href="/user/notes/{{category}}/{{currentPage+1}}/{{pageLimit}}">{{currentPage+1}}</a></li>
+        <li class="waves-effect"><a class="white-text" href="/user/notes/{{category}}/{{currentPage+2}}/{{pageLimit}}">{{currentPage+2}}</a></li>
+        <li class="waves-effect"><a class="white-text" href="/user/notes/{{category}}/{{currentPage+3}}/{{pageLimit}}">{{currentPage+3}}</a></li>
+        <li class="waves-effect"><a class="white-text" href="/user/notes/{{category}}/{{currentPage+1}}/{{pageLimit}}"><i class="material-icons">chevron_right</i></a></li>
+      </ul>
+    </div>
+  </div>
+</div>

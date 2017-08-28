@@ -2,39 +2,41 @@ const RouterPath = require("../../RouterPath.js");
 
 class RouterPathRegister extends RouterPath {
   constructor(subsystem, router) {
-    super(subsystem, router, "/register");
+    super(subsystem, router);
   }
 
-  get(req, res) {
-    res.send("Hello World!");
+  register() {
+    this.router.post("/register", (req, res) => {
+      this.post(req, res);
+    });
   }
 
   post(req, res) {
     var body = req.body;
 
-    if (!body.hasOwnProperty("email")) {
-      res.status(400).send({
+    if (!body.email) {
+      res.send({
         error: "Missing email field."
       });
       return;
     }
 
-    if (!body.hasOwnProperty("password")) {
-      res.status(400).send({
+    if (!body.password) {
+      res.send({
         error: "Missing password field."
       });
       return;
     }
 
-    if (!body.hasOwnProperty("username")) {
-      res.status(400).send({
+    if (!body.username) {
+      res.send({
         error: "Missing username field."
       });
       return;
     }
 
-    if (!body.hasOwnProperty("captcha")) {
-      res.status(400).send({
+    if (!body.captcha) {
+      res.send({
         error: "Missing captcha field."
       });
       return;
@@ -44,30 +46,28 @@ class RouterPathRegister extends RouterPath {
     var password = body.password;
     var username = body.username;
 
-    this.subsystem.captchaManager.verifyCaptcha(body.captcha, (error, data) => {
+    this.subsystem.captchaManager.verifyCaptcha(body.captcha, (error, success) => {
       if (error) {
-        res.status(503).send({
+        res.send(JSON.stringify({
           error: "Error contacting ReCAPTCHA server."
-        });
+        }));
         return;
       }
 
-      var json = JSON.parse(data);
-
-      if (!json.success) {
-        res.status(400).send({
+      if (!success) {
+        res.send(JSON.stringify({
           component: "recaptcha",
           error: "Invalid recaptcha"
-        });
+        }));
         return;
       }
 
-      this.userManager.registerUser(email, password, username,
-        (error) => {
-          res.status(400).send(error);
-        },
+      this.subsystem.userManager.registerUser(email, password, username,
         (accept) => {
-          res.status(200).send();
+          res.send(JSON.stringify("Created an account"));
+        },
+        (error) => {
+          res.send(JSON.stringify(error));
         });
     });
   }

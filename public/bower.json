@@ -1,0 +1,21 @@
+{
+  "name": "Yogstation",
+  "authors": [
+    "Ashleigh Carr <ashcorr20@gmail.com>"
+  ],
+  "description": "The central hub for yogstation.",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "requirejs": "^2.3.3",
+    "angular": "^1.6.4",
+    "angular-route": "^1.6.4",
+    "jquery": "^3.2.1",
+    "materialize": "^0.99.0",
+    "angular-sanitize": "^1.6.5",
+    "angular-jwt": "^0.1.9",
+    "angular-cookies": "^1.6.5"
+  }
+}
