@@ -34,8 +34,8 @@
         </li>
       </ul>
     </div>
-    <div class="nav-content  grey darken-3">
-      <ul ng-show="showTabs && mainNavigation == 'public'" ng-class="{active: mainNavigation == 'public'}" class="container tabs tabs-transparent">
+    <div class="nav-content grey darken-3">
+      <ul ng-show="showTabs && mainNavigation == 'public'" ng-class="{active: mainNavigation == 'public'}" class="container tabs tabs-transparent tabs-fixed-width">
         <li ng-click="changeLocation('/home')" class="tab"><a>Home</a></li>
         <li ng-click="changeLocation('/bans')" class="tab"><a>Bans</a></li>
         <li ng-click="changeLocation('/library')" class="tab"><a>Library</a></li>
@@ -45,7 +45,7 @@
   </nav>
 
   <!-- Main Content Container -->
-  <main ng-view></main>
+  <main ng-view class="wide-container"></main>
 
   <div id="modal-error" class="modal">
     <div class="modal-content black-text">

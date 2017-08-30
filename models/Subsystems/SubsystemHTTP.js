@@ -36,7 +36,6 @@ class SubsystemHTTP extends Subsystem {
 
     fs.readdir("./models/HTTP/Routers/", (err, files) => {
       files.forEach(file => {
-        console.log(file)
         const RouterClass = require('../HTTP/Routers/' + file);
         var router = new RouterClass(this);
         router.setup();

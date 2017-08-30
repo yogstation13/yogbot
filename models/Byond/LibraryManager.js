@@ -141,8 +141,6 @@ class BanManager {
 
     query += " LIMIT 1";
 
-    console.log(query)
-
     this.manager.getSubsystem("Database").pool.getConnection((err, connection) => {
       if (err) {
         return callback(err, undefined);

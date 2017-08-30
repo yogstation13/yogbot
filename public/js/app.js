@@ -30,9 +30,9 @@ define(['routes', 'scripts/dependencyResolverFor', 'scripts/locationPath'], func
           });
         }
 
-        if (config.defaultRoutePaths !== undefined) {
+        if (config.defaultRoutePath !== undefined) {
           $routeProvider.otherwise({
-            redirectTo: config.defaultRoutePaths
+            redirectTo: config.defaultRoutePath
           });
         }
         }

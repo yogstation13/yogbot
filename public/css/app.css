@@ -37,3 +37,21 @@ main {
 label {
   width: 100%;
 }
+
+@media only screen and (min-width: 993px) {
+  .wide-container {
+    width: 90%;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .wide-container {
+    width: 95%;
+  }
+}
+
+.wide-container {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 97%;
+}

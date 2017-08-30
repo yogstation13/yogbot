@@ -1,6 +1,6 @@
 define([], function () {
   return {
-    defaultRoutePath: '/',
+    defaultRoutePath: '/404',
     routes: {
       '/': {
         templateUrl: 'js/templates/home.html',
@@ -60,6 +60,10 @@ define([], function () {
         dependencies: [
                       'controllers/DashboardViewController'
                 ]
+      },
+      '/404': {
+        templateUrl: 'js/templates/404.html',
+        dependencies: []
       }
 
     }

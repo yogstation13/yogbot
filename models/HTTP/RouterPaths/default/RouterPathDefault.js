@@ -10,7 +10,6 @@ class RouterPathDefault extends RouterPath {
   register() {
     this.subsystem.app.use("/", express.static("public"));
     this.router.get('/*', function (req, res) {
-      console.log(req.path)
       res.sendFile(path.dirname(require.main.filename) + '/public/index.html');
     });
   }

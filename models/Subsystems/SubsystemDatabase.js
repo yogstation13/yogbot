@@ -17,8 +17,6 @@ class SubsystemDatabase extends Subsystem {
     console.log("Establishing database connection.");
     console.log("Creating database pool with " + config.sql_connections + " connections.");
 
-
-
     this.pool = sql.createPool({
       connectionLimit: config.sql_connections,
       host: config.sql_host,
@@ -27,12 +25,17 @@ class SubsystemDatabase extends Subsystem {
       database: config.sql_database
     });
 
-    /*if(this.pool.getConnection() == undefined) {
-      this.setStatus(3, "Failed to establish database connection.");
-      return;
-    }*/
+    this.pool.getConnection((err, connection) => {
+      if (err) {
+        this.setStatus(3, err);
+      }
+      else {
+        connection.release();
 
-    console.log("Established database connection.");
+        console.log("Established database connection.");
+      }
+    });
+
     this.setStatus(2, "");
   }
 }
