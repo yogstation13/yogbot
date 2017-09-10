@@ -1,4 +1,5 @@
 const DiscordCommand = require('../DiscordCommand.js');
+const StringUtils = require('../../Utils/String.js');
 
 class DiscordCommandAdminWho extends DiscordCommand {
 
@@ -14,7 +15,8 @@ class DiscordCommandAdminWho extends DiscordCommand {
       if('error' in results) {
         message.reply(results.error);
       } else {
-        message.reply(results.data);
+        var adminwho = StringUtils.replaceAll(results.data, "\0", "");
+        message.reply(adminwho);
       }
     });
   }
