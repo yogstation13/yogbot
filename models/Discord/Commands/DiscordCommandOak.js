@@ -3,7 +3,7 @@ const DiscordCommand = require('../DiscordCommand.js');
 class DiscordCommandOak extends DiscordCommand {
 
   constructor(subsystem) {
-    super("Oak", "Gib consil blease :DDD", undefined, subsystem, true);
+    super("oak", "Pigtures of consil blease :DDD", undefined, subsystem, true);
   }
 
   onRun(message, permissions, args) {
