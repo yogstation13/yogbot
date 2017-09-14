@@ -22,7 +22,7 @@ class DiscordCommandKtlwjec extends DiscordCommand {
 		"https://d3v8fhblas9eb9.cloudfront.net/i/wp-content/uploads/2013/08/CURIOUS-INTERESTED-CAT-DOCTOR.jpg",
 		"https://i.imgur.com/gtTpjFZ.jpg",
 		"https://i.imgur.com/KzbRnsj.jpg"
-		];
+	];
     var response = responses[Math.floor(Math.random() * responses.length)];
     message.reply(response);
   }
