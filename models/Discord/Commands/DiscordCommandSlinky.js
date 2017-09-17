@@ -3,7 +3,7 @@ const DiscordCommand = require('../DiscordCommand.js');
 class DiscordCommandSlinky extends DiscordCommand {
 
 	constructor(subsystem) {
-		super("slinky", "The man who wants to watch the world burn", undefined, subsystem, true);
+		super("slinky", "Pictures of the man who wants to watch the world burn", undefined, subsystem, true);
 	}
 
 	onRun(message, permissions, args) {
