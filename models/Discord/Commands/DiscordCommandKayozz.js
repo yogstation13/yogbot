@@ -4,7 +4,7 @@ class DiscordCommandKayozz extends DiscordCommand {
 
   constructor(subsystem) {
     super("kayozz", "Pictures of the only goodmin", undefined, subsystem, true);
-  
+  }
 
   onRun(message, permissions, args) {
     var responses = [
