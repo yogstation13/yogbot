@@ -33,7 +33,7 @@ class DiscordCommandInfo extends DiscordCommand {
 						embedcolor = embedcolor + colors[Math.floor(Math.random() * colors.length)];
 						//picks a colour from the array "colours" then proceeds to add it to "colour", and stops once "colour" has 6 digits
 				}
-				if(adminwho == undefined) {
+				if(adminwho == "\n") {
 					adminwho = "No admins online";
 				}
 
