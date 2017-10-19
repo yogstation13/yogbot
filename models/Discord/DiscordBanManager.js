@@ -31,7 +31,7 @@ class DiscordBanManager {
 
     var expiry = time;
     if (time) {
-      expiry = date.getTime() + (time * 1000); // 1000ms in one second
+      expiry = date.getTime() + (time * 60000); // 1000ms in one second, and 60 seconds in one minute
     }
 
     var ban = {
@@ -41,11 +41,11 @@ class DiscordBanManager {
       expires: expiry
     }
 
-    var banMessage = "You have been banned from " + config.server_name + " for `" + reason + "` it will " + (time ? "expire in " + time + " seconds" : "not expire.");
+    var banMessage = "You have been banned from " + config.server_name + " for `" + reason + "` it will " + (time ? "expire in " + time + " minutes" : "not expire.");
 
     guildMember.user.sendMessage(banMessage);
 
-    feedbackChannel.send("**" + guildMember.user.username + "#" + guildMember.user.discriminator + "** Was " + (config.discord_softban ? "soft" : "hard") + "banned from the server for `" + reason + "` it will " + (time ? "expire in **" + time + "** seconds" : "not expire.") + ".")
+    feedbackChannel.send("**" + guildMember.user.username + "#" + guildMember.user.discriminator + "** Was " + (config.discord_softban ? "soft" : "hard") + "banned from the server for `" + reason + "` it will " + (time ? "expire in **" + time + "** minutes" : "not expire.") + ".")
 
     if (config.discord_softban) {
       guildMember.addRole(config.discord_softban_role).then(
