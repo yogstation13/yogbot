@@ -9,7 +9,7 @@ class DiscordCommandTempban extends DiscordCommand {
   onRun(message, permissions, args) {
     var config = this.subsystem.manager.getSubsystem("Config").config;
     if(args.length < 1) {
-      message.reply("Usage is `" + config.discord_command_character + "tempban [@UserName] [Seconds] <reason>`");
+      message.reply("Usage is `" + config.discord_command_character + "tempban [@UserName] [Minutes] <reason>`");
       return;
     }
 
