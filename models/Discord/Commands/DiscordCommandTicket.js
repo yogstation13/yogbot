@@ -74,7 +74,6 @@ class DiscordCommandTicket extends DiscordCommand {
       var ticketResponse = args.join(" ");
 
       var request = "?ticket=1&action=reply&id=" + ticketID + "&admin=" + message.author.username + "&response=" + ticketResponse + "&key=" + config.server_key;
-      console.log(request)
       byondConnector.request(request, (results) => {
         if ('error' in results) {
           message.reply(results.error);

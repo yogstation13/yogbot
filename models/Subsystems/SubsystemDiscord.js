@@ -63,7 +63,6 @@ class SubsystemDiscord extends Subsystem {
         var channel = new ChannelClass(this);
         this.channels.push(channel);
       });
-      this.setStatus(2, "");
     });
   }
 

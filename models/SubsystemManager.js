@@ -1,8 +1,20 @@
+const winston = require("winston");
+
 class SubsystemManager {
   constructor() {
     this.subsystems = [];
     this.uninitializedSubsystems = [];
+    this.logger;
 
+    this.formatSimple = winston.format.printf(info => {
+      return `[${info.level}] ${info.message}`;
+    });
+
+    this.format = winston.format.printf(info => {
+      return `${info.timestamp} [${info.level}]: ${info.message}`;
+    });
+
+    this.createLogger();
     this.loadSystems();
   }
 
@@ -10,7 +22,7 @@ class SubsystemManager {
     const fs = require('fs');
     fs.readdir("./models/Subsystems/", (err, files) => {
       if (err) {
-        return console.log(err);
+        return this.logger("error", err);
       }
 
       files.forEach(file => {
@@ -22,9 +34,9 @@ class SubsystemManager {
       });
 
       this.organizeSystems();
-      console.log("Initializing subsystems.");
+      this.logger.log("info", "Initializing subsystems.");
       this.initSystems();
-      console.log("Finished initializing subsystems.");
+      this.logger.log("info", "Finished initializing subsystems.");
     });
 
   }
@@ -51,10 +63,15 @@ class SubsystemManager {
     var currentSS = 0;
 
     var setupNextSubsystem = () => {
+
+      if (currentSS >= this.subsystems.length) {
+        this.logger.log("info", "Finished initializing subsystems.");
+        return;
+      }
+
       this.subsystems[currentSS].setup((err) => {
         if (err) {
-          console.log("Subsystem " + this.subsystems[currentSS].id + " initialization failed: " + err);
-          return;
+          return this.logger.log("error", "Subsystem " + this.subsystems[currentSS].id + " initialization failed: " + err);
         }
 
         currentSS++;
@@ -63,6 +80,30 @@ class SubsystemManager {
     };
 
     setupNextSubsystem();
+  }
+
+  createLogger() {
+    this.logger = winston.createLogger({
+      transports: [
+        new winston.transports.Console({
+          format: winston.format.combine(winston.format.colorize(), this.formatSimple),
+          colorize: true,
+          json: false
+        }),
+        new winston.transports.File({
+          filename: "logs/error.log",
+          level: 'error',
+          format: winston.format.combine(winston.format.timestamp(), this.format)
+        }),
+        new winston.transports.File({
+          filename: "logs/info.log",
+          format: winston.format.combine(winston.format.timestamp(), this.format)
+        })
+      ],
+      exceptionHandlers: [
+        new winston.transports.File({ filename: "logs/exception.log" })
+      ]
+    });
   }
 
   getSubsystem(subsystemID) {

@@ -42,7 +42,8 @@ class SubsystemHTTP extends Subsystem {
       this.app.use('/static', express.static('public'));
 
       this.app.listen(config.http_port);
-      console.log('HTTP Server started on port ' + config.http_port);
+
+      this.manager.logger.log("info", 'HTTP Server started on port ' + config.http_port);
 
       callback();
     });

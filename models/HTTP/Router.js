@@ -13,11 +13,11 @@ class Router {
 
     var routerName = "default"
 
-    if(this.routerPath !== "") {
+    if (this.routerPath !== "") {
       routerName = this.routerPath;
     }
 
-    console.log("Loaded HTTP Router: " + routerName);
+    this.subsystem.manager.logger.log("info", "Loaded HTTP Router: " + routerName);
 
     var files = fs.readdirSync("./models/HTTP/RouterPaths/" + routerName + "/");
 
@@ -27,7 +27,7 @@ class Router {
       routerPath.register();
     }
 
-    this.subsystem.app.use("/"+this.routerPath, this.router);
+    this.subsystem.app.use("/" + this.routerPath, this.router);
   }
 }
 

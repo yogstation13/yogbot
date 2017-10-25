@@ -8,10 +8,10 @@ class Subsystem {
   }
 
   setup(callback) {
-    console.log("Starting " + this.id + " subsystem.");
-  };
+    this.manager.logger.log("info", "Starting " + this.id + " subsystem.");
+  }
 
-  update() {};
+  update() {}
 
   setStatus(status, error) {
     this.status = status;

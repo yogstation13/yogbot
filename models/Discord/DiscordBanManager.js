@@ -17,9 +17,9 @@ class DiscordBanManager {
   save() {
     fs.writeFile('./data/softbans.json', JSON.stringify(this.bans, null, 4), 'utf8', (error) => {
       if (error) {
-        console.log(error);
+        return this.subsystem.manager.logger.log("error", "Error saving discord softbans: " + error);
       }
-      console.log("Saved discord bans file.")
+      this.subsystem.manager.logger.log("debug", "Saved discord bans file.");
     });
   }
 
@@ -94,7 +94,6 @@ class DiscordBanManager {
     var bansToLift = [];
     var date = new Date();
     var guild = this.subsystem.getPrimaryGuild();
-    var config = this.subsystem.manager.getSubsystem("Config").config;
 
     for (var ban of this.bans) {
       if (ban.expires) {
@@ -110,10 +109,9 @@ class DiscordBanManager {
           this.unban(guild, resolve, "Ban expired.");
         },
         reject => {
-          console.log("Failed to change discord roles of user with ID " + ban.userID + " because their ID wasnt found on the server, the ban has been lifted from the config file.");
+          this.subsystem.manager.logger.log("info", "Failed to change discord roles of user with ID " + ban.userID + " because their ID wasnt found on the server, the ban has been lifted from the config file.");
         }
       );
-
     }
   }
 }

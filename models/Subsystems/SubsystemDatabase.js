@@ -14,8 +14,8 @@ class SubsystemDatabase extends Subsystem {
     var sql = require('mysql');
     var config = this.manager.getSubsystem("Config").config;
 
-    console.log("Establishing database connection.");
-    console.log("Creating database pool with " + config.sql_connections + " connections.");
+    this.manager.logger.log("info", "Establishing database connection.");
+    this.manager.logger.log("info", "Creating database pool with " + config.sql_connections + " connections.");
 
 
 
