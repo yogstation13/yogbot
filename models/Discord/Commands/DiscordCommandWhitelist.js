@@ -8,7 +8,7 @@ class DiscordCommandWhitelist extends DiscordCommand {
 
   onRun(message, permissions, args) {
     var config = this.subsystem.manager.getSubsystem("Config").config;
-    if(args.length < 2) {
+    if (args.length < 2) {
       message.reply("Usage is `" + config.discord_command_character + "whitelist [ckey] [true/false]`");
       return;
     }
@@ -17,18 +17,20 @@ class DiscordCommandWhitelist extends DiscordCommand {
     var whitelist = args[1];
     var whitelistInteger = 0;
 
-    if(whitelist == "true") {
+    if (whitelist == "true") {
       whitelistInteger = 1;
-    } else if(whitelist == "false") {
+    }
+    else if (whitelist == "false") {
       whitelistInteger = 0;
-    } else {
+    }
+    else {
       message.reply("please input either true or false.")
     }
 
     var dbSubsystem = this.subsystem.manager.getSubsystem("Database");
 
     dbSubsystem.pool.getConnection((err, connection) => {
-      if(err) {
+      if (err) {
         message.reply("Error contacting database, try again later.");
       }
 
@@ -39,9 +41,11 @@ class DiscordCommandWhitelist extends DiscordCommand {
           message.reply("Error running query, try again later.");
         }
 
-        if(results.affectedRows  < 1) {
+        if (results.affectedRows < 1) {
           message.reply("Player was not found, typo maybe?");
-        } else {
+        }
+        else {
+          this.subsystem.logger.log("info", message.author.username + "#" + message.author.discriminator + " (" + message.author.id + ") set " + ckey + " whitelist status to " + whitelist);
           message.reply("`" + ckey + "`'s job whitelist was set to `" + whitelist + "`");
         }
       });
