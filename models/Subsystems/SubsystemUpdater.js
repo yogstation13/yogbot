@@ -6,21 +6,21 @@ class SubsystemUpdater extends Subsystem {
     super("Updater", manager);
   }
 
-  setup() {
+  setup(callback) {
     super.setup();
-    this.setStatus(2, "");
+    callback();
   }
 
   update(callback) {
     var config = this.manager.getSubsystem("Config").config;
 
-    if(!config.git_update) {
+    if (!config.git_update) {
       return;
     }
 
     var git_pull = spawn('cmd.exe', ['/Q', '/c', "update.bat"]);
     git_pull.stdout.on('data', (data) => {
-      if(callback != undefined) {
+      if (callback != undefined) {
         callback(data.toString());
       }
     });

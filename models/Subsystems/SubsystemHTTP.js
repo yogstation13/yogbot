@@ -18,11 +18,10 @@ class SubsystemHTTP extends Subsystem {
     this.captchaManager = undefined;
   }
 
-  setup() {
+  setup(callback) {
     super.setup();
 
     this.app.set('view engine', 'pug')
-    //this.app.use(bodyparser.json());
 
     var config = this.manager.getSubsystem("Config").config;
 
@@ -30,20 +29,23 @@ class SubsystemHTTP extends Subsystem {
     this.captchaManager = new CaptchaManager(config.recaptcha_token);
 
     fs.readdir("./models/HTTP/Routers/", (err, files) => {
+      if (err) {
+        return callback(err);
+      }
+
       files.forEach(file => {
-        console.log(file)
         const RouterClass = require('../HTTP/Routers/' + file);
         var router = new RouterClass(this);
         router.setup();
       });
+
+      this.app.use('/static', express.static('public'));
+
+      this.app.listen(config.http_port);
+      console.log('HTTP Server started on port ' + config.http_port);
+
+      callback();
     });
-
-    this.app.use('/static', express.static('public'))
-
-    this.app.listen(config.http_port);
-    console.log('HTTP Server started on port ' + config.http_port);
-
-    this.setStatus(2, "");
   }
 }
 

@@ -7,8 +7,7 @@ class Subsystem {
     this.manager = manager;
   }
 
-  setup() {
-    this.setStatus(1, "");
+  setup(callback) {
     console.log("Starting " + this.id + " subsystem.");
   };
 
