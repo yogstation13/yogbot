@@ -21,14 +21,12 @@ class RecaptchaManager {
     var req = http.request(options, (res) => {
       res.setEncoding('utf8');
       res.on('data', (body) => {
-        console.log(body)
         callback(undefined, body);
       });
     });
 
     req.on('error', (error) => {
       callback(error, undefined);
-      console.log('problem with request: ' + e.message);
     });
 
     //var content = {

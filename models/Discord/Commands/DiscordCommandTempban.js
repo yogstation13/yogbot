@@ -8,7 +8,7 @@ class DiscordCommandTempban extends DiscordCommand {
 
   onRun(message, permissions, args) {
     var config = this.subsystem.manager.getSubsystem("Config").config;
-    if(args.length < 1) {
+    if (args.length < 1) {
       message.reply("Usage is `" + config.discord_command_character + "tempban [@UserName] [Minutes] <reason>`");
       return;
     }
@@ -20,21 +20,20 @@ class DiscordCommandTempban extends DiscordCommand {
       break;
     }
 
-    if(user == undefined) {
+    if (user == undefined) {
       message.reply("I could not find that user, Make sure you use the mention format of @Username");
       return;
     }
 
-    var seconds = args[1];
+    var minutes = args[1];
 
-    if(isNaN(seconds)) {
-      message.reply(seconds + " is not a valid integer.");
+    if (isNaN(minutes)) {
+      message.reply(minutes + " is not a valid integer.");
       return;
     }
 
     args.shift();
 
-    var feedbackChannel = this.subsystem.getFeedbackChannel(message.guild);
     var guildMember = message.guild.fetchMember(user);
     guildMember.then(
       resolve => {
@@ -42,15 +41,17 @@ class DiscordCommandTempban extends DiscordCommand {
 
         var reason = "No reason given.";
 
-        if(args.length > 0) {
+        if (args.length > 0) {
           reason = args.join(" ");
         }
-        var banStatus = this.subsystem.banManager.ban(resolve, reason, seconds);
+        var banStatus = this.subsystem.banManager.ban(resolve, reason, minutes);
 
-        if(banStatus) {
+        if (banStatus) {
+          this.subsystem.logger.log("info", message.author.username + "#" + message.author.discriminator + " (" + message.author.id + ") banned " + resolve.author.username + "#" + resolve.author.discriminator + " (" + resolve.author.id + ") for " + minutes + " minutes for \"" + reason + "\".");
           message.reply("User was banned.");
-        } else {
-          message.reply("An error occured, perhaps the bot cant ban that user.")
+        }
+        else {
+          message.reply("An error occured, perhaps the bot cant ban that user.");
         }
       },
       (reject) => {
