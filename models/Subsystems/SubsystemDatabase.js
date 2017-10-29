@@ -8,7 +8,7 @@ class SubsystemDatabase extends Subsystem {
     this.pool = undefined;
   }
 
-  setup() {
+  setup(callback) {
     super.setup();
 
     var sql = require('mysql');
@@ -27,13 +27,14 @@ class SubsystemDatabase extends Subsystem {
       database: config.sql_database
     });
 
-    /*if(this.pool.getConnection() == undefined) {
-      this.setStatus(3, "Failed to establish database connection.");
-      return;
-    }*/
+    this.pool.getConnection((err, connection) => {
+      if (err) {
+        callback(err.sqlMessage);
+        return;
+      }
 
-    console.log("Established database connection.");
-    this.setStatus(2, "");
+      callback();
+    });
   }
 }
 

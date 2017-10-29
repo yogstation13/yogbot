@@ -1,7 +1,8 @@
 const Subsystem = require('../Subsystem.js');
-const Discord = require('discord.js')
-const DiscordPermissionManager = require('../Discord/DiscordPermissionManager.js')
-const DiscordBanManager = require('../Discord/DiscordBanManager.js')
+const Discord = require('discord.js');
+const DiscordPermissionManager = require('../Discord/DiscordPermissionManager.js');
+const DiscordBanManager = require('../Discord/DiscordBanManager.js');
+const fs = require('fs');
 
 class SubsystemDiscord extends Subsystem {
   constructor(manager) {
@@ -15,27 +16,25 @@ class SubsystemDiscord extends Subsystem {
     this.channels = [];
   }
 
-  setup() {
+  setup(callback) {
     super.setup();
-
 
     var config = this.manager.getSubsystem("Config").config;
     this.client.login(config.discord_token).then(atoken => {
-      this.setStatus(2, "");
+      this.loadCommands();
+      this.banManager.setup();
+
+      callback();
+    }).catch((err) => {
+      callback(err);
     });
 
     this.client.on('message', message => {
       this.processMessage(message);
     });
-
-    this.setStatus(2, "");
-    this.loadCommands();
-    this.banManager.setup();
-
   }
 
   loadCommands() {
-    const fs = require('fs');
     fs.readdir("./models/Discord/Commands/", (err, files) => {
       files.forEach(file => {
         var commandPath = file.split(".")[0];
@@ -45,6 +44,7 @@ class SubsystemDiscord extends Subsystem {
 
       });
     });
+
     fs.readdir("./models/Discord/Routers/", (err, files) => {
       files.forEach(file => {
         var routerPath = file.split(".")[0];
@@ -54,6 +54,7 @@ class SubsystemDiscord extends Subsystem {
         this.routers.push(router);
       });
     });
+
     fs.readdir("./models/Discord/Channels/", (err, files) => {
       files.forEach(file => {
         var channelPath = file.split(".")[0];
@@ -64,7 +65,6 @@ class SubsystemDiscord extends Subsystem {
       });
       this.setStatus(2, "");
     });
-
   }
 
   processMessage(message) {

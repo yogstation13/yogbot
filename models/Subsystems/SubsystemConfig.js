@@ -11,19 +11,23 @@ class SubsystemConfig extends Subsystem {
     this.config = {};
   }
 
-  setup() {
+  setup(callback) {
     super.setup();
 
-    var files = fs.readdirSync("./config/");
-
-    files.forEach(file => {
-      var configFile = require('../../config/' + file);
-      for (var key in configFile) {
-        this.config[key] = configFile[key];
+    fs.readdir("./config/", (err, files) => {
+      if (err) {
+        return callback(err);
       }
-    });
 
-    this.setStatus(2, "");
+      files.forEach(file => {
+        var configFile = require('../../config/' + file);
+        for (var key in configFile) {
+          this.config[key] = configFile[key];
+        }
+      });
+
+      callback();
+    });
   }
 }
 
