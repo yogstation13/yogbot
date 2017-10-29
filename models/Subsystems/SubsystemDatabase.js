@@ -27,25 +27,12 @@ class SubsystemDatabase extends Subsystem {
 
     this.pool.getConnection((err, connection) => {
       if (err) {
-<<<<<<< HEAD
-        this.setStatus(3, err);
-      }
-      else {
-        connection.release();
-
-        console.log("Established database connection.");
-      }
-    });
-
-    this.setStatus(2, "");
-=======
         callback(err.sqlMessage);
         return;
       }
 
       callback();
     });
->>>>>>> 424f203ba5cd017665dd41dad1bf086415ea7f34
   }
 }
 
