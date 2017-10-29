@@ -18,14 +18,13 @@ class GithubManager {
   loadFlags() {
     fs.readdir("./models/Github/Flags", (err, files) => {
       if (err) {
-        return console.log(err);
+        return this.subsystemManager.logger.log("error", err);
       }
       files.forEach(file => {
         var flagPath = file.split(".")[0];
 
         const FlagClass = require('./Flags/' + flagPath + '.js');
         this.flags.push(new FlagClass(this));
-
       });
     });
   }
@@ -193,14 +192,14 @@ class GithubManager {
           };
 
           request(requestOptions).catch((err) => {
-            console.log(err);
+            this.subsystemManager.logger.log("error", err);
           });
         }
       }).catch((err) => {
-        console.log("Failed to fetch labels for PR " + payload.number + ": " + err);
+        this.subsystemManager.logger.log("error", "Failed to fetch labels for PR " + payload.number + ": " + err);
       });
     }).catch((err) => {
-      console.log("Failed to fetch file extensions for PR " + payload.number + ": " + err);
+      this.subsystemManager.logger.log("error", "Failed to fetch file extensions for PR " + payload.number + ": " + err);
     });
   }
 
@@ -389,7 +388,7 @@ class GithubManager {
     };
 
     request(requestOptions).catch((err) => {
-      console.log(err);
+      this.subsystemManager.logger.log("error", err);
     });
   }
 
@@ -440,9 +439,9 @@ class GithubManager {
   saveGithubUsers() {
     fs.writeFile('./data/github.json', JSON.stringify(this.knownUsers, null, 4), 'utf8', (error) => {
       if (error) {
-        console.log(error);
+        this.subsystemManager.logger.log("error", "Failed to save github users file: " + error);
       }
-      console.log("Saved github users file.")
+      this.subsystemManager.logger.log("debug", "Saved github users file.")
     });
   }
 }

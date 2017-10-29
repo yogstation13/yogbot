@@ -1,4 +1,3 @@
-var http = require('http');
 var ReCAPTCHA = require('recaptcha2');
 
 class RecaptchaManager {
@@ -11,13 +10,6 @@ class RecaptchaManager {
   }
 
   verifyCaptcha(token, callback) {
-
-    var data = {
-      challenge: undefined,
-      response: token,
-      remoteip: undefined
-    }
-
     this.recaptcha.validate(token).then(() => {
       callback(undefined, true);
     }).catch((errorCode) => {

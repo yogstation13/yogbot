@@ -8,7 +8,7 @@ class DiscordCommandUnBan extends DiscordCommand {
 
   onRun(message, permissions, args) {
     var config = this.subsystem.manager.getSubsystem("Config").config;
-    if(args.length < 1) {
+    if (args.length < 1) {
       message.reply("Usage is `" + config.discord_command_character + "unban [@UserName] <reason> (Currently only works for softbans)`");
       return;
     }
@@ -16,11 +16,11 @@ class DiscordCommandUnBan extends DiscordCommand {
     var user = undefined;
 
     for (var auser of message.mentions.users.array()) {
-        user = auser;
+      user = auser;
       break;
     }
 
-    if(user == undefined) {
+    if (user == undefined) {
       message.reply("I could not find that user, Make sure you use the mention format of @Username");
       return;
     }
@@ -32,15 +32,17 @@ class DiscordCommandUnBan extends DiscordCommand {
 
         var reason = "No reason given.";
 
-        if(args.length > 0) {
+        if (args.length > 0) {
           reason = args.join(" ");
         }
 
         var banStatus = this.subsystem.banManager.unban(resolve.guild, resolve, reason);
 
-        if(banStatus) {
+        if (banStatus) {
+          this.subsystem.logger.log("info", message.author.username + "#" + message.author.discriminator + " (" + message.author.id + ") unbanned " + resolve.author.username + "#" + resolve.author.discriminator + " (" + resolve.author.id + ") for \"" + reason + "\".");
           message.reply("User was unbanned.");
-        } else {
+        }
+        else {
           message.reply("An error occured, double check username.");
         }
       },

@@ -7,12 +7,11 @@ class Subsystem {
     this.manager = manager;
   }
 
-  setup() {
-    this.setStatus(1, "");
-    console.log("Starting " + this.id + " subsystem.");
-  };
+  setup(callback) {
+    this.manager.logger.log("info", "Starting " + this.id + " subsystem.");
+  }
 
-  update() {};
+  update() {}
 
   setStatus(status, error) {
     this.status = status;

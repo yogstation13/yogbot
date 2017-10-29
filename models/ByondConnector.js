@@ -2,15 +2,13 @@ var net = require('net');
 var jspack = require('jspack');
 
 class ByondConnector {
-  constructor(ip, port) {
+  constructor(ip, port, subsystemManager) {
     this.ip = ip;
     this.port = port;
-
-
+    this.subsystemManager = subsystemManager;
   }
 
   request(query, callback) {
-
     var data;
     var pack = jspack.jspack.Pack('H', [query.length + 6]);
     var charArray = [];
@@ -33,7 +31,7 @@ class ByondConnector {
     client.setTimeout(5000);
 
     client.on("timeout", () => {
-      console.log("Connection to gameserver timed out running query: " + query);
+      this.subsystemManager.logger("warn", "Connection to gameserver timed out running query: " + query);
       client.destroy();
       callback({
         error: "Connection timed out, Server might be restarting."

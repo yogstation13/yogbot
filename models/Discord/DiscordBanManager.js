@@ -17,9 +17,9 @@ class DiscordBanManager {
   save() {
     fs.writeFile('./data/softbans.json', JSON.stringify(this.bans, null, 4), 'utf8', (error) => {
       if (error) {
-        console.log(error);
+        return this.subsystem.manager.logger.log("error", "Error saving discord softbans: " + error);
       }
-      console.log("Saved discord bans file.")
+      this.subsystem.manager.logger.log("debug", "Saved discord bans file.");
     });
   }
 
@@ -31,7 +31,7 @@ class DiscordBanManager {
 
     var expiry = time;
     if (time) {
-      expiry = date.getTime() + (time * 1000); // 1000ms in one second
+      expiry = date.getTime() + (time * 60000); // 1000ms in one second, and 60 seconds in one minute
     }
 
     var ban = {
@@ -41,11 +41,11 @@ class DiscordBanManager {
       expires: expiry
     }
 
-    var banMessage = "You have been banned from " + config.server_name + " for `" + reason + "` it will " + (time ? "expire in " + time + " seconds" : "not expire.");
+    var banMessage = "You have been banned from " + config.server_name + " for `" + reason + "` it will " + (time ? "expire in " + time + " minutes" : "not expire.");
 
     guildMember.user.sendMessage(banMessage);
 
-    feedbackChannel.send("**" + guildMember.user.username + "#" + guildMember.user.discriminator + "** Was " + (config.discord_softban ? "soft" : "hard") + "banned from the server for `" + reason + "` it will " + (time ? "expire in **" + time + "** seconds" : "not expire.") + ".")
+    feedbackChannel.send("**" + guildMember.user.username + "#" + guildMember.user.discriminator + "** Was " + (config.discord_softban ? "soft" : "hard") + "banned from the server for `" + reason + "` it will " + (time ? "expire in **" + time + "** minutes" : "not expire.") + ".")
 
     if (config.discord_softban) {
       guildMember.addRole(config.discord_softban_role).then(
@@ -94,7 +94,6 @@ class DiscordBanManager {
     var bansToLift = [];
     var date = new Date();
     var guild = this.subsystem.getPrimaryGuild();
-    var config = this.subsystem.manager.getSubsystem("Config").config;
 
     for (var ban of this.bans) {
       if (ban.expires) {
@@ -110,10 +109,9 @@ class DiscordBanManager {
           this.unban(guild, resolve, "Ban expired.");
         },
         reject => {
-          console.log("Failed to change discord roles of user with ID " + ban.userID + " because their ID wasnt found on the server, the ban has been lifted from the config file.");
+          this.subsystem.manager.logger.log("info", "Failed to change discord roles of user with ID " + ban.userID + " because their ID wasnt found on the server, the ban has been lifted from the config file.");
         }
       );
-
     }
   }
 }

@@ -3,7 +3,7 @@ const DiscordCommand = require('../DiscordCommand.js');
 class DiscordCommandKMC extends DiscordCommand {
 
     constructor(subsystem) {
-        super("kmc", "Who even reads these descriptions?", undefined, subsystem, true);
+        super("kmc", "Pictures of event organizers", undefined, subsystem, true);
     }
 
     onRun(message, permissions, args) {

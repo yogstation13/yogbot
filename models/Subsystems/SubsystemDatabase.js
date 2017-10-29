@@ -8,14 +8,14 @@ class SubsystemDatabase extends Subsystem {
     this.pool = undefined;
   }
 
-  setup() {
+  setup(callback) {
     super.setup();
 
     var sql = require('mysql');
     var config = this.manager.getSubsystem("Config").config;
 
-    console.log("Establishing database connection.");
-    console.log("Creating database pool with " + config.sql_connections + " connections.");
+    this.manager.logger.log("info", "Establishing database connection.");
+    this.manager.logger.log("info", "Creating database pool with " + config.sql_connections + " connections.");
 
     this.pool = sql.createPool({
       connectionLimit: config.sql_connections,
@@ -27,6 +27,7 @@ class SubsystemDatabase extends Subsystem {
 
     this.pool.getConnection((err, connection) => {
       if (err) {
+<<<<<<< HEAD
         this.setStatus(3, err);
       }
       else {
@@ -37,6 +38,14 @@ class SubsystemDatabase extends Subsystem {
     });
 
     this.setStatus(2, "");
+=======
+        callback(err.sqlMessage);
+        return;
+      }
+
+      callback();
+    });
+>>>>>>> 424f203ba5cd017665dd41dad1bf086415ea7f34
   }
 }
 

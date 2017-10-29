@@ -1,7 +1,9 @@
 const Subsystem = require('../Subsystem.js');
-const Discord = require('discord.js')
-const DiscordPermissionManager = require('../Discord/DiscordPermissionManager.js')
-const DiscordBanManager = require('../Discord/DiscordBanManager.js')
+const Discord = require('discord.js');
+const DiscordPermissionManager = require('../Discord/DiscordPermissionManager.js');
+const DiscordBanManager = require('../Discord/DiscordBanManager.js');
+const fs = require('fs');
+const winston = require('winston');
 
 class SubsystemDiscord extends Subsystem {
   constructor(manager) {
@@ -9,33 +11,33 @@ class SubsystemDiscord extends Subsystem {
     this.client = new Discord.Client();
     this.permissionManager = new DiscordPermissionManager(manager);
     this.banManager = new DiscordBanManager(this);
+    this.logger;
 
     this.commands = [];
     this.routers = [];
     this.channels = [];
   }
 
-  setup() {
+  setup(callback) {
     super.setup();
-
+    this.createLogger();
 
     var config = this.manager.getSubsystem("Config").config;
     this.client.login(config.discord_token).then(atoken => {
-      this.setStatus(2, "");
+      this.loadCommands();
+      this.banManager.setup();
+
+      callback();
+    }).catch((err) => {
+      callback(err);
     });
 
     this.client.on('message', message => {
       this.processMessage(message);
     });
-
-    this.setStatus(2, "");
-    this.loadCommands();
-    this.banManager.setup();
-
   }
 
   loadCommands() {
-    const fs = require('fs');
     fs.readdir("./models/Discord/Commands/", (err, files) => {
       files.forEach(file => {
         var commandPath = file.split(".")[0];
@@ -45,6 +47,7 @@ class SubsystemDiscord extends Subsystem {
 
       });
     });
+
     fs.readdir("./models/Discord/Routers/", (err, files) => {
       files.forEach(file => {
         var routerPath = file.split(".")[0];
@@ -54,6 +57,7 @@ class SubsystemDiscord extends Subsystem {
         this.routers.push(router);
       });
     });
+
     fs.readdir("./models/Discord/Channels/", (err, files) => {
       files.forEach(file => {
         var channelPath = file.split(".")[0];
@@ -62,9 +66,7 @@ class SubsystemDiscord extends Subsystem {
         var channel = new ChannelClass(this);
         this.channels.push(channel);
       });
-      this.setStatus(2, "");
     });
-
   }
 
   processMessage(message) {
@@ -108,18 +110,36 @@ class SubsystemDiscord extends Subsystem {
         resolve => {
           var userPermissions = this.permissionManager.getUserPermissions(resolve);
           if (!command.hasPermission(userPermissions) && !(this.permissionManager.permissions["admins"].includes(message.author.id))) {
+            this.logger.log("info", message.author.username + "#" + message.author.discriminator + " (" + message.author.id + ") tried to use the command " + config.discord_command_character + command.name + " but did not have permission.");
             message.reply("You dont have access to that command, if you believe this to be an error please contact your network admin.");
             return;
           }
 
           split.shift(); //Remove the first index.
+          this.logger.log("info", message.author.username + "#" + message.author.discriminator + " (" + message.author.id + ") used the command " + config.discord_command_character + command.name + " with the arguments \"" + split.join("\", \"") + "\"");
           command.onRun(message, userPermissions, split);
+
         },
         reject => {
-          message.reply("There seemed to be an error getting your GuildMember object, you should probably let someone know about this.")
+          message.reply("There seemed to be an error getting your GuildMember object, you should probably let someone know about this.");
         }
       );
     }
+  }
+
+  createLogger() {
+    var format = winston.format.printf(info => {
+      return `${info.timestamp} [${info.level}]: ${info.message}`;
+    });
+
+    this.logger = winston.createLogger({
+      transports: [
+        new winston.transports.File({
+          filename: "logs/discord.log",
+          format: winston.format.combine(winston.format.timestamp(), format)
+        })
+      ]
+    });
   }
 
   getCommand(commandName) {
