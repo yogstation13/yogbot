@@ -22,10 +22,10 @@ class SubsystemHTTP extends Subsystem {
     this.byondAPI = undefined;
   }
 
-  setup() {
+  setup(callback) {
     super.setup();
 
-    this.app.set('view engine', 'pug')
+    this.app.set('view engine', 'pug');
     //this.app.use(bodyparser.json());
 
     var config = this.manager.getSubsystem("Config").config;
@@ -35,6 +35,10 @@ class SubsystemHTTP extends Subsystem {
     this.captchaManager = new CaptchaManager(config.captcha_token_private, config.captcha_token_public);
 
     fs.readdir("./models/HTTP/Routers/", (err, files) => {
+      if (err) {
+        callback(err);
+      }
+
       files.forEach(file => {
         const RouterClass = require('../HTTP/Routers/' + file);
         var router = new RouterClass(this);
@@ -42,14 +46,14 @@ class SubsystemHTTP extends Subsystem {
       });
     });
 
-    this.app.use('/static', express.static('public'))
+    this.app.use('/static', express.static('public'));
 
     this.app.listen(config.http_port);
-    console.log('HTTP Server started on port ' + config.http_port);
+    this.manager.logger.log("info", 'HTTP Server started on port ' + config.http_port);
 
     this.byondAPI = new ByondAPI(this.manager);
 
-    this.setStatus(2, "");
+    callback();
   }
 }
 
