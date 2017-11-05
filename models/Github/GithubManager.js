@@ -135,7 +135,7 @@ class GithubManager {
     embed.setColor(embedColor);
 
     for (var channel of discordSubsystem.getPrimaryGuild().channels.array()) {
-      if (channel.id == config.discord_coder_channel) {
+      if (channel.id == config.discord_coder_channel || channel.id == config.discord_coder_public_channel) {
         channel.sendEmbed(embed);
       }
     }
