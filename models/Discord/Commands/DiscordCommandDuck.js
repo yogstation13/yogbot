@@ -16,7 +16,6 @@ class DiscordCommandDuck extends DiscordCommand {
                        "http://i.imgur.com/IAWzbHm.png",
                        "http://i.imgur.com/pZIeNmX.jpg",
                        "http://i.imgur.com/4Ztso2W.png",
-                       "http://i.imgur.com/gpgeKaQ.png",
                        "https://web.stanford.edu/dept/CTL/cgi-bin/academicskillscoaching/wp-content/uploads/2012/07/baby-duck.jpg",
                        "http://i.imgur.com/LXn5gKI.png",
                        "http://cdn1.uk.mentalfloss.com/sites/mentalflossuk/files/9/18//muscovy-duck-binns-img_3828-copy.jpg",
