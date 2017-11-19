@@ -14,7 +14,7 @@ class DiscordCommandMorrow extends DiscordCommand {
 		"https://i.warosu.org/data/tg/img/0376/61/1422418112824.png",
 		"http://i0.kym-cdn.com/photos/images/original/000/912/556/ef5.png",
 		"https://i.imgur.com/LySOaCy.png",
-		"https://i.imgur.com/I6sdjhE.png"
+		"https://i.imgur.com/I6sdjhE.png",
 		"https://i.imgur.com/67RIAY8.png"
     ];
     var response = responses[Math.floor(Math.random() * responses.length)];
