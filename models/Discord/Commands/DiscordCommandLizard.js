@@ -18,7 +18,6 @@ class DiscordCommandLizard extends DiscordCommand {
           "https://i.imgur.com/xoCR0TV.jpg",
           "https://i.imgur.com/VoUe931.jpg",
           "https://i.imgur.com/VfxMpFt.jpg"
-            
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
         message.reply(response);
