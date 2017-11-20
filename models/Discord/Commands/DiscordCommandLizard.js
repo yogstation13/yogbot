@@ -14,7 +14,10 @@ class DiscordCommandLizard extends DiscordCommand {
           "http://www.richard-seaman.com/Wallpaper/Nature/Reptiles/Lizards/AngryPhanomBenchaLizard.jpg",
           "https://s-media-cache-ak0.pinimg.com/originals/17/62/95/176295a832814825bdcd2528a459ed85.jpg",
           "http://www.richard-seaman.com/Wallpaper/Nature/Reptiles/Lizards/AngryFlyingGecko.jpg",
-          "http://i395.photobucket.com/albums/pp37/Shocka311/0419081320b.jpg"
+          "https://i.imgur.com/CvX43mP.png",
+          "https://i.imgur.com/xoCR0TV.jpg",
+          "https://i.imgur.com/VoUe931.jpg",
+          "https://i.imgur.com/VfxMpFt.jpg"
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
         message.reply(response);
