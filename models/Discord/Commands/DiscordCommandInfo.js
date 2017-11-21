@@ -1,5 +1,6 @@
 const DiscordCommand = require('../DiscordCommand.js');
 const StringUtils = require('../../Utils/String.js');
+const querystring = require('querystring');
 var Discord = require('discord.js');
 
 class DiscordCommandInfo extends DiscordCommand {
@@ -30,20 +31,7 @@ class DiscordCommandInfo extends DiscordCommand {
 					if ('error' in resultsstatus) {
 						return message.reply(results.error);
 					}
-					var statusarray = resultsstatus.data.split("&");
-					var statusarray2 = [];
-					for(var i = 0; i < 18; i++) {
-						var keyandvalue = statusarray[i];
-						var valuearray = keyandvalue.split("=");
-						if(valuearray[0] == "real_mode") {
-							continue
-						}
-						var value = valuearray[1];
-						statusarray2.push(value);
-						//for a list of all the values, either uncomment the line below this or check world.dm in the game repo
-						//console.log(valuearray)
-					}
-					var round_duration = statusarray2[15];
+					var round_duration = querystring.parse(resultsstatus.data)["round_time"]
 					round_duration = Math.round(round_duration/60);
 					var embedcolor = "";
 					var colors = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
