@@ -31,7 +31,7 @@ class DiscordCommandInfo extends DiscordCommand {
 					if ('error' in resultsstatus) {
 						return message.reply(results.error);
 					}
-					var round_duration = querystring.parse(resultsstatus.data)["round_time"]
+					var round_duration = querystring.parse(resultsstatus.data)["round_duration"]
 					round_duration = Math.round(round_duration/60);
 					var embedcolor = "";
 					var colors = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
