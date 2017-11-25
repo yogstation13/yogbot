@@ -18,7 +18,8 @@ class DiscordCommandApples extends DiscordCommand {
 		"http://i.imgur.com/By4rdWL.jpg",
 		"http://i.imgur.com/XljVPoq.jpg",
 		"http://i.imgur.com/UYExMSS.jpg",
-		"http://i.imgur.com/7sklrgF.jpg"
+		"http://i.imgur.com/7sklrgF.jpg",
+		"https://cdn.discordapp.com/attachments/347045440958627841/383896146650726420/Screenshot_20171125-032401.png"
 	];
     var response = responses[Math.floor(Math.random() * responses.length)];
     message.reply(response);
