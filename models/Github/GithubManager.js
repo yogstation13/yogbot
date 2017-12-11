@@ -136,7 +136,7 @@ class GithubManager {
 
     if(action == "opened") {
     	var servermessage = encodeURIComponent(payload.pull_reqest.title.replace(/</g, '') + " by " + payload.sender.login)
-    	byondSS.byondConnector.request("?announce=" + message, (results) => {
+    	byondSS.byondConnector.request("?announce=" + servermessage, (results) => {
     	}
     }
     for (var channel of discordSubsystem.getPrimaryGuild().channels.array()) {
