@@ -49,7 +49,7 @@ class DiscordCommandTicket extends DiscordCommand {
           message.reply(results.error);
         }
         else {
-          message.reply(results.data);
+          message.reply(results.data, {split: true});
         }
       });
 
