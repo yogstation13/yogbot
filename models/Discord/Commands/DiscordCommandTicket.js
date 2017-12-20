@@ -49,15 +49,7 @@ class DiscordCommandTicket extends DiscordCommand {
           message.reply(results.error);
         }
         else {
-					if(results.data.length >= 1900) {
-						var messageArray = results.data.match(/.{1,1900}/g);
-						for(var i = 0; i <= messageArray.length; i++) {
-							message.reply(messageArray[i]);
-						}
-					}
-					else {
-						message.reply(results.data);
-					}
+          message.reply(results.data);
         }
       });
 
