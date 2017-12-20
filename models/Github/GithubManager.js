@@ -107,7 +107,6 @@ class GithubManager {
 
     var config = this.subsystemManager.getSubsystem("Config").config;
     var discordSubsystem = this.subsystemManager.getSubsystem("Discord");
-    var byondSS = this.subsystem.manager.getSubsystem("Byond Connector");
 
     var changelogString = "";
     if (changelog.error) {
@@ -134,11 +133,6 @@ class GithubManager {
     }
     embed.setColor(embedColor);
 
-    if(action == "opened") {
-    	var servermessage = encodeURIComponent(payload.pull_reqest.title.replace(/</g, '') + " by " + payload.sender.login)
-    	byondSS.byondConnector.request("?announce=" + servermessage, (results) => {
-    	}
-    }
     for (var channel of discordSubsystem.getPrimaryGuild().channels.array()) {
       if (channel.id == config.discord_coder_channel || channel.id == config.discord_coder_public_channel) {
         channel.sendEmbed(embed);
