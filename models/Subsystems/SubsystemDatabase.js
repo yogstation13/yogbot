@@ -17,8 +17,6 @@ class SubsystemDatabase extends Subsystem {
     this.manager.logger.log("info", "Establishing database connection.");
     this.manager.logger.log("info", "Creating database pool with " + config.sql_connections + " connections.");
 
-
-
     this.pool = sql.createPool({
       connectionLimit: config.sql_connections,
       host: config.sql_host,

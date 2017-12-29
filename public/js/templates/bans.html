@@ -1,0 +1,54 @@
+<div style="width: 99% !important;" class="wide-container">
+  <div class="row" ng-controller="BanViewController">
+    <div class="valign-wrapper">
+      <div class="col s9">
+        <h3>Bans</h3>
+      </div>
+      <div class="col s3">
+        <div class="input-field">
+          <input id="ckey" type="text" ng-model="searchCkey" ng-change="findCkey()" ng-model-options="{updateOn: 'blur'}">
+          <label for="ckey">Search For</label>
+        </div>
+      </div>
+    </div>
+    <div class=" col s12 ">
+      <table class="bordered ">
+        <thead>
+          <tr>
+            <td style="width: 12%; ">Name</td>
+            <td style="width: 8%; ">Type</td>
+            <td style="width: 30%; ">Reason</td>
+            <td style="width: 10%; ">Banned On</td>
+            <td style="width: 10%; ">Expires</td>
+            <td style="width: 10%; ">Banned By</td>
+            <td style="width: 10%; ">Status</td>
+            <td style="width: 10%; ">Unbanned By</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr rebuild-tooltips ng-repeat="(key, ban) in bans ">
+            <td><small>{{ban.ckey}}</small></td>
+            <td><small ng-class="{ 'tooltipped': ban.tooltip} " ng-attr-data-position="{{ban.tooltip && 'bottom' || undefined}} " ng-attr-data-tooltip="{{ban.tooltip && ban.tooltip || undefined}} ">{{ban.display_bantype}}</small></td>
+            <td><small>{{ban.reason}}</small></td>
+            <td><small>{{ban.display_bantime}}</small></td>
+            <td><small>{{ban.display_expires}}</small></td>
+            <td><small>{{ban.a_ckey}}</small></td>
+            <td><span class="new badge {{ban.status.colour}} left " ng-attr-data-badge-caption="{{ban.status.message}} "></span></td>
+            <td><small>{{ban.unbanned_ckey}}</small></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col s12 ">
+      <ul class="pagination center-align ">
+        <li ng-show=" currentPage> 1" class="disabled white-text"><a class="white-text" href="/public/bans/{{ckey}}/{{currentPage-1}}/{{pageLimit}}"><i class="material-icons">chevron_left</i></a></li>
+        <li ng-show="currentPage > 2" class="waves-effect white-text"><a class="white-text" href="/public/bans/{{ckey}}/{{currentPage-1}}/{{pageLimit}}">{{currentPage-1}}</a></li>
+        <li class="active"><a class="white-text" href="/public/bans/{{ckey}}/{{currentPage}}/{{pageLimit}}">{{currentPage}}</a></li>
+        <li class="waves-effect"><a class="white-text" href="/public/bans/{{ckey}}/{{currentPage+1}}/{{pageLimit}}">{{currentPage+1}}</a></li>
+        <li class="waves-effect"><a class="white-text" href="/public/bans/{{ckey}}/{{currentPage+2}}/{{pageLimit}}">{{currentPage+2}}</a></li>
+        <li class="waves-effect"><a class="white-text" href="/public/bans/bans/{{ckey}}/{{currentPage+3}}/{{pageLimit}}">{{currentPage+3}}</a></li>
+        <li class="waves-effect"><a class="white-text" href="/public/bans/bans/{{ckey}}/{{currentPage+1}}/{{pageLimit}}"><i class="material-icons">chevron_right</i></a></li>
+      </ul>
+    </div>
+  </div>
+</div>

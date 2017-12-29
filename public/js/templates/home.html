@@ -1,0 +1,21 @@
+<div class="row" ng-controller="HomeViewController" style="text-align: center; padding-top: 10px;">
+  <div class="col s12 white-text intro">
+    <h1><b>Yogstation 13</b></h1>
+    <h5><b><a class="white-text" href="byond://game.yogstation.net:4133">byond://game.yogstation.net:4133</a></b></h5>
+    <br>
+    <h5>Players: <span class="blue-text">{{serverStatus.players}}</span> Online: <span ng-class="{'green-text': serverStatus.online, 'red-text': !serverStatus.online }">{{serverStatus.onlineString}}</span></h5>
+    <h5 ng-show="serverStatus.shuttle_timer < 600">Shuttle Timer: <span class="blue-text">{{serverStatus.shuttle_timer_friendly}}</span></h5>
+    <br>
+    <h5>Current Council Members:</h5>
+    <h5>05rhardy/Xantam, Slovenian, Matskuman, Oakboscage, Chuggacar</h5>
+    <br>
+    <h5>Head Coders: Cruix, X-TheDark</h5>
+    <br>
+    <a href="/play" style="width: 19%;" class="grey darken-2 white-text btn-flat"><i class="material-icons left small">play_arrow</i>Play Now</a>
+    <a href="https://forums.yogstation.net" style="width: 19%;" class="grey darken-2 white-text btn-flat"><i class="material-icons left small">assignment</i>Forums</a>
+    <a href="https://wiki.yogstation.net" style="width: 19%;" class="grey darken-2 white-text btn-flat"><i class="material-icons left small">info</i>Wiki</a>
+    <a href="/donate" style="width: 19%;" class="grey darken-2 white-text btn-flat"><i class="material-icons left small">attach_money</i>Donate</a>
+    <a href="https://github.com/yogstation13/yogstation" style="width: 19%;" class="grey darken-2 white-text btn-flat"><i class="material-icons left small">code</i>Github</a>
+  </div>
+
+</div>

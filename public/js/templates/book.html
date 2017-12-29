@@ -1,0 +1,22 @@
+<div class="container" ng-controller="BookViewController">
+  <div class="row black-text" style="margin-top: 50px;">
+    <div class="col s7">
+      <div class="card white ">
+        <div class="card-content">
+          <h4 ng-bind-html="book.title"></h4>
+          <p ng-bind-html="book.content"></p>
+        </div>
+      </div>
+    </div>
+    <div class="col s4">
+      <div class="card white ">
+        <div class="card-content">
+          <h5>Details</h5>
+          <p>Author: {{book.author}}</p>
+          <p>Category: {{book.category}}</p>
+          <p>Published: {{book.published}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

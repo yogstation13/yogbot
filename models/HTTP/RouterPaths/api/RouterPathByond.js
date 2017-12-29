@@ -2,6 +2,7 @@ const RouterPath = require("../../RouterPath.js");
 const ByondAPI = require("../../../Byond/ByondAPI.js");
 const bodyParser = require('body-parser');
 
+
 class RouterPathByond extends RouterPath {
   constructor(subsystem, router) {
     super(subsystem, router);
@@ -57,7 +58,7 @@ class RouterPathByond extends RouterPath {
         return res.send(JSON.stringify(error));
       }
 
-      this.byondAPI.request(req.query.method, data, (err, data) => {
+      this.subsystem.byondAPI.request(req.query.method, data, (err, data) => {
         if (err) {
           return res.status(err.status).send(JSON.stringify(err));
         }
@@ -73,10 +74,6 @@ class RouterPathByond extends RouterPath {
 
       return res.status(401).send(JSON.stringify(error));
     }
-  }
-
-  post(req, res) {
-
   }
 }
 

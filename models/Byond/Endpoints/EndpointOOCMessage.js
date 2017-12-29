@@ -28,7 +28,7 @@ class EndpointOOCMessage extends APIEndpoint {
     var discord = this.manager.subsystemManager.getSubsystem("Discord");
     for (var channel of discord.getPrimaryGuild().channels.array()) {
       if (channel.id == config.discord_ooc_channel) {
-        channel.send("**" + data.ckey + "**: " + data.message);
+        channel.send("**" + data.ckey + "**: " + data.message, { disableEveryone: true });
       }
     }
 

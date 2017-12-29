@@ -1,8 +1,12 @@
-var bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 class UserManager {
   constructor(subsystem) {
     this.subsystem = subsystem;
+
+    //By keeping a list of tokens generated we can revoke tokens whenever we like
+    this.authorizedTokens = [];
   }
 
   registerUser(email, password, username, accept, reject) {
@@ -98,6 +102,106 @@ class UserManager {
               accept();
               connection.release();
             });
+          });
+        });
+      });
+    });
+
+  }
+
+  authenticateUser(email, password, callback) {
+
+    if (!email) {
+      callback({
+        component: "email",
+        error: "No email submitted."
+      }, undefined);
+    }
+
+    if (!password) {
+      callback({
+        component: "password",
+        error: "No password submitted."
+      }, undefined);
+    }
+
+    var stringUtils = require('../Utils/String.js');
+
+    if (!stringUtils.validateEmail(email)) {
+      callback({
+        component: "email",
+        error: "That's an invalid email."
+      }, undefined);
+      return;
+    }
+
+    var config = this.subsystem.manager.getSubsystem("Config").config;
+    var linkPool = this.subsystem.manager.getSubsystem("Database").pool;
+
+    linkPool.getConnection((error, connection) => {
+      connection.query("SELECT * FROM `web_users` WHERE `email` = ?", [email], (err, results, fields) => {
+        connection.release();
+
+        if (err) {
+          var error = {
+            component: "server",
+            error: err
+          }
+
+          return callback(error, undefined);
+        }
+
+        var row = results[0];
+
+        bcrypt.compare(password, row.password, (err, res) => {
+
+          if (err) {
+            var error = {
+              component: "server",
+              error: err
+            }
+
+            return callback(error, undefined);
+          }
+
+          if (!res) {
+            var error = {
+              component: "email",
+              error: "Invalid email and password combination."
+            }
+
+            return callback(error, undefined);
+          }
+
+          var config = this.subsystem.manager.getSubsystem("Config").config;
+
+          var permissions = this.subsystem.userPermissionManager.getGroupPermissions(row.group);
+
+          var payload = {
+            id: row.id,
+            user: row.user,
+            permissions: permissions,
+            verified: row.verified
+          }
+
+          var options = {
+            algorithm: 'HS256',
+            expiresIn: '1d'
+          }
+
+          jwt.sign(payload, config.http_jwt_private, options, (err, token) => {
+            if (err) {
+              var error = {
+                component: "server",
+                error: err
+              }
+
+              return callback(error, undefined);
+            }
+
+            this.tokens += token;
+
+            callback(undefined, token);
           });
         });
       });

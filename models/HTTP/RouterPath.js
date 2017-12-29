@@ -8,12 +8,6 @@ class RouterPath {
   }
 
   register() {
-    /*this.router.get(this.routerPath, (req, res) => {
-      this.get(req, res);
-    });
-    this.router.post(this.routerPath, (req, res) => {
-      this.post(req, res);
-    });*/
   }
 
   get(req, res) {

@@ -24,6 +24,23 @@ class StringUtils {
     return re.test(email);
   }
 
+  static URL2Array(url) {
+    url = this.removeEscapeCharacters(url);
+    var request = {};
+    var pairs = url.substring(url.indexOf('?') + 1).split('&');
+    for (var i = 0; i < pairs.length; i++) {
+      if (!pairs[i])
+        continue;
+      var pair = pairs[i].split('=');
+      request[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+    }
+    return request;
+  }
+
+  static removeEscapeCharacters(string) {
+    string = string.substring(0, string.length - 1);
+    return string.replace(/u[a-fA-F0-9]{4}/g, "");
+  }
   //
   // https://stackoverflow.com/questions/1144783/how-to-replace-all-occurrences-of-a-string-in-javascript
   //
@@ -31,6 +48,7 @@ class StringUtils {
   static replaceAll(str, find, replace) {
     return str.replace(new RegExp(find, 'g'), replace);
   }
+
   static replaceAllArray(str, find, replace) {
     if (find.length != replace.length) {
       return;

@@ -1,0 +1,75 @@
+<html ng-controller="RootController">
+
+<head>
+  <meta charset="utf-8">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+
+
+  <link rel="stylesheet" href="/css/app.css" />
+
+  <title>Yogstation</title>
+  <base href="/">
+</head>
+
+<body class="grey darken-3 grey-text text-lighten-2" ng-class="{bg: backgroundEnabled}">
+  <nav class="grey darken-4 nav-extended">
+    <div class="nav-wrapper container">
+      <a href="#" class="brand-logo center"><img src="/img/yog-logo.png"></a>
+      <ul class="left hide-on-med-and-down">
+        <li ng-class="{active: mainNavigation == 'public' }">
+          <a href="home">Public</a>
+        </li>
+        <li ng-class="{active: mainNavigation == 'statistics' }">
+          <a href="statistics">Statistics</a>
+        </li>
+      </ul>
+      <ul class="right hide-on-med-and-down">
+        <li ng-class="{active: mainNavigation == 'dashboard' }">
+          <a href="dashboard">Dashboard</a>
+        </li>
+        <li>
+          <a href="https://forums.yogstation.net">Forums</a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav-content grey darken-3">
+      <ul ng-show="showTabs && mainNavigation == 'public'" ng-class="{active: mainNavigation == 'public'}" class="container tabs tabs-transparent tabs-fixed-width">
+        <li ng-click="changeLocation('/home')" class="tab"><a>Home</a></li>
+        <li ng-click="changeLocation('/bans')" class="tab"><a>Bans</a></li>
+        <li ng-click="changeLocation('/library')" class="tab"><a>Library</a></li>
+        <li ng-click="changeLocation('/players')" class="tab"><a>Players</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main ng-view class="wide-container"></main>
+
+  <div id="modal-error" class="modal">
+    <div class="modal-content black-text">
+      <h4>{{error.header}}</h4>
+      <p>{{error.content}}</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Okay</a>
+    </div>
+  </div>
+
+  <footer class="page-footer grey darken-4">
+    <div class="footer-copyright">
+      <div class="container">
+        © 2017 Yogstation
+        <a class="grey-text text-lighten-4 right" href="/about">About</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+  <script type="text/javascript " src="/bower_components/requirejs/require.js " data-main="/js/bootstrap.js"></script>
+
+</body>
+
+</html>
