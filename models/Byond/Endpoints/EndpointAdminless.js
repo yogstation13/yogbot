@@ -18,7 +18,7 @@ class EndpointAdminless extends APIEndpoint {
     var config = this.manager.subsystemManager.getSubsystem("Config").config;
     var discord = this.manager.subsystemManager.getSubsystem("Discord");
     for (var channel of discord.getPrimaryGuild().channels.array()) {
-      if (channel.id == discord_important_admin_channel) {
+      if (channel.id == config.discord_important_admin_channel) {
         channel.send("@here " + data);
       }
     }
