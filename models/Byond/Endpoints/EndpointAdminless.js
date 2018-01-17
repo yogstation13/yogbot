@@ -1,6 +1,6 @@
 var APIEndpoint = require('../APIEndpoint.js');
 
-class Endpointadminless extends APIEndpoint {
+class EndpointAdminless extends APIEndpoint {
   constructor(manager) {
     super(manager, "adminless");
   }
@@ -32,4 +32,4 @@ class Endpointadminless extends APIEndpoint {
   }
 }
 
-module.exports = Endpointadminless;
+module.exports = EndpointAdminless;
