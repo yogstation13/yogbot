@@ -137,7 +137,7 @@ class GithubManager {
       if (channel.id == config.discord_coder_channel || channel.id == config.discord_coder_public_channel) {
         channel.sendEmbed(embed);
       }
-      if(channel.id == config.discord_important_admin_channel && payload.pull_request.title.search("[admin]") != -1) {
+      if(channel.id == config.discord_important_admin_channel) {
         channel.sendEmbed(embed)
       }
     }
