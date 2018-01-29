@@ -1,4 +1,5 @@
 var APIEndpoint = require('../APIEndpoint.js');
+var stringUtils = require('../../Utils/String.js');
 
 class EndpointOOCMessage extends APIEndpoint {
   constructor(manager) {
@@ -26,9 +27,10 @@ class EndpointOOCMessage extends APIEndpoint {
     }
     var config = this.manager.subsystemManager.getSubsystem("Config").config;
     var discord = this.manager.subsystemManager.getSubsystem("Discord");
+    var message = stringUtils.unescapeHtml(data.message);
     for (var channel of discord.getPrimaryGuild().channels.array()) {
       if (channel.id == config.discord_ooc_channel) {
-        channel.send("**" + data.ckey + "**: " + data.message);
+        channel.send("**" + data.ckey + "**: " + message);
       }
     }
 
