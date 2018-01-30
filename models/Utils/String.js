@@ -44,6 +44,19 @@ class StringUtils {
 
     return str;
   }
+  
+  //
+  // https://stackoverflow.com/questions/16148867/unescape-html-character-entities
+  //
+
+  static unescapeHtml(unsafe) {
+    return unsafe
+        .replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&quot;/g, "\"")
+        .replace(/&#039;/g, "'");
+	}
 }
 
 module.exports = StringUtils;
