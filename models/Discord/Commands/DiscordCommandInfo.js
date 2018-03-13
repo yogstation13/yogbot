@@ -58,7 +58,7 @@ class DiscordCommandInfo extends DiscordCommand {
 						if(6) {
 							shuttle_mode = "ENDGAME"
 						}
-					}
+					} //you know, I made all of this without the braces because i'm used to byond code, and this looks so much worse, like jfc
 					round_duration = Math.round(round_duration/60);
 					var embedcolor = "";
 					var colors = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
