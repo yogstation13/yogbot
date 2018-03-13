@@ -31,10 +31,34 @@ class DiscordCommandInfo extends DiscordCommand {
 					if ('error' in resultsstatus) {
 						return message.reply(results.error);
 					}
-					var round_duration = querystring.parse(resultsstatus.data)["round_duration"]
-					var shuttle_mode = querystring.parse(resultsstatus.data)["shuttle_mode"]
-					var shuttle_time = querystring.parse(resultsstatus.data)["shuttle_timer"]
-					var security_level = querystring.parse(resultsstatus.data)["security_level"]
+					var round_duration = querystring.parse(resultsstatus.data)["round_duration"];
+					var shuttle_mode = querystring.parse(resultsstatus.data)["shuttle_mode"];
+					var shuttle_time = (querystring.parse(resultsstatus.data)["shuttle_timer"] /60);
+					shuttle_time = StringUtils.replaceAll(shuttle_time, "\0", "");
+					var security_level = querystring.parse(resultsstatus.data)["security_level"];
+					switch(shuttle_mode) {
+						if(0) {
+							shuttle_mode = "IDLE"
+						}
+						if(1) {
+							shuttle_mode = "RECALLED"
+						}
+						if(2) {
+							shuttle_mode = "CALLED"
+						}
+						if(3) {
+							shuttle_mode = "DOCKED"
+						}
+						if(4) {
+							shuttle_mode = "STRANDED"
+						}
+						if(5) {
+							shuttle_mode = "ESCAPE"
+						}
+						if(6) {
+							shuttle_mode = "ENDGAME"
+						}
+					}
 					round_duration = Math.round(round_duration/60);
 					var embedcolor = "";
 					var colors = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
@@ -55,9 +79,11 @@ class DiscordCommandInfo extends DiscordCommand {
 					embed.addField("Current round:", byondSS.roundNumber, true);
 					embed.addField("Round duration:", round_duration + " Minutes", true);
 					embed.addField("Admins online:", adminwho, false);
+					embed.addField("Shuttle mode:", shuttle_mode, true);
+					if(shuttle_mode != (0 || 4 || 6)) {
+						embed.addField("Shuttle timer:", shuttle_time + " Minutes", true);
+					}
 					embed.addField("Security level:", security_level, true);
-					embed.addField("Shuttle mode:", shuttle_mode, false);
-					embed.addField("Shuttle timer:", shuttle_time, true);
 					embed.setColor(embedcolor);
 
 					var channel = config.discord_public_channel;
