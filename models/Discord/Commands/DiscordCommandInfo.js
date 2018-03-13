@@ -80,7 +80,7 @@ class DiscordCommandInfo extends DiscordCommand {
 					embed.addField("Round duration:", round_duration + " Minutes", true);
 					embed.addField("Admins online:", adminwho, false);
 					embed.addField("Shuttle mode:", shuttle_mode, true);
-					if(shuttle_mode != (0 || 4 || 6)) {
+					if(shuttle_mode == 0 || shuttle_mode == 4 || shuttle_mode == 6) {
 						embed.addField("Shuttle timer:", shuttle_time + " Minutes", true);
 					}
 					embed.addField("Security level:", security_level, true);
