@@ -32,6 +32,8 @@ class DiscordCommandInfo extends DiscordCommand {
 						return message.reply(results.error);
 					}
 					var round_duration = querystring.parse(resultsstatus.data)["round_duration"]
+					var shuttle_mode = querystring.parse(resultsstatus.data)["shuttle_mode"]
+					var shuttle_time = querystring.parse(resultsstatus.data)["shuttle_timer"]
 					round_duration = Math.round(round_duration/60);
 					var embedcolor = "";
 					var colors = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
@@ -51,7 +53,9 @@ class DiscordCommandInfo extends DiscordCommand {
 					embed.addField("Players online:", results.data, true);
 					embed.addField("Current round:", byondSS.roundNumber, true);
 					embed.addField("Round duration:", round_duration + " Minutes", true);
-					embed.addField("Admins online:", adminwho, false);
+					embed.addField("Admins online:", adminwho, true);
+					embed.addField("Shuttle mode:", shuttle_mode, false);
+					embed.addField("Shuttle timer:", shuttle_time, false);
 					embed.setColor(embedcolor);
 
 					var channel = config.discord_public_channel;
