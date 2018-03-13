@@ -57,7 +57,7 @@ class DiscordCommandInfo extends DiscordCommand {
 					embed.addField("Admins online:", adminwho, false);
 					embed.addField("Security level:", security_level, true);
 					embed.addField("Shuttle mode:", shuttle_mode, false);
-					embed.addField("Shuttle timer:", shuttle_time, false);
+					embed.addField("Shuttle timer:", shuttle_time, true);
 					embed.setColor(embedcolor);
 
 					var channel = config.discord_public_channel;
