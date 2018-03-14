@@ -31,10 +31,14 @@ class DiscordCommandInfo extends DiscordCommand {
 					if ('error' in resultsstatus) {
 						return message.reply(results.error);
 					}
-					var round_duration = querystring.parse(resultsstatus.data)["round_duration"]
-					var shuttle_mode = querystring.parse(resultsstatus.data)["shuttle_mode"]
-					var shuttle_time = querystring.parse(resultsstatus.data)["shuttle_timer"]
-					var security_level = querystring.parse(resultsstatus.data)["security_level"]
+					var round_duration = querystring.parse(resultsstatus.data)["round_duration"];
+					var shuttle_mode = querystring.parse(resultsstatus.data)["shuttle_mode"];
+					var shuttle_time = querystring.parse(resultsstatus.data)["shuttle_timer"];
+					shuttle_time = StringUtils.replaceAll(shuttle_time, "\0", "");
+					shuttle_time = shuttle_time/60;
+					var security_level = querystring.parse(resultsstatus.data)["security_level"];
+					var shuttle_modes = ["IDLE", "RECALLED", "CALLED", "DOCKED", "STRANDED", "ESCAPE", "ENDGAME"];
+					shuttle_mode = shuttle_modes[shuttle_mode]; 
 					round_duration = Math.round(round_duration/60);
 					var embedcolor = "";
 					var colors = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
@@ -55,9 +59,11 @@ class DiscordCommandInfo extends DiscordCommand {
 					embed.addField("Current round:", byondSS.roundNumber, true);
 					embed.addField("Round duration:", round_duration + " Minutes", true);
 					embed.addField("Admins online:", adminwho, false);
+					embed.addField("Shuttle mode:", shuttle_mode, true);
+					if(shuttle_mode != "IDLE" && shuttle_mode != "STRANDED" && shuttle_mode != "ENDGAME") {
+						embed.addField("Shuttle timer:", shuttle_time + " Minutes", true);
+					}
 					embed.addField("Security level:", security_level, true);
-					embed.addField("Shuttle mode:", shuttle_mode, false);
-					embed.addField("Shuttle timer:", shuttle_time, true);
 					embed.setColor(embedcolor);
 
 					var channel = config.discord_public_channel;
