@@ -59,9 +59,11 @@ class DiscordCommandInfo extends DiscordCommand {
 					embed.addField("Current round:", byondSS.roundNumber, true);
 					embed.addField("Round duration:", round_duration + " Minutes", true);
 					embed.addField("Admins online:", adminwho, false);
-					embed.addField("Shuttle mode:", shuttle_mode, true);
-					if(shuttle_mode != "IDLE" && shuttle_mode != "STRANDED" && shuttle_mode != "ENDGAME") {
-						embed.addField("Shuttle timer:", shuttle_time + " Minutes", true);
+					if(shuttle_mode) {
+						embed.addField("Shuttle mode:", shuttle_mode, true);
+						if(shuttle_mode != "IDLE" && shuttle_mode != "STRANDED" && shuttle_mode != "ENDGAME") {
+							embed.addField("Shuttle timer:", shuttle_time + " Minutes", true);
+						}
 					}
 					embed.addField("Security level:", security_level, true);
 					embed.setColor(embedcolor);
