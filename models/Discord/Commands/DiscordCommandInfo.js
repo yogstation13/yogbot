@@ -37,29 +37,8 @@ class DiscordCommandInfo extends DiscordCommand {
 					shuttle_time = StringUtils.replaceAll(shuttle_time, "\0", "");
 					shuttle_time = shuttle_time/60;
 					var security_level = querystring.parse(resultsstatus.data)["security_level"];
-					switch(shuttle_mode) {
-						if(0) {
-							shuttle_mode = "IDLE"
-						}
-						if(1) {
-							shuttle_mode = "RECALLED"
-						}
-						if(2) {
-							shuttle_mode = "CALLED"
-						}
-						if(3) {
-							shuttle_mode = "DOCKED"
-						}
-						if(4) {
-							shuttle_mode = "STRANDED"
-						}
-						if(5) {
-							shuttle_mode = "ESCAPE"
-						}
-						if(6) {
-							shuttle_mode = "ENDGAME"
-						}
-					} //you know, I made all of this without the braces because i'm used to byond code, and this looks so much worse, like jfc
+					var shuttle_modes = ("IDLE", "RECALLED", "CALLED", "DOCKED", "STRANDED", "ESCAPE", "ENDGAME")
+					shuttle_mode = shuttle_modes[shuttle_mode]
 					round_duration = Math.round(round_duration/60);
 					var embedcolor = "";
 					var colors = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
