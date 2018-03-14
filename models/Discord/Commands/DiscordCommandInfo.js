@@ -37,8 +37,8 @@ class DiscordCommandInfo extends DiscordCommand {
 					shuttle_time = StringUtils.replaceAll(shuttle_time, "\0", "");
 					shuttle_time = shuttle_time/60;
 					var security_level = querystring.parse(resultsstatus.data)["security_level"];
-					var shuttle_modes = ("IDLE", "RECALLED", "CALLED", "DOCKED", "STRANDED", "ESCAPE", "ENDGAME")
-					shuttle_mode = shuttle_modes[shuttle_mode]
+					var shuttle_modes = ["IDLE", "RECALLED", "CALLED", "DOCKED", "STRANDED", "ESCAPE", "ENDGAME"];
+					shuttle_mode = shuttle_modes[shuttle_mode]; 
 					round_duration = Math.round(round_duration/60);
 					var embedcolor = "";
 					var colors = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
