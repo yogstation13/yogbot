@@ -33,8 +33,9 @@ class DiscordCommandInfo extends DiscordCommand {
 					}
 					var round_duration = querystring.parse(resultsstatus.data)["round_duration"];
 					var shuttle_mode = querystring.parse(resultsstatus.data)["shuttle_mode"];
-					var shuttle_time = (querystring.parse(resultsstatus.data)["shuttle_timer"] /60);
+					var shuttle_time = querystring.parse(resultsstatus.data)["shuttle_timer"];
 					shuttle_time = StringUtils.replaceAll(shuttle_time, "\0", "");
+					shuttle_time = shuttle_time/60;
 					var security_level = querystring.parse(resultsstatus.data)["security_level"];
 					switch(shuttle_mode) {
 						if(0) {
@@ -80,7 +81,7 @@ class DiscordCommandInfo extends DiscordCommand {
 					embed.addField("Round duration:", round_duration + " Minutes", true);
 					embed.addField("Admins online:", adminwho, false);
 					embed.addField("Shuttle mode:", shuttle_mode, true);
-					if(shuttle_mode == 0 || shuttle_mode == 4 || shuttle_mode == 6) {
+					if(shuttle_mode != "IDLE" && shuttle_mode != "STRANDED" && shuttle_mode != "ENDGAME") {
 						embed.addField("Shuttle timer:", shuttle_time + " Minutes", true);
 					}
 					embed.addField("Security level:", security_level, true);
