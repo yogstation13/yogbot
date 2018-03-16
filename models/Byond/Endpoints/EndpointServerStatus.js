@@ -37,8 +37,11 @@ class EndpointASayMessage extends APIEndpoint {
       var embedmessage = "<@&" + config.discord_subscriber_role + ">";
 
       for (var channel of discord.getPrimaryGuild().channels.array()) {
-        if (channel.id == config.discord_botspam_channel || channel.id == config.discord_public_channel) {
+        if (channel.id == config.discord_public_channel) {
           channel.sendEmbed(embed, embedmessage);
+        }
+        if(channel.id == config.discord_botspam_channel) {
+          channel.sendEmbed(embed);
         }
       }
       discord.client.user.setGame("Round Starting");
