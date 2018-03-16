@@ -37,7 +37,7 @@ class DiscordCommandInfo extends DiscordCommand {
 					shuttle_time = StringUtils.replaceAll(shuttle_time, "\0", "");
 					shuttle_time = shuttle_time/60;
 					var security_level = querystring.parse(resultsstatus.data)["security_level"];
-					var shuttle_modes = ["IDLE", "RECALLED", "CALLED", "DOCKED", "STRANDED", "ESCAPE", "ENDGAME"];
+					var shuttle_modes = ["Idle", "Returning", "Transit to station", "Docked", "Stranded", "Transit to CentComm", "Docked at Centcomm"];
 					shuttle_mode = shuttle_modes[shuttle_mode]; 
 					round_duration = Math.round(round_duration/60);
 					var embedcolor = "";
@@ -59,8 +59,8 @@ class DiscordCommandInfo extends DiscordCommand {
 					embed.addField("Current round:", byondSS.roundNumber, true);
 					embed.addField("Round duration:", round_duration + " Minutes", true);
 					if(shuttle_mode) {
-						embed.addField("Shuttle mode:", shuttle_mode, true);
-						if(shuttle_mode != "IDLE" && shuttle_mode != "STRANDED" && shuttle_mode != "ENDGAME") {
+						embed.addField("Shuttle status:", shuttle_mode, true);
+						if(shuttle_mode != "Idle" && shuttle_mode != "Stranded" && shuttle_mode != "Docked at Centcomm") {
 							embed.addField("Shuttle timer:", Math.round(shuttle_time) + " Minutes", true);
 						}
 					}
