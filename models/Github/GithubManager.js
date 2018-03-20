@@ -140,7 +140,7 @@ class GithubManager {
     }
 
     for (var channel of discordSubsystem.getPrimaryGuild().channels.array()) {
-      if (channel.id == config.discord_botspam_channel) {
+      if (channel.id == config.discord_github_channel) {
         channel.sendEmbed(embed);
       }
     }
