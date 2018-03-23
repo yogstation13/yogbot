@@ -2,7 +2,7 @@ const GithubFlag = require('../GithubFlag.js');
 
 class GithubFlagBot extends GithubFlag {
   constructor() {
-    super("Bot Fucked Up", [], []);
+    super("Dead bot", [], []);
   }
   checkCustom(pullRequest) {
     var requestOptions = {
