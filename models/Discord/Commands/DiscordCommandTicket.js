@@ -19,7 +19,7 @@ class DiscordCommandTicket extends DiscordCommand {
 
     switch (args[0]) {
     case 'list':
-      var request = "?ticket=1&action=list&key=" + config.server_key;
+      var request = "?ticket=1&action=list";
       byondConnector.request(request, (results) => {
         if ('error' in results) {
           message.reply(results.error);
@@ -43,7 +43,7 @@ class DiscordCommandTicket extends DiscordCommand {
         return;
       }
 
-      var request = "?ticket=1&action=log&id=" + ticketID + "&key=" + config.server_key;
+      var request = "?ticket=1&action=log&id=" + ticketID;
       byondConnector.request(request, (results) => {
         if ('error' in results) {
           message.reply(results.error);
@@ -73,7 +73,7 @@ class DiscordCommandTicket extends DiscordCommand {
 
       var ticketResponse = args.join(" ");
 
-      var request = "?ticket=1&action=reply&id=" + ticketID + "&admin=" + message.author.username + "&response=" + ticketResponse + "&key=" + config.server_key;
+      var request = "?ticket=1&action=reply&id=" + ticketID + "&admin=" + message.author.username + "&response=" + ticketResponse;
       byondConnector.request(request, (results) => {
         if ('error' in results) {
           message.reply(results.error);

@@ -10,7 +10,7 @@ class DiscordChannelOOC extends DiscordChannel {
     onMessage(message) {
         var byondConnector = this.subsystem.manager.getSubsystem("Byond Connector").byondConnector;
         var config = this.subsystem.manager.getSubsystem("Config").config;
-        byondConnector.request("?ooc=" + encodeURIComponent(message.content) + "&admin=" + encodeURIComponent(message.author.username) + "&key=" + config.server_key, (results) => {
+        byondConnector.request("?ooc=" + encodeURIComponent(message.content) + "&admin=" + encodeURIComponent(message.author.username), (results) => {
             if ('error' in results) {
                 message.reply(results.error);
             }
