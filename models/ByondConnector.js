@@ -9,8 +9,8 @@ class ByondConnector {
   }
 
   request(query, callback) {
-		var config = this.subsystemManager.getSubsystem("Config").config;
-		query = query + "&key=" + config.server_key;
+    var config = this.subsystemManager.getSubsystem("Config").config;
+    query = query + "&key=" + config.server_key;
     var data;
     var pack = jspack.jspack.Pack('H', [query.length + 6]);
     var charArray = [];
