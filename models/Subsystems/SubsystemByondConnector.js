@@ -11,7 +11,7 @@ class SubsystemByondConnector extends Subsystem {
   setup(callback) {
     super.setup();
     var config = this.manager.getSubsystem("Config").config;
-    this.byondConnector = new ByondConnector(config.server_host, config.server_port);
+    this.byondConnector = new ByondConnector(config.server_host, config.server_port, this.manager);
     callback();
   }
 }
