@@ -74,9 +74,10 @@ class SubsystemDiscord extends Subsystem {
       return;
     }
     
-    if(message.guild == undefined) {
+    if (message.guild == undefined) {
       return;
     }
+    
     for (var channel of this.channels) {
       if (channel.id === message.channel.id) {
         channel.onMessage(message);
