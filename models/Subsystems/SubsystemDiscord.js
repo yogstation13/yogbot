@@ -70,11 +70,14 @@ class SubsystemDiscord extends Subsystem {
   }
 
   processMessage(message) {
-    if (message.author.bot) {
+    if(message.author.bot) {
       return;
     }
-
-    for (var channel of this.channels) {
+    
+    if(message.guild == undefined) {
+      return;
+    }
+    for(var channel of this.channels) {
       if (channel.id === message.channel.id) {
         channel.onMessage(message);
         return;
