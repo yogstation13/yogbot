@@ -93,23 +93,21 @@ class SubsystemDiscord extends Subsystem {
     var firstCharacter = message.content.substring(0, 1);
     var content = message.content.substring(1);
     var config = this.manager.getSubsystem("Config").config;
+    var split = content.split(" ");
 
-    if(message.split(" ")[0].toLowerCase() == "im" || message.split(" ")[0].toLowerCase() == "i'm" || (message.split(" ")[0].toLowerCase() == "i" && message.split(" ")[1].toLowerCase() == "am")) {
-      var nameArray = message.split(" ");
-      if(message.split(" ")[0].toLowerCase() == "i") {
-       nameArray.splice(0, 2, "");
+    if(split[0].toLowerCase() == "im" || split[0].toLowerCase() == "i'm" || (split[0].toLowerCase() == "i" && split[1].toLowerCase() == "am")) {
+      if(split[0].toLowerCase() == "i") {
+       split.splice(0, 2, "");
       }
       else {
-       nameArray.splice(0, 1, "");
+       split.splice(0, 1, "");
       }
-      var nameVar = nameArray.join(" ");
+      var nameVar = split.join(" ");
       message.reply("Hello " + nameVar + ", I'm YogBot :)");
       return;
     }
     
     if (firstCharacter === config.discord_command_character) {
-      var split = content.split(" ");
-
       var command = this.getCommand(split[0]);
 
       if (!command) {
