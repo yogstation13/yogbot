@@ -103,7 +103,7 @@ class SubsystemDiscord extends Subsystem {
        nameArray.splice(0, 1, "");
       }
       var nameVar = nameArray.join(" ");
-      message.reply("Hello " + nameVar + ", I'm YogBot");
+      message.reply("Hello " + nameVar + ", I'm YogBot :)");
       return;
     }
     
