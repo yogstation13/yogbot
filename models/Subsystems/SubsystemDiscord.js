@@ -73,12 +73,11 @@ class SubsystemDiscord extends Subsystem {
     if (message.author.bot) {
       return;
     }
-
+    
     if (message.guild == undefined) {
-      message.reply("You must use this bot in a guild.");
       return;
     }
-
+    
     for (var channel of this.channels) {
       if (channel.id === message.channel.id) {
         channel.onMessage(message);
