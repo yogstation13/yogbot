@@ -29,6 +29,10 @@ class DiscordCommandUnBan extends DiscordCommand {
     guildMember.then(
       resolve => {
         args.shift();
+        if (resolve.id == message.member.id) {
+          message.reply("You cannot unban yourself"); //get fucked KMC
+          return;
+        }
 
         var reason = "No reason given.";
 
