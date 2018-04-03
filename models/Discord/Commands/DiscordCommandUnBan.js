@@ -29,6 +29,10 @@ class DiscordCommandUnBan extends DiscordCommand {
     guildMember.then(
       resolve => {
         args.shift();
+        if (resolve.id == message.member.id) {
+          message.reply("You cannot unban yourself"); //get fucked KMC
+          return;
+        }
 
         var reason = "No reason given.";
 
@@ -38,7 +42,7 @@ class DiscordCommandUnBan extends DiscordCommand {
 
         var banStatus = this.subsystem.banManager.unban(resolve.guild, resolve, reason);
 
-        if (banStatus) {
+        if(banStatus) {
           this.subsystem.logger.log("info", message.author.username + "#" + message.author.discriminator + " (" + message.author.id + ") unbanned " + resolve.author.username + "#" + resolve.author.discriminator + " (" + resolve.author.id + ") for \"" + reason + "\".");
           message.reply("User was unbanned.");
         }
