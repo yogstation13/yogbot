@@ -21,7 +21,11 @@ class DiscordCommandKtlwjec extends DiscordCommand {
 		"http://l7.alamy.com/zooms/9a630ea301be4b6b804cb96665352181/black-cat-with-a-habit-of-doctor-in-front-of-white-background-cffgp3.jpg",
 		"https://d3v8fhblas9eb9.cloudfront.net/i/wp-content/uploads/2013/08/CURIOUS-INTERESTED-CAT-DOCTOR.jpg",
 		"https://i.imgur.com/gtTpjFZ.jpg",
-		"https://i.imgur.com/KzbRnsj.jpg"
+		"https://i.imgur.com/KzbRnsj.jpg",
+	    	"https://gloimg.rglcdn.com/rosegal/pdm-product-pic/Clothing/2017/09/12/goods-img/1505439599424955880.jpg",
+	    	"https://s7d5.scene7.com/is/image/TheBradfordExchangeOnline/replatformOverlays?layer=comp&wid=300&hei=300&fmt=jpeg,rgb&qlt=90,1&op_sharpen=1&resMode=bicub&op_usm=0.5,2.0,0,0&iccEmbed=0&$product_id=0907354001",
+	    	"http://ultrapet.com/wp-content/uploads/2017/03/CATNURSE.jpg",
+	    	"https://i.imgur.com/40Dcan3.png"
 	];
     var response = responses[Math.floor(Math.random() * responses.length)];
     message.reply(response);
