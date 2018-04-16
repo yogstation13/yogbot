@@ -8,14 +8,11 @@ class DiscordCommandMatskuman extends DiscordCommand {
 
 	onRun(message, permissions, args) {
 		var responses = [
-			"http://vignette3.wikia.nocookie.net/ssb-tourney/images/5/57/Riddler_CG_Art.jpg/revision/latest?cb=20131117233412",
-			"http://unisci24.com/data_images/wlls/41/311940-question-mark.jpg",
-			"http://combiboilersleeds.com/images/who/who-2.jpg",
-			"http://gclipart.com/wp-content/uploads/2017/03/Question-mark-clip-art-2.gif",
-			"http://gclipart.com/wp-content/uploads/2017/03/Question-mark-clip-art-2.gif",
-			"http://vignette2.wikia.nocookie.net/villains/images/a/a6/Riddler_%28Batman_Forever%29.jpg/revision/latest?cb=20140128214050",
-			"http://cdn2us.denofgeek.com/sites/denofgeekus/files/styles/insert_main_wide_image/public/gorshin-riddler.jpg",
-			"https://pbs.twimg.com/media/Cona3auXYAA-Pw9.jpg"
+			"https://theburningbloggerofbedlam.files.wordpress.com/2016/04/bush-rigged-elections.jpg",
+			"https://www.zerohedge.com/sites/default/files/images/user230519/imageroot/Election%20Rigged_0.jpg",
+			"http://img.photobucket.com/albums/v474/autorank/Articles/provingfraud1.png",
+			"https://3.bp.blogspot.com/-PNS6WusNS4I/V6pniNovWKI/AAAAAAAAJR4/3jwVP1iDH_IgC0GkTCWIoJuxbmOyS3N8gCLcB/s1600/JoJo%2BStalin.jpg",
+			"http://i0.kym-cdn.com/photos/images/original/001/336/017/e85.png"
 		];
 		var response = responses[Math.floor(Math.random() * responses.length)];
 		message.reply(response);
