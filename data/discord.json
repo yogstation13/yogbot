@@ -31,7 +31,7 @@
     "subscriber": {
       "inherits": false,
       "permissions": ["unsubscribe"]
-    }
+    },
     "KTL.FM": {
       "inherits": false,
       "permissions": ["ktlfm"]
