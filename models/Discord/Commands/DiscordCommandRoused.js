@@ -50,10 +50,10 @@ class DiscordCommandRoused extends DiscordCommand {
 		"https://i.imgur.com/xckeBfE.png",
 		"https://i.imgur.com/XCudbfO.png",
 		"https://i.imgur.com/8chj0BU.png",
-    "https://i.imgur.com/eNjFY8T.png",
-    "https://i.imgur.com/vZbH8lp.png",
-    "https://i.imgur.com/BwGhoEv.png",
-    "https://i.imgur.com/fsgyEkm.png"
+		"https://i.imgur.com/eNjFY8T.png",
+		"https://i.imgur.com/vZbH8lp.png",
+		"https://i.imgur.com/BwGhoEv.png",
+		"https://i.imgur.com/fsgyEkm.png"
 	];
     var response = responses[Math.floor(Math.random() * responses.length)];
     message.reply(response);
