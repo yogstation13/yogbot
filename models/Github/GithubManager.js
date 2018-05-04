@@ -140,10 +140,10 @@ class GithubManager {
     }
 
     for (var channel of discordSubsystem.getPrimaryGuild().channels.array()) {
-      if (channel.id == config.discord_github_channel && payload.sender.login == "yogstation13-bot") {
+      if(channel.id == config.discord_github_channel && payload.pull_request.user.login == "yogstation13-bot") {
         channel.sendEmbed(embed);
       }
-      else if(channel.id == config.discord_coderpublic_channel) {
+      else if(channel.id == config.discord_coderpublic_channel && payload.pull_request.user.login != "yogstation13-bot) {
         channel.sendEmbed(embed);
       }
     }
