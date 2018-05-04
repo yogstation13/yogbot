@@ -143,7 +143,7 @@ class GithubManager {
       if(channel.id == config.discord_github_channel && payload.pull_request.user.login == "yogstation13-bot") {
         channel.sendEmbed(embed);
       }
-      else if(channel.id == config.discord_coderpublic_channel && payload.pull_request.user.login != "yogstation13-bot) {
+      else if(channel.id == config.discord_coderpublic_channel && payload.pull_request.user.login != "yogstation13-bot") {
         channel.sendEmbed(embed);
       }
     }
