@@ -20,9 +20,14 @@ class DiscordCommandInfo extends DiscordCommand {
 			}
 
 			var adminwho = resultsadmin.data;
-			adminwho = adminwho.split(":")[1];
-			adminwho = StringUtils.replaceAll(adminwho, "\t", "");
-			adminwho = StringUtils.replaceAll(adminwho, "\0", "");
+			if(adminwho == "admins: ") {
+				adminwho = "No admins online!"
+			}
+			else {
+				adminwho = adminwho.split(":")[1];
+				adminwho = StringUtils.replaceAll(adminwho, "\t", "");
+				adminwho = StringUtils.replaceAll(adminwho, "\0", "");
+			}
 			byondSS.byondConnector.request("?ping", (results) => {
 				if ('error' in results) {
 					return message.reply(results.error);
@@ -46,9 +51,6 @@ class DiscordCommandInfo extends DiscordCommand {
 					for(var count = 0; count < 6; count++) {
 						embedcolor = embedcolor + colors[Math.floor(Math.random() * colors.length)];
 						//picks a colour from the array "colours" then proceeds to add it to "colour", and stops once "colour" has 6 digits
-					}
-					if(!adminwho || adminwho == "" || adminwho == "\n") {
-						adminwho = "No admins online";
 					}
 
 					var embed = new Discord.RichEmbed();
