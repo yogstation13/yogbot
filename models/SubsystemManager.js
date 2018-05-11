@@ -99,9 +99,6 @@ class SubsystemManager {
           filename: "logs/info.log",
           format: winston.format.combine(winston.format.timestamp(), this.format)
         })
-      ],
-      exceptionHandlers: [
-        new winston.transports.File({ filename: "logs/exception.log" })
       ]
     });
   }
