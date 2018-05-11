@@ -21,7 +21,7 @@ class DiscordCommandInfo extends DiscordCommand {
 
 			var adminwho = resultsadmin.data;
 			if(adminwho == "admins: ") {
-				adminwho = "No admins online!"
+				adminwho = "No admins online!";
 			}
 			else {
 				adminwho = adminwho.split(":")[1];
