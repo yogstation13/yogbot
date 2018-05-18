@@ -14,7 +14,7 @@ class DiscordCommandToggleOOC extends DiscordCommand {
       if('error' in results) {
         message.reply(results.error);
       } else {
-        message.reply(results.data);
+        message.reply("OOC has been [results.data ? "enabled" : "disabled]");
       }
     });
   }
