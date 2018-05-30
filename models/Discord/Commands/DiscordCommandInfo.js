@@ -20,14 +20,18 @@ class DiscordCommandInfo extends DiscordCommand {
 			}
 
 			var adminwho = resultsadmin.data;
-			if(adminwho == "admins: ") {
-				adminwho = "No admins online!";
+			adminwho = adminwho.split(":")[1];
+			adminwho = StringUtils.replaceAll(adminwho, "\t", "");
+			adminwho = StringUtils.replaceAll(adminwho, "\0", "");
+			adminwho = StringUtils.replaceAll(adminwho, "(AFK)", "");
+			var adminarray = adminwho.split(" ");
+			for(var count = 0; count < adminarray.length; count++) {
+				if(adminarray[count].search("(Stealth)") != -1) {
+					adminarray[count] = "";
+				}
 			}
-			else {
-				adminwho = adminwho.split(":")[1];
-				adminwho = StringUtils.replaceAll(adminwho, "\t", "");
-				adminwho = StringUtils.replaceAll(adminwho, "\0", "");
-			}
+			adminwho = adminarray.join(" ");
+
 			byondSS.byondConnector.request("?ping", (results) => {
 				if ('error' in results) {
 					return message.reply(results.error);
@@ -67,7 +71,9 @@ class DiscordCommandInfo extends DiscordCommand {
 						}
 					}
 					embed.addField("Security level:", security_level, true);
-					embed.addField("Admins online:", adminwho, false); //this field has a dynamic size, and should be the last field ~~Nich
+					if(adminwho.length && adminwho != " ") {
+						embed.addField("Admins online:", adminwho, false); //this field has a dynamic size, and should be the last field ~~Nich
+					}
 					embed.setColor(embedcolor);
 
 					var channel = config.discord_public_channel;
