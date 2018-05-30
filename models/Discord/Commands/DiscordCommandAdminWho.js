@@ -16,6 +16,14 @@ class DiscordCommandAdminWho extends DiscordCommand {
         message.reply(results.error);
       } else {
         var adminwho = StringUtils.replaceAll(results.data, "\0", "");
+        adminwho = StringUtils.replaceAll(adminwho, "(AFK)", "");
+        var adminarray = adminwho.split(" ");
+        for(var count = 0; count < adminarray.length; count++) {
+          if(adminarray[count].search("(Stealth)") != -1) {
+            adminarray[count] = "";
+          }
+        }
+        adminwho = adminarray.join(" ");
         message.reply(adminwho);
       }
     });
