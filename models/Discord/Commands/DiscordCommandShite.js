@@ -32,7 +32,9 @@ class DiscordCommandShite extends DiscordCommand {
     "<https://www.youtube.com/watch?v=3-rfBsWmo0M>",
     "<https://www.youtube.com/watch?v=tr3RUHuS_Lk>",
     "<https://www.youtube.com/watch?v=0tdyU_gW6WE>",
-    "<https://www.youtube.com/watch?v=5vRlJrkxsqo>"
+    "<https://www.youtube.com/watch?v=5vRlJrkxsqo>",
+    "<https://www.youtube.com/watch?v=P5RjzPSX-fI>",
+    "<https://www.youtube.com/watch?v=l3yn0Xr0U-I>"
 	];
     var response = responses[Math.floor(Math.random() * responses.length)];
     message.reply(response);
