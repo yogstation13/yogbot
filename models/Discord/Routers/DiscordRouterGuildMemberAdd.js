@@ -13,6 +13,7 @@ class DiscordRouterGuildMemberAdd extends DiscordRouter {
       var response = "`[" + date.getFullYear() + ":" + date.getMonth() + ":" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "]` ";
 
       feedbackChannel.send(response + "**" + member.user.username + "#" + member.user.discriminator + "** joined the server.");
+      this.subsystem.banManager.check(member);
     });
   }
 
