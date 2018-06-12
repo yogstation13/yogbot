@@ -114,6 +114,13 @@ class DiscordBanManager {
       );
     }
   }
+  check(member) {
+    for (var ban of this.bans) {
+      if (ban.userID === member.user.id) {
+        member.addRole(config.discord_softban_role);
+      }
+    }
+  }
 }
 
 module.exports = DiscordBanManager;
