@@ -10,20 +10,16 @@ class DiscordCommandAdminWho extends DiscordCommand {
   onRun(message, permissions, args) {
     var config = this.subsystem.manager.getSubsystem("Config").config;
     var byondConnector = this.subsystem.manager.getSubsystem("Byond Connector").byondConnector;
+		var byondmessage = "?adminwho";
 
-    byondConnector.request("?adminwho", (results) => {
+		if(message.channel.id == "134722036353204224" || message.channel.id == "378318242906636288" || message.channel.id == "134722015503319040") { //admin, admemes and council respectively
+			byondmessage += "&adminchannel=1"
+ 
+		byondSS.byondConnector.request(byondmessage, (resultsadmin) => {
       if('error' in results) {
         message.reply(results.error);
       } else {
         var adminwho = StringUtils.replaceAll(results.data, "\0", "");
-        adminwho = StringUtils.replaceAll(adminwho, "(AFK)", "");
-        var adminarray = adminwho.split(" ");
-        for(var count = 0; count < adminarray.length; count++) {
-          if(adminarray[count].search("(Stealth)") != -1) {
-            adminarray[count] = "";
-          }
-        }
-        adminwho = adminarray.join(" ");
         message.reply(adminwho);
       }
     });
