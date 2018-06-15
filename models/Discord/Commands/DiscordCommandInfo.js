@@ -13,8 +13,12 @@ class DiscordCommandInfo extends DiscordCommand {
 		var config = this.subsystem.manager.getSubsystem("Config").config;
 		var byondSS = this.subsystem.manager.getSubsystem("Byond Connector");
 		var discord = this.subsystem.manager.getSubsystem("Discord").discord;
+		var byondmessage = "?adminwho";
+		
+		if(message.channel.id == "134722036353204224" || message.channel.id == "378318242906636288" || message.channel.id == "134722015503319040") { //admin, admemes and council respectively
+			byondmessage += "&adminchannel=1"
 
-		byondSS.byondConnector.request("?adminwho", (resultsadmin) => {
+		byondSS.byondConnector.request(byondmessage, (resultsadmin) => {
 			if ('error' in resultsadmin) {
 				return message.reply(resultsadmin.error);
 			}
@@ -23,15 +27,6 @@ class DiscordCommandInfo extends DiscordCommand {
 			adminwho = adminwho.split(":")[1];
 			adminwho = StringUtils.replaceAll(adminwho, "\t", "");
 			adminwho = StringUtils.replaceAll(adminwho, "\0", "");
-			adminwho = StringUtils.replaceAll(adminwho, "(AFK)", "");
-			var adminarray = adminwho.split(" ");
-			for(var count = 0; count < adminarray.length; count++) {
-				if(adminarray[count].search("(Stealth)") != -1) {
-					adminarray[count] = "";
-				}
-			}
-			adminwho = adminarray.join(" ");
-
 			byondSS.byondConnector.request("?ping", (results) => {
 				if ('error' in results) {
 					return message.reply(results.error);
