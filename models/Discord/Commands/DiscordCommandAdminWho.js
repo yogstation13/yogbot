@@ -12,7 +12,7 @@ class DiscordCommandAdminWho extends DiscordCommand {
     var byondConnector = this.subsystem.manager.getSubsystem("Byond Connector").byondConnector;
     var byondmessage = "?adminwho";
 
-    if(message.channel.id == "134722036353204224" || message.channel.id == "378318242906636288" || message.channel.id == "134722015503319040") { //admin, admemes and council respectively
+    if(message.channel.id == config.discord_channel_admin || message.channel.id == config.discord_channel_admemes || message.channel.id == config.discord_channel_council) {
       byondmessage += "&adminchannel=1"
     }
     byondSS.byondConnector.request(byondmessage, (resultsadmin) => {
