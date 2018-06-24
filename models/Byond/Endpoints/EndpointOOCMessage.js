@@ -29,7 +29,7 @@ class EndpointOOCMessage extends APIEndpoint {
     var discord = this.manager.subsystemManager.getSubsystem("Discord");
     var message = stringUtils.unescapeHtml(data.message);
     for (var channel of discord.getPrimaryGuild().channels.array()) {
-      if (channel.id == config.discord_ooc_channel) {
+      if (channel.id == config.discord_channel_ooc) {
         channel.send("**" + data.ckey + "**: " + message);
       }
     }
