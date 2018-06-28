@@ -3,7 +3,7 @@ const DiscordCommand = require('../DiscordCommand.js');
 class DiscordCommandNotes extends DiscordCommand {
 
   constructor(subsystem) {
-    super("notes", "Check a user's notes", 'addao', subsystem);
+    super("notes", "Check a user's notes", 'note', subsystem);
   }
 
   onRun(message, permissions, args) {
@@ -47,4 +47,4 @@ class DiscordCommandNotes extends DiscordCommand {
 
 }
 
-module.exports = DiscordCommandWhitelist;
+module.exports = DiscordCommandNotes;
