@@ -16,7 +16,8 @@ class DiscordCommandInfo extends DiscordCommand {
 		var byondmessage = "?adminwho";
 		
 		if(message.channel.id == config.discord_channel_admin || message.channel.id == config.discord_channel_admemes || message.channel.id == config.discord_channel_council) {
-			byondmessage += "&adminchannel=1"
+			byondmessage += "&adminchannel=1";
+		}
 
 		byondSS.byondConnector.request(byondmessage, (resultsadmin) => {
 			if ('error' in resultsadmin) {
