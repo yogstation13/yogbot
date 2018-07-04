@@ -118,10 +118,10 @@ class GithubManager {
         changelogString += ":" + item.emoji + ":: " + item.body + "\n";
       }
     }
-
+    var msgTitle = payload.pull_request.title.replace(/</g, '')
     var embed = new discord.RichEmbed();
     embed.setAuthor("A PR has been " + action + " by " + payload.sender.login, "https://i.imgur.com/tpkgmo8.png");
-    embed.setDescription(payload.pull_request.title.replace(/</g, ''));
+    embed.setDescription(msgTitle);
     embed.addField("Author", payload.pull_request.user.login, true);
     embed.addField("Number", "#" + payload.pull_request.number, true);
     embed.addField("Github Link", payload.pull_request.html_url, false);
@@ -134,16 +134,17 @@ class GithubManager {
     }
     embed.setColor(embedColor);
     
-    if(action == "opened") {
-      var servermessage = encodeURIComponent(payload.pull_request.title.replace(/</g, '') + " by " + payload.sender.login);
+    var securearray = msgTitle.split(" ")
+    if(action == "opened" && !securearray.includes("[s]") {
+      var servermessage = encodeURIComponent(msgTitle + " by " + payload.sender.login);
       byondSS.byondConnector.request("?announce=" + servermessage, (results) => {});
     }
 
     for (var channel of discordSubsystem.getPrimaryGuild().channels.array()) {
-      if(channel.id == config.discord_channel_botspam && payload.pull_request.user.login == "yogstation13-bot") {
+      if(channel.id == config.discord_channel_botspam && payload.pull_request.user.login == "yogstation13-bot" && !securearray.includes("[s]")) {
         channel.sendEmbed(embed);
       }
-      else if(channel.id == config.discord_channel_development_public && payload.pull_request.user.login != "yogstation13-bot") {
+      else if(channel.id == config.discord_channel_development_public && payload.pull_request.user.login != "yogstation13-bot" && !securearray.includes("[s]")) {
         channel.sendEmbed(embed);
       }
     }
