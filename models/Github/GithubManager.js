@@ -135,7 +135,7 @@ class GithubManager {
     embed.setColor(embedColor);
     
     var securearray = msgTitle.split(" ")
-    if(action == "opened" && !securearray.includes("[s]") {
+    if(action == "opened" && !securearray.includes("[s]")) {
       var servermessage = encodeURIComponent(msgTitle + " by " + payload.sender.login);
       byondSS.byondConnector.request("?announce=" + servermessage, (results) => {});
     }
