@@ -372,7 +372,7 @@ class GithubManager {
     changelogFile += "changes: \n";
 
     for (var change of changelog.changelog) {
-      var sanitizedBody = StringUtils.replaceAllArray(change.body, ['\\\\', '"'], ['\\\\\\', '\\\\\"']);
+      var sanitizedBody = StringUtils.replaceAllArray(change.body, ['\\\\', '"'], ['\\\\\\', '\\\"']);
       changelogFile += "  - " + change.type + ": \"" + sanitizedBody + "\"\n";
     }
 
