@@ -22,7 +22,7 @@
     },
     "retmin": {
       "inherits": false,
-      "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "playerinfo", "kickself", "toggleooc"]
+      "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "playerinfo", "kickself", "toggleooc", "note"]
     },
     "@everyone": {
       "inherits": false,
