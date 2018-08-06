@@ -21,7 +21,7 @@ class DiscordCommandNotes extends DiscordCommand {
       if (err) {
         message.reply("Error contacting database, try again later.");
       }
-      connection.query('SELECT * FROM `erro_messages` WHERE `targetckey` = ? AND `type`= "note', [ckey], (error, results, fields) => {
+      connection.query('SELECT * FROM `erro_messages` WHERE `targetckey` = ? AND `type`= "note"', [ckey], (error, results, fields) => {
         if (error) {
           message.reply("Error running select query, try again later.");
         }
