@@ -136,8 +136,7 @@ class GithubManager {
     
     var securearray = msgTitle.split(" ")
     if(action == "opened" && !securearray.includes("[s]")) {
-      var servermessage = encodeURIComponent(msgTitle + " by " + payload.sender.login);
-      byondSS.byondConnector.request("?announce=" + servermessage, (results) => {});
+      byondSS.byondConnector.request("?announce=" + msgTitle + "&author=" + payload.sender.login + "&id=" + payload.pull_request.number, (results) => {});
     }
 
     for (var channel of discordSubsystem.getPrimaryGuild().channels.array()) {
