@@ -31,7 +31,6 @@ class DiscordCommandNotes extends DiscordCommand {
         }
         else {
           var msg = "Notes for " + ckey + "\n";
-          var addmsg
           for(var i = 0; i < results.length; i++){
             msg += results[i].timestamp + "   " + results[i].text;
             if(message.channel.id == config.discord_channel_admin || message.channel.id == config.discord_channel_admemes || message.channel.id == config.discord_channel_council) {
