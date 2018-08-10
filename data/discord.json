@@ -9,12 +9,12 @@
       "permissions": []
     },
     "headcoder": {
-      "inherits": "tribunal",
-      "permissions": ["config"]
-    },
-    "tribunal": {
-      "inherits": "staff",
+      "inherits": "maintainer",
       "permissions": ["addao"]
+    },
+    "maintainer": {
+      "inherits": "staff",
+      "permissions": ["config"]
     },
     "staff": {
       "inherits": "retmin",
@@ -22,7 +22,7 @@
     },
     "retmin": {
       "inherits": false,
-      "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "playerinfo", "kickself", "toggleooc", "note"]
+      "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "kickself", "toggleooc", "note"]
     },
     "@everyone": {
       "inherits": false,
