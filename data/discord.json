@@ -14,7 +14,7 @@
     },
     "maintainer": {
       "inherits": "staff",
-      "permissions": ["config"]
+      "permissions": []
     },
     "staff": {
       "inherits": "retmin",
