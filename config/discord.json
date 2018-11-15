@@ -8,5 +8,6 @@
   "discord_subscriber_role": "1",
   "discord_ktlfm_role": "441660760410554370",
   "discord_tempban_interval": 15000,
+  "asay_webhook_url": "https://discordapp.com/api/webhooks/eW91IGFyZSBhIGh1Z2UgbmVyZCBpZiB5b3UgYXJlIHJlYWRpbmcgdGhpcw==",
   "git_update": true
 }
