@@ -1,4 +1,5 @@
 var APIEndpoint = require('../APIEndpoint.js');
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 class EndpointASayMessage extends APIEndpoint {
   constructor(manager) {
