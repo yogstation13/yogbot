@@ -25,12 +25,20 @@ class EndpointASayMessage extends APIEndpoint {
       return callback(error, undefined);
     }
     var config = this.manager.subsystemManager.getSubsystem("Config").config;
-    var discord = this.manager.subsystemManager.getSubsystem("Discord");
+    /*var discord = this.manager.subsystemManager.getSubsystem("Discord");
     for (var channel of discord.getPrimaryGuild().channels.array()) {
       if (channel.id == config.discord_channel_asay) {
         channel.send("**" + data.ckey + "**: " + data.message);
       }
-    }
+    }*/
+    
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", config.asay_webhook_url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+        username: data.ckey,
+        content: data.message
+    }));
 
     var response = {
       status: 200,
