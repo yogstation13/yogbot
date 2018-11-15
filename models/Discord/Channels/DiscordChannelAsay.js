@@ -14,7 +14,7 @@ class DiscordChannelAsay extends DiscordChannel {
     if(message.attachments.length)
       var image = message.attachments[0]
       if(image.filename.endsWith(".jpg") || image.filename.endsWith(".png"))
-        data = "<img src=\""+image.url+"\" alt=\""+message.content+"\">"
+        data = "<img src=\""+image.url+"\" alt=\""+encodeURIComponent(message.content)+"\">"
     byondConnector.request("?asay=" + encodeURIComponent(data) + "&admin=" + encodeURIComponent(message.author.username), (results) => {
       if ('error' in results) {
         message.reply(results.error);
