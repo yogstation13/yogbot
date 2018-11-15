@@ -34,7 +34,7 @@ class EndpointASayMessage extends APIEndpoint {
     }
 
     var ckey = data.ckey.split("/")[0]
-    var user = discord.client.fetchMembers(ckey, 1)
+    var user = discord.client.guilds.get(config.discord_guild).fetchMembers(ckey, 1)
     if(user && user.avatarURL)
         webhook_data.avatar_url = user.avatarURL
 
