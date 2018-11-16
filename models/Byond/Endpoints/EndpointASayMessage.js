@@ -1,4 +1,5 @@
 var APIEndpoint = require('../APIEndpoint.js');
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 class EndpointASayMessage extends APIEndpoint {
   constructor(manager) {
@@ -26,11 +27,21 @@ class EndpointASayMessage extends APIEndpoint {
     }
     var config = this.manager.subsystemManager.getSubsystem("Config").config;
     var discord = this.manager.subsystemManager.getSubsystem("Discord");
-    for (var channel of discord.getPrimaryGuild().channels.array()) {
-      if (channel.id == config.discord_channel_asay) {
-        channel.send("**" + data.ckey + "**: " + data.message);
-      }
+
+    var webhook_data = {
+        username: data.ckey,
+        content: data.message
     }
+
+    var ckey = data.ckey.split("/")[0]
+    var user = discord.client.guilds.get(config.discord_guild).fetchMembers(ckey, 1)
+    if(user && user.avatarURL)
+        webhook_data.avatar_url = user.avatarURL
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", config.asay_webhook_url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(webhook_data));
 
     var response = {
       status: 200,

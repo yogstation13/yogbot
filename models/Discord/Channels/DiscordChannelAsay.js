@@ -1,4 +1,5 @@
 const DiscordChannel = require('../DiscordChannel.js');
+const striptags = require('striptags');
 
 class DiscordChannelAsay extends DiscordChannel {
 
@@ -10,11 +11,11 @@ class DiscordChannelAsay extends DiscordChannel {
   onMessage(message) {
     var byondConnector = this.subsystem.manager.getSubsystem("Byond Connector").byondConnector;
     var config = this.subsystem.manager.getSubsystem("Config").config;
-    var data = message.content
-    if(message.attachments.length)
+    var data = striptags(message.content)
+    if(message.attachments && message.attachments.length)
       var image = message.attachments[0]
       if(image.filename.endsWith(".jpg") || image.filename.endsWith(".png"))
-        data = "<img src=\""+image.url+"\" alt=\""+encodeURIComponent(message.content)+"\">"
+        data = data+"<br><img src=\""+image.url+"\" alt=\"Image\">"
     byondConnector.request("?asay=" + encodeURIComponent(data) + "&admin=" + encodeURIComponent(message.author.username), (results) => {
       if ('error' in results) {
         message.reply(results.error);
