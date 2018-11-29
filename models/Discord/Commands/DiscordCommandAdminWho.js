@@ -17,10 +17,10 @@ class DiscordCommandAdminWho extends DiscordCommand {
     }
     byondConnector.request(byondmessage, (results) => {
       if('error' in results) {
-        message.reply(results.error);
+        message.channel.send(results.error);
       } else {
         var adminwho = StringUtils.replaceAll(results.data, "\0", "");
-        message.reply(adminwho);
+        message.channel.send(adminwho);
       }
     });
   }

@@ -20,7 +20,7 @@ class DiscordCommandLizard extends DiscordCommand {
           "https://i.imgur.com/VfxMpFt.jpg"
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
-        message.reply(response);
+        message.channel.send(response);
     }
 
 }

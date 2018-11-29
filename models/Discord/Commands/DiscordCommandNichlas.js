@@ -13,7 +13,7 @@ class DiscordCommandNichlas extends DiscordCommand {
       "http://i.imgur.com/pmgSHjz.png"
     ];
     var svar = svarene[Math.floor(Math.random() * svarene.length)];
-    message.reply(svar);
+    message.channel.send(svar);
   }
 
 }

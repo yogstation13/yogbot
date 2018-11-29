@@ -23,7 +23,7 @@ class DiscordCommandTrump extends DiscordCommand {
 		"http://i.imgur.com/FJMoq.jpg"
 	];
     var response = responses[Math.floor(Math.random() * responses.length)];
-    message.reply(response);
+    message.channel.send(response);
   }
 
 }

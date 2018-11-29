@@ -14,7 +14,7 @@ class DiscordCommandAsh extends DiscordCommand {
       "http://i1.kym-cdn.com/entries/icons/original/000/020/303/Stephen-Hawking-387288.jpg"
     ];
     var response = responses[Math.floor(Math.random() * responses.length)];
-    message.reply(response);
+    message.channel.send(response);
   }
 
 }

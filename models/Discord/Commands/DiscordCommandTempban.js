@@ -28,7 +28,7 @@ class DiscordCommandTempban extends DiscordCommand {
     var minutes = args[1];
 
     if (isNaN(minutes)) {
-      message.reply(minutes + " is not a valid integer.");
+      message.channel.send(minutes + " is not a valid integer.");
       return;
     }
 

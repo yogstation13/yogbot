@@ -16,7 +16,7 @@ class DiscordCommandCorgi extends DiscordCommand {
           "https://img.buzzfeed.com/buzzfeed-static/static/2014-01/enhanced/webdr05/10/11/enhanced-buzz-16774-1389370807-2.jpg?no-auto"
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
-        message.reply(response);
+        message.channel.send(response);
     }
 
 }

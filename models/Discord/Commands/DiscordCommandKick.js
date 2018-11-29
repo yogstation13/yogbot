@@ -51,7 +51,7 @@ class DiscordCommandKick extends DiscordCommand {
         resolve.kick(0).then(
           (resolve) => {
             this.subsystem.logger.log("info", message.author.username + "#" + message.author.discriminator + " (" + message.author.id + ") kicked " + resolve.user.username + "#" + resolve.user.discriminator);
-            message.reply(resolve.user.username + " Was kicked from the server for `" + reason + "`.");
+            message.channel.send(resolve.user.username + " Was kicked from the server for `" + reason + "`.");
           },
           (reject) => {
             message.reply("An error occured.");

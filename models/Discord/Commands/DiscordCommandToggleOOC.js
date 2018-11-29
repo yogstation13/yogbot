@@ -12,7 +12,7 @@ class DiscordCommandToggleOOC extends DiscordCommand {
 
     byondConnector.request("?toggleooc", (results) => {
       if('error' in results) {
-        message.reply(results.error);
+        message.channel.send(results.error);
       } else {
         var messageString = (results.data == 1)?"enabled":"disabled";
         message.reply("OOC has been " + messageString);

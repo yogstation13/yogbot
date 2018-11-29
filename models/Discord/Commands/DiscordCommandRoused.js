@@ -56,7 +56,7 @@ class DiscordCommandRoused extends DiscordCommand {
 		"https://i.imgur.com/fsgyEkm.png"
 	];
     var response = responses[Math.floor(Math.random() * responses.length)];
-    message.reply(response);
+    message.channel.send(response);
   }
 
 }

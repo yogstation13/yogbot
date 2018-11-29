@@ -22,10 +22,10 @@ class DiscordCommandTicket extends DiscordCommand {
       var request = "?ticket=1&action=list";
       byondConnector.request(request, (results) => {
         if ('error' in results) {
-          message.reply(results.error);
+          message.channel.send(results.error);
         }
         else {
-          message.reply(results.data);
+          message.channel.send(results.data);
         }
       });
 
@@ -39,17 +39,17 @@ class DiscordCommandTicket extends DiscordCommand {
       var ticketID = args[1];
 
       if (isNaN(ticketID)) {
-        message.reply(ticketID + " is not a valid integer.");
+        message.channel.send(ticketID + " is not a valid integer.");
         return;
       }
 
       var request = "?ticket=1&action=log&id=" + ticketID;
       byondConnector.request(request, (results) => {
         if ('error' in results) {
-          message.reply(results.error);
+          message.channel.send(results.error);
         }
         else {
-          message.reply(results.data, {split: true});
+          message.channel.send(results.data, {split: true});
         }
       });
 
@@ -67,7 +67,7 @@ class DiscordCommandTicket extends DiscordCommand {
       args.shift();
 
       if (isNaN(ticketID)) {
-        message.reply(ticketID + " is not a valid integer.");
+        message.channel.send(ticketID + " is not a valid integer.");
         return;
       }
 
@@ -76,7 +76,7 @@ class DiscordCommandTicket extends DiscordCommand {
       var request = "?ticket=1&action=reply&id=" + ticketID + "&admin=" + message.author.username + "&response=" + ticketResponse;
       byondConnector.request(request, (results) => {
         if ('error' in results) {
-          message.reply(results.error);
+          message.channel.send(results.error);
         }
         else {
           message.reply("Replied to ticket #" + ticketID);
@@ -90,7 +90,7 @@ class DiscordCommandTicket extends DiscordCommand {
       response += "     `" + config.discord_command_character + "ticket list` - List open tickets.\n";
       response += "     `" + config.discord_command_character + "ticket log` - View ticket replies.\n";
       response += "     `" + config.discord_command_character + "ticket reply` - Reply to ticket.\n";
-      message.reply(response);
+      message.channel.send(response);
       break;
     }
 

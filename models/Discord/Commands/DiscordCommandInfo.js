@@ -21,7 +21,7 @@ class DiscordCommandInfo extends DiscordCommand {
 
 		byondSS.byondConnector.request(byondmessage, (resultsadmin) => {
 			if ('error' in resultsadmin) {
-				return message.reply(resultsadmin.error);
+				return message.channel.send(resultsadmin.error);
 			}
 
 			var adminwho = resultsadmin.data;
@@ -30,11 +30,11 @@ class DiscordCommandInfo extends DiscordCommand {
 			adminwho = StringUtils.replaceAll(adminwho, "\0", "");
 			byondSS.byondConnector.request("?ping", (results) => {
 				if ('error' in results) {
-					return message.reply(results.error);
+					return message.channel.send(results.error);
 				}
 				byondSS.byondConnector.request("?status", (resultsstatus) => {
 					if ('error' in resultsstatus) {
-						return message.reply(results.error);
+						return message.channel.send(results.error);
 					}
 					var round_duration = querystring.parse(resultsstatus.data)["round_duration"];
 					var shuttle_mode = querystring.parse(resultsstatus.data)["shuttle_mode"];

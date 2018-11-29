@@ -13,7 +13,7 @@ class DiscordChannelOOC extends DiscordChannel {
         var config = this.subsystem.manager.getSubsystem("Config").config;
         byondConnector.request("?ooc=" + encodeURIComponent(striptags(message.content)) + "&admin=" + encodeURIComponent(message.author.username), (results) => {
             if ('error' in results) {
-                message.reply(results.error);
+                message.channel.send(results.error);
             }
         });
     }

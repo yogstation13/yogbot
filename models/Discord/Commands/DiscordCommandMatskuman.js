@@ -15,7 +15,7 @@ class DiscordCommandMatskuman extends DiscordCommand {
 			"http://i0.kym-cdn.com/photos/images/original/001/336/017/e85.png"
 		];
 		var response = responses[Math.floor(Math.random() * responses.length)];
-		message.reply(response);
+		message.channel.send(response);
 	}
 
 }

@@ -16,7 +16,7 @@ class DiscordCommandSubscribe extends DiscordCommand {
             var response = "You are now a subscriber"
         }
 
-        message.reply(response);
+        message.channel.send(response);
     }
 
 }
