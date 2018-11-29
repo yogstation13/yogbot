@@ -93,6 +93,12 @@ class SubsystemDiscord extends Subsystem {
     var firstCharacter = message.content.substring(0, 1);
     var content = message.content.substring(1);
     var config = this.manager.getSubsystem("Config").config;
+    var lowermsg = message.content.toLowerCase();
+    if(lowermsg.indexOf("snail") != -1) {
+      if(lowermsg.indexOf("when") != -1) {
+        message.channel.send("When you code it");
+      }
+    }
 
     if (firstCharacter === config.discord_command_character) {
       var split = content.split(" ");
