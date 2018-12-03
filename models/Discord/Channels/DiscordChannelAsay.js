@@ -11,7 +11,12 @@ class DiscordChannelAsay extends DiscordChannel {
   onMessage(message) {
     var byondConnector = this.subsystem.manager.getSubsystem("Byond Connector").byondConnector;
     var config = this.subsystem.manager.getSubsystem("Config").config;
-    byondConnector.request("?asay=" + encodeURIComponent(striptags(message.content)) + "&admin=" + encodeURIComponent(message.author.username), (results) => {
+    var data = striptags(message.content)
+    if(message.attachments && message.attachments.length)
+      var image = message.attachments[0]
+      if(image.filename.endsWith(".jpg") || image.filename.endsWith(".png"))
+        data = data+"<br><img src=\""+image.url+"\" alt=\"Image\">"
+    byondConnector.request("?asay=" + encodeURIComponent(data) + "&admin=" + encodeURIComponent(message.author.username), (results) => {
       if ('error' in results) {
         message.reply(results.error);
       }
