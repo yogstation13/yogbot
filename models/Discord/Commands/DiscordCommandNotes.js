@@ -33,11 +33,11 @@ class DiscordCommandNotes extends DiscordCommand {
           var msg = "Notes for " + ckey + "\n";
           for(var i = 0; i < results.length; i++){
             var result = results[i]
-            msg += result.timestamp + "   " + result.text;
+            msg += "```" + result.timestamp + "   " + result.text;
             if(message.channel.id == config.discord_channel_admin || message.channel.id == config.discord_channel_admemes || message.channel.id == config.discord_channel_council) {
               msg += "   " + result.adminckey;
             }
-            msg += "\n";
+            msg += "\n```";
           }
           message.channel.send(msg, {split: true});
           }
