@@ -31,16 +31,29 @@ class DiscordCommandNotes extends DiscordCommand {
         }
         else {
           var msg = "Notes for " + ckey + "\n";
+          var oldmsg
           for(var i = 0; i < results.length; i++){
             var result = results[i]
-            msg += "```" + result.timestamp + "   " + result.text;
-            if(message.channel.id == config.discord_channel_admin || message.channel.id == config.discord_channel_admemes || message.channel.id == config.discord_channel_council) {
-              msg += "   " + result.adminckey;
+            var newmsg = "```" + result.timestamp + "\t" + result.text
+            if(newmsg == oldmsg) {
+              newmsg = null;
+              continue;
             }
-            msg += "\n```";
+            oldmsg = newmsg;
+            if(message.channel.id == config.discord_channel_admin || message.channel.id == config.discord_channel_council) {
+              newmsg += "   " + result.adminckey;
+            }
+            newmsg += "```";
+            if(msg.length + newmsg.length > 2000) {
+              message.channel.send(msg);
+              msg = newmsg;
+            }
+            else {
+              msg += newmsg;
+            }
           }
-          message.channel.send(msg, {split: true});
-          }
+          message.channel.send(msg);
+        }
       });
     });
   }
