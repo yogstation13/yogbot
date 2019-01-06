@@ -34,17 +34,18 @@ class DiscordCommandNotes extends DiscordCommand {
           var oldmsg
           for(var i = 0; i < results.length; i++){
             var result = results[i]
-            if(result == oldmsg) {
+            var newmsg = result.timestamp + "\t" + result.text
+            if(newmsg == oldmsg) {
               continue;
             }
-            oldmsg = result;
-            if(msg.length + result.length > 2000) {
+            oldmsg = newmsg;
+            if(msg.length + newmsg.length > 2000) {
               message.channel.send(msg);
-              msg = "```" + result.timestamp + "   " + result.text;
+              msg = "```" + newmsg;
             }
             else
             {
-              msg += "```" + result.timestamp + "   " + result.text;
+              msg += "```" newmsg;
             }
             if(message.channel.id == config.discord_channel_admin || message.channel.id == config.discord_channel_council) {
               msg += "   " + result.adminckey;
