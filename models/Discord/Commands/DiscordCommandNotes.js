@@ -51,8 +51,10 @@ class DiscordCommandNotes extends DiscordCommand {
             }
             msg += "```";
           }
-          message.channel.send(msg);
+          if(msg.length) {
+            message.channel.send(msg);
           }
+        }
       });
     });
   }
