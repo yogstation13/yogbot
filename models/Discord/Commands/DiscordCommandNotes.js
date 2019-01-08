@@ -15,9 +15,10 @@ class DiscordCommandNotes extends DiscordCommand {
     }
 
     var ckey = args[0];
-    var Regex = require("regex");
-    var regex = Regex("[^a-zA-Z0-9]");
-    ckey.replace(regex, "");
+    var punctuation = [".", ",", "-", "_", ";", ":", " "];
+    for(var i = 0; i< punctuation.length; i++) {
+      ckey.replace(punctuation[i], "");
+    }
     
     var dbSubsystem = this.subsystem.manager.getSubsystem("Database");
 
