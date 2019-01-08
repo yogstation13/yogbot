@@ -1,5 +1,6 @@
 const DiscordCommand = require('../DiscordCommand.js');
 
+
 class DiscordCommandNotes extends DiscordCommand {
 
   constructor(subsystem) {
@@ -14,7 +15,9 @@ class DiscordCommandNotes extends DiscordCommand {
     }
 
     var ckey = args[0];
-    ckey.replaceAll("[^a-zA-Z0-9]", "");
+    var Regex = require("regex");
+    var regex = Regex("[^a-zA-Z0-9]");
+    ckey.replaceAll(regex, "");
     
     var dbSubsystem = this.subsystem.manager.getSubsystem("Database");
 
