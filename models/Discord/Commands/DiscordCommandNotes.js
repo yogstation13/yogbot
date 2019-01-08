@@ -13,11 +13,11 @@ class DiscordCommandNotes extends DiscordCommand {
       message.reply("Usage is `" + config.discord_command_character + "notes [ckey]`");
       return;
     }
-
-    var ckey = args[0];
-    var punctuation = [".", ",", "-", "_", ";", ":", " "];
+    args[0] = "";
+    var ckey = args.join("");
+    var punctuation = [".", ",", "-", "_", ";", ":"];
     for(var i = 0; i< punctuation.length; i++) {
-      ckey = ckey.split(punctuation[i]).join("").trim();
+      ckey = ckey.split(punctuation[i]).join("");
     }
     
     var dbSubsystem = this.subsystem.manager.getSubsystem("Database");
