@@ -13,7 +13,7 @@ class DiscordCommandNotes extends DiscordCommand {
       return;
     }
 
-    var ckey = args[0];
+    var ckey = args[0].replaceAll("[^a-zA-Z0-9]", "");;
 
     var dbSubsystem = this.subsystem.manager.getSubsystem("Database");
 
@@ -32,6 +32,7 @@ class DiscordCommandNotes extends DiscordCommand {
         else {
           var msg = "Notes for " + ckey + "\n";
           var oldmsg
+          var punctuation = ["'", ":", ",", "-", 
           for(var i = 0; i < results.length; i++){
             var result = results[i]
             var newmsg = "```" + result.timestamp + "\t" + result.text
