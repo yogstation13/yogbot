@@ -17,7 +17,7 @@ class DiscordCommandNotes extends DiscordCommand {
     var ckey = args[0];
     var Regex = require("regex");
     var regex = Regex("[^a-zA-Z0-9]");
-    ckey.replaceAll(regex, "");
+    ckey.replace(regex, "");
     
     var dbSubsystem = this.subsystem.manager.getSubsystem("Database");
 
