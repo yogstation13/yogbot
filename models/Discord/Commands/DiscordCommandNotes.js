@@ -13,7 +13,6 @@ class DiscordCommandNotes extends DiscordCommand {
       message.reply("Usage is `" + config.discord_command_character + "notes [ckey]`");
       return;
     }
-    args[0] = "";
     var ckey = args.join("");
     var punctuation = [".", ",", "-", "_", ";", ":"];
     for(var i = 0; i< punctuation.length; i++) {
