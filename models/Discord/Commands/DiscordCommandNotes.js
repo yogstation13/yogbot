@@ -17,7 +17,7 @@ class DiscordCommandNotes extends DiscordCommand {
     var ckey = args[0];
     var punctuation = [".", ",", "-", "_", ";", ":", " "];
     for(var i = 0; i< punctuation.length; i++) {
-      ckey.replace(punctuation[i], "");
+      ckey = ckey.replace(punctuation[i], "");
     }
     
     var dbSubsystem = this.subsystem.manager.getSubsystem("Database");
