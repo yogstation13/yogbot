@@ -13,7 +13,7 @@ class DiscordCommandNotes extends DiscordCommand {
       return;
     }
 
-    var ckey = args[0];
+    var ckey = args[0].replaceAll("[^a-zA-Z0-9]", "");;
 
     var dbSubsystem = this.subsystem.manager.getSubsystem("Database");
 
