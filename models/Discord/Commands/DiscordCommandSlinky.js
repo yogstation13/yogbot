@@ -17,7 +17,7 @@ class DiscordCommandSlinky extends DiscordCommand {
 		];
 
 		var response = responses[Math.floor(Math.random() * responses.length)];
-		message.reply(response);
+		message.channel.send(response);
 	}
 
 }

@@ -22,7 +22,7 @@ class DiscordCommandApples extends DiscordCommand {
 		"https://cdn.discordapp.com/attachments/347045440958627841/383896146650726420/Screenshot_20171125-032401.png"
 	];
     var response = responses[Math.floor(Math.random() * responses.length)];
-    message.reply(response);
+    message.channel.send(response);
   }
 
 }

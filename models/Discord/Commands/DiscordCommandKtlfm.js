@@ -17,7 +17,7 @@ class DiscordCommandKtlfm extends DiscordCommand {
             var response = "You are now subscribed to KTL.FM"
         }
 
-        message.reply(response);
+        message.channel.send(response);
     }
 
 }

@@ -29,7 +29,7 @@ class DiscordCommandHelp extends DiscordCommand {
         }
       }
     }
-    message.reply(response);
+    message.channel.send(response);
   }
 
 }

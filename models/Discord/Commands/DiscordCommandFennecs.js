@@ -24,7 +24,7 @@ class DiscordCommandFennecs extends DiscordCommand {
           "https://pbs.twimg.com/media/ChOjSQDUgAARwLn.jpg"
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
-        message.reply(response);
+        message.channel.send(response);
     }
 
 }

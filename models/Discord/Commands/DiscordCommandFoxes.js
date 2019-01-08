@@ -154,7 +154,7 @@ class DiscordCommandFoxes extends DiscordCommand {
       "https://pbs.twimg.com/media/CbnWajxVAAAgUz1.jpg"
     ];
     var response = responses[Math.floor(Math.random() * responses.length)];
-    message.reply(response);
+    message.channel.send(response);
   }
 
 }

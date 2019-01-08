@@ -28,17 +28,17 @@ class DiscordCommandReboot extends DiscordCommand {
       var request = "?reboot";
       byondConnector.request(request, (results) => {
         if ('error' in results) {
-          message.reply(results.error);
+          message.channel.send(results.error);
         }
         else {
-          message.reply(results.data);
+          message.channel.send(results.data);
         }
       });
       break;
     case 'bot':
       message.reply("Updating & Rebooting Bot.").then(() => {
         this.subsystem.manager.getSubsystem("Updater").update((data) => {
-          message.reply(data);
+          message.channel.send(data);
         });
       });
       break;

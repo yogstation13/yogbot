@@ -12,7 +12,7 @@ class DiscordCommandPing extends DiscordCommand {
 
     byondConnector.request("?ping", (results) => {
       if('error' in results) {
-        message.reply(results.error);
+        message.channel.send(results.error);
       } else {
         message.reply("There are **" + results.data + "** players online, join them now with " + config.server_join_address);
       }

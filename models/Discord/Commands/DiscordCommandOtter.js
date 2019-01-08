@@ -20,7 +20,7 @@ class DiscordCommandOtter extends DiscordCommand {
       "https://pbs.twimg.com/media/Ahc6LMJCIAMhk7s.jpg"
     ];
     var response = responses[Math.floor(Math.random() * responses.length)];
-    message.reply(response);
+    message.channel.send(response);
   }
 
 }

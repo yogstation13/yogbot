@@ -37,7 +37,7 @@ class DiscordCommandShite extends DiscordCommand {
     "<https://www.youtube.com/watch?v=l3yn0Xr0U-I>"
 	];
     var response = responses[Math.floor(Math.random() * responses.length)];
-    message.reply(response);
+    message.channel.send(response);
   }
 
 }

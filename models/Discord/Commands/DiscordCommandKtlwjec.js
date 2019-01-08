@@ -28,7 +28,7 @@ class DiscordCommandKtlwjec extends DiscordCommand {
 	    	"https://i.imgur.com/40Dcan3.png"
 	];
     var response = responses[Math.floor(Math.random() * responses.length)];
-    message.reply(response);
+    message.channel.send(response);
   }
 
 }

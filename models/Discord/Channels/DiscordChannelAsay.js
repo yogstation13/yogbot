@@ -18,7 +18,7 @@ class DiscordChannelAsay extends DiscordChannel {
         data = data+"<br><img src=\""+image.url+"\" alt=\"Image\">"
     byondConnector.request("?asay=" + encodeURIComponent(data) + "&admin=" + encodeURIComponent(message.author.username), (results) => {
       if ('error' in results) {
-        message.reply(results.error);
+        message.channel.send(results.error);
       }
     });
   }
