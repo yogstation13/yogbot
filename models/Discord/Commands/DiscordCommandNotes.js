@@ -39,16 +39,18 @@ class DiscordCommandNotes extends DiscordCommand {
           for(var i = 0; i < results.length; i++){
             var result = results[i]
             var newmsg = "```" + result.timestamp + "\t" + result.text
-            for(var j = 0; j < shownNotes.length; j++) {
-              if(newmsg == shownNotes[j]) {
-                newmsg = null;
-                break;
+            if(shownNotes.length) {
+              for(var j = 0; j < shownNotes.length; j++) {
+                if(newmsg == shownNotes[j]) {
+                  newmsg = null;
+                  break;
+                }
               }
             }
             if(newmsg == null) {
               continue;
             }
-            shownNotes += newmsg;
+            shownNotes.push(newmsg);
             if(message.channel.id == config.discord_channel_admin || message.channel.id == config.discord_channel_council) {
               newmsg += "   " + result.adminckey;
             }
