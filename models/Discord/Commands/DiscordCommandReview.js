@@ -31,6 +31,7 @@ class DiscordCommandReview extends DiscordCommand {
     ckeys2Check.push(ckey);
     
     var dbSubsystem = this.subsystem.manager.getSubsystem("Database");
+    var discord = this.subsystem.manager.getSubsystem("Discord").discord;
 
     dbSubsystem.pool.getConnection((err, connection) => {
       if (err) {
@@ -68,15 +69,15 @@ class DiscordCommandReview extends DiscordCommand {
 							
 	      //now let's check CIDs
 	      var alreadyCheckingCID = 0;
-	      for(var j = 0; j < cids2check.length; j++) {
-		if(cids2check[j] == result.computerid) {
+	      for(var j = 0; j < cids2Check.length; j++) {
+		if(cids2Check[j] == result.computerid) {
 		  alreadyCheckingCID = 1;
 		  break;
 		}
 	      }
 	      for(var j = 0; j < checkedCIDs.length; j++) {
 		if(checkedCIDs[j] == result.computerid) {
-		  alreadycheckingCID = 1;
+		  alreadyCheckingCID = 1;
                   break;
 		}
 	      }
@@ -119,15 +120,15 @@ class DiscordCommandReview extends DiscordCommand {
 							
 	      //now let's check CIDs
 	      var alreadyCheckingCID = 0;
-	      for(var j = 0; j < cids2check.length; j++) {
-	        if(cids2check[j] == result.computerid) {
+	      for(var j = 0; j < cids2Check.length; j++) {
+	        if(cids2Check[j] == result.computerid) {
 		  alreadyCheckingCID = 1;
 		  break;
 	        }
 	      }
 	      for(var j = 0; j < checkedCIDs.length; j++) {
 	        if(checkedCIDs[j] == result.computerid) {
-	          alreadycheckingCID = 1;
+	          alreadyCheckingCID = 1;
 		  break;
 	        }
 	      }
