@@ -31,7 +31,6 @@ class DiscordCommandReview extends DiscordCommand {
     ckeys2Check.push(ckey);
     
     var dbSubsystem = this.subsystem.manager.getSubsystem("Database");
-    var discord = this.subsystem.manager.getSubsystem("Discord").discord;
 
     dbSubsystem.pool.getConnection((err, connection) => {
       if (err) {
@@ -197,8 +196,9 @@ class DiscordCommandReview extends DiscordCommand {
       }
 
     });
-		
-    var embed = new Discord.RichEmbed();
+
+    var discord = this.subsystem.manager.getSubsystem("Discord").discord;
+    var embed = new discord.RichEmbed();
     embed.setAuthor("Account review:", "http://i.imgur.com/GPZgtbe.png");
     embed.addField("Found ckeys:", checkedCkeys.join(", "));
     embed.addField("Found IPs:", checkedIPs.join(", "));
