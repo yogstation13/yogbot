@@ -21,12 +21,12 @@ class DiscordCommandReview extends DiscordCommand {
     for(var i = 0; i< punctuation.length; i++) {
       ckey = ckey.split(punctuation[i]).join("");
     }
-    var ckeys2Check = [];
-    var checkedCkeys = [];
-    var ips2Check = [];
-    var checkedIps = [];
-    var cids2Check = [];
-    var checkedCIDs = [];
+    let ckeys2Check = [];
+    let checkedCkeys = [];
+    let ips2Check = [];
+    let checkedIps = [];
+    let cids2Check = [];
+    let checkedCIDs = [];
     
     ckeys2Check.push(ckey);
     
