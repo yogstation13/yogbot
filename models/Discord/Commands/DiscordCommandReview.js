@@ -1,5 +1,5 @@
 const DiscordCommand = require('../DiscordCommand.js');
-
+var Discord = require('discord.js');
 
 class DiscordCommandReview extends DiscordCommand {
 
@@ -197,8 +197,7 @@ class DiscordCommandReview extends DiscordCommand {
 
     });
 
-    var discord = this.subsystem.manager.getSubsystem("Discord").discord;
-    var embed = new discord.RichEmbed();
+    var embed = new Discord.RichEmbed();
     embed.setAuthor("Account review:", "http://i.imgur.com/GPZgtbe.png");
     embed.addField("Found ckeys:", checkedCkeys.join(", "));
     embed.addField("Found IPs:", checkedIPs.join(", "));
