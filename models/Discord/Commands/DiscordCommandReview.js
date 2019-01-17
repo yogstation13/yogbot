@@ -24,7 +24,7 @@ class DiscordCommandReview extends DiscordCommand {
     let ckeys2Check = [];
     let checkedCkeys = [];
     let ips2Check = [];
-    let checkedIps = [];
+    let checkedIPs = [];
     let cids2Check = [];
     let checkedCIDs = [];
     
