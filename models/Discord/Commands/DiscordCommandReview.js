@@ -45,7 +45,7 @@ class DiscordCommandReview extends DiscordCommand {
 	  ckey2check = ckeys2Check[0];
 	  connection.query('SELECT * FROM `erro_connection_log` WHERE `ckey` = ? ', [ckey2check], (error, results, fields) => {
 
-	    for(var/i = 0; i < results.length; i++) {
+	    for(var i = 0; i < results.length; i++) {
 	      var result = results[i];
 							
 	      //let's check the IPs first.
@@ -68,13 +68,13 @@ class DiscordCommandReview extends DiscordCommand {
 							
 	      //now let's check CIDs
 	      var alreadyCheckingCID = 0;
-	      for(var/j = 0; j < cids2check.length; j++) {
+	      for(var j = 0; j < cids2check.length; j++) {
 		if(cids2check[j] == result.computerid) {
 		  alreadyCheckingCID = 1;
 		  break;
 		}
 	      }
-	      for(var/j = 0; j < checkedCIDs.length; j++) {
+	      for(var j = 0; j < checkedCIDs.length; j++) {
 		if(checkedCIDs[j] == result.computerid) {
 		  alreadycheckingCID = 1;
                   break;
@@ -96,7 +96,7 @@ class DiscordCommandReview extends DiscordCommand {
 	  ip2check = ips2Check[0];
 	  connection.query('SELECT * FROM `erro_connection_log` WHERE `ip` = ? ', [ip2check], (error, results, fields) => {
 
-	    for(var/i = 0; i < results.length; i++) {
+	    for(var i = 0; i < results.length; i++) {
 	      var result = results[i];
 							
 	      //let's check the ckeys first.
@@ -125,7 +125,7 @@ class DiscordCommandReview extends DiscordCommand {
 		  break;
 	        }
 	      }
-	      for(var/j = 0; j < checkedCIDs.length; j++) {
+	      for(var j = 0; j < checkedCIDs.length; j++) {
 	        if(checkedCIDs[j] == result.computerid) {
 	          alreadycheckingCID = 1;
 		  break;
@@ -147,18 +147,18 @@ class DiscordCommandReview extends DiscordCommand {
 	  cid2check = ips2Check[0];
 	  connection.query('SELECT * FROM `erro_connection_log` WHERE `computerid` = ? ', [cid2check], (error, results, fields) => {
 
-	    for(var/i = 0; i < results.length; i++) {
+	    for(var i = 0; i < results.length; i++) {
 	      var result = results[i];
 							
 	      //let's check the ckeys first.
 	      var alreadyCheckingCkey = 0;
-	      for(var/j = 0; j < ckeys2Check.length; j++) {
+	      for(var j = 0; j < ckeys2Check.length; j++) {
 		if(ckeys2Check[j] == result.ckey) {
 		  alreadyCheckingCkey = 1;
 		  break;
 		}
 	      }
-	      for(var/j = 0; j < checkedCkeys.length; j++) {
+	      for(var j = 0; j < checkedCkeys.length; j++) {
 	        if(checkedCkeys[j] == result.ckey) {
 		  alreadyCheckingCkey = 1;
 		  break;
@@ -170,13 +170,13 @@ class DiscordCommandReview extends DiscordCommand {
 							
 	      //now let's check IPs
 	      var alreadyCheckingIP = 0;
-	      for(var/j = 0; j < ips2Check.length; j++) {
+	      for(var j = 0; j < ips2Check.length; j++) {
 	        if(ips2Check[j] == result.ip) {
 		  alreadyCheckingIP = 1;
 		  break;
 	        }
 	      }
-	      for(var/j = 0; j < checkedIPs.length; j++) {
+	      for(var j = 0; j < checkedIPs.length; j++) {
 	        if(checkedIPs[j] == result.ip) {
 		  alreadyCheckingIP = 1;
 		  break;
