@@ -207,4 +207,4 @@ class DiscordCommandReview extends DiscordCommand {
 
 }
 
-module.exports = DiscordCommanReview;
+module.exports = DiscordCommandReview;
