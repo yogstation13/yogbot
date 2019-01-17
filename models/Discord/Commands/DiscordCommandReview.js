@@ -195,9 +195,9 @@ class DiscordCommandReview extends DiscordCommand {
 				
         }
 	if(ips2Check.length || ckeys2Check.length || cids2Check.length) {
-	  true = 1;
+	  check = 1;
 	else {
-	  true = 0;
+	  check = 0;
 	}
       }
 
