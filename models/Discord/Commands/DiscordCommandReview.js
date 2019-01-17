@@ -36,7 +36,8 @@ class DiscordCommandReview extends DiscordCommand {
       if (err) {
         message.reply("Error contacting database, try again later.");
       }
-      while(ckeys2Check.length || ips2Check.length || cids2Check.length) {
+      var check = 1;
+      while(check) {
         var ckey2check;
         var ip2check;
         var cid2check;
@@ -193,6 +194,11 @@ class DiscordCommandReview extends DiscordCommand {
 	  cids2Check.splice(0, 1);
 				
         }
+	if(ips2Check.length || ckeys2Check.length || cids2Check.length) {
+	  true = 1;
+	else {
+	  true = 0;
+	}
       }
 
     });
