@@ -151,7 +151,7 @@ class DiscordCommandReview extends DiscordCommand {
         }
 	if(cids2Check.length) {
 				
-	  cid2check = ips2Check[0];
+	  cid2check = cids2Check[0];
 	  connection.query('SELECT * FROM `erro_connection_log` WHERE `computerid` = ? ', [cid2check], (error, results, fields) => {
 
 	    for(var i = 0; i < results.length; i++) {
