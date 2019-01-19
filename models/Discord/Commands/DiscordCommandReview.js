@@ -209,7 +209,7 @@ class DiscordCommandReview extends DiscordCommand {
     embed.setAuthor("Account review:", "http://i.imgur.com/GPZgtbe.png");
     console.log("ckeys!");
     embed.addField("Found ckeys:", checkedCkeys.join(", "));
-    console.log("IPs!);
+    console.log("IPs!");
     embed.addField("Found IPs:", checkedIPs.join(", "));
     console.log("Ckeys!");
     embed.addfield("Found CIDs:", checkedCIDs.join(", "));
