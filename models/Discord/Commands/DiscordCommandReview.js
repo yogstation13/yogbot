@@ -214,6 +214,7 @@ class DiscordCommandReview extends DiscordCommand {
       console.log("Ckeys!");
       embed.addfield("Found CIDs:", checkedCIDs.join(", "));
       message.channel.sendEmbed(embed);
+      check = 2;
     }
   }
 
