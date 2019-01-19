@@ -37,7 +37,7 @@ class DiscordCommandReview extends DiscordCommand {
         message.reply("Error contacting database, try again later.");
       }
       var check = 1;
-      while(check) {
+      while(check == 1) {
         var ckey2check;
         var ip2check;
         var cid2check;
