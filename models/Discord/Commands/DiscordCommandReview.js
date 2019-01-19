@@ -202,7 +202,7 @@ class DiscordCommandReview extends DiscordCommand {
 	  cids2Check.splice(0, 1);
 				
         }
-	if(ips2Check.length || ckeys2Check.length || cids2Check.length) {
+	if(ips2Check.length != 0 || ckeys2Check.length != 0 || cids2Check.length != 0) {
 	  check = 1;
 	} else {
 	  check = 0;
