@@ -38,7 +38,7 @@ class DiscordCommandReview extends DiscordCommand {
       }
       var check = 1;
       while(check == 1) {
-	      console.log("this works!");
+	console.log("this works!");
         var ckey2check;
         var ip2check;
         var cid2check;
@@ -207,8 +207,11 @@ class DiscordCommandReview extends DiscordCommand {
 
     var embed = new Discord.RichEmbed();
     embed.setAuthor("Account review:", "http://i.imgur.com/GPZgtbe.png");
+    console.log("ckeys!");
     embed.addField("Found ckeys:", checkedCkeys.join(", "));
+    console.log("IPs!);
     embed.addField("Found IPs:", checkedIPs.join(", "));
+    console.log("Ckeys!");
     embed.addfield("Found CIDs:", checkedCIDs.join(", "));
     message.channel.sendEmbed(embed);
   }
