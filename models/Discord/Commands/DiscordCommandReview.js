@@ -38,12 +38,14 @@ class DiscordCommandReview extends DiscordCommand {
       }
       var check = 1;
       while(check == 1) {
+	      console.log("this works!");
         var ckey2check;
         var ip2check;
         var cid2check;
         if(ckeys2Check.length) {
           
 	  ckey2check = ckeys2Check[0];
+          console.log(ckey2check);
 	  connection.query('SELECT * FROM `erro_connection_log` WHERE `ckey` = ? ', [ckey2check], (error, results, fields) => {
 
 	    for(var i = 0; i < results.length; i++) {
