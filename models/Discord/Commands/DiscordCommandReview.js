@@ -45,7 +45,6 @@ class DiscordCommandReview extends DiscordCommand {
         if(ckeys2Check.length) {
           
 	  ckey2check = ckeys2Check[0];
-          console.log(ckey2check);
 	  connection.query('SELECT * FROM `erro_connection_log` WHERE `ckey` = ? ', [ckey2check], (error, results, fields) => {
 
 	    for(var i = 0; i < results.length; i++) {
@@ -67,6 +66,7 @@ class DiscordCommandReview extends DiscordCommand {
 	      }
 	      if(alreadyCheckingIP == 0) {
 		ips2Check.push(result.ip);
+		console.log(result.ip);
 	      }
 							
 	      //now let's check CIDs
@@ -85,12 +85,14 @@ class DiscordCommandReview extends DiscordCommand {
 	      }
 	      if(alreadyCheckingCID == 0) {
 	        cids2Check.push(result.computerid);
+		console.log(result.computerid);
 	      }
 							
 	    }
 						
           });
 	  checkedCkeys.push(ckey2check);
+          console.log(ckey2check);
 	  ckeys2Check.splice(0, 1);
 				
 	}
@@ -118,6 +120,7 @@ class DiscordCommandReview extends DiscordCommand {
 	      }
 	      if(alreadyCheckingCkey == 0) {
 	        ckeys2Check.push(result.ckey);
+		console.log(result.ckey);
 	      }
 							
 	      //now let's check CIDs
@@ -136,6 +139,7 @@ class DiscordCommandReview extends DiscordCommand {
 	      }
 	      if(alreadyCheckingCID == 0) {
 	        cids2Check.push(result.computerid);
+		console.log(result.computerid);
 	      }
 							
 	    }
@@ -169,6 +173,7 @@ class DiscordCommandReview extends DiscordCommand {
 	      }
 	      if(alreadyCheckingCkey == 0) {
 		ckeys2Check.push(result.ckey);
+		console.log(result.ckey)
 	      }
 							
 	      //now let's check IPs
@@ -187,6 +192,7 @@ class DiscordCommandReview extends DiscordCommand {
 	      }
 	      if(alreadyCheckingIP == 0) {
 		ips2Check.push(result.ip);
+		console.log(result.ip)
 	      }
 							
 	    }
