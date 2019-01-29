@@ -85,6 +85,11 @@ class SubsystemDiscord extends Subsystem {
       }
     }
 
+    // stop inferior apostrophes
+    if(message.content.includes("´")) {
+      message.reply("Reeeee stop using inferior apostrophes you degenerate");
+    }
+    
     //Make sure we have the command character and atleast one character more.
     if (message.content.length < 2) {
       return;
