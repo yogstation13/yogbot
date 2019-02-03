@@ -66,7 +66,7 @@ class GithubManager {
     var changelog = this.compileChangelog(payload);
     var githubUser = this.getGithubUser(payload.pull_request.user.login);
 
-    if (githubUser.prs) {
+    if (githubUser.prs || action == "merged") {
       this.sendDiscordPullRequestMessage(action, payload, changelog);
     }
 
