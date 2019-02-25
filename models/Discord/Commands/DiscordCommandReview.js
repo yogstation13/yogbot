@@ -38,25 +38,38 @@ class DiscordCommandReview extends DiscordCommand {
 					});
 				});
 			}
-			let the_message;
+			let message_objs = [];
 			let update_idx = 0;
 			async function send_update(final = false) {
-				let embed = new Discord.RichEmbed();
-				embed.setAuthor("Account review:", "http://i.imgur.com/GPZgtbe.png");
-				for(let [key, desc] of ckeys_checked) {
-					embed.addField(key, desc);
-				}
-				if(final) {
-					embed.addField("*Done!*", "Took " + ((new Date().getTime() - start_time)/1000) + " seconds")
-				} else {
-					embed.addField("WORKING...", ["-", "\\", "|", "/"][(update_idx++) % 4])
-				}
-				if(the_message) {
-					await the_message.edit("", embed);
-				} else {
-					the_message = await message.channel.send("", embed);
+				let checked_arr = [...ckeys_checked];
+				let amt = Math.ceil(checked_arr.length / 24)
+				for(let i = 0; i < amt; i++) {
+					let embed = new Discord.RichEmbed();
+					embed.setAuthor("Account review" + (i != 0 ? " (CONTINUED)" : "") + ":", "http://i.imgur.com/GPZgtbe.png");
+					for(let [key, desc] of [...ckeys_checked]) {
+						embed.addField(key, desc);
+					}
+					if(i < (amt-1)) {
+						embed.addField("CONTINUED", "IN NEXT EMBED")
+					} if(final) {
+						embed.addField("*Done!*", "Took " + ((new Date().getTime() - start_time)/1000) + " seconds")
+					} else {
+						embed.addField("WORKING...", ["-", "\\", "|", "/"][(update_idx++) % 4])
+					}
+					if(message_objs[i]) {
+						await message_objs[i].edit("", embed);
+					} else {
+						message_objs[i] = await message.channel.send("", embed);
+					}
 				}
 			}
+			async function check_bannu(victim) {
+				let result = query("SELECT 1 FROM `erro_ban` WHERE ckey = ? AND role IN ('[sql_roles]') AND unbanned_datetime IS NULL AND (expiration_time IS NULL OR expiration_time > NOW())", victim);
+				if(result.length) {
+					ckeys_checked.set(victim, ckeys_checked.get(victim) + " (BANNED)");
+				}
+			}
+			check_bannu(ckey);
 			send_update(false);
 			let limiter = 30;
 			while(ckeys_queue.length) {
@@ -96,6 +109,7 @@ class DiscordCommandReview extends DiscordCommand {
 						str += `ip${(entry.ips.size != 1 ? "s" : "")} ${[...entry.ips].join(", ")}`;
 					ckeys_checked.set(key, str);
 					ckeys_queue.push(key);
+					check_bannu(key);
 				}
 				await send_update(false);
 			}
