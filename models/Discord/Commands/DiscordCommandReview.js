@@ -42,11 +42,11 @@ class DiscordCommandReview extends DiscordCommand {
 			let update_idx = 0;
 			async function send_update(final = false) {
 				let checked_arr = [...ckeys_checked];
-				let amt = Math.ceil(checked_arr.length / 24)
+				let amt = Math.ceil(checked_arr.length / 23)
 				for(let i = 0; i < amt; i++) {
 					let embed = new Discord.RichEmbed();
 					embed.setAuthor("Account review" + (i != 0 ? " (CONTINUED)" : "") + ":", "http://i.imgur.com/GPZgtbe.png");
-					for(let [key, desc] of checked_arr.slice(i * 24, (i+1) * 24)) {
+					for(let [key, desc] of checked_arr.slice(i * 23, (i+1) * 23)) {
 						embed.addField(key, desc);
 					}
 					if(i < (amt-1)) {
