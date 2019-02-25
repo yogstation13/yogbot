@@ -15,10 +15,6 @@ class DiscordCommandReview extends DiscordCommand {
 			return;
 		}
 		let ckey = args.join("");
-		let punctuation = [".", ",", "-", "_", ";", ":"];
-		for(let i = 0; i< punctuation.length; i++) {
-			ckey = ckey.split(punctuation[i]).join("");
-		}
 		ckey = ckey.replace(/\.,-_;:/gi, "");
 		let ckeys_queue = [];
 		let ckeys_checked = new Map();
