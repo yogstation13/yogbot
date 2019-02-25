@@ -47,8 +47,9 @@ class DiscordCommandReview extends DiscordCommand {
 				}
 				if(final) {
 					embed.addField("*Done!*", "Took " + ((new Date().getTime() - start_time)/1000) + " seconds")
+				} else {
+					embed.addField("WORKING...", ["-","_",".",",","*","&"][Math.floor(Math.random()*6)])
 				}
-				embed.addField("WORKING...", "- " + ["-","_",".",",","*","&"][Math.floor(Math.random()*6)] + " -")
 				if(the_message) {
 					await the_message.edit("", embed);
 				} else {
