@@ -46,7 +46,6 @@ class DiscordCommandReview extends DiscordCommand {
 				let results = await query('SELECT computerid,ip FROM `erro_connection_log` WHERE ckey = ?', [this_ckey]);
 				let this_cids = new Set();
 				let this_ips = new Set();
-				console.log(results);
 				for(let result of results) {
 					this_cids.add(result.computerid);
 					this_ips.add(result.ip);
@@ -58,11 +57,8 @@ class DiscordCommandReview extends DiscordCommand {
 				for(let ip of this_ips) {
 					related_promises.push(query('SELECT ckey,ip FROM `erro_connection_log` WHERE ip = ?', [ip]));
 				}
-				console.log("cids: " + [...this_cids].join(", "));
-				console.log("ips: " + [...this_ips].join(", "));
 				let related_keys = new Map();
 				let related_results = await Promise.all(related_promises); // do all the queries in parallel!
-				console.log(related_results);
 				for(let query_results of related_results) {
 					for(let result of query_results) {
 						if(ckeys_checked.get(result.ckey))
