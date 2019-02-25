@@ -64,7 +64,7 @@ class DiscordCommandReview extends DiscordCommand {
 				}
 			}
 			async function check_bannu(victim) {
-				let result = await query("SELECT 1 FROM `erro_ban` WHERE ckey = ? AND role IN ('[sql_roles]') AND unbanned_datetime IS NULL AND (expiration_time IS NULL OR expiration_time > NOW())", [victim]);
+				let result = await query("SELECT 1 FROM `erro_ban` WHERE ckey = ? AND role IN ('Server') AND unbanned_datetime IS NULL AND (expiration_time IS NULL OR expiration_time > NOW())", [victim]);
 				if(result.length) {
 					ckeys_checked.set(victim, ckeys_checked.get(victim) + " (BANNED)");
 				}
