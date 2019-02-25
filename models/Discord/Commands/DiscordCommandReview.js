@@ -22,6 +22,7 @@ class DiscordCommandReview extends DiscordCommand {
 		ckeys_checked.set(ckey, "Original ckey");
 
 		let dbSubsystem = this.subsystem.manager.getSubsystem("Database");
+		let start_time = new Date().getTime();
 
 		dbSubsystem.pool.getConnection(async (err, connection) => {
 			if (err) {
@@ -36,6 +37,23 @@ class DiscordCommandReview extends DiscordCommand {
 							resolve(results);
 					});
 				});
+			}
+			let the_message
+			async function send_update(final = false) {
+				let embed = new Discord.RichEmbed();
+				embed.setAuthor("Account review:", "http://i.imgur.com/GPZgtbe.png");
+				for(let [key, desc] of ckeys_checked) {
+					embed.addField(key, desc);
+				}
+				if(final) {
+					embed.addField("*Done!*", "Took " + ((new Date().getTime() - start_time)/1000) + " seconds")
+				}
+				embed.addField("WORKING...", "- " + ["-","_",".",",","*","&"][Math.floor(Math.random()*6)] + " -")
+				if(the_message) {
+					await the_message.edit("", embed);
+				} else {
+					the_message = await message.channel.send("", embed);
+				}
 			}
 			let limiter = 30;
 			while(ckeys_queue.length) {
@@ -81,13 +99,9 @@ class DiscordCommandReview extends DiscordCommand {
 					ckeys_checked.set(key, str);
 					ckeys_queue.push(key);
 				}
+				await send_update(false);
 			}
-			let embed = new Discord.RichEmbed();
-			embed.setAuthor("Account review:", "http://i.imgur.com/GPZgtbe.png");
-			for(let [key, desc] of ckeys_checked) {
-				embed.addField(key, desc);
-			}
-			message.channel.sendEmbed(embed);
+			await send_update(true);
 		});
 	}
 }
