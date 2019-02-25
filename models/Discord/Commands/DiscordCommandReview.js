@@ -38,7 +38,7 @@ class DiscordCommandReview extends DiscordCommand {
 					});
 				});
 			}
-			let the_message
+			let the_message;
 			async function send_update(final = false) {
 				let embed = new Discord.RichEmbed();
 				embed.setAuthor("Account review:", "http://i.imgur.com/GPZgtbe.png");
@@ -68,25 +68,20 @@ class DiscordCommandReview extends DiscordCommand {
 					this_cids.add(result.computerid);
 					this_ips.add(result.ip);
 				}
-				let related_promises = [];
-				related_promises.push(query('SELECT ckey,computerid FROM `erro_connection_log` WHERE computerid IN (?)', [[...this_cids]]));
-				related_promises.push(query('SELECT ckey,ip FROM `erro_connection_log` WHERE ip IN (?)', [[...this_ips]]));
 				let related_keys = new Map();
-				let related_results = await Promise.all(related_promises); // do all the queries in parallel!
-				for(let query_results of related_results) {
-					for(let result of query_results) {
-						if(ckeys_checked.get(result.ckey))
-							continue;
-						let entry = related_keys.get(result.ckey);
-						if(!entry) {
-							entry = {ips: new Set, cids: new Set()};
-							related_keys.set(result.ckey, entry);
-						}
-						if(result.ip)
-							entry.ips.add(result.ip);
-						if(result.computerid)
-							entry.cids.add(result.computerid);
+				let related_results = await query('SELECT ckey,ip,computerid FROM `erro_connection_log` WHERE computerid IN (SELECT computerid FROM `erro_connection_log` WHERE ckey = ?) OR ip IN (SELECT ip FROM `erro_connection_log` WHERE ckey = ?)', [this_ckey, this_ckey]);
+				for(let result of related_results) {
+					if(ckeys_checked.get(result.ckey))
+						continue;
+					let entry = related_keys.get(result.ckey);
+					if(!entry) {
+						entry = {ips: new Set, cids: new Set()};
+						related_keys.set(result.ckey, entry);
 					}
+					if(result.ip && this_ips.has(result.ip))
+						entry.ips.add(result.ip);
+					if(result.computerid && this_cids.has(result.computerid))
+						entry.cids.add(result.computerid);
 				}
 				for(let [key, entry] of related_keys) {
 					let str = `Related to ${this_ckey} via `;
