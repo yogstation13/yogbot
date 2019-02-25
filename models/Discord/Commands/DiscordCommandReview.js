@@ -46,7 +46,7 @@ class DiscordCommandReview extends DiscordCommand {
 				for(let i = 0; i < amt; i++) {
 					let embed = new Discord.RichEmbed();
 					embed.setAuthor("Account review" + (i != 0 ? " (CONTINUED)" : "") + ":", "http://i.imgur.com/GPZgtbe.png");
-					for(let [key, desc] of ckeys_checked.slice(i * 24, (i+1) * 24)) {
+					for(let [key, desc] of checked_arr.slice(i * 24, (i+1) * 24)) {
 						embed.addField(key, desc);
 					}
 					if(i < (amt-1)) {
