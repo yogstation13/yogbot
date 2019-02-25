@@ -52,10 +52,10 @@ class DiscordCommandReview extends DiscordCommand {
 					this_ips.add(result.ip);
 				}
 				let related_promises = [];
-				for(let cid in this_cids) {
+				for(let cid of this_cids) {
 					related_promises.push(query('SELECT ckey,computerid FROM `erro_connection_log` WHERE computerid = ?', [cid]));
 				}
-				for(let ip in this_ips) {
+				for(let ip of this_ips) {
 					related_promises.push(query('SELECT ckey,ip FROM `erro_connection_log` WHERE ip = ?', [ip]));
 				}
 				console.log("cids: " + [...this_cids].join(", "));
