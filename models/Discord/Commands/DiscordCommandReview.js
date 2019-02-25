@@ -46,6 +46,7 @@ class DiscordCommandReview extends DiscordCommand {
 				let results = await query('SELECT computerid,ip FROM `erro_connection_log` WHERE ckey = ?', [this_ckey]);
 				let this_cids = new Set();
 				let this_ips = new Set();
+				console.log(results);
 				for(let result of results) {
 					this_cids.add(result.computerid);
 					this_ips.add(result.ip);
@@ -57,8 +58,11 @@ class DiscordCommandReview extends DiscordCommand {
 				for(let ip in this_ips) {
 					related_promises.push(query('SELECT ckey,ip FROM `erro_connection_log` WHERE ip = ?', [ip]));
 				}
+				console.log("cids: " + [...this_cids].join(", "));
+				console.log("ips: " + [...this_ips].join(", "));
 				let related_keys = new Map();
 				let related_results = await Promise.all(related_promises); // do all the queries in parallel!
+				console.log(related_results);
 				for(let query_results of related_results) {
 					for(let result of query_results) {
 						if(ckeys_checked.get(result.ckey))
@@ -85,13 +89,13 @@ class DiscordCommandReview extends DiscordCommand {
 					ckeys_checked.set(key, str);
 					ckeys_queue.push(key);
 				}
-				let embed = new Discord.RichEmbed();
-				embed.setAuthor("Account review:", "http://i.imgur.com/GPZgtbe.png");
-				for(let [key, desc] of ckeys_checked) {
-					embed.addField(key, desc);
-				}
-				message.channel.sendEmbed(embed);
 			}
+			let embed = new Discord.RichEmbed();
+			embed.setAuthor("Account review:", "http://i.imgur.com/GPZgtbe.png");
+			for(let [key, desc] of ckeys_checked) {
+				embed.addField(key, desc);
+			}
+			message.channel.sendEmbed(embed);
 		});
 	}
 }
