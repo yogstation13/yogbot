@@ -15,7 +15,7 @@ class DiscordCommandReview extends DiscordCommand {
 			return;
 		}
 		let ckey = args.join("");
-		ckey = ckey.replace(/\.,-_;:/gi, "");
+		ckey = ckey.toLowerCase().replace(/\.,-_;:/gi, "");
 		let ckeys_queue = [];
 		let ckeys_checked = new Map();
 		ckeys_queue.push(ckey);
@@ -51,12 +51,8 @@ class DiscordCommandReview extends DiscordCommand {
 					this_ips.add(result.ip);
 				}
 				let related_promises = [];
-				for(let cid of this_cids) {
-					related_promises.push(query('SELECT ckey,computerid FROM `erro_connection_log` WHERE computerid = ?', [cid]));
-				}
-				for(let ip of this_ips) {
-					related_promises.push(query('SELECT ckey,ip FROM `erro_connection_log` WHERE ip = ?', [ip]));
-				}
+				related_promises.push(query('SELECT ckey,computerid FROM `erro_connection_log` WHERE computerid IN (?)', [[...this_cids]]));
+				related_promises.push(query('SELECT ckey,ip FROM `erro_connection_log` WHERE ip IN (?)', [[...this_ips]]));
 				let related_keys = new Map();
 				let related_results = await Promise.all(related_promises); // do all the queries in parallel!
 				for(let query_results of related_results) {
