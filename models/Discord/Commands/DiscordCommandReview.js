@@ -69,7 +69,7 @@ class DiscordCommandReview extends DiscordCommand {
 					ckeys_checked.set(victim, ckeys_checked.get(victim) + " (BANNED)");
 				}
 			}
-			check_bannu(ckey);
+			await check_bannu(ckey);
 			send_update(false);
 			let limiter = 30;
 			while(ckeys_queue.length) {
@@ -109,7 +109,7 @@ class DiscordCommandReview extends DiscordCommand {
 						str += `ip${(entry.ips.size != 1 ? "s" : "")} ${[...entry.ips].join(", ")}`;
 					ckeys_checked.set(key, str);
 					ckeys_queue.push(key);
-					check_bannu(key);
+					await check_bannu(key);
 				}
 				await send_update(false);
 			}
