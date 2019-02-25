@@ -39,6 +39,7 @@ class DiscordCommandReview extends DiscordCommand {
 				});
 			}
 			let the_message;
+			let update_idx = 0;
 			async function send_update(final = false) {
 				let embed = new Discord.RichEmbed();
 				embed.setAuthor("Account review:", "http://i.imgur.com/GPZgtbe.png");
@@ -48,7 +49,7 @@ class DiscordCommandReview extends DiscordCommand {
 				if(final) {
 					embed.addField("*Done!*", "Took " + ((new Date().getTime() - start_time)/1000) + " seconds")
 				} else {
-					embed.addField("WORKING...", ["-","_",".",",","*","&"][Math.floor(Math.random()*6)])
+					embed.addField("WORKING...", ["-", "\\", "|", "/"][(update_idx++) % 4])
 				}
 				if(the_message) {
 					await the_message.edit("", embed);
@@ -56,6 +57,7 @@ class DiscordCommandReview extends DiscordCommand {
 					the_message = await message.channel.send("", embed);
 				}
 			}
+			send_update(false);
 			let limiter = 30;
 			while(ckeys_queue.length) {
 				limiter--;
