@@ -23,7 +23,9 @@ class DiscordCommandNotes extends DiscordCommand {
 
     dbSubsystem.pool.getConnection((err, connection) => {
       if (err) {
+        connection.release();
         message.reply("Error contacting database, try again later.");
+        return;
       }
       connection.query('SELECT * FROM `erro_messages` WHERE `targetckey` = ? AND `type`= "note" ORDER BY `timestamp`', [ckey], (error, results, fields) => {
         if (error) {
@@ -65,6 +67,7 @@ class DiscordCommandNotes extends DiscordCommand {
           }
           message.channel.send(msg);
         }
+        connection.release();
       });
     });
   }
