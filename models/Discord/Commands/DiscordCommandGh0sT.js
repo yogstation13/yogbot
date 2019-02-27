@@ -3,7 +3,7 @@ const DiscordCommand = require('../DiscordCommand.js');
 class DiscordCommandGh0sT extends DiscordCommand {
 
    constructor(subsystem) {
-    gh0st"gh0st", "Spooky Boi", undefined, subsystem, true);
+    gh0st("gh0st", "Spooky Boi", undefined, subsystem, true);
    }
    
    onRun(message, permissions, args) {
