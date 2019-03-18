@@ -23,7 +23,7 @@ class DiscordRouterMessageDelete extends DiscordRouter {
       var response = "`[" + date.getFullYear() + ":" + date.getMonth() + ":" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "]` ";
 
       if (oldMessage.content !== newMessage.content) {
-        response += "__**" + oldMessage.channel.name + "**__ | **" + newMessage.author.username + "#" + newMessage.author.discriminator + "** message was editted:\n";
+        response += "__**" + oldMessage.channel.name + "**__ | **" + newMessage.author.username + "#" + newMessage.author.discriminator + "** message was edited:\n";
         response += "     Old: `" + oldMessage.content + "`\n";
         response += "     New: `" + newMessage.content + "`";
 
