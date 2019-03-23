@@ -9,7 +9,7 @@
   "author": "Ashleigh Carr",
   "license": "MIT",
   "dependencies": {
-    "bcrypt": "^1.0.2",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.1",
     "discord.js": "^11.2.1",
     "express": "^4.15.2",

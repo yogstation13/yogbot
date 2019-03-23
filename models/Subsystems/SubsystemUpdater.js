@@ -17,6 +17,8 @@ class SubsystemUpdater extends Subsystem {
     if (!config.git_update) {
       return;
     }
+    process.exit();
+    return;
 
     var git_pull = spawn('cmd.exe', ['/Q', '/c', "update.bat"]);
     git_pull.stdout.on('data', (data) => {
@@ -26,7 +28,8 @@ class SubsystemUpdater extends Subsystem {
     });
 
     git_pull.on('exit', exit_code => {
-      process.exit();
+	   process.exit();
+
     });
   }
 }

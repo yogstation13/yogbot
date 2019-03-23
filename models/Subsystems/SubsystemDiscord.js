@@ -26,7 +26,7 @@ class SubsystemDiscord extends Subsystem {
     this.client.login(config.discord_token).then(atoken => {
       this.loadCommands();
       this.banManager.setup();
-
+	this.client.user.setGame("I AM GOD");
       callback();
     }).catch((err) => {
       callback(err);

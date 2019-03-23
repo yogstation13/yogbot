@@ -7,7 +7,6 @@ class RouterPathGithub extends RouterPath {
     super(subsystem, router, "/github");
 
     this.githubManager = new GithubManager(subsystem.manager);
-
     this.router.post("/github", bodyParser.text({ type: 'application/json' }), (req, res) => {
       this.post(req, res);
     });

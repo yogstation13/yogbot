@@ -31,7 +31,7 @@ class DiscordCommandNotes extends DiscordCommand {
         if (error) {
           message.reply("Error running select query, try again later.");
         }
-
+		
         if (results.length == 0) {
           message.reply("Player has no notes.");
         }
