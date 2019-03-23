@@ -1,8 +1,0 @@
-{
-  "sql_connections": 10,
-  "sql_host": "localhost",
-  "sql_port": "8888",
-  "sql_user": "user",
-  "sql_password": "password",
-  "sql_database": "database"
-}

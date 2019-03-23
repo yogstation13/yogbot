@@ -1,9 +1,0 @@
-{
-  "http_port": 8080,
-  "http_minimum_username_length": 3,
-  "http_maximum_username_length": 60,
-  "http_minimum_password_length": 5,
-  "http_maximum_password_length": 128,
-  "http_salt_length": 16,
-  "captcha_token": "To bot, or not to bot."
-}
