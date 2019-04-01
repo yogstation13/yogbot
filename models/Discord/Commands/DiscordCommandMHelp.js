@@ -17,10 +17,12 @@ class DiscordCommandMHelp extends DiscordCommand {
     }
     let msg = striptags(args.slice(1).join(" "));
 	let whom = striptags(args[0]);
-	byondConnector.request("?mhelp=1&msg=" + encodeURIComponent(msg) + "&admin=" + encodeURIComponent("@" + message.author.username + "#" + message.author.discriminator) + "&whom=" + encodeURIComponent(whom), (results) => {
+	byondConnector.request("?mhelp=1&msg=" + encodeURIComponent(msg) + "&admin=" + encodeURIComponent("@" + message.author.username + "#" + message.author.discriminator) + "&admin_id=" + message.author.id + "&whom=" + encodeURIComponent(whom), (results) => {
       if ('error' in results) {
         message.channel.send(results.error);
-      }
+      } else if(!(+results.data)) {
+	    message.reply(`Error: Mentor-PM: Client ${whom} not found.`);
+	  }
     });
   }
 }

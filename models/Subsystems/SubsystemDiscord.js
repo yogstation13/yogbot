@@ -99,6 +99,13 @@ class SubsystemDiscord extends Subsystem {
         message.channel.send("When you code it");
       }
     }
+	
+	if(message.mentions.roles.has(config.discord_pingwhore_role)) {
+		if(!message.member.roles.has(config.discord_pingwhore_role)) {
+			message.reply("It appears you have, for the first time, engaged in the dastardly action to ping pingwhore! For this crime you have been assigned the role of pingwhore. Congratulations on your promotion!");
+			message.member.addRole(config.discord_pingwhore_role);
+		}
+	}
 
     if (firstCharacter === config.discord_command_character) {
       var split = content.split(" ");
