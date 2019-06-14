@@ -47,7 +47,7 @@ class DiscordCommandActivity extends DiscordCommand {
 						ranklen = rank.name.length;
 				}
 				
-				results = await query('SELECT username,rank FROM web_admins ORDER BY username'); // get the admins
+				results = await query('SELECT username,rank FROM web_admins'); // get the admins
 				let admins = {};
 				let adminlen = 8;
 				for(let admin of results) {
@@ -77,7 +77,9 @@ class DiscordCommandActivity extends DiscordCommand {
 				titleline += 'Activity ';
 				output += titleline + '\n';
 				output += ''.padStart(titleline.length, '=') + '\n';
-				for(let [key, rank] of Object.entries(admins)) {
+				for(let [key, rank] of [...Object.entries(admins)].sort((a, b) => {
+					return (activity[ckey_ize(b[0])] || 0) - (activity[ckey_ize(a[0])] || 0);
+				})) {
 					let loa = loa_admins.includes(ckey_ize(key));
 					let this_activity = activity[ckey_ize(key)] || 0;
 					let line = this_activity < 12 ? ((loa || exempt_ranks.includes(rank)) ? '  ' : '- ') : '+ ';
