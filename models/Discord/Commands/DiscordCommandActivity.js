@@ -47,13 +47,13 @@ class DiscordCommandActivity extends DiscordCommand {
 						ranklen = rank.name.length;
 				}
 				
-				results = await query('SELECT username,rank FROM web_admins'); // get the admins
+				results = await query('SELECT username,rank FROM web_admins ORDER BY username'); // get the admins
 				let admins = {};
 				let adminlen = 8;
 				for(let admin of results) {
 					let rankname = ranks[admin.rank];
-					if(!(exempt_ranks.includes(rankname)))
-						admins[admin.username] = rankname
+					//if(!(exempt_ranks.includes(rankname)))
+					admins[admin.username] = rankname
 					if(admin.username.length > adminlen)
 						adminlen = admin.username.length;
 				}
@@ -80,12 +80,18 @@ class DiscordCommandActivity extends DiscordCommand {
 				for(let [key, rank] of Object.entries(admins)) {
 					let loa = loa_admins.includes(ckey_ize(key));
 					let this_activity = activity[ckey_ize(key)] || 0;
-					let line = this_activity < 12 ? (loa ? '  ' : '- ') : '+ ';
+					let line = this_activity < 12 ? ((loa || exempt_ranks.includes(rank)) ? '  ' : '- ') : '+ ';
 					line += key.padStart(adminlen) + ' ';
 					line += rank.padStart(ranklen) + ' ';
 					line += (this_activity).toFixed(1).padStart(8);
 					if(loa) line += ' (LOA)';
+					else if(exempt_ranks.includes(rank)) line += " (Exempt)";
 					line += '\n';
+					if(output.length + line.length > 1990) {
+						output += '```';
+						message.channel.send(output);
+						output = '```diff\n';
+					}
 					output += line;
 				}
 				output += '```';
