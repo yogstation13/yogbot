@@ -30,7 +30,7 @@ class EndpointMSayMessage extends APIEndpoint {
 
     var webhook_data = {
         username: data.ckey,
-        content: data.message
+        content: (data.message || "").replace(/@everyone/gi, "*@*everyone").replace(/@here/gi, "*@*here")
     }
 
     var ckey = data.ckey.split("/")[0]
