@@ -17,10 +17,8 @@ node {
     }
 
     stage('Deploy') {
-        kubernetesDeploy(kubeconfigId: 'yogstation-kubernetes-credentials',
-
-                 configs: '.jenkins/deploy.yml',
-                 enableConfigSubstitution: true
-        )       
+        withKubeConfig([credentialsId: 'yogstation-kubernetes-credentials']) {
+            sh 'kubectl set image yogbot/yogbot yogbot=yogstation/yogbot:${env.BUILD_NUMBER}'
+        }   
     }
 }
