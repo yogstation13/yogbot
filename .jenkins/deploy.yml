@@ -8,6 +8,9 @@ metadata:
     workload.user.cattle.io/workloadselector: deployment-yogbot-yogbot
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-yogbot-yogbot
   template:
     metadata:
       labels:
