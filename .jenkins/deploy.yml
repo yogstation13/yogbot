@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: yogbot
   namespace: yogbot
+  labels:
+    cattle.io/creator: norman
+    workload.user.cattle.io/workloadselector: deployment-yogbot-yogbot
 spec:
   replicas: 1
   template:
