@@ -17,7 +17,7 @@ node {
     }
 
     stage('Deploy') {
-        withKubeConfig([credentialsId: 'yogstation-kubernetes-credentials']) {
+        withKubeConfig([credentialsId: 'yogstation-kubeconf-credentials']) {
             sh 'kubectl set image yogbot/yogbot yogbot=yogstation/yogbot:${env.BUILD_NUMBER}'
         }   
     }
