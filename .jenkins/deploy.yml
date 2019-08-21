@@ -6,6 +6,10 @@ metadata:
 spec:
   replicas: 1
   template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        workload.user.cattle.io/workloadselector: deployment-yogbot-yogbot
     spec:
       containers:
       - name: yogbot
