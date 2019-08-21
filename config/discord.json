@@ -1,0 +1,13 @@
+{
+  "discord_token": "notokenhere",
+  "discord_command_character": "!",
+  "discord_softban": "true",
+  "discord_softban_role": "302093934551629827",
+  "discord_guild": "134720091576205312",
+  "discord_restricted_channels": ["134722015503319040", "201054477460045824", "162924271948005376", "188691067405598721"],
+  "discord_subscriber_role": "1",
+  "discord_ktlfm_role": "441660760410554370",
+  "discord_tempban_interval": 15000,
+  "asay_webhook_url": "https://discordapp.com/api/webhooks/eW91IGFyZSBhIGh1Z2UgbmVyZCBpZiB5b3UgYXJlIHJlYWRpbmcgdGhpcw==",
+  "git_update": true
+}
