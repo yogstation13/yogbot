@@ -1,0 +1,41 @@
+{
+  "roles": {
+    "host": {
+      "inherits": "council",
+      "permissions": []
+    },
+    "council": {
+      "inherits": "headcoder",
+      "permissions": []
+    },
+    "headcoder": {
+      "inherits": "maintainer",
+      "permissions": ["addao"]
+    },
+    "maintainer": {
+      "inherits": "staff",
+      "permissions": []
+    },
+    "staff": {
+      "inherits": "retmin",
+      "permissions": []
+    },
+    "retmin": {
+      "inherits": false,
+      "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "kickself", "toggleooc", "note"]
+    },
+    "@everyone": {
+      "inherits": false,
+      "permissions": ["ping", "adminwho", "info"]
+    },
+    "subscriber": {
+      "inherits": false,
+      "permissions": ["unsubscribe"]
+    },
+    "KTL.FM": {
+      "inherits": false,
+      "permissions": ["ktlfm"]
+    }
+  },
+  "admins": ["115886044162949123"]
+}
