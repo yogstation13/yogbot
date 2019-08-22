@@ -21,8 +21,12 @@
       "permissions": []
     },
     "retmin": {
-      "inherits": false,
+      "inherits": "mentor",
       "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "kickself", "toggleooc", "note"]
+    },
+    "mentor": {
+      "inherits": false,
+      "permissions": ["mhelp"]
     },
     "@everyone": {
       "inherits": false,
