@@ -156,7 +156,7 @@ class SubsystemDiscord extends Subsystem {
 
   getCommand(commandName) {
     for (var command of this.commands) {
-      if (command.name === commandName) {
+      if (command.name.toUpperCase() === commandName.toUpperCase()) {
         return command;
       }
     }
