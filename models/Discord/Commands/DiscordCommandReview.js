@@ -86,7 +86,7 @@ class DiscordCommandReview extends DiscordCommand {
 						this_ips.add(result.ip);
 					}
 					let related_keys = new Map();
-					let related_results = await query('SELECT ckey,ip,computerid FROM `erro_connection_log` WHERE computerid IN (SELECT computerid FROM `erro_connection_log` WHERE ckey = ?) OR ip IN (SELECT ip FROM `erro_connection_log` WHERE ckey = ?)', [this_ckey, this_ckey]);
+					let related_results = [...(await query('SELECT ckey,ip,computerid FROM `erro_connection_log` WHERE computerid IN (SELECT computerid FROM `erro_connection_log` WHERE ckey = ?) OR ip IN (SELECT ip FROM `erro_connection_log` WHERE ckey = ?)', [this_ckey, this_ckey])), ...(await query('SELECT ckey,ip,computerid FROM `erro_connection_log_bk20160316` WHERE computerid IN (SELECT computerid FROM `erro_connection_log_bk20160316` WHERE ckey = ?) OR ip IN (SELECT ip FROM `erro_connection_log_bk20160316` WHERE ckey = ?)', [this_ckey, this_ckey]))];
 					for(let result of related_results) {
 						if(ckeys_checked.get(result.ckey))
 							continue;
