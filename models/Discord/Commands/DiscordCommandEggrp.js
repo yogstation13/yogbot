@@ -24,7 +24,7 @@ class DiscordCommandEggrp extends DiscordCommand {
 		"https://cdn.discordapp.com/attachments/458282555284783114/572244922430783488/TheOrigin.jpg",
 		"https://cdn.discordapp.com/attachments/458282555284783114/572244942370504714/image0.gif",
 		"https://cdn.discordapp.com/attachments/458282555284783114/572244948464697356/unknown.png",
-		"https://cdn.discordapp.com/attachments/458282555284783114/572244968337440787/DannyEgg.gif"
+		"https://cdn.discordapp.com/attachments/458282555284783114/572244968337440787/DannyEgg.gif",
 	    	"https://cdn.discordapp.com/attachments/477881531050754050/569850898004574208/unknown.png"
 	];
     var response = responses[Math.floor(Math.random() * responses.length)];
