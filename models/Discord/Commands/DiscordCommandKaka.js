@@ -3,7 +3,7 @@ const DiscordCommand = require('../DiscordCommand.js');
 class DiscordCommandKaka extends DiscordCommand {
 
   constructor(subsystem) {
-    super("Kaka", "George Kaka, himself", undefined, subsystem, true);
+    super("Kaka", "George Kaka himself", undefined, subsystem, true);
   }
 
   onRun(message, permissions, args) {
