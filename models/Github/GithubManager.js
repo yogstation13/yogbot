@@ -149,6 +149,9 @@ class GithubManager {
       else if(channel.id == config.discord_channel_important_admin && securearray.includes("[admin]")) {
         channel.sendEmbed(embed);
       }
+      else if(channel.id == config.discord_channel_maintainer_chat && securearray.includes("[s]")) {
+        channel.sendEmbed(embed);
+      }
     }
   }
 
