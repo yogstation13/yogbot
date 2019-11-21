@@ -134,8 +134,8 @@ class GithubManager {
     }
     embed.setColor(embedColor);
     
-    var securearray = msgTitle.split(" ")
-    if(action == "opened" && !securearray.includes("[s]") && !securearray.includes("[S]")) {
+    var securearray = msgTitle.toLowerCase().split(" ")
+    if(action == "opened" && !securearray.includes("[s]")) {
       byondSS.byondConnector.request("?announce=" + msgTitle + "&author=" + payload.sender.login + "&id=" + payload.pull_request.number, (results) => {});
     }
 
