@@ -10,7 +10,7 @@
     },
     "headcoder": {
       "inherits": "maintainer",
-      "permissions": ["addao"]
+      "permissions": ["addao", "mentor"]
     },
     "maintainer": {
       "inherits": "staff",
