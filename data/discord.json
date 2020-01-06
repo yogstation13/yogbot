@@ -1,14 +1,14 @@
 {
   "roles": {
     "host": {
-      "inherits": "council",
-      "permissions": []
-    },
-    "council": {
       "inherits": "headcoder",
       "permissions": []
     },
     "headcoder": {
+      "inherits": "council",
+      "permissions": ["post"]
+    },
+    "council": {
       "inherits": "maintainer",
       "permissions": ["addao"]
     },

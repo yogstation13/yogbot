@@ -11,6 +11,7 @@ class DiscordCommandSearch extends DiscordCommand {
 
     if(args.length < 2) {
         message.channel.send("Usage is `" + config.discord_command_character + "search [yogbot/yogs] <search terms>`");
+        return;
     }
     let searched = args[0].toLowerCase();
     for(var i = 1; i<args.length; i++) {
