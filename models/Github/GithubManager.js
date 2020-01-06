@@ -149,13 +149,24 @@ class GithubManager {
       else if(channel.id == config.discord_channel_important_admin && securearray.includes("[admin]")) {
         channel.sendEmbed(embed);
       }
-      else if(channel.id == config.discord_channel_mapping && securearray.includes("[map]")) {
-        channel.sendEmbed(embed);
-      }
       else if(channel.id == config.discord_channel_maintainer_chat && securearray.includes("[s]")) {
         channel.sendEmbed(embed);
       }
     }
+
+    this.getFileExtensions(payload.pull_request).then((extensions) => {
+      if(securearray.includes("[s]")) {
+        return;
+      }
+      for(var channel of discordSubsystem.getPrimaryGuild().channels.array()) {
+        if(channel.id == config.discord_channel_mapping && extensions.includes("dme")) {
+          channel.sendEmbed(embed);
+        }
+        else if(channel.id == config.discord_channel_spriter && extensions.includes("dmi")) {
+          channel.sendEmbed(embed);
+        }
+      }
+    });
   }
 
   setPullRequestFlags(payload, changelog) {
