@@ -53,10 +53,12 @@ class DiscordDonorManager {
                 for(let {ckey, discord_id} of results) {
                     ckey = ckey_ize(ckey);
                     let member = guild.members.get(discord_id);
-                    if(member.roles.has(donor_role.id) && !donor_ckeys.has(ckey)) {
-                        member.removeRole(donor_role);
-                    } else if(!member.roles.has(donor_role.id) && donor_ckeys.has(ckey)) {
-                        member.addRole(donor_role);
+                    if(member) {
+                        if(member.roles.has(donor_role.id) && !donor_ckeys.has(ckey)) {
+                            member.removeRole(donor_role);
+                        } else if(!member.roles.has(donor_role.id) && donor_ckeys.has(ckey)) {
+                            member.addRole(donor_role);
+                        }
                     }
                 }
             } catch(e) {
