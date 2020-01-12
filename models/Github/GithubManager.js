@@ -159,7 +159,7 @@ class GithubManager {
         return;
       }
       for(var channel of discordSubsystem.getPrimaryGuild().channels.array()) {
-        if(channel.id == config.discord_channel_mapping && extensions.includes("dme")) {
+        if(channel.id == config.discord_channel_mapping && extensions.includes("dmm")) {
           channel.sendEmbed(embed);
         }
         else if(channel.id == config.discord_channel_spriter && extensions.includes("dmi")) {
