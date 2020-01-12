@@ -2,6 +2,7 @@ const Subsystem = require('../Subsystem.js');
 const Discord = require('discord.js');
 const DiscordPermissionManager = require('../Discord/DiscordPermissionManager.js');
 const DiscordBanManager = require('../Discord/DiscordBanManager.js');
+const DiscordForumManager = require('../Discord/DiscordForumManager.js');
 const fs = require('fs');
 const winston = require('winston');
 
@@ -11,6 +12,7 @@ class SubsystemDiscord extends Subsystem {
     this.client = new Discord.Client();
     this.permissionManager = new DiscordPermissionManager(manager);
     this.banManager = new DiscordBanManager(this);
+    this.forumManager = new DiscordForumManager(this);
     this.logger;
 
     this.commands = [];
@@ -26,6 +28,7 @@ class SubsystemDiscord extends Subsystem {
     this.client.login(config.discord_token).then(atoken => {
       this.loadCommands();
       this.banManager.setup();
+      this.forumManager.setup();
 	this.client.user.setGame("I AM GOD");
       callback();
     }).catch((err) => {
@@ -73,11 +76,11 @@ class SubsystemDiscord extends Subsystem {
     if (message.author.bot) {
       return;
     }
-    
+
     if (message.guild == undefined) {
       return;
     }
-    
+
     for (var channel of this.channels) {
       if (channel.id === message.channel.id) {
         channel.onMessage(message);
@@ -99,7 +102,7 @@ class SubsystemDiscord extends Subsystem {
         message.channel.send("When you code it");
       }
     }
-	
+
 	if(message.mentions.roles.has(config.discord_pingwhore_role)) {
 		if(!message.member.roles.has(config.discord_pingwhore_role)) {
 			message.reply("It appears you have, for the first time, engaged in the dastardly action to ping pingwhore! For this crime you have been assigned the role of pingwhore. Congratulations on your promotion!");
