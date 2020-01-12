@@ -40,7 +40,7 @@ class DiscordDonorManager {
                 let donor_role;
                 for(let role of guild.roles.values()) {
                     if(role.name == "donator") {
-                        staff_id = role.id;
+                        donor_role = role;
                     }
                 }
 
