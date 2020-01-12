@@ -47,7 +47,7 @@ class DiscordDonorManager {
                 let results = await query('SELECT DISTINCT ckey FROM erro_donors WHERE (expiration_time > Now()) AND (revoked IS null);');
                 let donor_ckeys = new Set();
                 for(let {ckey} of results) {
-                    donor_ckeys.add(ckey_ize(row.ckey));
+                    donor_ckeys.add(ckey_ize(ckey));
                 }
                 results = await query('SELECT ckey, discord_id FROM erro_player WHERE discord_id IS NOT NULL;');
                 for(let {ckey, discord_id} of results) {
