@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const DiscordPermissionManager = require('../Discord/DiscordPermissionManager.js');
 const DiscordBanManager = require('../Discord/DiscordBanManager.js');
 const DiscordForumManager = require('../Discord/DiscordForumManager.js');
+const DiscordDonorManager = require('../Discord/DiscordDonorManager.js');
 const fs = require('fs');
 const winston = require('winston');
 
@@ -13,6 +14,7 @@ class SubsystemDiscord extends Subsystem {
     this.permissionManager = new DiscordPermissionManager(manager);
     this.banManager = new DiscordBanManager(this);
     this.forumManager = new DiscordForumManager(this);
+    this.donorManager = new DiscordDonorManager(this);
     this.logger;
 
     this.commands = [];
@@ -29,6 +31,7 @@ class SubsystemDiscord extends Subsystem {
       this.loadCommands();
       this.banManager.setup();
       this.forumManager.setup();
+      this.donorManager.setup();
 	this.client.user.setGame("I AM GOD");
       callback();
     }).catch((err) => {
