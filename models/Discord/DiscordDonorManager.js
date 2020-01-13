@@ -54,7 +54,7 @@ class DiscordDonorManager {
                     donor_ckeys.add(ckey_ize(ckey));
                 }
                 console.log([...donor_ckeys]);
-                results = await query('SELECT ckey, discord_id FROM erro_player WHERE discord_id IS NOT NULL;');
+                results = await query('SELECT ckey, Cast(discord_id as char) as discord_id FROM erro_player WHERE discord_id IS NOT NULL;');
                 for(let {ckey, discord_id} of results) {
                     ckey = ckey_ize(ckey);
                     let member = guild.members.get(discord_id);
