@@ -28,6 +28,10 @@
       "inherits": false,
       "permissions": ["mhelp"]
     },
+    "YogPost": {
+      "inherits": false,
+      "permissions": ["post"]
+    },  
     "@everyone": {
       "inherits": false,
       "permissions": ["ping", "adminwho", "info"]
