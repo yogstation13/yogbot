@@ -44,6 +44,10 @@ class DiscordDonorManager {
                     }
                 }
 
+                if(!donor_role) {
+                    throw "Cannot find donor role";
+                }
+
                 let results = await query('SELECT DISTINCT ckey FROM erro_donors WHERE (expiration_time > Now()) AND (revoked IS null);');
                 let donor_ckeys = new Set();
                 for(let {ckey} of results) {
