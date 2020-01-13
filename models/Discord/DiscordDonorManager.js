@@ -53,19 +53,34 @@ class DiscordDonorManager {
                 for(let {ckey} of results) {
                     donor_ckeys.add(ckey_ize(ckey));
                 }
-                console.log([...donor_ckeys]);
                 results = await query('SELECT ckey, Cast(discord_id as char) as discord_id FROM erro_player WHERE discord_id IS NOT NULL;');
+                let linked_discordids = new Set();
                 for(let {ckey, discord_id} of results) {
                     ckey = ckey_ize(ckey);
                     let member = guild.members.get(discord_id);
+                    linked_discordids.add(discord_id);
                     if(member) {
                         if(member.roles.has(donor_role.id) && !donor_ckeys.has(ckey)) {
-                            member.removeRole(donor_role);
+                            await member.removeRole(donor_role);
                         } else if(!member.roles.has(donor_role.id) && donor_ckeys.has(ckey)) {
-                            member.addRole(donor_role);
+                            await member.addRole(donor_role);
                         }
-                    } else {
-                        console.log(ckey + " has no discord member found for " + discord_id);
+                    }
+                }
+                let members_to_ping = [];
+                try {
+                    for(let [discord_id, member] of guild.members) {
+                        if(!linked_discordids.has(discord_id) && member.roles.has(donor_role.id)) {
+                            members_to_ping.push(discord_id);
+                            await member.removeRole(donor_role);
+                        }
+                    }
+                } finally {
+                    if(members_to_ping.length) {
+                        let msg = "";
+                        for(let member of members_to_ping) msg += "<@" + member + "> ";
+                        msg += "Your donator tag on discord has been removed because we could not verify your donator status.\n\nTo resolve this issue, you will need to link your discord and BYOND accounts. To do this, go in-game, and click the Link Discord Account in the Admin tab and follow the instructions."
+                        guild.channels.get(config.discord_channel_staff_public).send(msg);
                     }
                 }
             } catch(e) {
