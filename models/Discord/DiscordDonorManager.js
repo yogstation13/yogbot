@@ -61,8 +61,10 @@ class DiscordDonorManager {
                     linked_discordids.add(discord_id);
                     if(member) {
                         if(member.roles.has(donor_role.id) && !donor_ckeys.has(ckey)) {
+                            this.subsystem.manager.logger.log("info", "Taking donor role from " ckey + " (" + discord_id + ")");
                             await member.removeRole(donor_role);
                         } else if(!member.roles.has(donor_role.id) && donor_ckeys.has(ckey)) {
+                            this.subsystem.manager.logger.log("info", "Giving donor role to " ckey + " (" + discord_id + ")");
                             await member.addRole(donor_role);
                         }
                     } else if(donor_ckeys.has(ckey)) {
