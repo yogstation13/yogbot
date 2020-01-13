@@ -53,6 +53,7 @@ class DiscordDonorManager {
                 for(let {ckey} of results) {
                     donor_ckeys.add(ckey_ize(ckey));
                 }
+                console.log([...donor_ckeys]);
                 results = await query('SELECT ckey, discord_id FROM erro_player WHERE discord_id IS NOT NULL;');
                 for(let {ckey, discord_id} of results) {
                     ckey = ckey_ize(ckey);
@@ -63,6 +64,8 @@ class DiscordDonorManager {
                         } else if(!member.roles.has(donor_role.id) && donor_ckeys.has(ckey)) {
                             member.addRole(donor_role);
                         }
+                    } else {
+                        console.log(ckey + " has no discord member found for " + discord_id);
                     }
                 }
             } catch(e) {
