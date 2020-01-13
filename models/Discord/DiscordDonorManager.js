@@ -65,6 +65,8 @@ class DiscordDonorManager {
                         } else if(!member.roles.has(donor_role.id) && donor_ckeys.has(ckey)) {
                             await member.addRole(donor_role);
                         }
+                    } else if(donor_ckeys.has(ckey)) {
+                        this.subsystem.manager.logger.log("error", "Cannot give donor role to ckey " + ckey + " discord id " + discord_id + " - discord ID not found");
                     }
                 }
                 let members_to_ping = [];
