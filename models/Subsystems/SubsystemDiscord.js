@@ -119,7 +119,7 @@ class SubsystemDiscord extends Subsystem {
       var command = this.getCommand(split[0]);
 
       if (!command) {
-        message.reply("We couldnt find that command, try using ` " + config.discord_command_character + "help` to see a list of commands.");
+        message.reply("We couldnt find that command, try using `" + config.discord_command_character + "help` to see a list of commands.");
         return;
       }
 
