@@ -30,9 +30,12 @@ class DiscordForumManager {
       admins.push(member);
     }
     let staff_id = "";
+    let mentor_id = "";
     for(let role of guild.roles.values()) {
       if(role.name == "staff") {
         staff_id = role.id;
+      } else if(role.name == "mentor") {
+        mentor_id = role.id;
       }
     }
 
@@ -45,7 +48,9 @@ class DiscordForumManager {
           }
         }
       }
-      if(default_to_staff)
+      if(default_to_staff == 2)
+        return "<@&" + mentor_id + "> <@&" + staff_id + ">";
+      else if(default_to_staff)
         return "<@&" + staff_id + ">";
       return "@?????"
     }
@@ -54,6 +59,7 @@ class DiscordForumManager {
     handle_channel(config.discord_channel_player_complaints, 'https://forums.yogstation.net/index.php?forums/player-complaints.3/index.rss', /<a href="(.+)" class="link link--internal">(.+)<\/a><\/div>]]><\/content:encoded/g, 1, 2, 3);
     handle_channel(config.discord_channel_admin_complaints, 'https://forums.yogstation.net/index.php?forums/administrator-complaints.4/index.rss', /<title>((.+) - report by .+)<\/title>\r?\n +<pubDate>.+<\/pubDate>\n +<link>(.+)<\/link>/g, 3, 1, 2, false);
     handle_channel(config.discord_channel_staff_applications, 'https://forums.yogstation.net/index.php?forums/administrator-applications.6/index.rss', /<title>(.+application)<\/title>\r?\n +<pubDate>.+<\/pubDate>\n +<link>(.+)<\/link>/g, 2, 1, -1);
+    handle_channel(config.discord_channel_mentor_applications, 'https://forums.yogstation.net/index.php?forums/administrator-applications.6/index.rss', /<title>(.+application)<\/title>\r?\n +<pubDate>.+<\/pubDate>\n +<link>(.+)<\/link>/g, 2, 1, -1, 2);
 
     async function handle_channel(channel_id, url, regex, regex_url_index, regex_title_index, regex_ping_index, default_ping_staff = true) {
       let channel = guild.channels.get(channel_id);
