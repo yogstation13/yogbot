@@ -59,7 +59,7 @@ class DiscordForumManager {
     handle_channel(config.discord_channel_player_complaints, 'https://forums.yogstation.net/index.php?forums/player-complaints.3/index.rss', /<a href="(.+)" class="link link--internal">(.+)<\/a><\/div>]]><\/content:encoded/g, 1, 2, 3);
     handle_channel(config.discord_channel_admin_complaints, 'https://forums.yogstation.net/index.php?forums/administrator-complaints.4/index.rss', /<title>((.+) - report by .+)<\/title>\r?\n +<pubDate>.+<\/pubDate>\n +<link>(.+)<\/link>/g, 3, 1, 2, false);
     handle_channel(config.discord_channel_staff_applications, 'https://forums.yogstation.net/index.php?forums/administrator-applications.6/index.rss', /<title>(.+application)<\/title>\r?\n +<pubDate>.+<\/pubDate>\n +<link>(.+)<\/link>/g, 2, 1, -1);
-    handle_channel(config.discord_channel_mentor_applications, 'https://forums.yogstation.net/index.php?forums/administrator-applications.6/index.rss', /<title>(.+application)<\/title>\r?\n +<pubDate>.+<\/pubDate>\n +<link>(.+)<\/link>/g, 2, 1, -1, 2);
+    handle_channel(config.discord_channel_mentor_applications, 'https://forums.yogstation.net/index.php?forums/mentor-applications.206/index.rss', /<title>(.+application)<\/title>\r?\n +<pubDate>.+<\/pubDate>\n +<link>(.+)<\/link>/g, 2, 1, -1, 2);
 
     async function handle_channel(channel_id, url, regex, regex_url_index, regex_title_index, regex_ping_index, default_ping_staff = true) {
       let channel = guild.channels.get(channel_id);
