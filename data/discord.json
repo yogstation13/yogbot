@@ -5,10 +5,10 @@
       "permissions": []
     },
     "council": {
-      "inherits": "headcoder",
+      "inherits": "lead developer",
       "permissions": []
     },
-    "headcoder": {
+    "lead developer": {
       "inherits": "maintainer",
       "permissions": ["addao"]
     },
