@@ -15,3 +15,10 @@ jobs:
         username: ${{secrets.DOCKER_PUSH_USERNAME}}
         password: ${{secrets.DOCKER_PUSH_PASSWORD}}
         registry: docker.pkg.github.com
+        tags: ${{github.sha}}
+    - name: Deploy
+      uses: steebchen/kubectl@v1.0.0
+      env:
+        KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+      with:
+        args: kubectl set image --namespace yogbot deployment/yogbot yogbot=docker.pkg.github.com/yogstation13/yogbot/yogbot:${{github.sha}}
