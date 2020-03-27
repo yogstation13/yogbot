@@ -9,7 +9,7 @@ class DiscordCommandActivity extends DiscordCommand {
 	}
 
 	onRun(message, permissions, args) {
-		const exempt_ranks = ["Host", "Council Member", "Tribunal", "Retired Admin", "Senior Coder", "Head Coder", "Maintainer", "Admin Observer", "Bot"];
+		const exempt_ranks = ["Host", "Council Member", "RetCoder", "Tribunal", "Retired Admin", "Senior Coder", "Head Coder", "Maintainer", "Admin Observer", "Bot"];
 		let config = this.subsystem.manager.getSubsystem("Config").config;
 		let dbSubsystem = this.subsystem.manager.getSubsystem("Database");
 
