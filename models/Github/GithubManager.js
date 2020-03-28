@@ -352,7 +352,7 @@ class GithubManager {
         changelog.push({ 'type': 'rscdel', 'emoji': 'octagonal_sign', 'body': changelogText });
         break;
       case 'imageadd':
-        changelog.push({ 'type': 'imageadd', 'emoji': 'paintbrush', 'body': changelogText });
+        changelog.push({ 'type': 'imageadd', 'emoji': 'art', 'body': changelogText });
         break;
       case 'imagedel':
         changelog.push({ 'type': 'imagedel', 'emoji': 'scissors', 'body': changelogText });
