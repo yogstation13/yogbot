@@ -352,10 +352,10 @@ class GithubManager {
         changelog.push({ 'type': 'rscdel', 'emoji': 'octagonal_sign', 'body': changelogText });
         break;
       case 'imageadd':
-        changelog.push({ 'type': 'imageadd', 'emoji': 'question', 'body': changelogText });
+        changelog.push({ 'type': 'imageadd', 'emoji': 'paintbrush', 'body': changelogText });
         break;
       case 'imagedel':
-        changelog.push({ 'type': 'imagedel', 'emoji': 'question', 'body': changelogText });
+        changelog.push({ 'type': 'imagedel', 'emoji': 'scissors', 'body': changelogText });
         break;
       case 'typo':
       case 'spellcheck':
