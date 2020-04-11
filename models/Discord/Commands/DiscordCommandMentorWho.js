@@ -12,7 +12,7 @@ class DiscordCommandMentorWho extends DiscordCommand {
     var byondConnector = this.subsystem.manager.getSubsystem("Byond Connector").byondConnector;
     var byondmessage = "?mentorwho";
 
-    }
+    
     byondConnector.request(byondmessage, (results) => {
       if('error' in results) {
         message.channel.send(results.error);
