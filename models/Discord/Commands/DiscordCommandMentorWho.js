@@ -4,7 +4,7 @@ const StringUtils = require('../../Utils/String.js');
 class DiscordCommandMentorWho extends DiscordCommand {
 
   constructor(subsystem) {
-    super("mentorwho", "Get current mentors online.", 'mentorwho', subsystem);
+    super("mentorwho", "Get current mentors online.", undefined, subsystem);
   }
 
   onRun(message, permissions, args) {
