@@ -34,7 +34,7 @@
     },  
     "@everyone": {
       "inherits": false,
-      "permissions": ["ping", "adminwho", "info"]
+      "permissions": ["ping", "adminwho", "mentorwho", "info"]
     },
     "subscriber": {
       "inherits": false,
