@@ -39,10 +39,6 @@
     "subscriber": {
       "inherits": false,
       "permissions": ["unsubscribe"]
-    },
-    "KTL.FM": {
-      "inherits": false,
-      "permissions": ["ktlfm"]
     }
   },
   "admins": ["115886044162949123"]
