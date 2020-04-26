@@ -54,6 +54,15 @@ class DiscordCommandInfo extends DiscordCommand {
 						landing: "Called" //only in this state for a couple of seconds too
 					};
 
+					const timer_display = [
+						"call",
+						"recall",
+						"igniting",
+						"docked",
+						"escape",
+						"landing"
+					]
+
 					const alert_colors = {
 						green: "12a125",
 						blue: "1242a1",
@@ -71,7 +80,7 @@ class DiscordCommandInfo extends DiscordCommand {
 					embed.addField("Current round:", round_id, true);
 					embed.addField("Round duration:", round_duration + " minutes", true);
 					embed.addField("Shuttle status:", shuttle_modes_strings[shuttle_mode], true);
-					if(shuttle_mode === "call") {
+					if(timer_display.includes(shuttle_mode)) {
 						embed.addField("Shuttle timer:", Math.round(parseInt(shuttle_time)/60) + " minutes", true);
 					}
 					embed.addField("Security level:", security_level, true);
