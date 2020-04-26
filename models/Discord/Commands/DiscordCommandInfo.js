@@ -33,8 +33,8 @@ class DiscordCommandInfo extends DiscordCommand {
 					return message.channel.send(results.error);
 				}
 				var round_duration = querystring.parse(resultsstatus.data)["round_duration"];
-				var shuttle_mode = querystring.parse(resultsstatus.data)["shuttle_mode"];
-				var shuttle_time = querystring.parse(resultsstatus.data)["shuttle_timer"];
+				var shuttle_mode = querystring.parse(resultsstatus.data)["shuttle_mode"] || "Idle";
+				var shuttle_time = querystring.parse(resultsstatus.data)["shuttle_timer"] || 10;
 				var round_id = querystring.parse(resultsstatus.data)["round_id"];
 				shuttle_time = StringUtils.replaceAll(shuttle_time, "\0", "");
 				shuttle_time = shuttle_time/60;
