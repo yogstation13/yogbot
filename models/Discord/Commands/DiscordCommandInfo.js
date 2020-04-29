@@ -34,44 +34,60 @@ class DiscordCommandInfo extends DiscordCommand {
 				}
 				byondSS.byondConnector.request("?status", (resultsstatus) => {
 					if ('error' in resultsstatus) {
-						return message.channel.send(results.error);
+						return message.channel.send(resultsstatus.error);
 					}
-					var round_duration = querystring.parse(resultsstatus.data)["round_duration"];
-					var shuttle_mode = querystring.parse(resultsstatus.data)["shuttle_mode"];
-					var shuttle_time = querystring.parse(resultsstatus.data)["shuttle_timer"];
-					var round_id = querystring.parse(resultsstatus.data)["round_id"];
-					shuttle_time = StringUtils.replaceAll(shuttle_time, "\0", "");
-					shuttle_time = shuttle_time/60;
-					var security_level = querystring.parse(resultsstatus.data)["security_level"];
-					var shuttle_modes = ["Idle", "Returning", "Transit to station", "Docked", "Stranded", "Transit to CentComm", "Docked at CentComm"];
-					shuttle_mode = shuttle_modes[shuttle_mode]; 
+					var round_duration = querystring.parse(resultsstatus.data)["round_duration"] || "Unknown";
+					var shuttle_mode = querystring.parse(resultsstatus.data)["shuttle_mode"] || "idle";
+					var shuttle_time = querystring.parse(resultsstatus.data)["shuttle_timer"] || 10;
+					var round_id = querystring.parse(resultsstatus.data)["round_id"] || "Unknown";
+					var security_level = querystring.parse(resultsstatus.data)["security_level"] || "Unknown";
+					var shuttle_modes_strings = {
+						idle: "Idle",
+						igniting: "Docked", //its only in this state for 10 seconds, not worth the confusion
+						recall: "Recalled",
+						call: "Called",
+						docked: "Docked",
+						stranded: "Disabled", //hostile environment
+						escape: "Departed",
+						"endgame: game over": "Round over",
+						recharging: "Charging",
+						landing: "Called" //only in this state for a couple of seconds too
+					};
+
+					const timer_display = [
+						"call",
+						"recall",
+						"igniting",
+						"docked",
+						"escape",
+						"landing"
+					]
+
+					const alert_colors = {
+						green: "12a125",
+						blue: "1242a1",
+						red: "a11212",
+						delta: "2e0340"
+					};
+
 					round_duration = Math.round(round_duration/60);
-					var embedcolor = "";
-					var colors = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
 
-					for(var count = 0; count < 6; count++) {
-						embedcolor = embedcolor + colors[Math.floor(Math.random() * colors.length)];
-						//picks a colour from the array "colours" then proceeds to add it to "colour", and stops once "colour" has 6 digits
-					}
-
-					var embed = new Discord.RichEmbed();
+					const embed = new Discord.RichEmbed();
 
 					embed.setAuthor("Information", "http://i.imgur.com/GPZgtbe.png");
 					embed.setDescription("Join the server now by using " + config.server_join_address);
 					embed.addField("Players online:", results.data, true);
 					embed.addField("Current round:", round_id, true);
-					embed.addField("Round duration:", round_duration + " Minutes", true);
-					if(shuttle_mode) {
-						embed.addField("Shuttle status:", shuttle_mode, true);
-						if(shuttle_mode != "Idle" && shuttle_mode != "Stranded" && shuttle_mode != "Docked at Centcomm") {
-							embed.addField("Shuttle timer:", Math.round(shuttle_time) + " Minutes", true);
-						}
+					embed.addField("Round duration:", round_duration + " minutes", true);
+					embed.addField("Shuttle status:", shuttle_modes_strings[shuttle_mode], true);
+					if(timer_display.includes(shuttle_mode)) {
+						embed.addField("Shuttle timer:", Math.round(parseInt(shuttle_time)/60) + " minutes", true);
 					}
 					embed.addField("Security level:", security_level, true);
-					if(adminwho.length && adminwho != " ") {
+					if(adminwho.trim().length) {
 						embed.addField("Admins online:", adminwho, false); //this field has a dynamic size, and should be the last field ~~Nich
 					}
-					embed.setColor(embedcolor);
+					embed.setColor(alert_colors[security_level]);
 
 					message.channel.send({embed});
 				});
