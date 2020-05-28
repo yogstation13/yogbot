@@ -12,4 +12,4 @@ class DiscordCommandBug extends DiscordCommand {
 
 }
 
-module.exports = DiscordCommandApples;
+module.exports = DiscordCommandBug;
