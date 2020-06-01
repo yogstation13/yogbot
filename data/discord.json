@@ -39,7 +39,11 @@
     "subscriber": {
       "inherits": false,
       "permissions": ["unsubscribe"]
-    }
+    },
+	"Wiki": {
+	  "inherits": false,
+	  "permissions": ["loreban"]
+	}
   },
   "admins": ["115886044162949123"]
 }
