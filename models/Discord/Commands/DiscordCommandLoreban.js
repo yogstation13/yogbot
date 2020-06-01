@@ -3,7 +3,7 @@ const DiscordCommand = require('../DiscordCommand.js');
 class DiscordCommandLoreban extends DiscordCommand {	
 
     constructor(subsystem) {	
-        super("loreban", "Ban someone from the lore channel.", undefined, subsystem);	
+        super("loreban", "Ban someone from the lore channel.", 'loreban', subsystem);	
     }	
 
     onRun(message, permissions, args) {	
