@@ -8,10 +8,10 @@ class DiscordCommandLoreban extends DiscordCommand {
 
     onRun(message, permissions, args) {	
         var config = this.subsystem.manager.getSubsystem("Config").config;	
-		let role = config.discord_loreban_role;
-		let member = message.mentions.members.first();
+        let role = config.discord_loreban_role;
+        let member = message.mentions.members.first();
 
-		if (permissions.includes('loreban')) {	
+        if (permissions.includes('loreban')) {	
             message.member.removeRole(config.discord_loreban_role);	
             var response = "User was un-lorebanned."	
         }	
