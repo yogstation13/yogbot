@@ -16,12 +16,12 @@ class DiscordCommandLoreban extends DiscordCommand {
           return;
         }
 
-        if (permissions.includes('loreban')) {	
-            message.member.removeRole(config.discord_loreban_role);	
+        if member.roles.has(config.discord_loreban_role) {	
+            member.removeRole(config.discord_loreban_role);	
             var response = "User was un-lorebanned."	
         }	
         else {	
-            message.member.addRole(config.discord_loreban_role);	
+            member.addRole(config.discord_loreban_role);	
             var response = "User was lorebanned."	
         }	
 
