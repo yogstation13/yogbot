@@ -7,9 +7,14 @@ class DiscordCommandLoreban extends DiscordCommand {
     }	
 
     onRun(message, permissions, args) {	
-        var config = this.subsystem.manager.getSubsystem("Config").config;	
+        let config = this.subsystem.manager.getSubsystem("Config").config;	
         let role = config.discord_loreban_role;
         let member = message.mentions.members.first();
+        
+        if(member == undefined) {
+          message.reply("I could not find that user, Make sure you use the mention format of @Username");
+          return;
+        }
 
         if (permissions.includes('loreban')) {	
             message.member.removeRole(config.discord_loreban_role);	
