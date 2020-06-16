@@ -31,7 +31,15 @@ class DiscordCommandMentor extends DiscordCommand {
 		"https://cdn.discordapp.com/attachments/613105854173937776/722264898708570172/80oxjajrdpo41.png",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722265156377378816/carpets.png",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722265593461604372/dreamseeker_2020-03-31_21-54-51.png",
-		"https://cdn.discordapp.com/attachments/613105854173937776/722266864771661995/dreamseeker_2020-03-19_22-30-52.png"
+		"https://cdn.discordapp.com/attachments/613105854173937776/722266864771661995/dreamseeker_2020-03-19_22-30-52.png",
+		"https://cdn.discordapp.com/attachments/613105854173937776/722269494692806747/Screenshot_57.png",
+		"https://cdn.discordapp.com/attachments/613105854173937776/722269627861827614/mentorrevolution.png",
+		"https://cdn.discordapp.com/attachments/613105854173937776/722270066116263946/Screenshot_5.png",
+		"https://cdn.discordapp.com/attachments/613105854173937776/722271146979885056/basicallyops.png",
+		"https://cdn.discordapp.com/attachments/613105854173937776/722271920787030026/Screenshot_109.png",
+		"https://cdn.discordapp.com/attachments/613105854173937776/722272766363041894/Screenshot_107.png",
+		"https://cdn.discordapp.com/attachments/613105854173937776/722273439465078854/Scienehasgonetoofar.png",
+		"https://cdn.discordapp.com/attachments/613105854173937776/722273689743130715/dreamseeker_2020-02-19_23-52-29.png"
 	];
     var response = responses[Math.floor(Math.random() * responses.length)];
     message.reply(response);
