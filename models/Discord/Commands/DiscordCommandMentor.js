@@ -40,7 +40,8 @@ class DiscordCommandMentor extends DiscordCommand {
 		"https://cdn.discordapp.com/attachments/613105854173937776/722272766363041894/Screenshot_107.png",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722273439465078854/Scienehasgonetoofar.png",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722273689743130715/dreamseeker_2020-02-19_23-52-29.png",
-	    "https://cdn.discordapp.com/attachments/613105854173937776/722267691490213929/mspaint_2020-02-23_03-21-51.png"
+	    "https://cdn.discordapp.com/attachments/613105854173937776/722267691490213929/mspaint_2020-02-23_03-21-51.png",
+		"https://cdn.discordapp.com/attachments/134722036353204224/722263699527565312/coggers.png"
 	];
     var response = responses[Math.floor(Math.random() * responses.length)];
     message.reply(response);
