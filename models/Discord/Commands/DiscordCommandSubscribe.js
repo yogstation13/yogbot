@@ -9,11 +9,11 @@ class DiscordCommandSubscribe extends DiscordCommand {
     onRun(message, permissions, args) {
         var config = this.subsystem.manager.getSubsystem("Config").config;
         if (permissions.includes('unsubscribe')) {
-            var response = "You are already subscribed"
+            var response = "You are already subscribed."
         }
         else {
             message.member.addRole(config.discord_subscriber_role);
-            var response = "You are now a subscriber"
+            var response = "You are now a subscriber."
         }
 
         message.channel.send(response);
