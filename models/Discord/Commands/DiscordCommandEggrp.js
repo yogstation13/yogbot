@@ -16,6 +16,7 @@ class DiscordCommandEggrp extends DiscordCommand {
 		"https://cdn.discordapp.com/attachments/458282555284783114/572244819737313312/EGG.jpg",
 		"https://cdn.discordapp.com/attachments/458282555284783114/572244843737120781/FillyEgg.jpg",
 		"https://cdn.discordapp.com/attachments/458282555284783114/572244886573809676/KitchenEGGRp.png",
+	    	"https://cdn.discordapp.com/attachments/293085045743157248/724392616984182894/unknown.png",
 		"https://cdn.discordapp.com/attachments/458282555284783114/572244896736608276/Hanako.jpg",
 		"https://cdn.discordapp.com/attachments/458282555284783114/572244899382951966/EggRp.png",
 		"https://cdn.discordapp.com/attachments/458282555284783114/572244911856812032/pickled-eggs-vertical-a-2000.png",
