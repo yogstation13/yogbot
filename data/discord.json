@@ -40,7 +40,7 @@
       "inherits": false,
       "permissions": ["unsubscribe"]
     },
-	"Lore": {
+    "Lore": {
       "inherits": false,
       "permissions": ["unlore"]
 	},
