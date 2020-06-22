@@ -40,6 +40,10 @@
       "inherits": false,
       "permissions": ["unsubscribe"]
     },
+	"Lore": {
+      "inherits": false,
+      "permissions": ["unlore"]
+	},
     "Wiki": {
       "inherits": false,
       "permissions": ["loreban"]
