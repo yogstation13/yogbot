@@ -47,7 +47,7 @@ class DiscordCommandActivity extends DiscordCommand {
 						ranklen = rank.name.length;
 				}
 				
-				results = await query('SELECT username,rank FROM web_admins'); // get the admins
+				results = await query('SELECT username,web_admins.rank FROM web_admins'); // get the admins
 				let admins = {};
 				let adminlen = 8;
 				for(let admin of results) {
