@@ -58,7 +58,7 @@ class DiscordCommandActivity extends DiscordCommand {
 						adminlen = admin.username.length;
 				}
 				
-				results = await query ('SELECT ckey,Sum((Unix_timestamp(`left`)-Unix_timestamp(datetime))/3600) AS activity FROM erro_connection_log WHERE `left` > (Now() - INTERVAL 2 week) GROUP BY ckey;'); // get the activity
+				results = await query ('SELECT ckey,Sum((Unix_timestamp(`left`)-Unix_timestamp(datetime))/3600) AS activity FROM erro_connection_log WHERE `left` > (Now() - INTERVAL 2 week) AND `left` IS NOT NULL GROUP BY ckey;'); // get the activity
 				let activity = {};
 				for(let user of results) {
 					activity[user.ckey] = +user.activity;
