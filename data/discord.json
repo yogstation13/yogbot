@@ -5,10 +5,10 @@
       "permissions": []
     },
     "council": {
-      "inherits": "lead developer",
+      "inherits": "headcoder",
       "permissions": []
     },
-    "lead developer": {
+    "headcoder": {
       "inherits": "maintainer",
       "permissions": ["addao"]
     },
@@ -22,7 +22,7 @@
     },
     "retmin": {
       "inherits": "mentor",
-      "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "kickself", "toggleooc", "note"]
+      "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "kickself", "toggleooc", "note", "staffban"]
     },
     "mentor": {
       "inherits": false,
