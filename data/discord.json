@@ -43,6 +43,10 @@
     "Wiki": {
       "inherits": false,
       "permissions": ["loreban"]
+    },
+    "notes": {
+      "inherits": false,
+      "permissions": ["note"]
     }
   },
   "admins": ["115886044162949123"]
