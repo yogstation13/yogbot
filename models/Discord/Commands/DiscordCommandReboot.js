@@ -19,19 +19,7 @@ class DiscordCommandReboot extends DiscordCommand {
 
     switch (rebootOption) {
     case 'hard':
-        https.get(config.reboot_url, (resp) => {
-          let data = '';
-
-          resp.on('data', (chunk) => {
-            data += chunk;
-          });
-
-          resp.on('end', () => {
-            console.log(data);
-          });
-        });
-        message.reply('Hard rebooting server.');
-    
+        message.reply('NO STOP IT, IT WONT WORK. STOP TRYING TO DO !REBOOT HARD. ***IT. IS. NOT. GOING. TO. WORK.*** THIS IS WHY OUR ADMIN TEAM IS A FAILURE!');
       break;
     case 'soft':
       var request = "?reboot";
