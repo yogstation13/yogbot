@@ -19,7 +19,7 @@ class DiscordCommandReboot extends DiscordCommand {
 
     switch (rebootOption) {
     case 'hard':
-        message.reply('@headcoder @host - Staff are kindly requesting you assist in rebooting the server.');
+        message.reply('<@&134720989593337856> <@&370686425194037248> - Staff are kindly requesting you assist in rebooting the server.');
       break;
     case 'soft':
       var request = "?reboot";
