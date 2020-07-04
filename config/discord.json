@@ -8,6 +8,7 @@
   "discord_subscriber_role": "1",
   "discord_loreban_role": 716784185192480798,
   "discord_tempban_interval": 15000,
+  "discord_jester_role": "539846767827746817",
   "asay_webhook_url": "https://discordapp.com/api/webhooks/eW91IGFyZSBhIGh1Z2UgbmVyZCBpZiB5b3UgYXJlIHJlYWRpbmcgdGhpcw==",
   "git_update": true
 }
