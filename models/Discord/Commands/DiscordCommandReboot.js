@@ -19,7 +19,7 @@ class DiscordCommandReboot extends DiscordCommand {
 
     switch (rebootOption) {
     case 'hard':
-        message.reply('DM JamieD12 or TehLadyKay for TGS Access in order to use this feature');
+        message.reply('DM JamieD12 or TehLadyK for TGS Access in order to use this feature');
       break;
     case 'soft':
       var request = "?reboot";
