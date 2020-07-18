@@ -67,6 +67,8 @@ class DiscordCommandInfo extends DiscordCommand {
 						green: "12a125",
 						blue: "1242a1",
 						red: "a11212",
+						gamma: "d6690a",
+						epsilon: "617444",
 						delta: "2e0340"
 					};
 
