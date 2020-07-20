@@ -23,6 +23,7 @@ class DiscordCommandStaffban extends DiscordCommand {
             if (member.roles.has(config.discord_firstwarning_role)) {	
                 member.addRole(config.discord_secondwarning_role);	
                 var response = "User was given the second warning role."
+	    }
         }
         else {
             member.addRole(config.discord_firstwarning_role);	
