@@ -90,8 +90,24 @@ class DiscordCommandMentor extends DiscordCommand {
 		"https://cdn.discordapp.com/attachments/734475284446707753/734482509508902953/dreamseeker_2020-01-09_01-45-15.png",
 		"https://cdn.discordapp.com/attachments/734475284446707753/734483353713115287/Discord_2019-10-29_13-38-10.png",
 		"https://cdn.discordapp.com/attachments/734475284446707753/734483525637767199/ApplicationFrameHost_2019-10-27_13-54-39.png",
-		"https://cdn.discordapp.com/attachments/734475284446707753/734485872841326592/5vj5PGEsKt.gif"
-	];
+		"https://cdn.discordapp.com/attachments/734475284446707753/734485872841326592/5vj5PGEsKt.gif",
+		"https://cdn.discordapp.com/attachments/734475284446707753/734508105592995961/ss13_bigfuckingcarp.png",
+		"https://cdn.discordapp.com/attachments/734475284446707753/734508169178644500/ss13_alexkaraheal.PNG",
+		"https://cdn.discordapp.com/attachments/734475284446707753/734508216146460844/ss13_highnoon.png",
+		"https://cdn.discordapp.com/attachments/734475284446707753/734508255392301136/ss13_skewium.png",
+		"https://cdn.discordapp.com/attachments/734475284446707753/734508295309623417/ss13_skub.png",
+		"https://cdn.discordapp.com/attachments/734475284446707753/734508330898292796/ss13_golemtraps.PNG",
+		"https://cdn.discordapp.com/attachments/734475284446707753/734508485290754048/ss13_eggdog.png",
+		"https://cdn.discordapp.com/attachments/734475284446707753/734508634595393536/SS13_yogstation_profile_pic.png",
+		"https://cdn.discordapp.com/attachments/134720091576205312/715982133029765200/goat.png",
+		"https://cdn.discordapp.com/attachments/734475284446707753/734511998930518086/ss13_thankstrump.png",
+		"https://cdn.discordapp.com/attachments/734475284446707753/734531895299276830/halfadoor.png",
+		"https://cdn.discordapp.com/attachments/734475284446707753/734532354915434566/FREEMINER_RESCUE.png",
+		"https://cdn.discordapp.com/attachments/734475284446707753/734532409042665552/HobbleCrystal.png",
+		"https://cdn.discordapp.com/attachments/734475284446707753/734532488478851142/Screenshot_4.png",
+		"https://cdn.discordapp.com/attachments/734475284446707753/734532569961463878/fatal_error.png",
+		"https://cdn.discordapp.com/attachments/134720091576205312/734599512890277898/unknown.png",
+	];	
     var response = responses[Math.floor(Math.random() * responses.length)];
     message.reply(response);
   }
