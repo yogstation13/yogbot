@@ -105,6 +105,11 @@ class SubsystemDiscord extends Subsystem {
         message.channel.send("When you code it");
       }
     }
+      if(lowermsg.match(/\brev(s?)\b/)|| lowermsg.indexOf("revolution") != -1) {
+      	  if(lowermsg.indexOf("rework") != -1) {
+        message.channel.send("When you code it");
+      }
+    }  
 
 	if(message.mentions.roles.has(config.discord_jester_role)) {
 		if(!message.member.roles.has(config.discord_jester_role)) {
