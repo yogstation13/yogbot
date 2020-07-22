@@ -37,7 +37,7 @@ class DiscordCommandWiki extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/607402553143197696/734844239200124938/unknown.png",
         "https://cdn.discordapp.com/attachments/607402553143197696/734844114482495518/unknown.png",
         "https://cdn.discordapp.com/attachments/607402553143197696/734844019624116274/unknown.png",
-        "https://cdn.discordapp.com/attachments/607402553143197696/734843632812818472/unknown.png",
+        "https://cdn.discordapp.com/attachments/607402553143197696/734843632812818472/unknown.png"
 	];	
     var response = responses[Math.floor(Math.random() * responses.length)];
     message.reply(response);
