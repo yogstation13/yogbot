@@ -3,7 +3,7 @@ const DiscordCommand = require('../DiscordCommand.js');
 class DiscordCommandStaffban extends DiscordCommand {	
 
     constructor(subsystem) {	
-        super("staffban", "Ban someone from the staff public channel.", 'staffban', subsystem);	
+        super("staffban", "Gives a person 1st and 2nd warning staff public role, then bans them.", 'staffban', subsystem);	
     }	
 
     onRun(message, permissions, args) {	
