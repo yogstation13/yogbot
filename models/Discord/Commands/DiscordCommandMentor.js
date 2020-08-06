@@ -1,4 +1,5 @@
 const DiscordCommand = require('../DiscordCommand.js');
+var Discord = require('discord.js');
 
 class DiscordCommandMentor extends DiscordCommand {
 
@@ -107,7 +108,32 @@ class DiscordCommandMentor extends DiscordCommand {
 		"https://cdn.discordapp.com/attachments/734475284446707753/734532488478851142/Screenshot_4.png",
 		"https://cdn.discordapp.com/attachments/734475284446707753/734532569961463878/fatal_error.png",
 		"https://cdn.discordapp.com/attachments/134720091576205312/734599512890277898/unknown.png",
-	];	
+		//August 2020 update goes here.
+		[	"Title" : "",
+			"Author": "",
+			"Embed" : ""
+		]
+	  ];	
+
+	  const embed = new Discord.RichEmbed();
+
+	  embed.setAuthor("MBrain", "https://cdn.discordapp.com/emojis/670747692653084703.png?v=1");
+	  embed.setDescription("Join the server now by using " + config.server_join_address);
+	  embed.addField("Players online:", results.data, true);
+	  embed.addField("Current round:", round_id, true);
+	  embed.addField("Round duration:", round_duration + " minutes", true);
+	  embed.addField("Shuttle status:", shuttle_modes_strings[shuttle_mode], true);
+	  if (timer_display.includes(shuttle_mode)) {
+		  embed.addField("Shuttle timer:", Math.round(parseInt(shuttle_time) / 60) + " minutes", true);
+	  }
+	  embed.addField("Security level:", security_level, true);
+	  if (adminwho.trim().length) {
+		  embed.addField("Admins online:", adminwho, false); //this field has a dynamic size, and should be the last field ~~Nich
+	  }
+	  embed.setColor(alert_colors[security_level]);
+
+	  message.channel.send({ embed });
+
     var response = responses[Math.floor(Math.random() * responses.length)];
     message.reply(response);
   }
