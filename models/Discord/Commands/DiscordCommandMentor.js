@@ -1,5 +1,4 @@
 const DiscordCommand = require('../DiscordCommand.js');
-var Discord = require('discord.js');
 
 class DiscordCommandMentor extends DiscordCommand {
 
