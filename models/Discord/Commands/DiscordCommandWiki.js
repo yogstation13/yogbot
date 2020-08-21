@@ -38,6 +38,29 @@ class DiscordCommandWiki extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/607402553143197696/734844114482495518/unknown.png",
         "https://cdn.discordapp.com/attachments/607402553143197696/734844019624116274/unknown.png",
         "https://cdn.discordapp.com/attachments/607402553143197696/734843632812818472/unknown.png"
+        //August update goes here
+        "https://cdn.discordapp.com/attachments/731402515970654233/735757838634451004/maybe_you_say..PNG",
+        "https://cdn.discordapp.com/attachments/734475284446707753/735899938554249226/unknown.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/736304632909004870/Untitled.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/736304669768548482/uLvLwzf.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/736304700458270770/C3bbqmd.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/736304724340637696/1pChMY0.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/736304757303541820/n5dMiKT.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/736304783471935609/N1TGs7U.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/736304811539955783/eo59YKl.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/736304845740441680/lGdqCvI.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/736304874119102544/xZpXlN2.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/736304903424573450/SogNNoN.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/738444411226030090/ApplicationFrameHost_WqQTNR2KcL.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/738533939047825428/Discord_2020-07-30_19-09-17.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/739509921908916255/fzxbQO2.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/739509995296784484/dwIqBr8.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/739510144039125033/svGEufI.png",
+        "https://i.imgur.com/fdgoo3A.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/741353085179265067/unknown.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/745649688945885264/unknown.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/745726429605527572/Meme_Wiki.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/746123876928454686/unknown.png"
 	];	
     var response = responses[Math.floor(Math.random() * responses.length)];
     message.reply(response);
