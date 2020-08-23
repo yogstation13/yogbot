@@ -37,8 +37,9 @@ class DiscordCommandWiki extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/607402553143197696/734844239200124938/unknown.png",
         "https://cdn.discordapp.com/attachments/607402553143197696/734844114482495518/unknown.png",
         "https://cdn.discordapp.com/attachments/607402553143197696/734844019624116274/unknown.png",
-        "https://cdn.discordapp.com/attachments/607402553143197696/734843632812818472/unknown.png"
+        "https://cdn.discordapp.com/attachments/607402553143197696/734843632812818472/unknown.png",
         //August update goes here
+        "https://cdn.discordapp.com/attachments/607402553143197696/737398836443742289/mBreadMonkey.jpg",
         "https://cdn.discordapp.com/attachments/731402515970654233/735757838634451004/maybe_you_say..PNG",
         "https://cdn.discordapp.com/attachments/734475284446707753/735899938554249226/unknown.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/736304632909004870/Untitled.png",
