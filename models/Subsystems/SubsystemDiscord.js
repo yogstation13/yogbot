@@ -106,13 +106,6 @@ class SubsystemDiscord extends Subsystem {
       }
     }
 
-	if(message.mentions.roles.has(config.discord_jester_role)) {
-		if(!message.member.roles.has(config.discord_jester_role)) {
-			message.reply("It appears you have, for the first time, engaged in the dastardly action to ping Jester! For this crime you have been assigned the role of Jester. Congratulations on your promotion!");
-			message.member.addRole(config.discord_jester_role);
-		}
-	}
-
     if (firstCharacter === config.discord_command_character) {
       var split = content.split(" ");
 
