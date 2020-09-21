@@ -19,7 +19,7 @@ jobs:
         registry: docker.pkg.github.com
         tags: ${{github.sha}}
     - name: Deploy
-      uses: steebchen/kubectl@v1.0.0
+      uses: Consensys/kubernetes-action@72b76db38fa0183d72d4080c2fcf63764919c688
       env:
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
       with:
