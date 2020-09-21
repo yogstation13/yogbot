@@ -5,7 +5,7 @@ class RouterPathHealth extends RouterPath {
     super(subsystem, router);
 
     this.router.get("/health", (req, res) => {
-      const discordsys = this.subsystem.manager.getSubsystem("Config");
+      const discordsys = this.subsystem.manager.getSubsystem("Discord");
       
       //cant get the subsystem, something borked
       if(!discordsys) return res.write("Cant get Discord subsystem").end(500);
