@@ -50,4 +50,4 @@ class DiscordCommandMoja extends DiscordCommand {
 
 }
 
-module.exports = DiscordCommandOak;
+module.exports = DiscordCommandMoja;
