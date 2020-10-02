@@ -42,7 +42,12 @@ class DiscordCommandMoja extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/734475284446707753/758264927169019944/Clown_shuttle.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/758264960337313802/mcdonalds.jpg",
         "https://cdn.discordapp.com/attachments/734475284446707753/758265102234943488/unknown.png",
-        "https://cdn.discordapp.com/attachments/734475284446707753/758265354224271370/Moja.gif"
+        "https://cdn.discordapp.com/attachments/734475284446707753/758265354224271370/Moja.gif",
+        //September update goes here
+        "https://cdn.discordapp.com/attachments/734475284446707753/759871199382732863/unknown.png",
+        "https://cdn.discordapp.com/attachments/377098618974240768/760312786848317461/unknown.png",
+        "https://cdn.discordapp.com/attachments/377098618974240768/760312928984891492/unknown.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/760910981274009610/unknown.png"
 	];
     var response = responses[Math.floor(Math.random() * responses.length)];
     message.channel.send(response);
