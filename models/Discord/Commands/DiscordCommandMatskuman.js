@@ -1,4 +1,5 @@
 const DiscordCommand = require('../DiscordCommand.js');
+var Discord = require('discord.js');
 
 class DiscordCommandMatskuman extends DiscordCommand {
 
@@ -15,7 +16,15 @@ class DiscordCommandMatskuman extends DiscordCommand {
 			"http://i0.kym-cdn.com/photos/images/original/001/336/017/e85.png"
 		];
 		var response = responses[Math.floor(Math.random() * responses.length)];
-		message.channel.send(response);
+		var randomColor = Math.floor(Math.random()*16777215).toString(16);
+	
+		const embed = new Discord.RichEmbed()
+			.setColor('#'+randomColor) // Random Color
+			.setTitle('Matskuman.') // Set to title whenever it is added
+			.setImage(response)
+			//.setFooter(author) // Uncomment when we have authors
+
+		message.channel.send(embed);
 	}
 
 }

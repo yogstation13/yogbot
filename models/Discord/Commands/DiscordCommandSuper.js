@@ -1,4 +1,5 @@
 const DiscordCommand = require('../DiscordCommand.js');
+var Discord = require('discord.js');
 
 class DiscordCommandSuper extends DiscordCommand {
 
@@ -20,8 +21,16 @@ class DiscordCommandSuper extends DiscordCommand {
 		"https://i.imgur.com/i87kuZR.png",
 		"https://i.imgur.com/0J2DypJ.png"
 	];
-    var response = responses[Math.floor(Math.random() * responses.length)];
-    message.reply(response);
+	var response = responses[Math.floor(Math.random() * responses.length)];
+	var randomColor = Math.floor(Math.random()*16777215).toString(16);
+	
+	const embed = new Discord.RichEmbed()
+		.setColor('#'+randomColor) // Random Color
+		.setTitle('Snek') // Set to title whenever it is added
+		.setImage(response)
+		//.setFooter(author) // Uncomment when we have authors
+
+    message.reply(embed);
   }
 
 }

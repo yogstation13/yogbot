@@ -1,4 +1,5 @@
 const DiscordCommand = require('../DiscordCommand.js');
+var Discord = require('discord.js');
 
 class DiscordCommandSwiss extends DiscordCommand {
 
@@ -20,8 +21,14 @@ class DiscordCommandSwiss extends DiscordCommand {
 		"https://i.imgur.com/yJ3LIGn.jpg",
 		"https://i.imgur.com/r24De1h.jpg"
 	];
-    var response = responses[Math.floor(Math.random() * responses.length)];
-    message.reply(response);
+	var response = responses[Math.floor(Math.random() * responses.length)];
+	const embed = new Discord.RichEmbed()
+	.setColor('#'+randomColor) // Random Color
+	.setTitle('Swiss Image') // Set to title whenever it is added
+	.setImage(response)
+	//.setFooter(author) // Uncomment when we have authors
+
+    message.reply(embed);
   }
 
 }
