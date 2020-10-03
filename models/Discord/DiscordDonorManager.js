@@ -1,5 +1,4 @@
-const https = require('https');
-
+// this handles both donors and the verified role
 class DiscordDonorManager {
     constructor(subsystem) {
         this.subsystem = subsystem;
@@ -38,14 +37,21 @@ class DiscordDonorManager {
                 }
 
                 let donor_role;
+                let verified_role;
                 for(let role of guild.roles.values()) {
                     if(role.name == "donator") {
                         donor_role = role;
+                    }
+                    if(role.name == "server/discord linked") {
+                        verified_role = role;
                     }
                 }
 
                 if(!donor_role) {
                     throw "Cannot find donor role";
+                }
+                if(!verified_role) {
+                    throw "Cannot find 'server/discord linked' role";
                 }
 
                 let results = await query('SELECT DISTINCT ckey FROM erro_donors WHERE (expiration_time > Now()) AND (revoked IS null);');
@@ -67,6 +73,10 @@ class DiscordDonorManager {
                             this.subsystem.manager.logger.log("info", "Giving donor role to " + ckey + " (" + discord_id + ")");
                             await member.addRole(donor_role);
                         }
+                        if(!member.roles.has(verified_role.id)) {
+                            this.subsystem.manager.logger.log("info", "Giving verified role to " + ckey + " (" + discord_id + ")");
+                            await member.addRole(verified_role);
+                        }
                     } else if(donor_ckeys.has(ckey)) {
                         this.subsystem.manager.logger.log("error", "Cannot give donor role to ckey " + ckey + " discord id " + discord_id + " - discord ID not found");
                     }
@@ -74,9 +84,14 @@ class DiscordDonorManager {
                 let members_to_ping = [];
                 try {
                     for(let [discord_id, member] of guild.members) {
-                        if(!linked_discordids.has(discord_id) && member.roles.has(donor_role.id)) {
+                        let has_linked = !linked_discordids.has(discord_id);
+                        if(has_linked && member.roles.has(donor_role.id)) {
                             members_to_ping.push(discord_id);
                             await member.removeRole(donor_role);
+                        }
+                        if(has_linked && member.roles.has(verified_role.id)) {
+                            this.subsystem.manager.logger.log("info", "Removing verified role from" + discord_id);
+                            await member.removeRole(verified_role);
                         }
                     }
                 } finally {
