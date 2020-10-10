@@ -1,4 +1,5 @@
 const DiscordCommand = require('../DiscordCommand.js');
+var Discord = require('discord.js');
 
 class DiscordCommandCorgi extends DiscordCommand {
 
@@ -16,7 +17,15 @@ class DiscordCommandCorgi extends DiscordCommand {
           "https://img.buzzfeed.com/buzzfeed-static/static/2014-01/enhanced/webdr05/10/11/enhanced-buzz-16774-1389370807-2.jpg?no-auto"
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
-        message.channel.send(response);
+        var randomColor = Math.floor(Math.random()*16777215).toString(16);
+	
+        const embed = new Discord.RichEmbed()
+          .setColor('#'+randomColor) // Random Color
+          .setTitle('Random Corgi') // Set to title whenever it is added
+          .setImage(response)
+          //.setFooter(author) // Uncomment when we have authors
+
+        message.channel.send(embed);
     }
 
 }

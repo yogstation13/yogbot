@@ -1,4 +1,5 @@
 const DiscordCommand = require('../DiscordCommand.js');
+var Discord = require('discord.js');
 
 class DiscordCommandKtlwjec extends DiscordCommand {
 
@@ -26,8 +27,16 @@ class DiscordCommandKtlwjec extends DiscordCommand {
 		"https://i.pinimg.com/564x/d4/81/5c/d4815c73b98d87b6e3cbd0c5d4e75a22.jpg",
 		"https://i.pinimg.com/564x/fc/00/c8/fc00c8b0754a27096bd870901fa70d90.jpg"
 	];
-    var response = responses[Math.floor(Math.random() * responses.length)];
-    message.channel.send(response);
+	var response = responses[Math.floor(Math.random() * responses.length)];
+	var randomColor = Math.floor(Math.random()*16777215).toString(16);
+	
+	const embed = new Discord.RichEmbed()
+		.setColor('#'+randomColor) // Random Color
+		.setTitle('Ktlwjec Image') // Set to title whenever it is added
+		.setImage(response)
+		//.setFooter(author) // Uncomment when we have authors
+
+    message.channel.send(embed);
   }
 
 }

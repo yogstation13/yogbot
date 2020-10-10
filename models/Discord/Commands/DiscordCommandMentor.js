@@ -1,4 +1,5 @@
 const DiscordCommand = require('../DiscordCommand.js');
+var Discord = require('discord.js');
 
 class DiscordCommandMentor extends DiscordCommand {
 
@@ -190,8 +191,16 @@ class DiscordCommandMentor extends DiscordCommand {
 		"https://cdn.discordapp.com/attachments/734475284446707753/745860125407051806/unknown.png",
 		"https://cdn.discordapp.com/attachments/734475284446707753/746232195210936340/unknown.png"
 	  ];	
-    var response = responses[Math.floor(Math.random() * responses.length)];
-    message.reply(response);
+	var response = responses[Math.floor(Math.random() * responses.length)];
+	
+	// Mentors get the funny cyan
+	const embed = new Discord.RichEmbed()
+		.setColor('#11df7e') // Classic Mcyan
+		.setTitle('Mentor Image') // Set to title whenever it is added
+		.setImage(response)
+		//.setFooter(author) // Uncomment when we have authors
+
+    message.reply(embed);
   }
 
 }

@@ -1,4 +1,5 @@
 const DiscordCommand = require('../DiscordCommand.js');
+var Discord = require('discord.js');
 
 class DiscordCommandEggrp extends DiscordCommand {
 
@@ -33,8 +34,16 @@ class DiscordCommandEggrp extends DiscordCommand {
 		"https://cdn.discordapp.com/attachments/734475284446707753/758277438764744704/image0.png",
 		"https://cdn.discordapp.com/attachments/734475284446707753/761010462766399498/unknown-24.png"
 	];
-    var response = responses[Math.floor(Math.random() * responses.length)];
-    message.reply(response);
+	var response = responses[Math.floor(Math.random() * responses.length)];
+	var randomColor = Math.floor(Math.random()*16777215).toString(16);
+	
+	const embed = new Discord.RichEmbed()
+		.setColor('#'+randomColor) // Random Color
+		.setTitle('EggRP Image') // Set to title whenever it is added
+		.setImage(response)
+		//.setFooter(author) // Uncomment when we have authors
+		
+    message.reply(embed);
   }
 
 }

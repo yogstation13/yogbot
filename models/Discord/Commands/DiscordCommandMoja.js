@@ -1,4 +1,5 @@
 const DiscordCommand = require('../DiscordCommand.js');
+var Discord = require('discord.js');
 
 class DiscordCommandMoja extends DiscordCommand {
 
@@ -50,7 +51,15 @@ class DiscordCommandMoja extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/734475284446707753/760910981274009610/unknown.png"
 	];
     var response = responses[Math.floor(Math.random() * responses.length)];
-    message.channel.send(response);
+    var randomColor = Math.floor(Math.random()*16777215).toString(16);
+	
+    const embed = new Discord.RichEmbed()
+      .setColor('#'+randomColor) // Random Color
+      .setTitle('Moja Image') // Set to title whenever it is added
+      .setImage(response)
+      //.setFooter(author) // Uncomment when we have authors
+
+    message.channel.send(embed);
   }
 
 }
