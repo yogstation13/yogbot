@@ -1,13 +1,24 @@
 const DiscordCommand = require('../DiscordCommand.js');
 
 
-class DiscordCommandMyNotes extends DiscordCommand {
+class DiscordCommandDNotes extends DiscordCommand {
 
   constructor(subsystem) {
-    super("mynotes", "Checks your notes", null, subsystem);
+    super("dnotes", "Checks a Discord users notes if they have their account linked", 'note', subsystem);
   }
 
   onRun(message, permissions, args) {
+    var config = this.subsystem.manager.getSubsystem("Config").config;
+    if(args.length < 1) {
+      message.reply("Usage is `" + config.discord_command_character + "dnotes [@UserName`");
+      return;
+    }
+    var user = undefined;
+
+    for (var auser of message.mentions.users.array()) {
+      user = auser;
+      break;
+    }
 
     var dbSubsystem = this.subsystem.manager.getSubsystem("Database");
 
@@ -17,19 +28,19 @@ class DiscordCommandMyNotes extends DiscordCommand {
         message.reply("Error contacting database, try again later.");
         return;
       }
-      var userID = message.author.id
+      var userID = auser
       if(!userID) {
         message.reply("Unknown Error while getting Discord ID!")
         return;
       }
 
-      connection.query("SELECT * FROM `erro_player` WHERE `discord_id` = ?", [userID], (error, results, fields) => {
+      connection.query("SELECT * FROM `erro_player` WHERE `discord_id` = ?", [userID.id], (error, results, fields) => {
         if (error) {
           message.reply("Error running select query, try again later.");
           return;
         }
         if (results.length == 0) {
-          message.reply("No linked BYOND account found. Are you sure you have linked your Discord to your BYOND?");
+          message.reply("No linked BYOND account found.");
           return;
         }
         if (results.length > 1) {
@@ -39,17 +50,16 @@ class DiscordCommandMyNotes extends DiscordCommand {
 
         var ckey = results[0].ckey
 
-        connection.query('SELECT * FROM `erro_messages` WHERE `targetckey` = ? AND `type`= "note" AND deleted = 0 AND (expire_timestamp > NOW() OR expire_timestamp IS NULL) AND `secret` = 0 ORDER BY `timestamp`', [ckey], (error, results, fields) => {
-          var guildMember = message.member;
+        connection.query('SELECT * FROM `erro_messages` WHERE `targetckey` = ? AND `type`= "note" AND deleted = 0 AND (expire_timestamp > NOW() OR expire_timestamp IS NULL) ORDER BY `timestamp`', [ckey], (error, results, fields) => {
           if (error) {
-            message.reply("Error getting notes, try again later.");
+            message.reply("Error running select query, try again later.");
           }
-          message.reply("Success. Check your Direct Messages.");
+
           if (results.length == 0) {
-            guildMember.sendMessage("You have no notes.");
+            message.reply("Player has no notes.");
           }
           else {
-            var msg = "Notes for " + ckey + "\n";
+            var msg = "Notes for " + userID + "\n";
             var shownNotes = [];
             for(var i = 0; i < results.length; i++){
               var result = results[i]
@@ -66,16 +76,19 @@ class DiscordCommandMyNotes extends DiscordCommand {
                 continue;
               }
               shownNotes.push(newmsg);
+              if(message.channel.id == config.discord_channel_admin || message.channel.id == config.discord_channel_council) {
+                newmsg += "   " + result.adminckey;
+              }
               newmsg += "```";
               if(msg.length + newmsg.length > 2000) {
-                guildMember.user.sendMessage(msg);
+                message.channel.send(msg);
                 msg = newmsg;
               }
               else {
                 msg += newmsg;
               }
             }
-            guildMember.user.sendMessage(msg);
+            message.channel.send(msg);
           }
           connection.release();
         });
@@ -88,4 +101,4 @@ class DiscordCommandMyNotes extends DiscordCommand {
 
 }
 
-module.exports = DiscordCommandMyNotes;
+module.exports = DiscordCommandDNotes;
