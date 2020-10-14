@@ -77,12 +77,9 @@ class DiscordCommandMyNotes extends DiscordCommand {
             }
             guildMember.user.sendMessage(msg);
           }
-          connection.release();
         });
       })
-
-
-
+      connection.release();
     });
   }
 

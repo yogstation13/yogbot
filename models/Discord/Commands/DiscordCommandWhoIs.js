@@ -51,6 +51,7 @@ class DiscordCommandWhoIs extends DiscordCommand {
         var ckey = results[0].ckey
         message.reply(userID + " belongs to the ckey '" + ckey +"'")
       })
+      connection.release();
     });
   }
 
