@@ -9,6 +9,10 @@
       "permissions": []
     },
     "headcoder": {
+      "inherits": "senior admin",
+      "permissions": []
+    },
+    "senior admin": {
       "inherits": "maintainer",
       "permissions": ["addao"]
     },
