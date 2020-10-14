@@ -90,12 +90,9 @@ class DiscordCommandDNotes extends DiscordCommand {
             }
             message.channel.send(msg);
           }
-          connection.release();
         });
       })
-
-
-
+      connection.release();
     });
   }
 
