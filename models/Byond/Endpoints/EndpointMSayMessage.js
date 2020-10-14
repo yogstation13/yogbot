@@ -29,7 +29,7 @@ class EndpointMSayMessage extends APIEndpoint {
     var discord = this.manager.subsystemManager.getSubsystem("Discord");
 
     var webhook_data = {
-        username: data.ckey,
+        name: data.ckey,
         content: (data.message || "").replace(/@everyone/gi, "*@*everyone").replace(/@here/gi, "*@*here")
     }
 
