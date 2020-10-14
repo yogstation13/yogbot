@@ -59,7 +59,7 @@ class DiscordCommandDNotes extends DiscordCommand {
             message.reply("Player has no notes.");
           }
           else {
-            var msg = "Notes for " + userID + "\n";
+            var msg = "Notes for " + userID + "/" + ckey + "\n";
             var shownNotes = [];
             for(var i = 0; i < results.length; i++){
               var result = results[i]
