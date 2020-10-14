@@ -22,6 +22,7 @@ class SubsystemDatabase extends Subsystem {
     this.pool = sql.createPool({
       connectionLimit: config.sql_connections,
       host: config.sql_host,
+      port: config.sql_port,
       user: config.sql_user,
       password: config.sql_password,
       database: config.sql_database
