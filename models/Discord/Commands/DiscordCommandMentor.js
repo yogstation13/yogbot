@@ -195,7 +195,7 @@ class DiscordCommandMentor extends DiscordCommand {
 	
 	// Mentors get the funny cyan
 	const embed = new Discord.RichEmbed()
-		.setColor('#11df7e') // Classic Mcyan
+		.setColor('#259e80') // Classic Mcyan
 		.setTitle('Mentor Image') // Set to title whenever it is added
 		.setImage(response)
 		//.setFooter(author) // Uncomment when we have authors
