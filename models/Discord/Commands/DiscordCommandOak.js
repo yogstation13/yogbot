@@ -9,9 +9,9 @@ class DiscordCommandOak extends DiscordCommand {
 
   onRun(message, permissions, args) {
     var responses = [
-		"https://i.imgur.com/BFV771G.png",
-		"https://i.imgur.com/BsfISII.png"
-	];
+	    "https://i.imgur.com/BFV771G.png",
+	    "https://i.imgur.com/BsfISII.png"
+    ];
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	const embed = new Discord.RichEmbed()
 		.setColor('#'+randomColor) // Random Color
