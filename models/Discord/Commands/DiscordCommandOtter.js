@@ -21,6 +21,7 @@ class DiscordCommandOtter extends DiscordCommand {
       "https://pbs.twimg.com/media/Ahc6LMJCIAMhk7s.jpg"
     ];
     var response = responses[Math.floor(Math.random() * responses.length)];
+    var randomColor = Math.floor(Math.random()*16777215).toString(16);
     const embed = new Discord.RichEmbed()
       .setColor('#'+randomColor) // Random Color
       .setTitle('Random Otter') // Set to title whenever it is added
