@@ -18,7 +18,7 @@ class DiscordCommandCorgi extends DiscordCommand {
           "https://cdn.discordapp.com/attachments/205784753352343552/767106937569280040/b6l73MX.jpg"
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
-        var randomColor = Math.floor(Math.random()*16777215).toString(16);	        message.channel.send(response);
+        var randomColor = Math.floor(Math.random()*16777215).toString(16);
 
         const embed = new Discord.RichEmbed()	
           .setColor('#'+randomColor) // Random Color	
