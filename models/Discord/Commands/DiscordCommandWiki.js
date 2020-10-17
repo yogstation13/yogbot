@@ -1,4 +1,5 @@
 const DiscordCommand = require('../DiscordCommand.js');
+var Discord = require('discord.js');
 
 class DiscordCommandWiki extends DiscordCommand {
 
@@ -66,8 +67,14 @@ class DiscordCommandWiki extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/734475284446707753/750754862441955399/unknown.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/759714228524941343/angry_morder.png"
 	];	
-    var response = responses[Math.floor(Math.random() * responses.length)];
-    message.reply(response);
+	var response = responses[Math.floor(Math.random() * responses.length)];
+	  
+	const embed = new Discord.RichEmbed()
+		.setColor('#ad1457) // M > W
+		.setTitle('Wiki Image') // Set to title whenever it is added
+		.setImage(response)
+		//.setFooter(author) // Uncomment when we have authors
+    message.reply(embed);
   }
 
 }
