@@ -11,7 +11,7 @@ class EndpointTicket extends APIEndpoint {
     var discord = this.manager.subsystemManager.getSubsystem("Discord");
 
     var webhook_data = {
-        name: data.roundid,
+        username: data.roundid,
         content: (("**" + data.user + ", Ticket #" + data.ticketid + ":** " + data.message) || "").replace(/@everyone/gi, "*@*everyone").replace(/@here/gi, "*@*here")
     }
 
