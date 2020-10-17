@@ -10,7 +10,7 @@ class DiscordCommandReboot extends DiscordCommand {
   onRun(message, permissions, args) {
     var config = this.subsystem.manager.getSubsystem("Config").config;
     if (args.length < 1) {
-      message.reply("Available reboot commands: \n     `" + config.discord_command_character + "reboot hard` Kills the server daemon and starts a new daemon. \n     `" + config.discord_command_character + "reboot soft` tells the server daemon to restart. \n     `" + config.discord_command_character + "reboot bot` tells the bot daemon to restart and update.");
+      message.reply("Available reboot commands: \n     `" + config.discord_command_character + "reboot soft` tells the server daemon to restart. \n     `");
       return;
     }
 
@@ -18,9 +18,6 @@ class DiscordCommandReboot extends DiscordCommand {
     this.subsystem.logger.log("info", message.author.username + "#" + message.author.discriminator + " (" + message.author.id + ") tried to reboot the server with the " + rebootOption + " reboot option.");
 
     switch (rebootOption) {
-    case 'hard':
-        message.reply('DM JamieD12 or TehLadyK for TGS Access in order to use this feature');
-      break;
     case 'soft':
       var request = "?reboot";
       byondConnector.request(request, (results) => {
@@ -32,13 +29,8 @@ class DiscordCommandReboot extends DiscordCommand {
         }
       });
       break;
-    case 'bot':
-      message.reply("Updating & Rebooting Bot.").then(() => {
-        process.exit(0);
-      });
-      break;
     default:
-      message.reply("Use either the `hard`, `soft` or `bot` option");
+      message.reply("Use the `soft` option");
       break;
 
     }
