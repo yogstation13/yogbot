@@ -74,7 +74,7 @@ class DiscordCommandWiki extends DiscordCommand {
 		.setTitle('Wiki Image') // Set to title whenever it is added
 		.setImage(response)
 		//.setFooter(author) // Uncomment when we have authors
-	message.reply(embed);
+	message.channel.send(embed);
   }
 
 }
