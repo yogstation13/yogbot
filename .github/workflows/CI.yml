@@ -5,10 +5,10 @@ on: ["pull_request", "push"]
 jobs:
   lint:
     runs-on: ubuntu-latest
-      steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Compile Code
-          run: |
-            npm install
-            npx tsc -b tsconfig.json
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Compile Code
+        run: |
+          npm install
+          npx tsc -b tsconfig.json
