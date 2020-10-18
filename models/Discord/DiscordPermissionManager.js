@@ -2,6 +2,7 @@ class DiscordPermissionManager {
   constructor(subsystemManager) {
     this.manager = subsystemManager;
 
+    // @ts-ignore
     this.permissions = require('../../data/discord.json');
   }
 

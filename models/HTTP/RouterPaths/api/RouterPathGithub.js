@@ -4,7 +4,7 @@ const GithubManager = require('../../../Github/GithubManager.js');
 
 class RouterPathGithub extends RouterPath {
   constructor(subsystem, router) {
-    super(subsystem, router, "/github");
+    super(subsystem, router);
 
     this.githubManager = new GithubManager(subsystem.manager);
     this.router.post("/github", bodyParser.text({ type: 'application/json' }), (req, res) => {
