@@ -27,7 +27,6 @@ class DiscordCommandStaffban extends DiscordCommand {
             member.addRole(config.discord_firstwarning_role);	
             var response = "User was given the first warning role."	
         }
-		
         message.channel.send(response);	
     }	
 

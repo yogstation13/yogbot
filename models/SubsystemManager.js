@@ -22,7 +22,7 @@ class SubsystemManager {
     const fs = require('fs');
     fs.readdir("./models/Subsystems/", (err, files) => {
       if (err) {
-        return this.logger("error", err);
+        return this.logger.error(err);
       }
 
       files.forEach(file => {
@@ -86,9 +86,7 @@ class SubsystemManager {
     this.logger = winston.createLogger({
       transports: [
         new winston.transports.Console({
-          format: winston.format.combine(winston.format.colorize(), this.formatSimple),
-          colorize: true,
-          json: false
+          format: winston.format.combine(winston.format.colorize(), this.formatSimple)
         }),
         new winston.transports.File({
           filename: "logs/error.log",

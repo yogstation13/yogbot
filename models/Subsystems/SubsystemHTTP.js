@@ -19,7 +19,7 @@ class SubsystemHTTP extends Subsystem {
   }
 
   setup(callback) {
-    super.setup();
+    super.setup(callback);
 
     this.app.set('view engine', 'pug')
 

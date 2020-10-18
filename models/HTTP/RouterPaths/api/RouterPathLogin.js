@@ -2,7 +2,7 @@ const RouterPath = require("../../RouterPath.js");
 
 class RouterPathLogin extends RouterPath {
   constructor(subsystem, router) {
-    super(subsystem, router, "/login");
+    super(subsystem, router);
   }
 
   get(req, res) {

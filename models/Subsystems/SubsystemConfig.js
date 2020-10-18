@@ -12,7 +12,7 @@ class SubsystemConfig extends Subsystem {
   }
 
   setup(callback) {
-    super.setup();
+    super.setup(callback);
 
     fs.readdir("./config/", (err, files) => {
       if (err) {

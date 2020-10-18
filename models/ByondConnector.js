@@ -27,7 +27,7 @@ class ByondConnector {
     var buffer = Buffer.from(data);
     var client = new net.Socket({
       readable: true,
-      writeable: true
+      writable: true
     });
 
     client.setTimeout(5000);
