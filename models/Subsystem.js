@@ -8,7 +8,7 @@ class Subsystem {
   }
 
   setup(callback) {
-    this.manager.logger.log("info, "Starting " + this.id + " subsystem.");
+    this.manager.logger.log("info", "Starting " + this.id + " subsystem.");
   }
 
   update() {}
