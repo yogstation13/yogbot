@@ -1,4 +1,5 @@
 const DiscordCommand = require('../DiscordCommand.js');
+var Discord = require('discord.js');
 
 class DiscordCommandCorgi extends DiscordCommand {
 
@@ -20,11 +21,11 @@ class DiscordCommandCorgi extends DiscordCommand {
         var response = responses[Math.floor(Math.random() * responses.length)];
         var randomColor = Math.floor(Math.random()*16777215).toString(16);
 
-        const embed = new Discord.RichEmbed()	
-          .setColor('#'+randomColor) // Random Color	
-          .setTitle('Random Corgi') // Set to title whenever it is added	
-          .setImage(response)	
-          //.setFooter(author) // Uncomment when we have authors	
+        const embed = new Discord.RichEmbed()
+          .setColor('#'+randomColor) // Random Color
+          .setTitle('Random Corgi') // Set to title whenever it is added
+          .setImage(response)
+          //.setFooter(author) // Uncomment when we have authors
 
         message.channel.send(embed);
     }
