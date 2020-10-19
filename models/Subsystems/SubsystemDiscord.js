@@ -23,7 +23,7 @@ class SubsystemDiscord extends Subsystem {
   }
 
   setup(callback) {
-    super.setup();
+    super.setup(callback);
     this.createLogger();
 
     var config = this.manager.getSubsystem("Config").config;

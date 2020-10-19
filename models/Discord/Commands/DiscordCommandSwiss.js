@@ -35,6 +35,8 @@ class DiscordCommandSwiss extends DiscordCommand {
 		"https://i.imgur.com/r24De1h.jpg"
 	];
 	var response = responses[Math.floor(Math.random() * responses.length)];
+	var randomColor = Math.floor(Math.random()*16777215).toString(16);
+
 	const embed = new Discord.RichEmbed()
 	.setColor('#'+randomColor) // Random Color
 	.setTitle('Swiss Image') // Set to title whenever it is added

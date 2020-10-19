@@ -1,3 +1,5 @@
+const Discord = require("discord.js");
+
 const DiscordCommand = require('../DiscordCommand.js');
 
 class DiscordCommandKMC extends DiscordCommand {

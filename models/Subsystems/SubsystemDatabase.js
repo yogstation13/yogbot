@@ -9,7 +9,7 @@ class SubsystemDatabase extends Subsystem {
   }
 
   setup(callback) {
-    super.setup();
+    super.setup(callback);
 
     var sql = require('mysql');
     var config = this.manager.getSubsystem("Config").config;

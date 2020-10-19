@@ -3,6 +3,7 @@ var fs = require('fs');
 class DiscordBanManager {
   constructor(subsystem) {
     this.subsystem = subsystem;
+    // @ts-ignore
     this.bans = require("../../data/softbans.json");
 
 
@@ -117,7 +118,7 @@ class DiscordBanManager {
   check(member) {
     for (var ban of this.bans) {
       if (ban.userID === member.user.id) {
-        member.addRole(config.discord_softban_role);
+        member.addRole(this.subsystem.manager.getSubsystem("Config").config.discord_softban_role);
       }
     }
   }

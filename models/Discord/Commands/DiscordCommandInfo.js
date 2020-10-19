@@ -72,7 +72,8 @@ class DiscordCommandInfo extends DiscordCommand {
 						delta: "2e0340"
 					};
 
-					round_duration = Math.round(round_duration/60);
+					// @ts-ignore
+					const round_duration_int = Math.round(parseInt(round_duration)/60);
 
 					const embed = new Discord.RichEmbed();
 
@@ -80,9 +81,11 @@ class DiscordCommandInfo extends DiscordCommand {
 					embed.setDescription("Join the server now by using " + config.server_join_address);
 					embed.addField("Players online:", results.data, true);
 					embed.addField("Current round:", round_id, true);
-					embed.addField("Round duration:", round_duration + " minutes", true);
+					embed.addField("Round duration:", round_duration_int + " minutes", true);
 					embed.addField("Shuttle status:", shuttle_modes_strings[shuttle_mode], true);
+					// @ts-ignore
 					if(timer_display.includes(shuttle_mode)) {
+						// @ts-ignore
 						embed.addField("Shuttle timer:", Math.round(parseInt(shuttle_time)/60) + " minutes", true);
 					}
 					embed.addField("Security level:", security_level, true);

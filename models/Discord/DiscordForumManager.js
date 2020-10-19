@@ -39,7 +39,7 @@ class DiscordForumManager {
       }
     }
 
-    function get_admin_ping(mentioned_name = "", default_to_staff = true) {
+    function get_admin_ping(mentioned_name = "", default_to_staff = 1) {
       let ckey = mentioned_name.toLowerCase().replace(/[^a-z0-9@]/gi, "");
       if(ckey) {
         for(let admin of admins) {
@@ -61,7 +61,7 @@ class DiscordForumManager {
     handle_channel(config.discord_channel_staff_applications, 'https://forums.yogstation.net/index.php?forums/administrator-applications.6/index.rss', /<title>(.+application)<\/title>\r?\n +<pubDate>.+<\/pubDate>\n +<link>(.+)<\/link>/g, 2, 1, -1);
     handle_channel(config.discord_channel_mentor_applications, 'https://forums.yogstation.net/index.php?forums/mentor-applications.206/index.rss', /<title>(.+application)<\/title>\r?\n +<pubDate>.+<\/pubDate>\n +<link>(.+)<\/link>/g, 2, 1, -1, 2);
 
-    async function handle_channel(channel_id, url, regex, regex_url_index, regex_title_index, regex_ping_index, default_ping_staff = true) {
+    async function handle_channel(channel_id, url, regex, regex_url_index, regex_title_index, regex_ping_index, default_ping_staff = 1) {
       let channel = guild.channels.get(channel_id);
       if(channel) {
         let text = await do_http(url);

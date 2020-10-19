@@ -10,6 +10,7 @@ class GithubManager {
   constructor(subsystemManager) {
     this.subsystemManager = subsystemManager;
     this.flags = [];
+    // @ts-ignore
     this.knownUsers = require("../../data/github.json");
 
     this.loadFlags();

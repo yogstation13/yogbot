@@ -9,7 +9,7 @@ class StringUtils {
 
     var alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@;,./?#~{}[]()*&^%$£!<>|+-=0123456789"
 
-    for (var i = 0; i < len; i++)
+    for (var i = 0; i < length; i++)
       string += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
 
     return string;
