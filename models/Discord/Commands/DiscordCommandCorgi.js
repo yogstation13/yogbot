@@ -9,16 +9,18 @@ class DiscordCommandCorgi extends DiscordCommand {
 
     onRun(message, permissions, args) {
         var responses = [
-          "https://img.buzzfeed.com/buzzfeed-static/static/2014-01/enhanced/webdr07/9/16/enhanced-buzz-23311-1389303550-35.jpg?no-auto",
-          "https://img.buzzfeed.com/buzzfeed-static/static/2014-01/enhanced/webdr06/9/16/enhanced-buzz-31339-1389303596-18.jpg?no-auto",
-          "https://img.buzzfeed.com/buzzfeed-static/static/2014-01/enhanced/webdr03/9/16/enhanced-buzz-22390-1389303880-0.jpg?no-auto",
-          "https://img.buzzfeed.com/buzzfeed-static/static/2014-01/enhanced/webdr02/9/17/enhanced-buzz-9156-1389305978-4.jpg?no-auto",
-          "https://img.buzzfeed.com/buzzfeed-static/static/2014-01/enhanced/webdr06/10/10/enhanced-buzz-17823-1389369072-2.jpg?no-auto",
-          "https://img.buzzfeed.com/buzzfeed-static/static/2014-01/enhanced/webdr05/10/11/enhanced-buzz-16774-1389370807-2.jpg?no-auto"
+          "https://cdn.discordapp.com/attachments/205784753352343552/767106936508121098/k9i7YLN.jpg",
+          "https://cdn.discordapp.com/attachments/205784753352343552/767106936775770163/r1isn2kqbiq01.jpg",
+          "https://cdn.discordapp.com/attachments/205784753352343552/767106936965169182/y99yj67o3utz.jpg",
+          "https://cdn.discordapp.com/attachments/205784753352343552/767106937166233600/kjc24vncs4811.jpg",
+          "https://cdn.discordapp.com/attachments/205784753352343552/767106937358647336/cdgz8cwgovez.jpg",
+	  "https://cdn.discordapp.com/attachments/205784753352343552/767106937803374622/830Bmqj.jpg",
+	  "https://cdn.discordapp.com/attachments/205784753352343552/767106937988186122/e05qeJD.jpg",
+          "https://cdn.discordapp.com/attachments/205784753352343552/767106937569280040/b6l73MX.jpg"
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
         var randomColor = Math.floor(Math.random()*16777215).toString(16);
-	
+
         const embed = new Discord.RichEmbed()
           .setColor('#'+randomColor) // Random Color
           .setTitle('Random Corgi') // Set to title whenever it is added
