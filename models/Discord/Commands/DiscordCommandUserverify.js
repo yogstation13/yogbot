@@ -21,7 +21,7 @@ class DiscordCommandUserverify extends DiscordCommand {
         }
         else {	
             member.addRole(config.discord_verify_role);
-			member.addRole(config.discord_announcements_role);	
+            member.addRole(config.discord_announcements_role);	
             var response = "User was manually verified."	
         }
         message.channel.send(response);	
