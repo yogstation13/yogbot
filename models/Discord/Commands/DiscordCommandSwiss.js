@@ -32,6 +32,15 @@ class DiscordCommandSwiss extends DiscordCommand {
 		"https://media.discordapp.net/attachments/293085045743157248/721906067876872233/unknown.png",
 		"https://cdn.discordapp.com/attachments/293085045743157248/715967055777759262/unknown.png",
 		"https://i.imgur.com/AL4rIhD.png",
+		"https://i.imgur.com/hIJmMkA.jpg",
+		"https://i.imgur.com/QPpz6jx.png",
+		"https://i.imgur.com/D7JlPg6.jpg",
+		"https://i.imgur.com/dqstIYp.png",
+		"https://i.imgur.com/6F0jwNU.jpg",
+		"https://i.imgur.com/SVWdHbY.jpg",
+		"https://i.imgur.com/xjUGdw7.jpg",
+		"https://i.imgur.com/dOx9elW.png",
+		"https://cdn.discordapp.com/attachments/134720091576205312/716381796694229023/unknown.png",
 		"https://i.imgur.com/r24De1h.jpg"
 	];
 	var response = responses[Math.floor(Math.random() * responses.length)];
