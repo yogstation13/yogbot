@@ -22,7 +22,7 @@
     },
     "staff": {
       "inherits": "retmin",
-      "permissions": []
+      "permissions": ["userverify"]
     },
     "retmin": {
       "inherits": "mentor",

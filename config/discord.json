@@ -12,6 +12,8 @@
   "discord_staffpublicban_role": "290926097028218884",
   "discord_tempban_interval": 15000,
   "discord_jester_role": "539846767827746817",
+  "discord_announcements_role": "700740529947672697",
+  "discord_verify_role": "768196461313523727",
   "asay_webhook_url": "https://discordapp.com/api/webhooks/eW91IGFyZSBhIGh1Z2UgbmVyZCBpZiB5b3UgYXJlIHJlYWRpbmcgdGhpcw==",
   "git_update": true
 }
