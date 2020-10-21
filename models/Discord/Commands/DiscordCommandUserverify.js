@@ -3,7 +3,7 @@ const DiscordCommand = require('../DiscordCommand.js');
 class DiscordCommandUserverify extends DiscordCommand {	
 
     constructor(subsystem) {	
-        super("userverify", "Verifies someone on the discord. Use again to unverify someone.", 'userverify', subsystem);	
+        super("userverify", "Verifies someone on the discord. Use again to unverify someone.", "userverify", subsystem);	
     }	
 
     onRun(message, permissions, args) {	
