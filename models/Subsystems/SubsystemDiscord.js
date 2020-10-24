@@ -229,11 +229,11 @@ class SubsystemDiscord extends Subsystem {
     }
 
     let changelogString = "";
-    if (changelog && changelog.error) {
+    if (changelog.error) {
       changelogString = "There was an error compilling changelog: " + changelog.error;
     }
-    else if(changelog){
-      for (var item of changelog) {
+    else {
+      for (var item of changelog.changelog) {
         changelogString += ":" + item.emoji + ":: " + item.body + "\n";
       }
       if (changelogString.length > 800) {
@@ -397,7 +397,16 @@ class SubsystemDiscord extends Subsystem {
           return { error: cltype + " is not a recognized changelog option" };
       }
     }
-    return changelog
+    if (foundOpeningTag && !foundClosingTag) {
+      return { error: "Changelog closing tag was never found" };
+    }
+
+    if (!foundOpeningTag) {
+      return { error: "Changelog not found" };
+    }
+
+    var compiledChangelog = { "username": username, "changelog": changelog };
+    return compiledChangelog;
   }
 }
 
