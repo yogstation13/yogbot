@@ -6,7 +6,6 @@ const DiscordForumManager = require('../Discord/DiscordForumManager.js');
 const DiscordDonorManager = require('../Discord/DiscordDonorManager.js');
 const fs = require('fs');
 const winston = require('winston');
-const ByondAPI = require('../Byond/ByondAPI.js');
 const https = require('https');
 const StringUtils = require('../Utils/String.js');
 
