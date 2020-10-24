@@ -217,12 +217,15 @@ class SubsystemDiscord extends Subsystem {
       return;
     }
     let changelog = this.compileChangelog(data)
+    let state = "Closed";
     let embedColor = "FF0000"; // red = closed without merge
 
     if(data.state == "open") {
       embedColor = "00FF00"
+      state = "Open"
     } else if(data.merged) {
       embedColor = "9541a5"
+      state = "Merged"
     }
 
     let changelogString = "";
@@ -240,7 +243,8 @@ class SubsystemDiscord extends Subsystem {
 
     let msgTitle = data.title.replace(/</g, '')
     let embed = new Discord.RichEmbed();
-    embed.setAuthor(msgTitle, "https://i.imgur.com/tpkgmo8.png");
+    embed.setAuthor(state + " Pull Request", "https://i.imgur.com/tpkgmo8.png");
+    embed.setDescription(msgTitle)
     embed.addField("Author", data.user.login, true);
     embed.addField("Number", "#" + data.number, true);
     embed.addField("Github Link", data.html_url, false);
@@ -259,14 +263,16 @@ class SubsystemDiscord extends Subsystem {
     }
 
     let embedColor = "FF0000"; // red = closed without merge
-
+    let state = "Closed"
     if(data.state == "open") {
       embedColor = "00FF00"
+      state = "Open"
     }
 
     let msgTitle = data.title.replace(/</g, '')
     let embed = new Discord.RichEmbed();
-    embed.setAuthor(msgTitle, "https://i.imgur.com/tpkgmo8.png");
+    embed.setAuthor(state + " Issue", "https://i.imgur.com/tpkgmo8.png");
+    embed.setDescription(msgTitle)
     embed.addField("Author", data.user.login, true);
     embed.addField("Number", "#" + data.number, true);
     embed.addField("Github Link", data.html_url, false);
