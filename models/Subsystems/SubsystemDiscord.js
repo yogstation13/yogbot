@@ -412,23 +412,25 @@ class SubsystemDiscord extends Subsystem {
     var compiledChangelog = { "username": username, "changelog": changelog };
     return compiledChangelog;
   }
-}
 
-function do_http(url) {
-  return new Promise((resolve, reject) => {
-    https.get(url, {headers: {
-      "User-Agent": "Yogbot"
-    }} , (res) => {
-      if(res.statusCode == 200) {
-        res.setEncoding('utf8');
-        let data = '';
-        res.on('data', (chunk) => {data += chunk;});
-        res.on('end', () => {
-          resolve(data);
-        })
-      }
+  do_http(url) {
+    return new Promise((resolve, reject) => {
+      let config = this.manager.getSubsystem("Config").config;
+      https.get(url, {headers: {
+        "Authorization": "token " + config.github_token,
+        "User-Agent": "Yogbot13"
+      }} , (res) => {
+        if(res.statusCode == 200) {
+          res.setEncoding('utf8');
+          let data = '';
+          res.on('data', (chunk) => {data += chunk;});
+          res.on('end', () => {
+            resolve(data);
+          })
+        }
+      });
     });
-  });
+  }
 }
 
 module.exports = SubsystemDiscord;
