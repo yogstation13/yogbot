@@ -417,7 +417,7 @@ class SubsystemDiscord extends Subsystem {
     return new Promise((resolve, reject) => {
       let config = this.manager.getSubsystem("Config").config;
       https.get(url, {headers: {
-        "Authorization": "token " + config.github_token,
+        "Authorization": "Token " + config.github_token,
         "User-Agent": "Yogbot13"
       }} , (res) => {
         if(res.statusCode == 200) {
