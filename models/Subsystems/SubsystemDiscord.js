@@ -121,8 +121,8 @@ class SubsystemDiscord extends Subsystem {
     
     let prRegex = message.content.match(new RegExp("\\\[#([0-9]+)\\\]"))
     if(prRegex) {
-      do_http("https://api.github.com/repos/yogstation13/Yogstation/pulls/" + prRegex[1]).then(response => this.postPR(JSON.parse(response), message.channel));
-      do_http("https://api.github.com/repos/yogstation13/Yogstation/issues/" + prRegex[1]).then(response => this.postIssue(JSON.parse(response), message.channel));
+      this.do_http("https://api.github.com/repos/yogstation13/Yogstation/pulls/" + prRegex[1]).then(response => this.postPR(JSON.parse(response), message.channel));
+      this.do_http("https://api.github.com/repos/yogstation13/Yogstation/issues/" + prRegex[1]).then(response => this.postIssue(JSON.parse(response), message.channel));
     }
 
 
@@ -412,23 +412,25 @@ class SubsystemDiscord extends Subsystem {
     var compiledChangelog = { "username": username, "changelog": changelog };
     return compiledChangelog;
   }
-}
 
-function do_http(url) {
-  return new Promise((resolve, reject) => {
-    https.get(url, {headers: {
-      "User-Agent": "Yogbot"
-    }} , (res) => {
-      if(res.statusCode == 200) {
-        res.setEncoding('utf8');
-        let data = '';
-        res.on('data', (chunk) => {data += chunk;});
-        res.on('end', () => {
-          resolve(data);
-        })
-      }
+  do_http(url) {
+    return new Promise((resolve, reject) => {
+      let config = this.manager.getSubsystem("Config").config;
+      https.get(url, {headers: {
+        "Authorization": "Token " + config.github_token,
+        "User-Agent": "Yogbot13"
+      }} , (res) => {
+        if(res.statusCode == 200) {
+          res.setEncoding('utf8');
+          let data = '';
+          res.on('data', (chunk) => {data += chunk;});
+          res.on('end', () => {
+            resolve(data);
+          })
+        }
+      });
     });
-  });
+  }
 }
 
 module.exports = SubsystemDiscord;
