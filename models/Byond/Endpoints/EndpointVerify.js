@@ -46,6 +46,17 @@ module.exports = class EndpointVerify extends APIEndpoint {
         //We're done here
         discord.verificationMapIDToHash.delete(identity.discordsnowflake);
         discord.verificationMapHashToIdentity.delete(data.hash);
+        
+        const guild = discord.getPrimaryGuild();
+        let verified_role;
+        for(let role of guild.roles.values()) {
+            if(role.name == "server/discord linked") {
+                verified_role = role;
+            }
+        }
+        if(verified_role) {
+            guild.members.get(identity.discordsnowflake).addRole(verified_role);
+        }
 
         const response = {
             status: 200,
