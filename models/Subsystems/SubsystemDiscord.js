@@ -121,8 +121,8 @@ class SubsystemDiscord extends Subsystem {
     
     let prRegex = message.content.match(new RegExp("\\\[#([0-9]+)\\\]"))
     if(prRegex) {
-      do_http("https://api.github.com/repos/yogstation13/Yogstation/pulls/" + prRegex[1]).then(response => this.postPR(JSON.parse(response), message.channel));
-      do_http("https://api.github.com/repos/yogstation13/Yogstation/issues/" + prRegex[1]).then(response => this.postIssue(JSON.parse(response), message.channel));
+      this.do_http("https://api.github.com/repos/yogstation13/Yogstation/pulls/" + prRegex[1]).then(response => this.postPR(JSON.parse(response), message.channel));
+      this.do_http("https://api.github.com/repos/yogstation13/Yogstation/issues/" + prRegex[1]).then(response => this.postIssue(JSON.parse(response), message.channel));
     }
 
 
