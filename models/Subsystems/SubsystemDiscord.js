@@ -17,6 +17,10 @@ class SubsystemDiscord extends Subsystem {
     this.banManager = new DiscordBanManager(this);
     this.forumManager = new DiscordForumManager(this);
     this.donorManager = new DiscordDonorManager(this);
+    //ID --> Hash mapping
+    this.verificationMapIDToHash = new Map();
+    //Hash --> Identity mapping
+    this.verificationMapHashToIdentity = new Map();
     this.logger;
 
     this.commands = [];
