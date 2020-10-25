@@ -28,6 +28,7 @@ class RouterPathGithub extends RouterPath {
 
     if (githubEvent == "pull_request") {
       this.githubManager.handlePullRequest(JSON.parse(req.body));
+      return res.send("ok");
     }
   }
 
