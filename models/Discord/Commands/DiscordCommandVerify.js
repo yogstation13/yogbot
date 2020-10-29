@@ -34,7 +34,7 @@ class DiscordCommandVerify extends DiscordCommand {
     }
 
     const identity = {
-      ckey: args[0].toLowerCase().replace(/[^a-z@\d]/g, ""),
+      ckey: args.join(" ").toLowerCase().replace(/[^a-z@\d]/g, ""),
       discordsnowflake: message.author.id
     };
     this.subsystem.verificationMapHashToIdentity.set(hash, identity);
