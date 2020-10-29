@@ -18,7 +18,7 @@ class DiscordCommandVerify extends DiscordCommand {
 
     //Delete the old hash
     if(this.subsystem.verificationMapIDToHash.has(message.author.id)) {
-      message.reply("You already have been issued a verification code, your previous verification code is now invalid. A new one will be sent.")
+      message.channel.send("You already have been issued a verification code, your previous verification code is now invalid. A new one will be sent.")
       const hashtodelete = this.subsystem.verificationMapIDToHash.get(message.author.id);
       this.subsystem.verificationMapHashToIdentity.delete(hashtodelete)
       this.subsystem.verificationMapIDToHash.delete(message.author.id)
@@ -35,7 +35,7 @@ class DiscordCommandVerify extends DiscordCommand {
     }
 
     const identity = {
-      ckey: args[0],
+      ckey: args[0].toLowerCase().replace(/[^a-z@\d]/g, ""),
       discordsnowflake: message.author.id
     };
     this.subsystem.verificationMapHashToIdentity.set(hash, identity);
