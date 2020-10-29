@@ -34,7 +34,7 @@ module.exports = class EndpointVerify extends APIEndpoint {
 
             return callback(error, undefined)
         }
-        if(identity.ckey.toLowerCase() !== data.ckey.toLowerCase()) {
+        if(identity.ckey !== data.ckey) {
             const error = {
                 status: 400,
                 response: {status: "err", message: `Verification code links to ckey ${identity.ckey.toLowerCase()}, expected ${data.ckey.toLowerCase()}`}
