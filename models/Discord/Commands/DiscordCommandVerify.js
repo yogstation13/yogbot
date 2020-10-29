@@ -18,7 +18,6 @@ class DiscordCommandVerify extends DiscordCommand {
 
     //Delete the old hash
     if(this.subsystem.verificationMapIDToHash.has(message.author.id)) {
-      message.channel.send("You already have been issued a verification code, your previous verification code is now invalid. A new one will be sent.")
       const hashtodelete = this.subsystem.verificationMapIDToHash.get(message.author.id);
       this.subsystem.verificationMapHashToIdentity.delete(hashtodelete)
       this.subsystem.verificationMapIDToHash.delete(message.author.id)
@@ -27,7 +26,7 @@ class DiscordCommandVerify extends DiscordCommand {
     //Technically isn't a hash but it looks like one so im going to keep calling it that
     var hash;
     while(!hash) {
-      const candidate = crypto.randomBytes(40).toString("hex");
+      const candidate = crypto.randomBytes(8).toString("hex");
       //This is silly, the chances of getting the same random value is near to nil but im paranoid ok
       if(!this.subsystem.verificationMapHashToIdentity.has(candidate)) {
         hash = candidate
