@@ -9,7 +9,8 @@ class DiscordCommandCouncil extends DiscordCommand {
 
     onRun(message, permissions, args) {
         var responses = [
-          "https://i.imgur.com/8PQmYdL.png"
+          "https://i.imgur.com/8PQmYdL.png",
+		  "https://cdn.discordapp.com/attachments/475835667788857375/773148718311931904/unknown.png"
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
         var randomColor = Math.floor(Math.random()*16777215).toString(16);
