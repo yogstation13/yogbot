@@ -13,20 +13,20 @@
       "permissions": []
     },
     "senior admin": {
-      "inherits": "maintainer",
-      "permissions": ["addao"]
-    },
-    "maintainer": {
       "inherits": "staff",
-      "permissions": []
+      "permissions": ["addao"]
     },
     "staff": {
       "inherits": "retmin",
       "permissions": ["userverify"]
     },
     "retmin": {
+      "inherits": "maintainer",
+      "permissions": ["tempban", "ban", "unban", "kick", "ticket", "whitelist", "toggleooc", "note", "staffban"]
+    },
+    "maintainer": {
       "inherits": "mentor",
-      "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "kickself", "toggleooc", "note", "staffban"]
+      "permissions": ["reboot", "kickself"]
     },
     "mentor": {
       "inherits": false,
