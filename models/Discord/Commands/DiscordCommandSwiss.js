@@ -41,7 +41,9 @@ class DiscordCommandSwiss extends DiscordCommand {
 		"https://i.imgur.com/xjUGdw7.jpg",
 		"https://i.imgur.com/dOx9elW.png",
 		"https://cdn.discordapp.com/attachments/134720091576205312/716381796694229023/unknown.png",
-		"https://i.imgur.com/r24De1h.jpg"
+		"https://i.imgur.com/r24De1h.jpg",
+		//November Update
+		"https://cdn.discordapp.com/attachments/734475284446707753/767555666322915348/white_supremacy.png"
 	];
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	var randomColor = Math.floor(Math.random()*16777215).toString(16);
