@@ -17,7 +17,7 @@ class DiscordCommandPlayers extends DiscordCommand {
 	"https://cdn.discordapp.com/attachments/734475284446707753/734644410909982750/aZ5RfKI.png",
 	"https://cdn.discordapp.com/attachments/734475284446707753/734744943406612541/image0.png",
 	"https://cdn.discordapp.com/attachments/734475284446707753/735028954259521546/ss13_NTPhonksuptheshuttle.PNG",
-	"https://cdn.discordapp.com/attachments/734475284446707753/735289662087757824/GOD.PNG"
+	"https://cdn.discordapp.com/attachments/734475284446707753/735289662087757824/GOD.PNG",
 	"https://cdn.discordapp.com/attachments/734475284446707753/735556743865565267/Discord_gmXSn7s1aA.png",
 	"https://cdn.discordapp.com/attachments/734475284446707753/736973311590006894/image0.png",
 	"https://cdn.discordapp.com/attachments/734475284446707753/736973563013234779/image0.jpg",
