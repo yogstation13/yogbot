@@ -49,7 +49,6 @@ class DiscordCommandCoder extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/734475284446707753/748792022017507399/unknown.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/751978462050517073/unknown.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/752757100781764608/monster_being_monster.png",
-        "https://cdn.discordapp.com/attachments/734475284446707753/760592455896399922/unknown.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/760594369312718879/unknown.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/772916637190979664/unknown.png"
         ];
