@@ -38,7 +38,20 @@ class DiscordCommandCoder extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/734475284446707753/772885346199011358/unknown.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/774083235847077929/image0.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/775784036470751232/image0.png",
-        "https://cdn.discordapp.com/attachments/734475284446707753/776741617053859850/unknown.png"
+        "https://cdn.discordapp.com/attachments/734475284446707753/776741617053859850/unknown.png",
+	"https://i.gyazo.com/566dd8a79f7aa374d7b248823d50a28a.png",
+	"https://cdn.discordapp.com/attachments/734475284446707753/734482071103471676/dreamseeker_2020-01-27_21-36-54.png",
+	"https://cdn.discordapp.com/attachments/734475284446707753/734508169178644500/ss13_alexkaraheal.PNG",
+	"https://cdn.discordapp.com/attachments/734475284446707753/734531895299276830/halfadoor.png",
+	"https://cdn.discordapp.com/attachments/734475284446707753/734860649758195782/unknown.png",
+	"https://cdn.discordapp.com/attachments/734475284446707753/735002219069440040/Discord_2020-07-20_22-10-53.png",
+	"https://cdn.discordapp.com/attachments/734475284446707753/735041980182036500/discordtheosbeerebase.PNG",
+	"https://cdn.discordapp.com/attachments/734475284446707753/748792022017507399/unknown.png",
+	"https://cdn.discordapp.com/attachments/734475284446707753/751978462050517073/unknown.png",
+	"https://cdn.discordapp.com/attachments/734475284446707753/752757100781764608/monster_being_monster.png",
+	"https://cdn.discordapp.com/attachments/734475284446707753/760592455896399922/unknown.png",
+	"https://cdn.discordapp.com/attachments/734475284446707753/760594369312718879/unknown.png",
+	"https://cdn.discordapp.com/attachments/734475284446707753/772916637190979664/unknown.png"
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
         var randomColor = Math.floor(Math.random()*16777215).toString(16);
