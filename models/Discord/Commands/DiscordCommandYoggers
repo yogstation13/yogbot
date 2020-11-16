@@ -1,10 +1,10 @@
 const DiscordCommand = require('../DiscordCommand.js');
 var Discord = require('discord.js');
 
-class DiscordCommandPlayers extends DiscordCommand {
+class DiscordCommandYoggers extends DiscordCommand {
 
   constructor(subsystem) {
-    super("players", "Random shit that happens", undefined, subsystem, true);
+    super("yoggers", "Random shit that happens", undefined, subsystem, true);
   }
   		
   onRun(message, permissions, args) {
@@ -52,4 +52,4 @@ class DiscordCommandPlayers extends DiscordCommand {
 
 }
 
-module.exports = DiscordCommandPlayers;
+module.exports = DiscordCommandYoggers;
