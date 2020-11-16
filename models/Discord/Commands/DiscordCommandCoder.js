@@ -44,7 +44,6 @@ class DiscordCommandCoder extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/734475284446707753/734508169178644500/ss13_alexkaraheal.PNG",
         "https://cdn.discordapp.com/attachments/734475284446707753/734531895299276830/halfadoor.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/734860649758195782/unknown.png",
-        "https://cdn.discordapp.com/attachments/734475284446707753/735002219069440040/Discord_2020-07-20_22-10-53.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/735041980182036500/discordtheosbeerebase.PNG",
         "https://cdn.discordapp.com/attachments/734475284446707753/748792022017507399/unknown.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/751978462050517073/unknown.png",
