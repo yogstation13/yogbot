@@ -204,7 +204,7 @@ class SubsystemDiscord extends Subsystem {
   }
 
   getPrimaryGuild() {
-    return this.client.guilds.fetch(this.manager.getSubsystem("Config").config.discord_guild);
+    return this.client.guilds.cache.get(this.manager.getSubsystem("Config").config.discord_guild);
   }
 
   isChannelRestricted(channel) {

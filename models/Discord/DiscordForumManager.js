@@ -15,7 +15,7 @@ class DiscordForumManager {
   async handleForum() {
     let guild = this.subsystem.getPrimaryGuild();
     let config = this.subsystem.manager.getSubsystem("Config").config;
-    let ban_appeals_channel = guild.channels.fetch(config.discord_channel_ban_appeals);
+    let ban_appeals_channel = guild.channels.cache.get(config.discord_channel_ban_appeals);
 
     let admins = [];
     for(let member of guild.members.values()) {
