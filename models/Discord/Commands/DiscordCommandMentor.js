@@ -280,7 +280,7 @@ class DiscordCommandMentor extends DiscordCommand {
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	
 	// Mentors get the funny cyan
-	const embed = new Discord.RichEmbed()
+	const embed = new Discord.MessageEmbed()
 		.setColor('#259e80') // Classic Mcyan
 		.setTitle('Mentor Image') // Set to title whenever it is added
 		.setImage(response)

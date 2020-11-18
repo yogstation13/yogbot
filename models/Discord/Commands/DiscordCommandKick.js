@@ -27,7 +27,7 @@ class DiscordCommandKick extends DiscordCommand {
     }
 
 
-    var guildMember = message.guild.fetchMember(user);
+    var guildMember = message.guild.members.fetch(user);
     guildMember.then(
       (resolve) => {
         var kickeeperms = this.subsystem.permissionManager.getUserPermissions(resolve);

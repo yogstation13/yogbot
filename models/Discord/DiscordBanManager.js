@@ -44,12 +44,12 @@ class DiscordBanManager {
 
     var banMessage = "You have been banned from " + config.server_name + " for `" + reason + "` it will " + (time ? "expire in " + time + " minutes" : "not expire.");
 
-    guildMember.user.sendMessage(banMessage);
+    guildMember.user.send(banMessage);
 
     feedbackChannel.send("**" + guildMember.user.username + "#" + guildMember.user.discriminator + "** Was " + (config.discord_softban ? "soft" : "hard") + "banned from the server for `" + reason + "` it will " + (time ? "expire in **" + time + "** minutes" : "not expire.") + ".")
 
     if (config.discord_softban) {
-      guildMember.addRole(config.discord_softban_role).then(
+      guildMember.roles.add(config.discord_softban_role).then(
         resolve => {;
           this.bans.push(ban);
           this.save();
@@ -58,7 +58,7 @@ class DiscordBanManager {
       );
     }
     else {
-      guildMember.addRole(config.discord_softban_role).then(
+      guildMember.roles.add(config.discord_softban_role).then(
         resolve => {},
         reject => {}
       );
@@ -79,7 +79,7 @@ class DiscordBanManager {
         feedbackChannel.send("**" + member.user.username + "#" + member.user.discriminator + "** Was unbanned from the server for `" + reason + "`.")
         this.bans = newBans;
         this.save();
-        member.removeRole(config.discord_softban_role);
+        member.remove(config.discord_softban_role);
         return true;
       }
       else {
@@ -105,7 +105,7 @@ class DiscordBanManager {
     }
 
     for (var ban of bansToLift) {
-      guild.fetchMember(ban.userID).then(
+      guild.members.fetch(ban.userID).then(
         resolve => {
           this.unban(guild, resolve, "Ban expired.");
         },
@@ -118,7 +118,7 @@ class DiscordBanManager {
   check(member) {
     for (var ban of this.bans) {
       if (ban.userID === member.user.id) {
-        member.addRole(this.subsystem.manager.getSubsystem("Config").config.discord_softban_role);
+        member.roles.add(this.subsystem.manager.getSubsystem("Config").config.discord_softban_role);
       }
     }
   }

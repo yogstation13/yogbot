@@ -38,7 +38,7 @@ class SubsystemDiscord extends Subsystem {
       this.banManager.setup();
       this.forumManager.setup();
       this.donorManager.setup();
-	this.client.user.setGame("I AM GOD");
+	this.client.user.setActivity("I AM GOD");
       callback();
     }).catch((err) => {
       callback(err);
@@ -115,7 +115,7 @@ class SubsystemDiscord extends Subsystem {
     if(message.mentions.roles.has(config.discord_jester_role)) {
       if(!message.member.roles.has(config.discord_jester_role)) {
         message.reply("It appears you have, for the first time, engaged in the dastardly action to ping Jester! For this crime you have been assigned the role of Jester. Congratulations on your promotion!");
-        message.member.addRole(config.discord_jester_role);
+        message.member.roles.add(config.discord_jester_role);
       }
     }
     
@@ -136,7 +136,7 @@ class SubsystemDiscord extends Subsystem {
         return;
       }
 
-      var guildMember = message.guild.fetchMember(message.author);
+      var guildMember = message.guild.members.fetch(message.author);
       guildMember.then(
         resolve => {
           var userPermissions = this.permissionManager.getUserPermissions(resolve);
@@ -204,11 +204,7 @@ class SubsystemDiscord extends Subsystem {
   }
 
   getPrimaryGuild() {
-    for (var guild of this.client.guilds.array()) {
-      if (guild.id === this.manager.getSubsystem("Config").config.discord_guild) {
-        return guild;
-      }
-    }
+    return this.client.guilds.fetch(this.manager.getSubsystem("Config").config.discord_guild);
   }
 
   isChannelRestricted(channel) {
@@ -246,7 +242,7 @@ class SubsystemDiscord extends Subsystem {
     }
 
     let msgTitle = data.title.replace(/</g, '')
-    let embed = new Discord.RichEmbed();
+    let embed = new Discord.MessageEmbed();
     embed.setAuthor(state + " Pull Request", "https://i.imgur.com/tpkgmo8.png");
     embed.setDescription(msgTitle)
     embed.addField("Author", data.user.login, true);
@@ -258,7 +254,7 @@ class SubsystemDiscord extends Subsystem {
       embed.addField("Changelog", changelogString, false);
     }
 
-    channel.sendEmbed(embed)
+    channel.send(embed)
   }
 
   postIssue(data, channel) {
@@ -274,14 +270,14 @@ class SubsystemDiscord extends Subsystem {
     }
 
     let msgTitle = data.title.replace(/</g, '')
-    let embed = new Discord.RichEmbed();
+    let embed = new Discord.MessageEmbed();
     embed.setAuthor(state + " Issue", "https://i.imgur.com/tpkgmo8.png");
     embed.setDescription(msgTitle)
     embed.addField("Author", data.user.login, true);
     embed.addField("Number", "#" + data.number, true);
     embed.addField("Github Link", data.html_url, false);
     embed.setColor(embedColor);
-    channel.sendEmbed(embed)
+    channel.send(embed)
   }
 
   compileChangelog(data) {

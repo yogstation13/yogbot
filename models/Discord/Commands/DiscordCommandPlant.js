@@ -48,7 +48,7 @@ class DiscordCommandPlant extends DiscordCommand {
 		var response = responses[Math.floor(Math.random() * responses.length)];
 		var randomColor = Math.floor(Math.random()*16777215).toString(16);
 	
-		const embed = new Discord.RichEmbed()
+		const embed = new Discord.MessageEmbed()
 			.setColor('#'+randomColor) // Random Color
 			.setTitle('Plant.') // Set to title whenever it is added
 			.setImage(response)

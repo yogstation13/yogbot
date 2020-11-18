@@ -45,7 +45,7 @@ class DiscordCommandReview extends DiscordCommand {
 					let checked_arr = [...ckeys_checked];
 					let amt = Math.ceil(checked_arr.length / 23)
 					for(let i = 0; i < amt; i++) {
-						let embed = new Discord.RichEmbed();
+						let embed = new Discord.MessageEmbed();
 						embed.setAuthor("Account review" + (i != 0 ? " (CONTINUED)" : "") + ":", "http://i.imgur.com/GPZgtbe.png");
 						for(let [key, desc] of checked_arr.slice(i * 23, (i+1) * 23)) {
 							embed.addField(key, desc);

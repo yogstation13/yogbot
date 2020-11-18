@@ -34,7 +34,7 @@ class DiscordCommandTempban extends DiscordCommand {
 
     args.shift();
 
-    var guildMember = message.guild.fetchMember(user);
+    var guildMember = message.guild.members.fetch(user);
     guildMember.then(
       resolve => {
         args.shift();

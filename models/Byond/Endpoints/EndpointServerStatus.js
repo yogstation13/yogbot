@@ -24,7 +24,7 @@ class EndpointASayMessage extends APIEndpoint {
     if (data.status == "lobby") {
       byondSS.roundNumber = data.round;
 
-      var embed = new Discord.RichEmbed();
+      var embed = new Discord.MessageEmbed();
 
       embed.setAuthor("New round notifier", "http://i.imgur.com/GPZgtbe.png");
       embed.setDescription("A new round is about to begin! Join now at " + config.server_join_address);
@@ -38,16 +38,16 @@ class EndpointASayMessage extends APIEndpoint {
 
       for (var channel of discord.getPrimaryGuild().channels.array()) {
         if (channel.id == config.discord_channel_botspam) {
-          channel.sendEmbed(embed, embedmessage);
+          channel.send(embed, embedmessage);
         }
       }
-      discord.client.user.setGame("Round Starting");
+      discord.client.user.setActivity("Round Starting");
     }
     else if (data.status == "ingame") {
-      discord.client.user.setGame("InGame");
+      discord.client.user.setActivity("InGame");
     }
     else {
-      discord.client.user.setGame("Round Ending");
+      discord.client.user.setActivity("Round Ending");
     }
 
 

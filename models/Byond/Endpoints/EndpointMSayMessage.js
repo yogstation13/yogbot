@@ -34,9 +34,9 @@ class EndpointMSayMessage extends APIEndpoint {
     }
 
     var ckey = data.ckey.split("/")[0]
-    var user = discord.client.guilds.get(config.discord_guild).fetchMembers(ckey, 1)[0]
-    if(user && user.avatarURL)
-        webhook_data.avatar_url = user.avatarURL
+    var user = discord.client.guilds.get(config.discord_guild).members.fetch(ckey, 1)[0]
+    if(user && user.avatarURL())
+        webhook_data.avatar_url = user.avatarURL()
 
     var xhr = new XMLHttpRequest();
     xhr.open("POST", config.msay_webhook_url, true);
