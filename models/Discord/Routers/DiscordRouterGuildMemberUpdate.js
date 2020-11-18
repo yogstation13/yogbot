@@ -18,10 +18,10 @@ class DiscordRouterGuildMemberUpdate extends DiscordRouter {
       }
 
       //Check for role changes
-      if(oldMember.roles.length !== newMember.roles.length) {
+      if(oldMember.roles.array().length != newMember.roles.array().length) {
         response += "**" + newMember.user.username + "#" + newMember.user.discriminator +  "** roles have changed:\n     Old Roles: ";
 
-        var roles = oldMember.roles;
+        var roles = oldMember.roles.array();
 
         if(roles.length > 1) {
 
@@ -42,7 +42,7 @@ class DiscordRouterGuildMemberUpdate extends DiscordRouter {
 
         response += "\n     New roles: ";
 
-        var roles = newMember.roles;
+        var roles = newMember.roles.array();
 
         if(roles.length > 1) {
 

@@ -24,7 +24,7 @@ class DiscordPermissionManager {
 
   getUserPermissions(guildMember) {
     var userPermissions = [];
-    for (var role of guildMember.roles) {
+    for (var role of guildMember.roles.array()) {
 
       var rolePermissions = this.getInheritedPermissions(role.name, []);
       userPermissions = userPermissions.concat(rolePermissions);
