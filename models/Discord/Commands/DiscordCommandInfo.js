@@ -75,7 +75,7 @@ class DiscordCommandInfo extends DiscordCommand {
 					// @ts-ignore
 					const round_duration_int = Math.round(parseInt(round_duration)/60);
 
-					const embed = new Discord.MessageEmbed();
+					const embed = new Discord.RichEmbed();
 
 					embed.setAuthor("Information", "http://i.imgur.com/GPZgtbe.png");
 					embed.setDescription("Join the server now by using " + config.server_join_address);

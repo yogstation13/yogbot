@@ -17,12 +17,12 @@ class DiscordCommandUserverify extends DiscordCommand {
 
         let response;
         if (member.roles.has(config.discord_verify_role)) {	
-            member.remove(config.discord_verify_role);
+            member.removeRole(config.discord_verify_role);	
             response = "User was manually unverified.";
         }
         else {	
-            member.roles.add(config.discord_verify_role);
-            member.roles.add(config.discord_announcements_role);
+            member.addRole(config.discord_verify_role);
+            member.addRole(config.discord_announcements_role);	
             response = "User was manually verified.";
         }
         message.channel.send(response);	

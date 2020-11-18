@@ -25,7 +25,7 @@ class DiscordCommandUnBan extends DiscordCommand {
       return;
     }
 
-    var guildMember = message.guild.members.fetch(user);
+    var guildMember = message.guild.fetchMember(user);
     guildMember.then(
       resolve => {
         args.shift();

@@ -15,7 +15,7 @@ class DiscordForumManager {
   async handleForum() {
     let guild = this.subsystem.getPrimaryGuild();
     let config = this.subsystem.manager.getSubsystem("Config").config;
-    let ban_appeals_channel = guild.channels.cache.get(config.discord_channel_ban_appeals);
+    let ban_appeals_channel = guild.channels.fetch(config.discord_channel_ban_appeals);
 
     let admins = [];
     for(let member of guild.members.values()) {
@@ -65,7 +65,7 @@ class DiscordForumManager {
       let channel = guild.channels.get(channel_id);
       if(channel) {
         let text = await do_http(url);
-        let messages_to_delete = [...(await channel.messages.fetch({limit:100})).values()];
+        let messages_to_delete = [...(await channel.fetchMessages({limit:100})).values()];
         let regex_result;
         while((regex_result = regex.exec(text))) {
           let wanted_text = get_admin_ping(regex_result[regex_ping_index], default_ping_staff) + " `" + regex_result[regex_title_index] + "`\n        <" + regex_result[regex_url_index] + ">";

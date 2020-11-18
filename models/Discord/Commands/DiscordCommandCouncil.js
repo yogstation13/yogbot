@@ -15,7 +15,7 @@ class DiscordCommandCouncil extends DiscordCommand {
         var response = responses[Math.floor(Math.random() * responses.length)];
         var randomColor = Math.floor(Math.random()*16777215).toString(16);
 	
-        const embed = new Discord.MessageEmbed()
+        const embed = new Discord.RichEmbed()
           .setColor('#'+randomColor) // Random Color
           .setTitle('Council Image') // Set to title whenever it is added
           .setImage(response)

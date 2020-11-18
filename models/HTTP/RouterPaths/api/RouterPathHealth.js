@@ -11,7 +11,7 @@ class RouterPathHealth extends RouterPath {
       if(!discordsys) return res.status(500).send("Cant get Discord subsystem").end();
       
       //client is not READY(0)
-      if(discordsys.client.ws.status !== 0) return res.status(500).send(`Client not ready. Status: ${discordsys.client.ws.status}`).end();
+      if(discordsys.client.status !== 0) return res.status(500).send(`Client not ready. Status: ${discordsys.client.status}`).end();
      
       //all clear boys
       res.status(200).send("OK").end();

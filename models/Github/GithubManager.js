@@ -120,7 +120,7 @@ class GithubManager {
       }
     }
     var msgTitle = payload.pull_request.title.replace(/</g, '')
-    var embed = new discord.MessageEmbed();
+    var embed = new discord.RichEmbed();
     embed.setAuthor("A PR has been " + action + " by " + payload.sender.login, "https://i.imgur.com/tpkgmo8.png");
     embed.setDescription(msgTitle);
     embed.addField("Author", payload.pull_request.user.login, true);
@@ -142,19 +142,19 @@ class GithubManager {
 
     for (var channel of discordSubsystem.getPrimaryGuild().channels.array()) {
       if(channel.id == config.discord_channel_botspam && payload.pull_request.user.login == "yogstation13-bot" && !securearray.includes("[s]")) {
-        channel.send(embed);
+        channel.sendEmbed(embed);
       }
       else if(channel.id == config.discord_channel_development_public && payload.pull_request.user.login != "yogstation13-bot" && !securearray.includes("[s]")) {
-        channel.send(embed);
+        channel.sendEmbed(embed);
       }
       else if(channel.id == config.discord_channel_github_spam && payload.pull_request.user.login != "yogstation13-bot" && !securearray.includes("[s]")) {
-        channel.send(embed);
+        channel.sendEmbed(embed);
       }
       else if(channel.id == config.discord_channel_important_admin && securearray.includes("[admin]")) {
-        channel.send(embed);
+        channel.sendEmbed(embed);
       }
       else if(channel.id == config.discord_channel_maintainer_chat && securearray.includes("[s]")) {
-        channel.send(embed);
+        channel.sendEmbed(embed);
       }
     }
 
@@ -164,10 +164,10 @@ class GithubManager {
       }
       for(var channel of discordSubsystem.getPrimaryGuild().channels.array()) {
         if(channel.id == config.discord_channel_mapping && extensions.includes("dmm")) {
-          channel.send(embed);
+          channel.sendEmbed(embed);
         }
         else if(channel.id == config.discord_channel_spriter && extensions.includes("dmi")) {
-          channel.send(embed);
+          channel.sendEmbed(embed);
         }
       }
     });

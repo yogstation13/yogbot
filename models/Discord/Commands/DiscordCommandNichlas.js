@@ -16,7 +16,7 @@ class DiscordCommandNichlas extends DiscordCommand {
     var svar = svarene[Math.floor(Math.random() * svarene.length)];
     var randomColor = Math.floor(Math.random()*16777215).toString(16);
 	
-		const embed = new Discord.MessageEmbed()
+		const embed = new Discord.RichEmbed()
 			.setColor('#'+randomColor) // Random Color
 			.setTitle('Nichlas Image') // Set to title whenever it is added
 			.setImage(svar)
