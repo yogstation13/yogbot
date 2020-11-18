@@ -9,7 +9,7 @@ class DiscordCommandRemoveJester extends DiscordCommand {
   onRun(message, permissions, args) {
     var config = this.subsystem.manager.getSubsystem("Config").config;
     if(message.member.roles.has(config.discord_jester_role)) {
-      message.member.removeRole(config.discord_jester_role);
+      message.member.remove(config.discord_jester_role);
       message.reply("Success! But beware if you violate the sacred Jester Oath by daring to ping Jester once again you shall be smited with a thousand YOGGERS!")
     }
   }

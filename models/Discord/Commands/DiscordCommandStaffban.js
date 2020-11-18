@@ -16,15 +16,15 @@ class DiscordCommandStaffban extends DiscordCommand {
         }
 
         if (member.roles.has(config.discord_secondwarning_role)) {	
-            member.addRole(config.discord_staffpublicban_role);	
+            member.roles.add(config.discord_staffpublicban_role);
             var response = "User was banned from staff public."	
         }	
         else if (member.roles.has(config.discord_firstwarning_role)) {	
-                member.addRole(config.discord_secondwarning_role);	
+                member.roles.add(config.discord_secondwarning_role);
                 var response = "User was given the second warning role."
         }
         else {
-            member.addRole(config.discord_firstwarning_role);	
+            member.roles.add(config.discord_firstwarning_role);
             var response = "User was given the first warning role."	
         }
         message.channel.send(response);	

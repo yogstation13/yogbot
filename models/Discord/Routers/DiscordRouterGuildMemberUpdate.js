@@ -14,7 +14,7 @@ class DiscordRouterGuildMemberUpdate extends DiscordRouter {
 
       //Check for nickname changes
       if(oldMember.nickname !== newMember.nickname) {
-        logChannel.sendMessage(response + "**" + newMember.user.username + "#" + newMember.user.discriminator +  "** changed their nickname to `" + newMember.nickname + "`")
+        logChannel.send(response + "**" + newMember.user.username + "#" + newMember.user.discriminator +  "** changed their nickname to `" + newMember.nickname + "`")
       }
 
       //Check for role changes

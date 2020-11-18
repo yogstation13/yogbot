@@ -46,7 +46,7 @@ class DiscordCommandMyNotes extends DiscordCommand {
           }
           message.reply("Success. Check your Direct Messages.");
           if (results.length == 0) {
-            guildMember.sendMessage("You have no notes.");
+            guildMember.send("You have no notes.");
           }
           else {
             var msg = "Notes for " + ckey + "\n";
@@ -68,14 +68,14 @@ class DiscordCommandMyNotes extends DiscordCommand {
               shownNotes.push(newmsg);
               newmsg += "```";
               if(msg.length + newmsg.length > 2000) {
-                guildMember.user.sendMessage(msg);
+                guildMember.user.send(msg);
                 msg = newmsg;
               }
               else {
                 msg += newmsg;
               }
             }
-            guildMember.user.sendMessage(msg);
+            guildMember.user.send(msg);
           }
         });
       })

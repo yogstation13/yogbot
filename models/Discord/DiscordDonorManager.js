@@ -68,14 +68,14 @@ class DiscordDonorManager {
                     if(member) {
                         if(member.roles.has(donor_role.id) && !donor_ckeys.has(ckey)) {
                             this.subsystem.manager.logger.log("info", "Taking donor role from " + ckey + " (" + discord_id + ")");
-                            await member.removeRole(donor_role);
+                            await member.remove(donor_role);
                         } else if(!member.roles.has(donor_role.id) && donor_ckeys.has(ckey)) {
                             this.subsystem.manager.logger.log("info", "Giving donor role to " + ckey + " (" + discord_id + ")");
-                            await member.addRole(donor_role);
+                            await member.roles.add(donor_role);
                         }
                         if(!member.roles.has(verified_role.id)) {
                             this.subsystem.manager.logger.log("info", "Giving verified role to " + ckey + " (" + discord_id + ")");
-                            await member.addRole(verified_role);
+                            await member.roles.add(verified_role);
                         }
                     } else if(donor_ckeys.has(ckey)) {
                         this.subsystem.manager.logger.log("error", "Cannot give donor role to ckey " + ckey + " discord id " + discord_id + " - discord ID not found");
@@ -87,11 +87,11 @@ class DiscordDonorManager {
                         let has_linked = !linked_discordids.has(discord_id);
                         if(has_linked && member.roles.has(donor_role.id)) {
                             members_to_ping.push(discord_id);
-                            await member.removeRole(donor_role);
+                            await member.remove(donor_role);
                         }
                         if(has_linked && member.roles.has(verified_role.id)) {
                             this.subsystem.manager.logger.log("info", "Removing verified role from" + discord_id);
-                            await member.removeRole(verified_role);
+                            await member.remove(verified_role);
                         }
                     }
                 } finally {
