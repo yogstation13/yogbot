@@ -15,7 +15,7 @@ class DiscordCommandBan extends DiscordCommand {
 
     var user = undefined;
 
-    for (var auser of message.mentions.users.array()) {
+    for (var auser of message.mentions.users) {
       user = auser;
       break;
     }

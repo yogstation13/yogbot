@@ -36,7 +36,7 @@ class EndpointASayMessage extends APIEndpoint {
 
       var embedmessage = "<@&" + config.discord_subscriber_role + ">";
 
-      for (var channel of discord.getPrimaryGuild().channels.array()) {
+      for (var channel of discord.getPrimaryGuild().channels) {
         if (channel.id == config.discord_channel_botspam) {
           channel.send(embed, embedmessage);
         }

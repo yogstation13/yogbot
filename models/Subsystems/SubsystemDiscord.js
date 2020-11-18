@@ -188,7 +188,7 @@ class SubsystemDiscord extends Subsystem {
   }
 
   getLogChannel(guild) {
-    for (var channel of guild.channels.array()) {
+    for (var channel of guild.channels) {
       if (channel.id === this.manager.getSubsystem("Config").config.discord_channel_discord_mod_log) {
         return channel;
       }
@@ -196,7 +196,7 @@ class SubsystemDiscord extends Subsystem {
   }
 
   getFeedbackChannel(guild) {
-    for (var channel of guild.channels.array()) {
+    for (var channel of guild.channels) {
       if (channel.id === this.manager.getSubsystem("Config").config.discord_channel_discord_public_log) {
         return channel;
       }

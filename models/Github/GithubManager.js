@@ -140,7 +140,7 @@ class GithubManager {
       byondSS.byondConnector.request("?announce=" + msgTitle + "&author=" + payload.sender.login + "&id=" + payload.pull_request.number, (results) => {});
     }
 
-    for (var channel of discordSubsystem.getPrimaryGuild().channels.array()) {
+    for (var channel of discordSubsystem.getPrimaryGuild().channels) {
       if(channel.id == config.discord_channel_botspam && payload.pull_request.user.login == "yogstation13-bot" && !securearray.includes("[s]")) {
         channel.send(embed);
       }
@@ -162,7 +162,7 @@ class GithubManager {
       if(securearray.includes("[s]")) {
         return;
       }
-      for(var channel of discordSubsystem.getPrimaryGuild().channels.array()) {
+      for(var channel of discordSubsystem.getPrimaryGuild().channels) {
         if(channel.id == config.discord_channel_mapping && extensions.includes("dmm")) {
           channel.send(embed);
         }
