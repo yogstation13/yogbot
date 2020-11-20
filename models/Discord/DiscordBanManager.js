@@ -73,22 +73,23 @@ class DiscordBanManager {
     var feedbackChannel = this.subsystem.getFeedbackChannel(member.guild);
 
     var newBans = [];
+    var unbanned = false;
 
     for (var ban of this.bans) {
       if (ban.userID === member.user.id) {
         feedbackChannel.send("**" + member.user.username + "#" + member.user.discriminator + "** Was unbanned from the server for `" + reason + "`.")
-        this.bans = newBans;
-        this.save();
         member.removeRole(config.discord_softban_role);
-        return true;
+        unbanned = true;
       }
       else {
         newBans.push(ban);
       }
     }
 
+    this.bans = newBans;
+    this.save();
 
-    return false;
+    return unbanned;
   }
 
   handleTempbans() {
