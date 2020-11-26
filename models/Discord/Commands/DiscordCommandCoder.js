@@ -49,6 +49,8 @@ class DiscordCommandCoder extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/734475284446707753/751978462050517073/unknown.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/752757100781764608/monster_being_monster.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/760594369312718879/unknown.png",
+	"https://i.gyazo.com/e769a11cad7bbd112de2db9c1994ff77.png",
+	"https://cdn.discordapp.com/attachments/734475284446707753/734476179167510578/dreamseeker_2020-06-25_16-42-07.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/772916637190979664/unknown.png"
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
