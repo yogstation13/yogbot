@@ -42,6 +42,7 @@ class DiscordCommandPlant extends DiscordCommand {
 		"https://cdn.discordapp.com/attachments/263805372408528897/742080146852282429/SgcnaOd_14x.png",
 		"https://cdn.discordapp.com/attachments/263805372408528897/742080157686169660/ts4xi8p_14x.png",
 		"https://cdn.discordapp.com/attachments/263805372408528897/742080234416898198/uCQh71g_14x.png",
+		"https://cdn.discordapp.com/attachments/613105854173937776/722262042953908244/plant.png",
 		"https://cdn.discordapp.com/attachments/263805372408528897/742080236996526202/V3wJuuF_14x.png",
 		"https://cdn.discordapp.com/attachments/263805372408528897/742085947813789696/HJnX2Pt_14x.png"
         ];
