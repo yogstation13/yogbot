@@ -1,7 +1,7 @@
 const DiscordCommand = require('../DiscordCommand.js');
 var Discord = require('discord.js');
 
-class DiscordCommandCoder extends DiscordCommand {
+class DiscordCommandJamie extends DiscordCommand {
 
     constructor(subsystem) {
         super("jamie", "dumb stuff from jamie", undefined, subsystem, true);
