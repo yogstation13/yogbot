@@ -9,6 +9,7 @@ class DiscordCommandJamie extends DiscordCommand {
 
     onRun(message, permissions, args) {
         var responses = [
+				"https://media.discordapp.net/attachments/710261756710354985/779346180840489000/Capture_2020-11-20-09-03-17.png",
 				"https://media.discordapp.net/attachments/423761888309018624/785996169780133908/unknown.png",
 				"https://media.discordapp.net/attachments/423761888309018624/785994698388013076/unknown.png",
 				"https://media.discordapp.net/attachments/423761888309018624/785993787398422548/unknown.png",
