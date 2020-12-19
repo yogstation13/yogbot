@@ -5,7 +5,7 @@ const Discord = require('discord.js');
 class DiscordCommandMentorActivity extends DiscordCommand {
 
 	constructor(subsystem) {
-		super("mentoractivity", "Mentor Activity", 'note', subsystem);
+		super("mentoractivity", "Mentor Activity", 'mhelp', subsystem);
 	}
 
 	onRun(message, permissions, args) {
@@ -62,7 +62,6 @@ class DiscordCommandMentorActivity extends DiscordCommand {
 				})) {
 					let this_activity = activity[ckey_ize(ckey)] || 0;
 					let line = ckey.padStart(mentorlen) + ' ';
-					line += 'Mentor';
 					line += (this_activity).toFixed(1).padStart(8);
 					line += '\n';
 					if(output.length + line.length > 1990) {
