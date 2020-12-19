@@ -71,6 +71,8 @@ class DiscordCommandMentorActivity extends DiscordCommand {
 					}
 					output += line;
 				}
+				output += titleline + '\n';
+				output += 'Current Mentor Count: ' + ' ' + mentors.length 
 				output += '```';
 				message.channel.send(output);
 			} catch (e) {
