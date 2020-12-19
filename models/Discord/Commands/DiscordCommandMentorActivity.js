@@ -5,7 +5,7 @@ const Discord = require('discord.js');
 class DiscordCommandMentorActivity extends DiscordCommand {
 
 	constructor(subsystem) {
-		super("activity", "Activity fun.", 'note', subsystem);
+		super("mentoractivity", "Mentor Activity", 'note', subsystem);
 	}
 
 	onRun(message, permissions, args) {
