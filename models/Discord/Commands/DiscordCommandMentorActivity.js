@@ -53,14 +53,13 @@ class DiscordCommandMentorActivity extends DiscordCommand {
 				let output = '```diff\n';
 				let titleline = '  ';
 				titleline += padCenter('Username', mentorlen, ' ') + ' ';
-				titleline += padCenter('Rank', ' ') + 'Mentor';
 				titleline += 'Activity ';
 				output += titleline + '\n';
 				output += ''.padStart(titleline.length, '=') + '\n';
-				for(let [key, rank] of [...Object.entries(mentors)].sort((a, b) => {
+				for(let [ckey] of [...Object.entries(mentors)].sort((a, b) => {
 					return (activity[ckey_ize(b[0])] || 0) - (activity[ckey_ize(a[0])] || 0);
 				})) {
-					let this_activity = activity[ckey_ize(key)] || 0;
+					let this_activity = activity[ckey_ize(ckey)] || 0;
 					let line = key.padStart(mentorlen) + ' ';
 					line += 'Mentor';
 					line += (this_activity).toFixed(1).padStart(8);
