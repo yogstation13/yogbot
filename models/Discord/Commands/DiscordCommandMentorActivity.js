@@ -40,8 +40,8 @@ class DiscordCommandMentorActivity extends DiscordCommand {
 				let mentors = {};
 				let mentorlen = 8;
 				for(let mentor of results) {
-					if(mentor.username.length > mentorlen)
-						mentorlen = mentor.username.length;
+					if(mentor.ckey.length > mentorlen)
+						mentorlen = mentor.ckey.length;
 				}
 				
 				results = await query ('SELECT ckey,Sum((Unix_timestamp(`left`)-Unix_timestamp(datetime))/3600) AS activity FROM erro_connection_log WHERE `left` > (Now() - INTERVAL 2 week) AND `left` IS NOT NULL GROUP BY ckey;'); // get the activity
