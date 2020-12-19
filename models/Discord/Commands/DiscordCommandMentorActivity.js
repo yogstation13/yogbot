@@ -60,7 +60,7 @@ class DiscordCommandMentorActivity extends DiscordCommand {
 					return (activity[ckey_ize(b[0])] || 0) - (activity[ckey_ize(a[0])] || 0);
 				})) {
 					let this_activity = activity[ckey_ize(ckey)] || 0;
-					let line = key.padStart(mentorlen) + ' ';
+					let line = ckey.padStart(mentorlen) + ' ';
 					line += 'Mentor';
 					line += (this_activity).toFixed(1).padStart(8);
 					line += '\n';
