@@ -57,7 +57,7 @@ class DiscordCommandMentorActivity extends DiscordCommand {
 				titleline += 'Activity ';
 				output += titleline + '\n';
 				output += ''.padStart(titleline.length, '=') + '\n';
-				for(let [key, rank] of [...Object.entries(admins)].sort((a, b) => {
+				for(let [key, rank] of [...Object.entries(mentors)].sort((a, b) => {
 					return (activity[ckey_ize(b[0])] || 0) - (activity[ckey_ize(a[0])] || 0);
 				})) {
 					let this_activity = activity[ckey_ize(key)] || 0;
