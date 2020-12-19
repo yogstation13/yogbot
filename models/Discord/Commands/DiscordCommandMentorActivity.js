@@ -39,10 +39,12 @@ class DiscordCommandMentorActivity extends DiscordCommand {
 				let results = await query('SELECT ckey FROM erro_mentor'); // get the mentors
 				let mentors = {};
 				let mentorlen = 8;
+				let mentorslength = 0;
 				for(let mentor of results) {
 					mentors[mentor.ckey] = mentor
 					if(mentor.ckey.length > mentorlen)
 						mentorlen = mentor.ckey.length;
+					mentorslength++
 				}
 				
 				results = await query ('SELECT ckey,Sum((Unix_timestamp(`left`)-Unix_timestamp(datetime))/3600) AS activity FROM erro_connection_log WHERE `left` > (Now() - INTERVAL 2 week) AND `left` IS NOT NULL GROUP BY ckey;'); // get the activity
@@ -71,8 +73,8 @@ class DiscordCommandMentorActivity extends DiscordCommand {
 					}
 					output += line;
 				}
-				output += titleline + '\n';
-				output += 'Current Mentor Count: ' + ' ' + mentors.length 
+				output += ''.padStart(titleline.length, '=') + '\n';
+				output += 'Current Mentor Count: ' + ' ' + mentorslength
 				output += '```';
 				message.channel.send(output);
 			} catch (e) {
