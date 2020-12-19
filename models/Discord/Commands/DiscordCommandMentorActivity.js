@@ -40,6 +40,7 @@ class DiscordCommandMentorActivity extends DiscordCommand {
 				let mentors = {};
 				let mentorlen = 8;
 				for(let mentor of results) {
+					mentors[mentor.ckey]
 					if(mentor.ckey.length > mentorlen)
 						mentorlen = mentor.ckey.length;
 				}
