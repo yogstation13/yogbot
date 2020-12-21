@@ -32,6 +32,8 @@ class DiscordBanManager {
 
     var expiry = time;
     if (time) {
+      if(time > 43800)
+        time = 43800
       expiry = date.getTime() + (time * 60000); // 1000ms in one second, and 60 seconds in one minute
     }
 
