@@ -44,9 +44,9 @@
       "inherits": false,
       "permissions": ["unsubscribe"]
     },
-    "Wiki": {
+    "Wiki Team": {
       "inherits": false,
-      "permissions": ["loreban"]
+      "permissions": ["wikiban"]
     },
     "notes": {
       "inherits": false,
