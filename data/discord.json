@@ -44,7 +44,7 @@
       "inherits": false,
       "permissions": ["unsubscribe"]
     },
-    "Wiki": {
+    "Lore Team": {
       "inherits": false,
       "permissions": ["loreban"]
     },
