@@ -48,6 +48,10 @@
       "inherits": false,
       "permissions": ["loreban"]
     },
+    "Wiki Team": {
+      "inherits": false,
+      "permissions": ["wikiban"]
+    },
     "notes": {
       "inherits": false,
       "permissions": ["note"]
