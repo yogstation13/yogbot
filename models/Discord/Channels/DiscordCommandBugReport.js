@@ -63,7 +63,7 @@ class DiscordCommandBugReport extends DiscordChannel {
     }
     //Format the issue
     let formatted_body = "## Round ID: " + round_id + "\n\n" +
-    "## Test Merges: " + testmerges + "\n" +
+    "## Test Merges: \n" + testmerges + "\n" +
     "## Reproduction:" + "\n" + body;
 
     if(supplied_images) {
@@ -71,7 +71,7 @@ class DiscordCommandBugReport extends DiscordChannel {
     }
 
     //Add the ID of the reporting user
-    formatted_body += "\n Submitted by: " + message.author.username + "(" + message.author.id + ")"
+    formatted_body += "\n Submitted by: " + message.author.username + " (" + message.author.id + ")"
 
     let request_info = {
       title: title,
@@ -80,8 +80,7 @@ class DiscordCommandBugReport extends DiscordChannel {
 
     //Send the request
     var requestOptions = {
-      //url: "https://api.github.com/repos/yogstation13/yogstation/issues",
-      url: "https://api.github.com/repos/TheGameTeam/yogstation/issues",
+      url: "https://api.github.com/repos/yogstation13/yogstation/issues",
       headers: {
         "Authorization": "token " + config.github_token,
         "User-Agent": "Yogbot13"
