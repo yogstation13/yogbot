@@ -51,7 +51,6 @@ class DiscordCommandYoggers extends DiscordCommand {
 	"https://media.discordapp.net/attachments/734475284446707753/820059679178358814/image0.png"
 	"https://media.discordapp.net/attachments/734475284446707753/820043601026875412/unknown.png"
 	"https://media.discordapp.net/attachments/734475284446707753/807753591070130226/unknown.png"
-	
 	  ];	
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	
