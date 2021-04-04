@@ -3,6 +3,6 @@
   "server_port": 4133,
   "server_key": "no key for you :(",
   "server_webhook_key": "test",
-  "server_join_address": "https://yogstation.net/play.php",
+  "server_join_address": "https://yogstation.net/play",
   "reboot_url": "https://yogstation.net"
 }
