@@ -71,7 +71,7 @@ class DiscordCommandWiki extends DiscordCommand {
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	  
 	const embed = new Discord.RichEmbed()
-		.setColor('#ad1457') // M > W
+		.setColor('#ad1457') // M < W
 		.setTitle('Wiki Image') // Set to title whenever it is added
 		.setImage(response)
 		//.setFooter(author) // Uncomment when we have authors
