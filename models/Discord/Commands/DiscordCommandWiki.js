@@ -63,10 +63,10 @@ class DiscordCommandWiki extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/734475284446707753/767860510430593035/1l3g3o2.png", //Sentient Cheese Antag
         "https://cdn.discordapp.com/attachments/734475284446707753/767889520233676801/unknown.png", //!wiki is 70% cheese
         "https://cdn.discordapp.com/attachments/734475284446707753/769667343541338122/unknown.png", //I don't wanna be wiki
-	"https://cdn.discordapp.com/attachments/734475284446707753/742791230072553602/unknown.png", //Do people powergame IRL
+        "https://cdn.discordapp.com/attachments/734475284446707753/742791230072553602/unknown.png", //Do people powergame IRL
         "https://cdn.discordapp.com/attachments/734475284446707753/776247641343524864/image0.png", //Meth works for me
-	"https://cdn.discordapp.com/attachments/134720091576205312/836268620669124718/20210326_182720.jpg", //RPG TG Wiki users
-	"https://cdn.discordapp.com/attachments/134720091576205312/835372563366019103/Not_Yet.png" //Not yet Morder
+        "https://cdn.discordapp.com/attachments/134720091576205312/836268620669124718/20210326_182720.jpg", //RPG TG Wiki users
+        "https://cdn.discordapp.com/attachments/134720091576205312/835372563366019103/Not_Yet.png" //Not yet Morder
 	];	
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	  
