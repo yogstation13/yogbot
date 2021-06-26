@@ -66,7 +66,8 @@ class DiscordCommandWiki extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/734475284446707753/742791230072553602/unknown.png", //Do people powergame IRL
         "https://cdn.discordapp.com/attachments/734475284446707753/776247641343524864/image0.png", //Meth works for me
         "https://cdn.discordapp.com/attachments/134720091576205312/836268620669124718/20210326_182720.jpg", //RPG TG Wiki users
-        "https://cdn.discordapp.com/attachments/134720091576205312/835372563366019103/Not_Yet.png" //Not yet Morder
+        "https://cdn.discordapp.com/attachments/134720091576205312/835372563366019103/Not_Yet.png", //Not yet Morder
+        "https://cdn.discordapp.com/attachments/622891395644129292/852272931719348224/39KxcWz.png" //TG using Yogs Pages
 	];	
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	  
