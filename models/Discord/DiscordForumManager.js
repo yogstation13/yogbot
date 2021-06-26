@@ -55,7 +55,7 @@ class DiscordForumManager {
       return "@?????"
     }
 
-    handle_channel(config.discord_channel_ban_appeals, 'https://forums.yogstation.net/index.php?forums/ban-appeals.2/index.rss', /<a href="(.+)" class="link link--internal">(Ban Appeal - .+ - (.+) \[(?:.+ ban|Invalid Note Removal Request|Other)])<\/a><\/div>]]><\/content:encoded/g, 1, 2, 3);
+    handle_channel(config.discord_channel_ban_appeals, 'https://forums.yogstation.net/index.php?forums/ban-appeals.2/index.rss', /<item>\s+<title>(.+-.+-\s(.+) \[.+)<\/title>[^]+?<link>(.+)<\/link>/g, 3, 1, 2);
     handle_channel(config.discord_channel_player_complaints, 'https://forums.yogstation.net/index.php?forums/player-complaints.3/index.rss', /<a href="(.+)" class="link link--internal">(.+)<\/a><\/div>]]><\/content:encoded/g, 1, 2, 3);
     handle_channel(config.discord_channel_admin_complaints, 'https://forums.yogstation.net/index.php?forums/administrator-complaints.4/index.rss', /<title>((.+) - report by .+)<\/title>\r?\n +<pubDate>.+<\/pubDate>\n +<link>(.+)<\/link>/g, 3, 1, 1, -1);
     handle_channel(config.discord_channel_staff_applications, 'https://forums.yogstation.net/index.php?forums/administrator-applications.6/index.rss', /<title>(.+application)<\/title>\r?\n +<pubDate>.+<\/pubDate>\n +<link>(.+)<\/link>/g, 2, 1, -1);
