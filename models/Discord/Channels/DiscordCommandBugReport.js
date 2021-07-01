@@ -100,6 +100,8 @@ class DiscordCommandBugReport extends DiscordChannel {
 }
 
 function checkForIdentifier(line, identifier) {
+  line = line.toLowerCase()
+  identifier = identifier.toLowerCase()
   let split_line = line.split(identifier);
   if(split_line.length > 1) {
     return split_line[1];
