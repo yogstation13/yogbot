@@ -43,6 +43,7 @@ class DiscordCommandJamie extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/710261756710354985/767044874595598356/Capture_2020-10-17-11-15-38.png",
         "https://cdn.discordapp.com/attachments/205784753352343552/768561221300387870/unknown.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/768887587988832307/unknown.png",
+	"https://cdn.discordapp.com/attachments/860107308574965760/860107324009742336/unknown-99.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/772700667969011712/unknown.png"
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
