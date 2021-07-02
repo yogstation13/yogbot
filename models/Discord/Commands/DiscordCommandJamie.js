@@ -46,7 +46,7 @@ class DiscordCommandJamie extends DiscordCommand {
 				"https://cdn.discordapp.com/attachments/860107308574965760/860107324009742336/unknown-99.png",
 				"https://www.youtube.com/watch?v=o6Fkov-Nrw8",
 				"https://cdn.discordapp.com/attachments/734475284446707753/772700667969011712/unknown.png",
-				"https://cdn.discordapp.net/attachments/719910807437181008/860268461463830558/unknown.png"
+				"https://cdn.discordapp.com/attachments/719910807437181008/860268461463830558/unknown.png"
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
         var randomColor = Math.floor(Math.random()*16777215).toString(16);
