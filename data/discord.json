@@ -30,7 +30,7 @@
     },
     "mentor": {
       "inherits": false,
-      "permissions": ["mhelp"]
+      "permissions": ["mhelp", "mentorban"]
     },
     "YogPost": {
       "inherits": false,
