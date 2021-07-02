@@ -36,6 +36,7 @@ class DiscordCommandMentor extends DiscordCommand {
 		"https://cdn.discordapp.com/attachments/613105854173937776/722273689743130715/dreamseeker_2020-02-19_23-52-29.png",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722267691490213929/mspaint_2020-02-23_03-21-51.png",
 		"https://i.imgur.com/PlwTm0t.png",
+	    	"https://cdn.discordapp.com/attachments/849108945196810273/859228248198086656/unknown.png",
 		//July 2020 Update goes here
 		"https://cdn.discordapp.com/attachments/734475284446707753/734475502995243038/legion_engine.png",
 		"https://cdn.discordapp.com/attachments/734475284446707753/734475635736576000/unknown.png",

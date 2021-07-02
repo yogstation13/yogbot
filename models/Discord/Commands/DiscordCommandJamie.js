@@ -39,11 +39,14 @@ class DiscordCommandJamie extends DiscordCommand {
 				"https://media.discordapp.net/attachments/423761888309018624/785986321918984242/unknown.png",
 				"https://cdn.discordapp.com/attachments/423761888309018624/785986121896427530/unknown.png",
 				"https://cdn.discordapp.com/attachments/205784753352343552/785862579129810955/unknown.png",
-        "https://cdn.discordapp.com/attachments/347045440958627841/763421934431895632/Capture_2020-10-07-11-25-27.png",
-        "https://cdn.discordapp.com/attachments/710261756710354985/767044874595598356/Capture_2020-10-17-11-15-38.png",
-        "https://cdn.discordapp.com/attachments/205784753352343552/768561221300387870/unknown.png",
-        "https://cdn.discordapp.com/attachments/734475284446707753/768887587988832307/unknown.png",
-        "https://cdn.discordapp.com/attachments/734475284446707753/772700667969011712/unknown.png"
+				"https://cdn.discordapp.com/attachments/347045440958627841/763421934431895632/Capture_2020-10-07-11-25-27.png",
+				"https://cdn.discordapp.com/attachments/710261756710354985/767044874595598356/Capture_2020-10-17-11-15-38.png",
+				"https://cdn.discordapp.com/attachments/205784753352343552/768561221300387870/unknown.png",
+				"https://cdn.discordapp.com/attachments/734475284446707753/768887587988832307/unknown.png",
+				"https://cdn.discordapp.com/attachments/860107308574965760/860107324009742336/unknown-99.png",
+				"https://www.youtube.com/watch?v=o6Fkov-Nrw8",
+				"https://cdn.discordapp.com/attachments/734475284446707753/772700667969011712/unknown.png",
+				"https://cdn.discordapp.com/attachments/719910807437181008/860268461463830558/unknown.png"
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
         var randomColor = Math.floor(Math.random()*16777215).toString(16);
