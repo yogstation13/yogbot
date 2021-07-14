@@ -42,8 +42,6 @@ class DiscordCommandWhoIs extends DiscordCommand {
       } else {
         DB_response = getByCkey(connection, provided_ckey, message)
       }
-      
-      if(!DB_response) DB_response = "Something went wrong"
         
       message.reply(DB_response)
       connection.release();
