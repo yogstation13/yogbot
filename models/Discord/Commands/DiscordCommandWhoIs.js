@@ -35,13 +35,14 @@ class DiscordCommandWhoIs extends DiscordCommand {
         return;
       }
       var userID = auser
-      var DB_response = undefined;
+      var DB_response;
       
       if(userID) {
         DB_response = getByDiscordID(connection, userID)
       } else {
-        DB_response = getByCkey(connection, ckey)
+        DB_response = getByCkey(connection, provided_ckey, message)
       }
+      
       if(!DB_response) DB_response = "Something went wrong"
         
       message.reply(DB_response)
@@ -64,11 +65,11 @@ function getByDiscordID(connection, user) {
       }
 
       var ckey = results[0].ckey
-      return (userID + " belongs to the ckey '" + ckey +"'")
+      return (user + " belongs to the ckey '" + ckey +"'")
     })
 }
 
-function getByCkey(connection, ckey) {
+function getByCkey(connection, ckey, message) {
   connection.query("SELECT discord_id FROM `erro_player` WHERE `ckey` = ?", [ckey], (error, results, fields) => {
       if (error) {
         return "Error running select query, try again later.";
