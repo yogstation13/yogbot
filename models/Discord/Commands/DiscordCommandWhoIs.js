@@ -14,11 +14,7 @@ class DiscordCommandWhoIs extends DiscordCommand {
       return;
     }
     var user = undefined;
-    var provided_ckey = args.join("");
-    var punctuation = [".", ",", "-", "_", ";", ":"];
-    for(var i = 0; i< punctuation.length; i++) {
-      provided_ckey = provided_ckey.split(punctuation[i]).join("");
-    }
+    var provided_ckey = args.join("").toLowerCase().replace(/[^a-z0-9@]/gi, "");
 
     for (var auser of message.mentions.users.array()) {
       user = auser;
