@@ -30,7 +30,11 @@
     },
     "mentor": {
       "inherits": false,
-      "permissions": ["mhelp", "mentorban"]
+      "permissions": ["mhelp"]
+    },
+    "Mentor 'Council'": {
+      "inherits": false,
+      "permissions": ["mentorban"]
     },
     "YogPost": {
       "inherits": false,
