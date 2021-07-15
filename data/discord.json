@@ -33,7 +33,7 @@
       "permissions": ["mhelp"]
     },
     "Mentor 'Council'": {
-      "inherits": false,
+      "inherits": "mentor",
       "permissions": ["mentorban"]
     },
     "YogPost": {
