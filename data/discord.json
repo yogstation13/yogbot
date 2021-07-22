@@ -32,7 +32,7 @@
       "inherits": false,
       "permissions": ["mhelp"]
     },
-    "Mentor 'Council'": {
+    "Mentor Council": {
       "inherits": "mentor",
       "permissions": ["mentorban"]
     },
