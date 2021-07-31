@@ -35,6 +35,7 @@ class DiscordCommandLocker extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/423761888309018624/769311935661080576/dreamseeker_W9FpTGaRsL.png",
         "https://cdn.discordapp.com/attachments/134720091576205312/866620013149421598/dankparty.png",
         "https://cdn.discordapp.com/attachments/134720091576205312/866620396374720512/RLBB.png",
+        "https://cdn.discordapp.com/attachments/870897234575786076/870898388021964820/The_Squad.png",
         //November Update
         "https://cdn.discordapp.com/attachments/734475284446707753/770400751175467028/unknown.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/774341818488979466/unknown-188.png",
