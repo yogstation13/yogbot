@@ -169,7 +169,19 @@ class DiscordCommandMentor extends DiscordCommand {
 	    	"https://media.discordapp.net/attachments/734475284446707753/821270173386145792/unknown.png",
 	    	"https://media.discordapp.net/attachments/734475284446707753/813471318040117298/unknown.png",
 	    	"https://media.discordapp.net/attachments/734475284446707753/813074964391264256/unknown.png",
-	    	"https://media.discordapp.net/attachments/734475284446707753/803104291430072340/unknown.png"
+	    	"https://media.discordapp.net/attachments/734475284446707753/803104291430072340/unknown.png",
+	        "https://cdn.discordapp.com/attachments/734475284446707753/858070044117827644/unknown.png", //Voice of God tasted good
+	        "https://cdn.discordapp.com/attachments/734475284446707753/855932232399978536/Screenshot_20210619-150814.jpg", //What is wrong with mentors
+	        "https://cdn.discordapp.com/attachments/734475284446707753/871772581164883988/unknown.png", //Lul Furry
+	        "https://cdn.discordapp.com/attachments/734475284446707753/827343050195206164/unknown.png", //April Fools Applications
+	        "https://cdn.discordapp.com/attachments/734475284446707753/826626004704559154/image0.png", //Baoimu is colorblind
+	        "https://cdn.discordapp.com/attachments/734475284446707753/824401461781332008/unknown.png", //Supermatters are harmless
+	        "https://cdn.discordapp.com/attachments/734475284446707753/813471318040117298/unknown.png", //Theos Mustard
+	        "https://cdn.discordapp.com/attachments/734475284446707753/813074964391264256/unknown.png", //Always mhelp
+	        "https://cdn.discordapp.com/attachments/734475284446707753/809849768595161108/ss13_THEPIPES.PNG", //Too many pipes
+	        "https://cdn.discordapp.com/attachments/378318242906636288/807082553126551612/unknown.png", //Speak with the dummy
+	        "https://cdn.discordapp.com/attachments/734475284446707753/806816158178213908/unknown.png", //Best Mentor
+	        "https://cdn.discordapp.com/attachments/734475284446707753/803104291430072340/unknown.png" //Why'd you irradiate the shuttle
 	  ];	
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	
