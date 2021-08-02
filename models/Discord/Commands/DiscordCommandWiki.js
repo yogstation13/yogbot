@@ -69,7 +69,14 @@ class DiscordCommandWiki extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/134720091576205312/835372563366019103/Not_Yet.png", //Not yet Morder
         "https://cdn.discordapp.com/attachments/622891395644129292/852272931719348224/39KxcWz.png", //TG using Yogs Pages
         "https://cdn.discordapp.com/attachments/134720091576205312/864323221405564949/unknown.png", // Mord, do something.
-        "https://cdn.discordapp.com/attachments/607402553143197696/865408075267047424/utatul_marketable_plush.png" //Utatul Marketable Plush
+        "https://cdn.discordapp.com/attachments/607402553143197696/865408075267047424/utatul_marketable_plush.png", //Utatul Marketable Plush
+        "https://cdn.discordapp.com/attachments/734475284446707753/850053588842578001/Screenshot_20210603-094832.jpg", //Wiki>Mentor
+        "https://cdn.discordapp.com/attachments/734475284446707753/833544384145391656/unknown.png", //Is Morder Anvilman
+        "https://cdn.discordapp.com/attachments/734475284446707753/828761629595271208/unknown.png", //Alexkar is very smart
+        "https://cdn.discordapp.com/attachments/734475284446707753/808799456224870410/unknown.png", //Duality of wiki
+        "https://cdn.discordapp.com/attachments/734475284446707753/801628545570832464/pee_pee_poo_poo_time.png", //Pee Pee Poo Poo Batman
+        "https://cdn.discordapp.com/attachments/734475284446707753/801540934017351760/beating_children.png", //Mord beats children
+        "https://cdn.discordapp.com/attachments/734475284446707753/789610810464403496/unknown.png" //TG Wiki in an mhelp
 	];	
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	  
