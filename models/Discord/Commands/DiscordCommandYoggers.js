@@ -51,6 +51,21 @@ class DiscordCommandYoggers extends DiscordCommand {
 	"https://media.discordapp.net/attachments/734475284446707753/820059679178358814/image0.png",
 	"https://media.discordapp.net/attachments/734475284446707753/820043601026875412/unknown.png",
 	"https://media.discordapp.net/attachments/734475284446707753/807753591070130226/unknown.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/868519606023770182/unknown.png", //AI's full lawset
+        "https://cdn.discordapp.com/attachments/734475284446707753/863056207010332722/image0.png", //Body Blockage
+        "https://cdn.discordapp.com/attachments/734475284446707753/854505018376192060/unknown.png", //MC Server Crashing
+        "https://cdn.discordapp.com/attachments/734475284446707753/831232672491372574/unknown.png", //Lizard Plushie Boss
+        "https://cdn.discordapp.com/attachments/734475284446707753/830943664334700606/a186e67642003b4f0fa6f7e71dd89591.png", //Xenobio Flames
+        "https://cdn.discordapp.com/attachments/734475284446707753/830542381806911508/image0.png", //Ban mqiib
+        "https://cdn.discordapp.com/attachments/734475284446707753/829873801910943824/unknown.png", //AI Law 0 in Law 5 and 6
+        "https://cdn.discordapp.com/attachments/734475284446707753/825033507868639262/image0.png", //Alt F4 to strafe
+        "https://cdn.discordapp.com/attachments/734475284446707753/820059679178358814/image0.png", //"epic yoggers" IC
+        "https://cdn.discordapp.com/attachments/734475284446707753/820043601026875412/unknown.png", //Slings are hot
+        "https://cdn.discordapp.com/attachments/734475284446707753/819635780807950376/unknown.png", //Show factory
+        "https://cdn.discordapp.com/attachments/734475284446707753/807753591070130226/unknown.png", //Blood Cult Pod
+        "https://cdn.discordapp.com/attachments/734475284446707753/805626489978224650/unknown.png", //Nerd is not a valid integer
+        "https://cdn.discordapp.com/attachments/734475284446707753/801260717973831720/dreamseeker_2021-01-19_19-18-46.png", //Heretic Art
+        "https://cdn.discordapp.com/attachments/734475284446707753/797272738779234324/5b704d04150bc69cd943665017d46eba.png" //Negative Hours
 	  ];	
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	
