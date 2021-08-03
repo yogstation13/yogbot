@@ -48,10 +48,13 @@ class DiscordCommandLocker extends DiscordCommand {
             "https://cdn.discordapp.com/attachments/734475284446707753/776717143441276938/base2.png",
             "https://cdn.discordapp.com/attachments/734475284446707753/776717349524602880/base5.png",
             "https://cdn.discordapp.com/attachments/734475284446707753/769004963753361458/unknown.png",
-	        "https://cdn.discordapp.com/attachments/734475284446707753/735289620207501342/better_chamber.PNG",
-	        "https://cdn.discordapp.com/attachments/734475284446707753/734508634595393536/SS13_yogstation_profile_pic.png",
-            "https://cdn.discordapp.com/attachments/734475284446707753/776717640294989835/base11.png"  
-          
+            "https://cdn.discordapp.com/attachments/734475284446707753/735289620207501342/better_chamber.PNG",
+            "https://cdn.discordapp.com/attachments/734475284446707753/734508634595393536/SS13_yogstation_profile_pic.png",
+            "https://cdn.discordapp.com/attachments/734475284446707753/776717640294989835/base11.png",
+            "https://cdn.discordapp.com/attachments/734475284446707753/867997803882905690/image0.png", //Cards Locker
+            "https://cdn.discordapp.com/attachments/734475284446707753/871861431144972308/unknown.png", //Atmos Locker
+            "https://cdn.discordapp.com/attachments/698367324637626438/817894098806898748/unknown.png", //Not a trap
+            "https://cdn.discordapp.com/attachments/734475284446707753/796111484719464448/unknown.png" //Portable Brig
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
         var randomColor = Math.floor(Math.random()*16777215).toString(16);

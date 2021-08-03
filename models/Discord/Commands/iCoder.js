@@ -26,10 +26,10 @@ class DiscordCommandCoder extends DiscordCommand {
             "https://cdn.discordapp.com/attachments/134720091576205312/768629149862199306/unknown.png",
             "https://cdn.discordapp.com/attachments/134720091576205312/768629387267801088/unknown.png",
             "https://cdn.discordapp.com/attachments/134720091576205312/768629825392607242/unknown.png",
-	        "https://cdn.discordapp.com/attachments/854412556130451467/858764560436428811/121809872-7a893c00-cc56-11eb-8337-761a58dab4f3.png",
-	        "https://cdn.discordapp.com/attachments/134720091576205312/858767535196340254/unknown.png",
-	        "https://cdn.discordapp.com/attachments/205784753352343552/776555183873851392/unknown.png",
-	        "https://cdn.discordapp.com/attachments/205784753352343552/772535323614773268/unknown.png",
+            "https://cdn.discordapp.com/attachments/854412556130451467/858764560436428811/121809872-7a893c00-cc56-11eb-8337-761a58dab4f3.png",
+            "https://cdn.discordapp.com/attachments/134720091576205312/858767535196340254/unknown.png",
+            "https://cdn.discordapp.com/attachments/205784753352343552/776555183873851392/unknown.png",
+            "https://cdn.discordapp.com/attachments/205784753352343552/772535323614773268/unknown.png",
             //November update
             "https://cdn.discordapp.com/attachments/734475284446707753/767680432945758208/unknown.png",
             "https://cdn.discordapp.com/attachments/734475284446707753/768851782780059728/image0.png",
@@ -47,11 +47,22 @@ class DiscordCommandCoder extends DiscordCommand {
             "https://cdn.discordapp.com/attachments/734475284446707753/735041980182036500/discordtheosbeerebase.PNG",
             "https://cdn.discordapp.com/attachments/734475284446707753/748792022017507399/unknown.png",
             "https://cdn.discordapp.com/attachments/734475284446707753/760594369312718879/unknown.png",
-	        "https://i.gyazo.com/e769a11cad7bbd112de2db9c1994ff77.png",
-	        "https://cdn.discordapp.com/attachments/734475284446707753/734476179167510578/dreamseeker_2020-06-25_16-42-07.png",
-	        "https://cdn.discordapp.com/attachments/134720091576205312/780843381941075968/unknown.png", // FileTypes.jpg
-            "https://cdn.discordapp.com/attachments/734475284446707753/772916637190979664/unknown.png"
-        ];
+            "https://i.gyazo.com/e769a11cad7bbd112de2db9c1994ff77.png",
+            "https://cdn.discordapp.com/attachments/734475284446707753/734476179167510578/dreamseeker_2020-06-25_16-42-07.png",
+            "https://cdn.discordapp.com/attachments/134720091576205312/780843381941075968/unknown.png", // FileTypes.jpg
+                "https://cdn.discordapp.com/attachments/734475284446707753/772916637190979664/unknown.png",
+            "https://cdn.discordapp.com/attachments/734475284446707753/838072123078606878/Screenshot_20210501-111707_Discord.jpg", //Turn into a propeller
+            "https://cdn.discordapp.com/attachments/734475284446707753/825984684478431292/Discord_2021-03-28_21-46-04.png", //Theos Emergency Powers
+            "https://cdn.discordapp.com/attachments/734475284446707753/812772550262128641/image0.png", //This change is not good
+            "https://cdn.discordapp.com/attachments/734475284446707753/808703322839449600/chart.png", //Features Theos has Ruined over time
+            "https://cdn.discordapp.com/attachments/734475284446707753/801196796449128488/unknown.png", //Give me Colton
+            "https://i.imgur.com/NbXtu0r.png", //Banning Alexkar
+            "https://cdn.discordapp.com/attachments/734475284446707753/797049348931321856/20210108_052217.jpg", //Theos replacing mentors with code
+            "https://cdn.discordapp.com/attachments/734475284446707753/796666986067001384/Stonks.png", //Stonk shitcode
+            "https://cdn.discordapp.com/attachments/734475284446707753/789327485426335815/unknown.png", //Departmental Card (FUCK)
+            "https://cdn.discordapp.com/attachments/734475284446707753/787107008113016902/mspaint_2020-12-11_18-44-32.png", //Board of Directors
+            "https://cdn.discordapp.com/attachments/734475284446707753/785944639030165604/unknown.png" //Bood cannot spell
+            ];
         var response = responses[Math.floor(Math.random() * responses.length)];
         var randomColor = Math.floor(Math.random()*16777215).toString(16);
 	
