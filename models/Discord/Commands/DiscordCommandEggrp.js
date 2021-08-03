@@ -32,7 +32,8 @@ class DiscordCommandEggrp extends DiscordCommand {
 		//September Update Goes here
 		"https://cdn.discordapp.com/attachments/734475284446707753/756286634852352152/dreamseeker_2020-09-17_17-17-21.png",
 		"https://cdn.discordapp.com/attachments/734475284446707753/758277438764744704/image0.png",
-		"https://cdn.discordapp.com/attachments/734475284446707753/761010462766399498/unknown-24.png"
+		"https://cdn.discordapp.com/attachments/734475284446707753/761010462766399498/unknown-24.png",
+	        "https://cdn.discordapp.com/attachments/734475284446707753/806941530915864586/unknown.png" //Egg counter
 	];
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	var randomColor = Math.floor(Math.random()*16777215).toString(16);

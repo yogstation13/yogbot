@@ -45,7 +45,18 @@ class DiscordCommandCoder extends DiscordCommand {
 	"https://i.gyazo.com/e769a11cad7bbd112de2db9c1994ff77.png",
 	"https://cdn.discordapp.com/attachments/734475284446707753/734476179167510578/dreamseeker_2020-06-25_16-42-07.png",
 	"https://cdn.discordapp.com/attachments/134720091576205312/780843381941075968/unknown.png", // FileTypes.jpg
-        "https://cdn.discordapp.com/attachments/734475284446707753/772916637190979664/unknown.png"
+        "https://cdn.discordapp.com/attachments/734475284446707753/772916637190979664/unknown.png",
+	"https://cdn.discordapp.com/attachments/734475284446707753/838072123078606878/Screenshot_20210501-111707_Discord.jpg", //Turn into a propeller
+	"https://cdn.discordapp.com/attachments/734475284446707753/825984684478431292/Discord_2021-03-28_21-46-04.png", //Theos Emergency Powers
+	"https://cdn.discordapp.com/attachments/734475284446707753/812772550262128641/image0.png", //This change is not good
+	"https://cdn.discordapp.com/attachments/734475284446707753/808703322839449600/chart.png", //Features Theos has Ruined over time
+	"https://cdn.discordapp.com/attachments/734475284446707753/801196796449128488/unknown.png", //Give me Colton
+	"https://i.imgur.com/NbXtu0r.png", //Banning Alexkar
+	"https://cdn.discordapp.com/attachments/734475284446707753/797049348931321856/20210108_052217.jpg", //Theos replacing mentors with code
+	"https://cdn.discordapp.com/attachments/734475284446707753/796666986067001384/Stonks.png", //Stonk shitcode
+	"https://cdn.discordapp.com/attachments/734475284446707753/789327485426335815/unknown.png", //Departmental Card (FUCK)
+	"https://cdn.discordapp.com/attachments/734475284446707753/787107008113016902/mspaint_2020-12-11_18-44-32.png", //Board of Directors
+	"https://cdn.discordapp.com/attachments/734475284446707753/785944639030165604/unknown.png" //Bood cannot spell
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
         var randomColor = Math.floor(Math.random()*16777215).toString(16);

@@ -104,7 +104,8 @@ class DiscordCommandMoja extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/734475284446707753/773469790119526420/unknown.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/774000278210084874/unknown.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/774001975549100032/unknown.png",
-        "https://cdn.discordapp.com/attachments/734475284446707753/774732985710280784/image0.png"
+        "https://cdn.discordapp.com/attachments/734475284446707753/774732985710280784/image0.png",
+        "https://cdn.discordapp.com/attachments/734475284446707753/815362585029246976/image0.png" //Lettuce is 900 calories
 	];
     var response = responses[Math.floor(Math.random() * responses.length)];
     var randomColor = Math.floor(Math.random()*16777215).toString(16);
