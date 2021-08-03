@@ -5,7 +5,7 @@ class DiscordCommandKickself extends DiscordCommand {
 	constructor(subsystem) {
 		super();
 		this.name = "kickself";
-		this.permission = "Kicks you.";
+		this.description = "Kicks you.";
 		this.permission = undefined;
 		this.subsystem = subsystem;
 	}
