@@ -31,7 +31,7 @@ class DiscordCommandKtlwjec extends DiscordCommand {
 		"https://live.staticflickr.com/7100/7066953431_34bd247b65_b.jpg",
 		"https://i.pinimg.com/564x/d4/81/5c/d4815c73b98d87b6e3cbd0c5d4e75a22.jpg",
 		"https://i.pinimg.com/564x/fc/00/c8/fc00c8b0754a27096bd870901fa70d90.jpg",
-	    	"https://cdn.discordapp.com/attachments/568528620243386368/784206933484634143/image0-6.jpg"
+	    "https://cdn.discordapp.com/attachments/568528620243386368/784206933484634143/image0-6.jpg"
 	];
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	var randomColor = Math.floor(Math.random()*16777215).toString(16);

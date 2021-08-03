@@ -14,8 +14,8 @@ class DiscordCommandHardy extends DiscordCommand {
 
   onRun(message, permissions, args) {
     var responses = [
-		  "http://www.seanconway.com/uploads/1/3/2/4/13241475/3193657_orig.jpg",
-		  "https://ilovefancydress.com/image/cache/data/7/Penguin%20Fat%20Suit%20Costume-900x900.jpg"
+		"http://www.seanconway.com/uploads/1/3/2/4/13241475/3193657_orig.jpg",
+		"https://ilovefancydress.com/image/cache/data/7/Penguin%20Fat%20Suit%20Costume-900x900.jpg"
 	];
     var response = responses[Math.floor(Math.random() * responses.length)];
     var randomColor = Math.floor(Math.random()*16777215).toString(16);
