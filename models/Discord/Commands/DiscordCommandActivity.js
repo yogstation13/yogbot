@@ -43,8 +43,8 @@ class DiscordCommandActivity extends DiscordCommand {
 				let ranklen = 4;
 				for(let admin of results) {
 					admins[admin.ckey] = admin.rank
-					if(admin.username.length > adminlen)
-						adminlen = admin.username.length;
+					if(admin.ckey.length > adminlen)
+						adminlen = admin.ckey.length;
 					if(admin.rank.length > ranklen)
 						ranklen = admin.rank.length;
 				}
