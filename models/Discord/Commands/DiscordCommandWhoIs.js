@@ -31,12 +31,11 @@ class DiscordCommandWhoIs extends DiscordCommand {
         return;
       }
       var userID = auser
-      var DB_response;
       
       if(userID) {
-        DB_response = getByDiscordID(connection, userID, message)
+        getByDiscordID(connection, userID, message)
       } else {
-        DB_response = getByCkey(connection, provided_ckey, message)
+        getByCkey(connection, provided_ckey, message)
       }
         
       connection.release();
@@ -49,6 +48,7 @@ function getByDiscordID(connection, user, message) {
   connection.query("SELECT * FROM `erro_player` WHERE `discord_id` = ?", [user.id], (error, results, fields) => {
       if (error) {
         message.reply( "Error running select query, try again later.");
+
       }
       if (results.length == 0) {
         message.reply("No linked BYOND account found for this user.");
