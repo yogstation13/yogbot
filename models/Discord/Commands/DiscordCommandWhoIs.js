@@ -78,13 +78,10 @@ function getByCkey(connection, ckey, message) {
         message.reply("More than 1 of this ckey with a Discord ID, this makes no sense at all!");
         return;
       }
-      var guildMember = message.guild.fetchMember(results[0].discord_id);
-      if(!guildMember) {
-        message.reply("Can't resolve user from ID");
-        return;
-      }
-      
-      message.reply(ckey + " belongs to " + guildMember.user.username + "#" + guildMember.user.discriminator);
+    
+      message.guild.fetchMember(results[0].discord_id)
+        .then((member) => message.reply(ckey + " belongs to " + member.user.username + "#" + member.user.discriminator))
+        .catch(() => message.reply("Can't resolve user from ID"));
     })
 }
 
