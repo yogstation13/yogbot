@@ -48,13 +48,15 @@ function getByDiscordID(connection, user, message) {
   connection.query("SELECT * FROM `erro_player` WHERE `discord_id` = ?", [user.id], (error, results, fields) => {
       if (error) {
         message.reply( "Error running select query, try again later.");
-
+        return;
       }
       if (results.length == 0) {
         message.reply("No linked BYOND account found for this user.");
+        return;
       }
       if (results.length > 1) {
         message.reply("More than one BYOND account linked to this ID. This shouldn't happen!");
+        return;
       }
 
       var ckey = results[0].ckey
@@ -66,16 +68,21 @@ function getByCkey(connection, ckey, message) {
   connection.query("SELECT discord_id FROM `erro_player` WHERE `ckey` = ?", [ckey], (error, results, fields) => {
       if (error) {
         message.reply("Error running select query, try again later.");
+        return;
       }
       if (results.length == 0) {
         message.reply("No user with this Ckey has a linked Discord account!");
+        return;
       }
       if (results.length > 1) {
         message.reply("More than 1 of this ckey with a Discord ID, this makes no sense at all!");
-
+        return;
       }
       var guildMember = message.guild.fetchMember(results[0].discord_id);
-      if(!guildMember) message.reply("Can't resolve user from ID");
+      if(!guildMember) {
+        message.reply("Can't resolve user from ID");
+        return;
+      }
       
       message.reply(ckey + " belongs to " + guildMember.user.username + "#" + guildMember.user.discriminator);
     })
