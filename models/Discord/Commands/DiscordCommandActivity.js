@@ -37,25 +37,16 @@ class DiscordCommandActivity extends DiscordCommand {
 					return (str + ''.padStart(Math.floor((amt - str.length)/2))).padStart(amt, type);
 				}
 				
-				// alright time for a bunch of queries
-				let results = await query('SELECT rankid,name FROM web_groups'); // get the admin ranks
-				let ranks = {};
-				let ranklen = 4;
-				for(let rank of results) {
-					ranks[+rank.rankid] = rank.name;
-					if(rank.name.length > ranklen)
-						ranklen = rank.name.length;
-				}
-				
-				results = await query('SELECT username,web_admins.rank FROM web_admins'); // get the admins
+				let results = await query('SELECT ckey,rank FROM erro_admin'); // get the admins
 				let admins = {};
 				let adminlen = 8;
+				let ranklen = 4;
 				for(let admin of results) {
-					let rankname = ranks[admin.rank];
-					//if(!(exempt_ranks.includes(rankname)))
-					admins[admin.username] = rankname
-					if(admin.username.length > adminlen)
-						adminlen = admin.username.length;
+					admins[admin.ckey] = admin.rank
+					if(admin.ckey.length > adminlen)
+						adminlen = admin.ckey.length;
+					if(admin.rank.length > ranklen)
+						ranklen = admin.rank.length;
 				}
 				
 				results = await query ('SELECT ckey,Sum((Unix_timestamp(`left`)-Unix_timestamp(datetime))/3600) AS activity FROM erro_connection_log WHERE `left` > (Now() - INTERVAL 2 week) AND `left` IS NOT NULL GROUP BY ckey;'); // get the activity
