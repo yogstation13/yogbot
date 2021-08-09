@@ -14,7 +14,7 @@
     },
     "senior admin": {
       "inherits": "maintainer",
-      "permissions": ["addao"]
+      "permissions": []
     },
     "maintainer": {
       "inherits": "staff",
