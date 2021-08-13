@@ -1,19 +1,14 @@
-const DiscordCommand = require('../DiscordCommand.js');
-var Discord = require('discord.js');
+const DiscordImageCommand = require('../../DiscordImageCommand.js');
 
-class DiscordCommandSpooder extends DiscordCommand {
+class DiscordCommandSpooder extends DiscordImageCommand {
 
     constructor(subsystem) {
         super();
 		this.name = "spooder";
 		this.description = "Pictures of the best dog";
-		this.permission = undefined;
 		this.subsystem = subsystem;
-		this.hidden = true;
-    }
-
-    onRun(message, permissions, args) {
-        var responses = [
+		this.title = "The best dog";
+		this.images = [
 			"https://media.discordapp.net/attachments/134720091576205312/731173492078280804/image0.jpg",
 			"https://media.discordapp.net/attachments/134720091576205312/769970524179922965/image0.jpg",
 			"https://media.discordapp.net/attachments/134720091576205312/763375965694066740/image0.jpg",
@@ -72,18 +67,7 @@ class DiscordCommandSpooder extends DiscordCommand {
 			"https://cdn.discordapp.com/attachments/134720091576205312/719428567187980288/image0.jpg",
 			"https://cdn.discordapp.com/attachments/134720091576205312/719427763538493500/image0.jpg"
         ];
-        var response = responses[Math.floor(Math.random() * responses.length)];
-        var randomColor = Math.floor(Math.random()*16777215).toString(16);
-	
-        const embed = new Discord.RichEmbed()
-          .setColor('#'+randomColor) // Random Color
-          .setTitle('The best dog') // Set to title whenever it is added
-          .setImage(response)
-          //.setFooter(author) // Uncomment when we have authors
-
-        message.channel.send(embed);
     }
-
 }
 
 module.exports = DiscordCommandSpooder;

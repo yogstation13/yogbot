@@ -1,19 +1,14 @@
-const DiscordCommand = require('../DiscordCommand.js');
-var Discord = require('discord.js');
+const DiscordImageCommand = require('../../DiscordImageCommand.js');
 
-class DiscordCommandPlant extends DiscordCommand {
+class DiscordCommandPlant extends DiscordImageCommand {
 
     constructor(subsystem) {
         super();
-		this.name = "plant"
+		this.name = "plant";
 		this.description = "Pictures of yogstaion plants";
-		this.permission = undefined;
 		this.subsystem = subsystem;
-		this.hidden = true;
-    }
-
-    onRun(message, permissions, args) {
-        var responses = [
+		this.title = "Plant.";
+		this.images = [
 			"https://cdn.discordapp.com/attachments/263805372408528897/742079730106368000/1NrOEW7_14x.png",
 			"https://cdn.discordapp.com/attachments/263805372408528897/742079731968639077/2qGZTv4_14x.png",
 			"https://cdn.discordapp.com/attachments/263805372408528897/742079733734309999/43UVmmB_14x.png",
@@ -51,18 +46,7 @@ class DiscordCommandPlant extends DiscordCommand {
 			"https://cdn.discordapp.com/attachments/263805372408528897/742080236996526202/V3wJuuF_14x.png",
 			"https://cdn.discordapp.com/attachments/263805372408528897/742085947813789696/HJnX2Pt_14x.png"
         ];
-		var response = responses[Math.floor(Math.random() * responses.length)];
-		var randomColor = Math.floor(Math.random()*16777215).toString(16);
-	
-		const embed = new Discord.RichEmbed()
-			.setColor('#'+randomColor) // Random Color
-			.setTitle('Plant.') // Set to title whenever it is added
-			.setImage(response)
-			//.setFooter(author) // Uncomment when we have authors
-
-        message.channel.send(embed);
     }
-
 }
 
 module.exports = DiscordCommandPlant;

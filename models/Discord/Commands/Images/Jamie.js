@@ -1,19 +1,14 @@
-const DiscordCommand = require('../DiscordCommand.js');
-var Discord = require('discord.js');
+const DiscordImageCommand = require('../../DiscordImageCommand.js');
 
-class DiscordCommandJamie extends DiscordCommand {
+class DiscordCommandJamie extends DiscordImageCommand {
 
     constructor(subsystem) {
         super();
 		this.name = "jamie";
 		this.description = "dumb stuff from jamie";
-		this.permission = undefined;
 		this.subsystem = subsystem;
-		this.hidden = true;
-    }
-
-    onRun(message, permissions, args) {
-        var responses = [
+		this.title = "Jamie Image";
+		this.images = [
 			"https://media.discordapp.net/attachments/710261756710354985/779346180840489000/Capture_2020-11-20-09-03-17.png",
 			"https://media.discordapp.net/attachments/423761888309018624/785996169780133908/unknown.png",
 			"https://media.discordapp.net/attachments/423761888309018624/785994698388013076/unknown.png",
@@ -52,19 +47,8 @@ class DiscordCommandJamie extends DiscordCommand {
 			"https://cdn.discordapp.com/attachments/734475284446707753/772700667969011712/unknown.png",
 			"https://cdn.discordapp.com/attachments/734475284446707753/839856694791241797/image0.png", //Update your mother
 			"https://cdn.discordapp.com/attachments/734475284446707753/798848216237473822/Screenshot_20210113-013643.jpg" //Jamie is not a good coder
-	];
-        var response = responses[Math.floor(Math.random() * responses.length)];
-        var randomColor = Math.floor(Math.random()*16777215).toString(16);
-	
-        const embed = new Discord.RichEmbed()
-            .setColor('#'+randomColor) // Random Color
-            .setTitle('Jamie Image') // Set to title whenever it is added
-            .setImage(response)
-            //.setFooter(author) // Uncomment when we have authors
-
-        message.channel.send(embed);
+		];
     }
-
 }
 
 module.exports = DiscordCommandJamie;

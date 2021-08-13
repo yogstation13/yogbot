@@ -1,19 +1,14 @@
-const DiscordCommand = require('../DiscordCommand.js');
-var Discord = require('discord.js');
+const DiscordImageCommand = require('../../DiscordImageCommand.js');
 
-class DiscordCommandCoder extends DiscordCommand {
+class DiscordCommandCoder extends DiscordImageCommand {
 
     constructor(subsystem) {
         super();
         this.name = "coder";
         this.description = "dumb stuff the dev team says";
-        this.permission = undefined;
         this.subsystem = subsystem;
-        this.hidden = true;
-    }
-
-    onRun(message, permissions, args) {
-        var responses = [
+        this.title = "Coder Image";
+        this.images = [
             "https://cdn.discordapp.com/attachments/347045440958627841/766286538107519006/unknown.png",
             "https://cdn.discordapp.com/attachments/347045440958627841/766286291175735356/unknown.png",
             "https://cdn.discordapp.com/attachments/347045440958627841/766077319679967282/unknown.png",
@@ -30,7 +25,6 @@ class DiscordCommandCoder extends DiscordCommand {
             "https://cdn.discordapp.com/attachments/134720091576205312/858767535196340254/unknown.png",
             "https://cdn.discordapp.com/attachments/205784753352343552/776555183873851392/unknown.png",
             "https://cdn.discordapp.com/attachments/205784753352343552/772535323614773268/unknown.png",
-            //November update
             "https://cdn.discordapp.com/attachments/734475284446707753/767680432945758208/unknown.png",
             "https://cdn.discordapp.com/attachments/734475284446707753/768851782780059728/image0.png",
             "https://cdn.discordapp.com/attachments/734475284446707753/768869609347612772/20201022_121231.jpg",
@@ -63,18 +57,7 @@ class DiscordCommandCoder extends DiscordCommand {
             "https://cdn.discordapp.com/attachments/734475284446707753/787107008113016902/mspaint_2020-12-11_18-44-32.png", //Board of Directors
             "https://cdn.discordapp.com/attachments/734475284446707753/785944639030165604/unknown.png" //Bood cannot spell
         ];
-        var response = responses[Math.floor(Math.random() * responses.length)];
-        var randomColor = Math.floor(Math.random()*16777215).toString(16);
-	
-        const embed = new Discord.RichEmbed()
-            .setColor('#'+randomColor) // Random Color
-            .setTitle('Coder Image') // Set to title whenever it is added
-            .setImage(response)
-            //.setFooter(author) // Uncomment when we have authors
-
-        message.channel.send(embed);
     }
-
 }
 
 module.exports = DiscordCommandCoder;

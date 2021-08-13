@@ -1,19 +1,14 @@
-const DiscordCommand = require('../DiscordCommand.js');
-var Discord = require('discord.js');
+const DiscordImageCommand = require('../../DiscordImageCommand.js');
 
-class DiscordCommandLocker extends DiscordCommand {
+class DiscordCommandLocker extends DiscordImageCommand {
 
     constructor(subsystem) {
         super();
         this.name = "locker";
         this.description = "what's in the bluespace locker?";
-        this.permission = undefined;
         this.subsystem = subsystem;
-        this.hidden = true;
-    }
-
-    onRun(message, permissions, args) {
-        var responses = [
+        this.title = "Bluespace Locker Image";
+        this.images = [
             "https://cdn.discordapp.com/attachments/423761888309018624/769311029787754507/Discord_8RNuBiVx7x.png",
             "https://cdn.discordapp.com/attachments/423761888309018624/769311056413589554/Discord_ayzwP52Pkc.png",
             "https://cdn.discordapp.com/attachments/423761888309018624/769311073135886427/Discord_dGhhAhf4nM.png",
@@ -56,18 +51,7 @@ class DiscordCommandLocker extends DiscordCommand {
             "https://cdn.discordapp.com/attachments/698367324637626438/817894098806898748/unknown.png", //Not a trap
             "https://cdn.discordapp.com/attachments/734475284446707753/796111484719464448/unknown.png" //Portable Brig
         ];
-        var response = responses[Math.floor(Math.random() * responses.length)];
-        var randomColor = Math.floor(Math.random()*16777215).toString(16);
-	
-        const embed = new Discord.RichEmbed()
-            .setColor('#'+randomColor) // Random Color
-            .setTitle('Bluespace Locker Image') // Set to title whenever it is added
-            .setImage(response)
-            //.setFooter(author) // Uncomment when we have authors
-
-        message.channel.send(embed);
     }
-
 }
 
 module.exports = DiscordCommandLocker;

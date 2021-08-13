@@ -5,6 +5,7 @@ const DiscordBanManager = require('../Discord/DiscordBanManager.js');
 const DiscordForumManager = require('../Discord/DiscordForumManager.js');
 const DiscordDonorManager = require('../Discord/DiscordDonorManager.js');
 const fs = require('fs');
+const path = require( "path" );
 const winston = require('winston');
 const https = require('https');
 const StringUtils = require('../Utils/String.js');
@@ -49,17 +50,25 @@ class SubsystemDiscord extends Subsystem {
     });
   }
 
-  loadCommands() {
-    fs.readdir("./models/Discord/Commands/", (err, files) => {
+  readCommands(path, stacks=1) {
+    fs.readdir(path, (err, files) => {
       files.forEach(file => {
         var commandPath = file.split(".")[0];
-
-        const CommandClass = require('../Discord/Commands/' + commandPath + '.js');
+        var patha = '../'.repeat(stacks) + path + commandPath + '.js'
+        if(fs.lstatSync(path+file).isDirectory()) {
+          this.readCommands(path+file+"/", stacks+1)
+          return;
+        }
+        // Don't ask me how the line below works, it just does...
+        // This is done for folder orgnization in the command section
+        const CommandClass = require("../"+path.split("./models/")[1] + commandPath + '.js');
         this.commands.push(new CommandClass(this));
-
       });
     });
+  }
 
+  loadCommands() {
+    this.readCommands("./models/Discord/Commands/");
     fs.readdir("./models/Discord/Routers/", (err, files) => {
       files.forEach(file => {
         var routerPath = file.split(".")[0];
