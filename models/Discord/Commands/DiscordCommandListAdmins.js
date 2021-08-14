@@ -9,7 +9,7 @@ class DiscordCommandListAdmins extends DiscordCommand {
 
     onRun(message, permissions, args) {
         var config = this.subsystem.manager.getSubsystem("Config").config;
-        if (args.length < 1) {
+        if (args.length != 2) {
             message.reply("Usage is `" + config.discord_command_character + "listadmins`");
             return;
         }
