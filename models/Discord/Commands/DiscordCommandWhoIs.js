@@ -78,11 +78,8 @@ function getByCkey(connection, ckey, message) {
         message.reply("More than 1 of this ckey with a Discord ID, this makes no sense at all!");
         return;
       }
-      message.reply(ckey + " belongs to <@" + results[0].discord_id + ">")
-      message.reply(JSON.stringify(results))
       message.guild.fetchMember(results[0].discord_id)
-        .then((member) => message.reply(ckey + " belongs to " + member.user.username + "#" + member.user.discriminator))
-        .catch(() => message.reply("Can't resolve user from ID"));
+        .then((member) => message.reply(ckey + " belongs to " + member.user.username + "#" + member.user.discriminator));
     })
 }
 
