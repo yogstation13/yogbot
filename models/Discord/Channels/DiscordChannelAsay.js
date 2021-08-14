@@ -12,7 +12,7 @@ class DiscordChannelAsay extends DiscordChannel {
     var byondConnector = this.subsystem.manager.getSubsystem("Byond Connector").byondConnector;
     var config = this.subsystem.manager.getSubsystem("Config").config;
     var data = striptags(message.content)
-    
+    var guildMember = message.guild.fetchMember(message.author.id)    
     
     message.attachments.forEach((image) => {
 		if(image && (image.filename.endsWith(".jpg") || image.filename.endsWith(".png"))){
@@ -20,8 +20,7 @@ class DiscordChannelAsay extends DiscordChannel {
 		}
 	});
 	
-  
-    byondConnector.request("?asay=" + encodeURIComponent(data) + "&admin=" + encodeURIComponent(message.author.username), (results) => {
+    byondConnector.request("?asay=" + encodeURIComponent(data) + "&admin=" + encodeURIComponent(message.author.username + "/" + guildMember.nickname)), (results) => {
       if ('error' in results) {
         message.channel.send(results.error);
       }
