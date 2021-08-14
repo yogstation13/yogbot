@@ -61,10 +61,7 @@ class DiscordCommandWhitelist extends DiscordCommand {
 
             if (error) {
               message.reply("Error running insert query, try again later.");
-            }
-
-            if (results.affectedRows < 1) {
-              message.reply("Player was not inserted.");
+              return
             }
             else {
               this.subsystem.logger.log("info", message.author.username + "#" + message.author.discriminator + " (" + message.author.id + ") added a new AO: " + ckey);
