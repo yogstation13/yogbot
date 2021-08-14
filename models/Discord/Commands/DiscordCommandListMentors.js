@@ -29,7 +29,7 @@ class DiscordCommandListMentors extends DiscordCommand {
                     message.reply("No mentors.. Contact a coder or hire some");
                     return;
                 }
-                message.reply("Current mentors: " + results.flat().join())
+                message.reply("Current mentors: " + results.join(', '))
             })
         });
     }
