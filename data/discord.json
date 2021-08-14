@@ -14,7 +14,7 @@
     },
     "senior admin": {
       "inherits": "maintainer",
-      "permissions": ["addao"]
+      "permissions": ["addao", "removeao", "addmentor", "removementor"]
     },
     "maintainer": {
       "inherits": "staff",
@@ -26,11 +26,11 @@
     },
     "retmin": {
       "inherits": "mentor",
-      "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "kickself", "toggleooc", "note", "staffban"]
+      "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "kickself", "toggleooc", "note", "staffban", "listadmins"]
     },
     "mentor": {
       "inherits": false,
-      "permissions": ["mhelp"]
+      "permissions": ["mhelp", "listmentors"]
     },
     "Mentor Council": {
       "inherits": "mentor",
