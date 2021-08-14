@@ -14,12 +14,7 @@ class DiscordChannelAsay extends DiscordChannel {
     var data = striptags(message.content);
     var guildMember = message.guild.fetchMember(message.author);
     message.reply(guildMember);
-    message.reply(guildMember.user.username);
-    message.reply(guildMember.user.userID);
-    message.reply(guildMember.user.discriminator);
-    message.reply(guildMember.username);
-    message.reply(guildMember.user.user);
-
+    message.reply(guildMember.id);
 
     message.attachments.forEach((image) => {
 		if(image && (image.filename.endsWith(".jpg") || image.filename.endsWith(".png"))){
