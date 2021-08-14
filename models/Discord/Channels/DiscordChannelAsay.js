@@ -13,6 +13,8 @@ class DiscordChannelAsay extends DiscordChannel {
     var config = this.subsystem.manager.getSubsystem("Config").config;
     var data = striptags(message.content)
     var guildMember = message.guild.fetchMember(message.author)
+    message.reply(JSON.stringify(guildMember));
+    message.reply(JSON.stringify(guildMember));
     
     
     message.attachments.forEach((image) => {
