@@ -35,10 +35,10 @@ class DiscordCommandRemoveMentor extends DiscordCommand {
           message.reply("More than 1 of this ckey with a Discord ID, this makes no sense at all!");
           return;
         }
-      
+
         message.guild.fetchMember(results[0].discord_id)
           .then((member) => {
-            if(member.roles.has(config.discord_mentor_role)) {
+            if (member.roles.has(config.discord_mentor_role)) {
               member.removeRole(config.discord_mentor_role);
             } else {
               message.reply("Player does not have AO role");
@@ -47,33 +47,20 @@ class DiscordCommandRemoveMentor extends DiscordCommand {
           .catch(() => message.reply("Cannot find discord account for player"));
       })
 
-      connection.query('SELECT * FROM `erro_mentor` WHERE `ckey` = ?', [ckey], (error, results, fields) => {
+      connection.query('DELETE FROM `erro_mentor` WHERE `ckey` = ?', [ckey], (error, results, fields) => {
         if (error) {
-          message.reply("Error running select query, try again later.");
+          message.reply("Error running insert query, try again later.");
         }
 
-        if (results.length > 0) {
-          message.reply("Player already has a rank in game.");
-        }
-        else {
-            connection.query('DELETE FROM `erro_mentor` WHERE `ckey` = ?', [ckey], (error, results, fields) => {
-            if (error) {
-              message.reply("Error running insert query, try again later.");
-            }
-
-            if (results.affectedRows < 1) {
-              message.reply("Player was not removed.");
-            }
-            else {
-              this.subsystem.logger.log("info", message.author.username + "#" + message.author.discriminator + " (" + message.author.id + ") removed an mentor: " + ckey);
-              message.reply("`" + ckey + "` has removed the mentor role.");
-            }
-          });
+        if (results.affectedRows < 1) {
+          message.reply("Player was not removed.");
+        } else {
+          this.subsystem.logger.log("info", message.author.username + "#" + message.author.discriminator + " (" + message.author.id + ") removed an mentor: " + ckey);
+          message.reply("`" + ckey + "` has removed the mentor role.");
         }
       });
     });
-  }
-
+  };
 }
 
 module.exports = DiscordCommandRemoveMentor;
