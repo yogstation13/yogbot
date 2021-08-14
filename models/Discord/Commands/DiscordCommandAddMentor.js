@@ -39,7 +39,7 @@ class DiscordCommandAddMentor extends DiscordCommand {
         message.guild.fetchMember(results[0].discord_id)
           .then((member) => {
             if(member.roles.has(config.discord_mentor_role)) {
-              message.reply("Player already has AO role");
+              message.reply("Player already has Mentor role");
             } else {
               member.addRole(config.discord_mentor_role);
             }
