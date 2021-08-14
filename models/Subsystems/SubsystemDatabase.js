@@ -25,7 +25,8 @@ class SubsystemDatabase extends Subsystem {
       port: config.sql_port,
       user: config.sql_user,
       password: config.sql_password,
-      database: config.sql_database
+      database: config.sql_database,
+      supportBigNumbers: true
     });
 
     this.pool.getConnection((err, connection) => {
