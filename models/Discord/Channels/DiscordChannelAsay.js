@@ -16,7 +16,7 @@ class DiscordChannelAsay extends DiscordChannel {
     message.reply(message.author.id);
     message.reply(message.member);
     message.reply(message.member.id);
-    message.reply(guildMember(message.author));
+    message.reply(message.author);
 
 
     
