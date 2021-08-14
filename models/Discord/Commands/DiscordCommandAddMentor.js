@@ -61,6 +61,7 @@ class DiscordCommandAddMentor extends DiscordCommand {
 
             if (error) {
               message.reply("Error running insert query, try again later.");
+              return
             }
             else {
               this.subsystem.logger.log("info", message.author.username + "#" + message.author.discriminator + " (" + message.author.id + ") added a new mentor: " + ckey);
