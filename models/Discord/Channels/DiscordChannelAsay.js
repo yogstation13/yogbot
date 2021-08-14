@@ -13,10 +13,10 @@ class DiscordChannelAsay extends DiscordChannel {
     var config = this.subsystem.manager.getSubsystem("Config").config;
     var data = striptags(message.content);
     var guildMember = message.member;
-    message.reply(JSON.stringify(message.author.id));
-    message.reply(JSON.stringify(message.member));
-    message.reply(JSON.stringify(message.member.id));
-    message.reply(JSON.stringify(guildMember(message.author)));
+    message.reply(message.author.id);
+    message.reply(message.member);
+    message.reply(message.member.id);
+    message.reply(guildMember(message.author));
 
 
     
