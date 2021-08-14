@@ -49,7 +49,7 @@ class DiscordCommandRemoveMentor extends DiscordCommand {
 
       connection.query('DELETE FROM `erro_mentor` WHERE `ckey` = ?', [ckey], (error, results, fields) => {
         if (error) {
-          message.reply("Error running insert query, try again later.");
+          message.reply("Error running delete query, try again later.");
         }
 
         if (results.affectedRows < 1) {
