@@ -19,7 +19,7 @@ class DiscordChannelAsay extends DiscordChannel {
 		}
 	});
 
-    byondConnector.request("?asay=" + encodeURIComponent(data) + "&admin=" + encodeURIComponent(message.member?.displayName ?? message.author.username), (results) => {
+    byondConnector.request("?asay=" + encodeURIComponent(data) + "&admin=" + encodeURIComponent(message.member ? message.member.displayName : message.author.username), (results) => {
       if ('error' in results) {
         message.channel.send(results.error);
       }
