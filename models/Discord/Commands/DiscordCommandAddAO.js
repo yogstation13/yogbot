@@ -61,11 +61,10 @@ class DiscordCommandWhitelist extends DiscordCommand {
 
             if (error) {
               message.reply("Error running insert query, try again later.");
-              return
+              return;
             }
-            else {
-              this.subsystem.logger.log("info", message.author.username + "#" + message.author.discriminator + " (" + message.author.id + ") added a new AO: " + ckey);
-              message.reply("`" + ckey + "` has been give the AO role.");
+            this.subsystem.logger.log("info", message.author.username + "#" + message.author.discriminator + " (" + message.author.id + ") added a new AO: " + ckey);
+            message.reply("`" + ckey + "` has been give the AO role.");
             }
           });
         }
