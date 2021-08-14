@@ -29,7 +29,7 @@ class DiscordCommandListAdmins extends DiscordCommand {
                     message.reply("No Admins.. Contact a coder or hire some");
                     return;
                 }
-                message.reply("Current Admins: " +  results.map(result -> result.ckey).join(', '))
+                message.reply("Current Admins: " +  results.map(result => result.ckey).join(', '))
             })
         });
     }
