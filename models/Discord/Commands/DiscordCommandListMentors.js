@@ -20,7 +20,7 @@ class DiscordCommandListMentors extends DiscordCommand {
             if (err) {
                 message.reply("Error contacting database, try again later.");
             }
-            connection.query("SELECT ckey FROM `erro_mentors`", [], (error, results, fields) => {
+            connection.query("SELECT ckey FROM `erro_mentor`", [], (error, results, fields) => {
                 if (error) {
                     message.reply("Error running select query, try again later.");
                     return;
