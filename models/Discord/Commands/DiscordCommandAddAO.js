@@ -21,16 +21,42 @@ class DiscordCommandWhitelist extends DiscordCommand {
       if (err) {
         message.reply("Error contacting database, try again later.");
       }
-      connection.query('SELECT * FROM `web_admins` WHERE `username` = ?', [ckey], (error, results, fields) => {
+
+      connection.query("SELECT discord_id FROM `erro_player` WHERE `ckey` = ?", [ckey], (error, results, fields) => {
+        if (error) {
+          message.reply("Error running select query, try again later.");
+          return;
+        }
+        if (results.length == 0) {
+          message.reply("No user with this Ckey has a linked Discord account!");
+          return;
+        }
+        if (results.length > 1) {
+          message.reply("More than 1 of this ckey with a Discord ID, this makes no sense at all!");
+          return;
+        }
+      
+        message.guild.fetchMember(results[0].discord_id)
+          .then((member) => {
+            if(member.roles.has(config.discord_ao_role)) {
+              message.reply("Player already has AO role");
+            } else {
+              member.addRole(config.discord_ao_role);
+            }
+          })
+          .catch(() => message.reply("Cannot find discord account for player"));
+      })
+
+      connection.query('SELECT * FROM `erro_admin` WHERE `ckey` = ?', [ckey], (error, results, fields) => {
         if (error) {
           message.reply("Error running select query, try again later.");
         }
 
         if (results.length > 0) {
-          message.reply("Player already has a rank.");
+          message.reply("Player already has a rank in game.");
         }
         else {
-          connection.query("INSERT INTO `web_admins` (`username`, `password`, `salt`, `rank`) VALUES (?, '', '', 12);", [ckey], (error, results, fields) => {
+          connection.query("INSERT INTO `erro_admin` (`ckey`, `rank`) VALUES (?, 'Admin Observer');", [ckey], (error, results, fields) => {
             connection.release();
 
             if (error) {
