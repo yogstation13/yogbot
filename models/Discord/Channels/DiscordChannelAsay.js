@@ -12,7 +12,7 @@ class DiscordChannelAsay extends DiscordChannel {
     var byondConnector = this.subsystem.manager.getSubsystem("Byond Connector").byondConnector;
     var config = this.subsystem.manager.getSubsystem("Config").config;
     var data = striptags(message.content);
-    var guildMember = message.guild.fetchMember(message.member);
+    var guildMember = message.guild.fetchMember(message.author);
     message.reply(guildMember);
     message.reply(guildMember.user.username);
     message.reply(guildMember.user.userID);
