@@ -79,7 +79,8 @@ function getByCkey(connection, ckey, message) {
         return;
       }
       message.guild.fetchMember(results[0].discord_id)
-        .then((member) => message.reply(ckey + " belongs to " + member.user.username + "#" + member.user.discriminator));
+        .then((member) => message.reply(ckey + " belongs to " + member.user.username + "#" + member.user.discriminator))
+        .catch(() => message.reply("Can't resolve user from ID"));
     })
 }
 
