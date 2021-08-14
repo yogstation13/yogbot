@@ -12,7 +12,7 @@ class DiscordChannelAsay extends DiscordChannel {
     var byondConnector = this.subsystem.manager.getSubsystem("Byond Connector").byondConnector;
     var config = this.subsystem.manager.getSubsystem("Config").config;
     var data = striptags(message.content);
-    var guildMember = message.guild.fetchMember(message.author);
+    var guildMember = message.member;
     
     message.attachments.forEach((image) => {
 		if(image && (image.filename.endsWith(".jpg") || image.filename.endsWith(".png"))){
