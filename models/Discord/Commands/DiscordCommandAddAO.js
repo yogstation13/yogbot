@@ -65,7 +65,6 @@ class DiscordCommandWhitelist extends DiscordCommand {
             }
             this.subsystem.logger.log("info", message.author.username + "#" + message.author.discriminator + " (" + message.author.id + ") added a new AO: " + ckey);
             message.reply("`" + ckey + "` has been give the AO role.");
-            }
           });
         }
       });
