@@ -14,7 +14,6 @@ class DiscordChannelAsay extends DiscordChannel {
     var data = striptags(message.content)
     var guildMember = message.guild.fetchMember(message.author.id)
     message.reply(JSON.stringify(guildMember));
-    message.reply(JSON.stringify(message.author));
     
     
     message.attachments.forEach((image) => {
