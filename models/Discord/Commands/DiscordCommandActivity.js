@@ -9,7 +9,8 @@ class DiscordCommandActivity extends DiscordCommand {
 	}
 
 	onRun(message, permissions, args) {
-		const exempt_ranks = ["Host", "Council Member", "RetCoder", "Tribunal", "Retired Admin", "Senior Coder", "Head Coder", "Maintainer", "Admin Observer", "#Forum Mod", "Bot"];
+		const exempt_ranks = ["Host", "Council Member", "RetCoder", "Tribunal", "Retired Admin", "Senior Coder", "Head Developer", "Maintainer", "Admin Observer", "#Forum Mod", "Bot", "Community Manager"];
+		const ingore_ranks = ["Maintainer", "Bot"];
 		let config = this.subsystem.manager.getSubsystem("Config").config;
 		let dbSubsystem = this.subsystem.manager.getSubsystem("Database");
 
@@ -42,6 +43,8 @@ class DiscordCommandActivity extends DiscordCommand {
 				let adminlen = 8;
 				let ranklen = 4;
 				for(let admin of results) {
+					if(ingore_ranks.includes(admin.rank))
+						continue;
 					admins[admin.ckey] = admin.rank
 					if(admin.ckey.length > adminlen)
 						adminlen = admin.ckey.length;
