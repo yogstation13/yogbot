@@ -12,7 +12,11 @@ class DiscordCommandBugReport extends DiscordChannel {
     var config = this.subsystem.manager.getSubsystem("Config").config;
     //Split by line breaks, only splits on purposeful shift+enter in Discord.
     let lines = message.content.split("\n")
-
+    
+    if(lines[0][0] === "-") {
+      return 
+    }
+    
     //Title of issue
     let title = "";
     //Text body of issue
