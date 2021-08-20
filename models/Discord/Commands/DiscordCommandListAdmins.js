@@ -20,7 +20,7 @@ class DiscordCommandListAdmins extends DiscordCommand {
             if (err) {
                 message.reply("Error contacting database, try again later.");
             }
-            connection.query("SELECT ckey FROM `erro_admin`", [], (error, results, fields) => {
+            connection.query("SELECT ckey,rank FROM `erro_admin`", [], (error, results, fields) => {
                 if (error) {
                     message.reply("Error running select query, try again later.");
                     return;
@@ -29,7 +29,7 @@ class DiscordCommandListAdmins extends DiscordCommand {
                     message.reply("No Admins.. Contact a coder or hire some");
                     return;
                 }
-                message.reply("Current Admins: " +  results.map(result => result.ckey).join(', '))
+                message.reply("Current Admins:\n" +  results.map(result => result.ckey + " - " + result.rank).join('\n'))
             })
         });
     }
