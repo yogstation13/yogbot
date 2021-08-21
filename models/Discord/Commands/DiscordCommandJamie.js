@@ -46,7 +46,21 @@ class DiscordCommandJamie extends DiscordCommand {
 				"https://cdn.discordapp.com/attachments/860107308574965760/860107324009742336/unknown-99.png",
 				"https://cdn.discordapp.com/attachments/734475284446707753/772700667969011712/unknown.png",
 		                "https://cdn.discordapp.com/attachments/734475284446707753/839856694791241797/image0.png", //Update your mother
-		                "https://cdn.discordapp.com/attachments/734475284446707753/798848216237473822/Screenshot_20210113-013643.jpg" //Jamie is not a good coder
+		                "https://cdn.discordapp.com/attachments/734475284446707753/798848216237473822/Screenshot_20210113-013643.jpg", //Jamie is not a good coder
+				"https://cdn.discordapp.com/attachments/423761888309018624/878609957908541460/Backpeddle.PNG",
+				"https://cdn.discordapp.com/attachments/423761888309018624/878609965277909002/adamsuckit.PNG",
+				"https://cdn.discordapp.com/attachments/423761888309018624/878609974329221150/awake.PNG",
+				"https://cdn.discordapp.com/attachments/423761888309018624/878610044046946375/Spriters.PNG",
+				"https://cdn.discordapp.com/attachments/423761888309018624/878610058022387782/Wall.PNG",
+				"https://cdn.discordapp.com/attachments/423761888309018624/878610072459177984/workingwell.PNG",
+				"https://cdn.discordapp.com/attachments/423761888309018624/878610087118266368/bibby.PNG",
+				"https://cdn.discordapp.com/attachments/423761888309018624/878610099130753064/biglog.PNG",
+				"https://cdn.discordapp.com/attachments/423761888309018624/878610142302707712/downer.PNG",
+				"https://cdn.discordapp.com/attachments/423761888309018624/878610154889805864/fixgame.PNG",
+				"https://cdn.discordapp.com/attachments/423761888309018624/878610169653784586/gunbad.PNG",
+				"https://cdn.discordapp.com/attachments/423761888309018624/878610183486586951/gunhere.PNG",
+				"https://cdn.discordapp.com/attachments/423761888309018624/878610197180977162/lag.PNG",
+				"https://cdn.discordapp.com/attachments/423761888309018624/878610208216199228/Shares.PNG"
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
         var randomColor = Math.floor(Math.random()*16777215).toString(16);
