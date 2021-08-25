@@ -8,7 +8,7 @@ class DiscordCommandKickself extends DiscordCommand {
 
 	onRun(message, permissions, args) {
 		if (permissions.includes("kickself")) {
-			message.reply("cannot kick staff");
+			message.reply("I'm afraid I can't let you kick yourself.");
 		}
 		else {
 			var guildMember = message.member;
