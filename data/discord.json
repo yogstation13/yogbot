@@ -26,11 +26,11 @@
     },
     "retmin": {
       "inherits": "mentor",
-      "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "kickself", "toggleooc", "note", "staffban", "listadmins"]
+      "permissions": ["tempban", "ban", "unban", "kick", "reboot", "ticket", "whitelist", "toggleooc", "note", "staffban", "listadmins"]
     },
     "mentor": {
       "inherits": false,
-      "permissions": ["mhelp", "listmentors"]
+      "permissions": ["mhelp", "kickself", "listmentors"]
     },
     "Mentor Council": {
       "inherits": "mentor",
@@ -50,11 +50,11 @@
     },
     "Lore Team": {
       "inherits": false,
-      "permissions": ["loreban"]
+      "permissions": ["loreban", "kickself"]
     },
     "Wiki Staff": {
       "inherits": false,
-      "permissions": ["wikiban"]
+      "permissions": ["wikiban", "kickself"]
     },
     "notes": {
       "inherits": false,
