@@ -76,7 +76,9 @@ class DiscordCommandWiki extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/734475284446707753/808799456224870410/unknown.png", //Duality of wiki
         "https://cdn.discordapp.com/attachments/734475284446707753/801628545570832464/pee_pee_poo_poo_time.png", //Pee Pee Poo Poo Batman
         "https://cdn.discordapp.com/attachments/734475284446707753/801540934017351760/beating_children.png", //Mord beats children
-        "https://cdn.discordapp.com/attachments/734475284446707753/789610810464403496/unknown.png" //TG Wiki in an mhelp
+        "https://cdn.discordapp.com/attachments/734475284446707753/789610810464403496/unknown.png", //TG Wiki in an mhelp
+        "https://cdn.discordapp.com/attachments/734475284446707753/872199346395951114/Screenshot_20210803-142719__01.png", //Perish, Vivec
+        "https://cdn.discordapp.com/attachments/734475284446707753/879735088600985670/unknown.png" //This command's cheese ratio
 	];	
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	  
