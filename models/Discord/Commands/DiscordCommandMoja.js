@@ -105,7 +105,10 @@ class DiscordCommandMoja extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/734475284446707753/774000278210084874/unknown.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/774001975549100032/unknown.png",
         "https://cdn.discordapp.com/attachments/734475284446707753/774732985710280784/image0.png",
-        "https://cdn.discordapp.com/attachments/734475284446707753/815362585029246976/image0.png" //Lettuce is 900 calories
+        "https://cdn.discordapp.com/attachments/734475284446707753/815362585029246976/image0.png", //Lettuce is 900 calories
+        "https://cdn.discordapp.com/attachments/734475284446707753/872199346395951114/Screenshot_20210803-142719__01.png", //We can rebuild Moja
+        "https://cdn.discordapp.com/attachments/734475284446707753/874292567494262804/unknown.png", //You will be purged from history
+        "https://cdn.discordapp.com/attachments/734475284446707753/874890010678153246/unknown-14.png" //Moja Laser Cannon
 	];
     var response = responses[Math.floor(Math.random() * responses.length)];
     var randomColor = Math.floor(Math.random()*16777215).toString(16);
