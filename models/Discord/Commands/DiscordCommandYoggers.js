@@ -65,7 +65,10 @@ class DiscordCommandYoggers extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/734475284446707753/807753591070130226/unknown.png", //Blood Cult Pod
         "https://cdn.discordapp.com/attachments/734475284446707753/805626489978224650/unknown.png", //Nerd is not a valid integer
         "https://cdn.discordapp.com/attachments/734475284446707753/801260717973831720/dreamseeker_2021-01-19_19-18-46.png", //Heretic Art
-        "https://cdn.discordapp.com/attachments/734475284446707753/797272738779234324/5b704d04150bc69cd943665017d46eba.png" //Negative Hours
+        "https://cdn.discordapp.com/attachments/734475284446707753/797272738779234324/5b704d04150bc69cd943665017d46eba.png", //Negative Hours
+        "https://cdn.discordapp.com/attachments/734475284446707753/875103302013042729/unknown.png", //Security ignoriong a heart attack
+        "https://cdn.discordapp.com/attachments/734475284446707753/881988073691439144/unknown.png", //HUGBOX SHUTTLE
+        "https://cdn.discordapp.com/attachments/734475284446707753/882113836914712616/unknown-124.png" //Normal Preternis mistaken for sling
 	  ];	
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	
