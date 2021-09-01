@@ -64,7 +64,8 @@ class DiscordCommandDuck extends DiscordCommand {
                        "http://www.kappit.com/img/pics/201601_1503_fgagb_sm.jpg",
                        "http://www.guy-sports.com/fun_pictures/duck_dead.jpg",
                        "http://www.kappit.com/img/pics/201406_2202_bacfa_sm.jpg",
-                       "http://37.media.tumblr.com/ee601d99a4e0d0d52ab6fbbf55f28f2d/tumblr_n45sz1Fgth1sxnr93o1_500.gif"
+                       "http://37.media.tumblr.com/ee601d99a4e0d0d52ab6fbbf55f28f2d/tumblr_n45sz1Fgth1sxnr93o1_500.gif",
+		       "https://cdn.discordapp.com/attachments/734475284446707753/879604377285951488/20210823_140659.jpg" //Duckpond
                        
     ];
     var response = responses[Math.floor(Math.random() * responses.length)];
