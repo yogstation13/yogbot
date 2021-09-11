@@ -8,7 +8,7 @@
       "inherits": "headcoder",
       "permissions": []
     },
-    "headcoder": {
+    "head-developer": {
       "inherits": "senior admin",
       "permissions": []
     },
