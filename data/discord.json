@@ -5,7 +5,7 @@
       "permissions": []
     },
     "council": {
-      "inherits": "headcoder",
+      "inherits": "head-developer",
       "permissions": []
     },
     "head-developer": {
