@@ -17,7 +17,7 @@
       "permissions": ["addao", "removeao", "addmentor", "removementor"]
     },
     "maintainer": {
-      "inherits": "staff",
+      "inherits": false,
       "permissions": []
     },
     "staff": {
