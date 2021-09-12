@@ -144,6 +144,9 @@ class GithubManager {
       if(channel.id == config.discord_channel_botspam && payload.pull_request.user.login == "yogstation13-bot" && !securearray.includes("[s]")) {
         channel.sendEmbed(embed);
       }
+      else if(channel.id == config.discord_channel_public && payload.pull_request.user.login != "yogstation13-bot" && !securearray.includes("[s]")) {
+        channel.sendEmbed(embed);
+      }
       else if(channel.id == config.discord_channel_development_public && payload.pull_request.user.login != "yogstation13-bot" && !securearray.includes("[s]")) {
         channel.sendEmbed(embed);
       }
