@@ -29,8 +29,8 @@
       "permissions": ["reboot", "toggleooc"]
     },
     "mentor": {
-      "inherits": false,
-      "permissions": ["mhelp", "listmentors", "kickself"]
+      "inherits": "Kickself",
+      "permissions": ["mhelp", "listmentors"]
     },
     "Mentor Council": {
       "inherits": "mentor",
@@ -49,12 +49,16 @@
       "permissions": ["unsubscribe"]
     },
     "Lore Team": {
-      "inherits": false,
-      "permissions": ["loreban", "kickself"]
+      "inherits": "Kickself",
+      "permissions": ["loreban"]
     },
     "Wiki Staff": {
+      "inherits": "Kickself",
+      "permissions": ["wikiban"]
+     },
+    "Kickself": {
       "inherits": false,
-      "permissions": ["wikiban", "kickself"]
+      "permissions": ["kickself"]
     },
     "notes": {
       "inherits": false,
