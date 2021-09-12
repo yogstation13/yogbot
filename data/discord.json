@@ -22,11 +22,11 @@
     },
     "retmin": {
       "inherits": "maintainer",
-      "permissions": ["tempban", "ban", "unban", "kick", "ticket", "whitelist", "kickself", "note", "staffban", "listadmins"]
+      "permissions": ["tempban", "ban", "unban", "kick", "ticket", "whitelist", "note", "staffban", "listadmins"]
     },
     "maintainer": {
       "inherits": "mentor",
-      "permissions": ["reboot", "toggleooc"]
+      "permissions": ["reboot", "toggleooc", "kickself"]
     },
     "mentor": {
       "inherits": false,
