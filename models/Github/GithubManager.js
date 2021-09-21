@@ -169,7 +169,7 @@ class GithubManager {
         if(channel.id == config.discord_channel_mapping && extensions.includes("dmm")) {
           channel.sendEmbed(embed);
         }
-        else if(channel.id == config.discord_channel_spriter && extensions.includes("dmi")) {
+        else if(channel.id == config.discord_channel_spriter && (extensions.includes("dmi") || extensions.includes("ogg"))) {
           channel.sendEmbed(embed);
         }
       }
