@@ -33,5 +33,6 @@
   "discord_channel_staff_applications": "665768082899337226",
   "discord_channel_mentor_applications": "665785215985254420",
   "discord_channel_github_spam": "701120514038693938",
-  "discord_channel_bug_reports": "773277250090434640"
+  "discord_channel_bug_reports": "773277250090434640",
+  "discord_channel_multi_factor": ""
 }
