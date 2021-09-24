@@ -1,9 +1,9 @@
 {
-  "discord_token": "NTQ4MTgyODY1OTY4NjI3NzEz.XG7VEw.DvFZ2hhZGlSNNnvYp4yuQULuzkA",
+  "discord_token": "notokenhere",
   "discord_command_character": "!",
   "discord_softban": "true",
   "discord_softban_role": "302093934551629827",
-  "discord_guild": "548180951621173268",
+  "discord_guild": "134720091576205312",
   "discord_restricted_channels": ["134722015503319040", "201054477460045824", "162924271948005376", "188691067405598721"],
   "discord_subscriber_role": "1",
   "discord_loreban_role": "716784185192480798",
