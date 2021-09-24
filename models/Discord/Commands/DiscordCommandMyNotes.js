@@ -23,7 +23,7 @@ class DiscordCommandMyNotes extends DiscordCommand {
         return;
       }
 
-      connection.query("SELECT * FROM `erro_player` WHERE `discord_id` = ?", [userID], (error, results, fields) => {
+      connection.query('SELECT * FROM `' + dbSubsystem.format_table_name('player') + '` WHERE `discord_id` = ?', [userID], (error, results, fields) => {
         if (error) {
           message.reply("Error running select query, try again later.");
           return;
@@ -39,7 +39,7 @@ class DiscordCommandMyNotes extends DiscordCommand {
 
         var ckey = results[0].ckey
 
-        connection.query('SELECT * FROM `erro_messages` WHERE `targetckey` = ? AND `type`= "note" AND deleted = 0 AND (expire_timestamp > NOW() OR expire_timestamp IS NULL) AND `secret` = 0 ORDER BY `timestamp`', [ckey], (error, results, fields) => {
+        connection.query('SELECT * FROM `' + dbSubsystem.format_table_name('messages') + '` WHERE `targetckey` = ? AND `type`= "note" AND deleted = 0 AND (expire_timestamp > NOW() OR expire_timestamp IS NULL) AND `secret` = 0 ORDER BY `timestamp`', [ckey], (error, results, fields) => {
           var guildMember = message.member;
           if (error) {
             message.reply("Error getting notes, try again later.");

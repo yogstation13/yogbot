@@ -54,12 +54,12 @@ class DiscordDonorManager {
                     throw "Cannot find 'server/discord linked' role";
                 }
 
-                let results = await query('SELECT DISTINCT ckey FROM erro_donors WHERE (expiration_time > Now()) AND (revoked IS null);');
+                let results = await query('SELECT DISTINCT ckey FROM ' + dbSubsystem.format_table_name('donors') + ' WHERE (expiration_time > Now()) AND (revoked IS null);');
                 let donor_ckeys = new Set();
                 for(let {ckey} of results) {
                     donor_ckeys.add(ckey_ize(ckey));
                 }
-                results = await query('SELECT ckey, Cast(discord_id as char) as discord_id FROM erro_player WHERE discord_id IS NOT NULL;');
+                results = await query('SELECT ckey, Cast(discord_id as char) as discord_id FROM ' + dbSubsystem.format_table_name('player') + ' WHERE discord_id IS NOT NULL;');
                 let linked_discordids = new Set();
                 for(let {ckey, discord_id} of results) {
                     ckey = ckey_ize(ckey);

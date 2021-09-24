@@ -33,9 +33,9 @@ class DiscordCommandWhoIs extends DiscordCommand {
       var userID = auser
       
       if(userID) {
-        getByDiscordID(connection, userID, message)
+        getByDiscordID(connection, userID, message, dbSubsystem.format_table_name('player'))
       } else {
-        getByCkey(connection, provided_ckey, message)
+        getByCkey(connection, provided_ckey, message, dbSubsystem.format_table_name('player'))
       }
         
       connection.release();
@@ -44,8 +44,8 @@ class DiscordCommandWhoIs extends DiscordCommand {
 
 }
 
-function getByDiscordID(connection, user, message) {
-  connection.query("SELECT * FROM `erro_player` WHERE `discord_id` = ?", [user.id], (error, results, fields) => {
+function getByDiscordID(connection, user, message, table) {
+  connection.query('SELECT * FROM `' + table + '` WHERE `discord_id` = ?', [user.id], (error, results, fields) => {
       if (error) {
         message.reply( "Error running select query, try again later.");
         return;
@@ -64,8 +64,8 @@ function getByDiscordID(connection, user, message) {
     })
 }
 
-function getByCkey(connection, ckey, message) {
-  connection.query("SELECT discord_id FROM `erro_player` WHERE `ckey` = ?", [ckey], (error, results, fields) => {
+function getByCkey(connection, ckey, message, table) {
+  connection.query('SELECT discord_id FROM `' + table + '` WHERE `ckey` = ?', [ckey], (error, results, fields) => {
       if (error) {
         message.reply("Error running select query, try again later.");
         return;

@@ -4,5 +4,6 @@
   "sql_port": "8888",
   "sql_user": "user",
   "sql_password": "password",
-  "sql_database": "database"
+  "sql_database": "database",
+  "sql_prefix": "erro_"
 }

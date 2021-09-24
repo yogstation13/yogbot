@@ -36,7 +36,7 @@ class DiscordCommandMentorActivity extends DiscordCommand {
 					return (str + ''.padStart(Math.floor((amt - str.length)/2))).padStart(amt, type);
 				}
 							
-				let results = await query('SELECT ckey FROM erro_mentor'); // get the mentors
+				let results = await query('SELECT ckey FROM ' + dbSubsystem.format_table_name('mentor') + ''); // get the mentors
 				let mentors = {};
 				let mentorlen = 8;
 				let mentorslength = 0;
@@ -47,7 +47,7 @@ class DiscordCommandMentorActivity extends DiscordCommand {
 					mentorslength++
 				}
 				
-				results = await query ('SELECT ckey,Sum((Unix_timestamp(`left`)-Unix_timestamp(datetime))/3600) AS activity FROM erro_connection_log WHERE `left` > (Now() - INTERVAL 2 week) AND `left` IS NOT NULL GROUP BY ckey;'); // get the activity
+				results = await query ('SELECT ckey,Sum((Unix_timestamp(`left`)-Unix_timestamp(datetime))/3600) AS activity FROM ' + dbSubsystem.format_table_name('connection_log') + ' WHERE `left` > (Now() - INTERVAL 2 week) AND `left` IS NOT NULL GROUP BY ckey;'); // get the activity
 				let activity = {};
 				for(let user of results) {
 					activity[user.ckey] = +user.activity;

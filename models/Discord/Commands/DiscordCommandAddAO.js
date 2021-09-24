@@ -22,7 +22,7 @@ class DiscordCommandWhitelist extends DiscordCommand {
         message.reply("Error contacting database, try again later.");
       }
 
-      connection.query("SELECT discord_id FROM `erro_player` WHERE `ckey` = ?", [ckey], (error, results, fields) => {
+      connection.query('SELECT discord_id FROM `' + dbSubsystem.format_table_name('player') + '` WHERE `ckey` = ?', [ckey], (error, results, fields) => {
         if (error) {
           message.reply("Error running select query, try again later.");
           return;
@@ -47,7 +47,7 @@ class DiscordCommandWhitelist extends DiscordCommand {
           .catch(() => message.reply("Cannot find discord account for player"));
       })
 
-      connection.query('SELECT * FROM `erro_admin` WHERE `ckey` = ?', [ckey], (error, results, fields) => {
+      connection.query('SELECT * FROM `' + dbSubsystem.format_table_name('admin') + '` WHERE `ckey` = ?', [ckey], (error, results, fields) => {
         if (error) {
           message.reply("Error running select query, try again later.");
         }
@@ -56,7 +56,7 @@ class DiscordCommandWhitelist extends DiscordCommand {
           message.reply("Player already has a rank in game.");
         }
         else {
-          connection.query("INSERT INTO `erro_admin` (`ckey`, `rank`) VALUES (?, 'Admin Observer');", [ckey], (error, results, fields) => {
+          connection.query("INSERT INTO `" + dbSubsystem.format_table_name("admin") + "` (`ckey`, `rank`) VALUES (?, 'Admin Observer');", [ckey], (error, results, fields) => {
             connection.release();
 
             if (error) {

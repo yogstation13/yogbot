@@ -20,7 +20,7 @@ class DiscordCommandListAdmins extends DiscordCommand {
             if (err) {
                 message.reply("Error contacting database, try again later.");
             }
-            connection.query("SELECT ckey,rank FROM `erro_admin`", [], (error, results, fields) => {
+            connection.query('SELECT ckey,rank FROM `' + dbSubsystem.format_table_name('admin') + '`', [], (error, results, fields) => {
                 if (error) {
                     message.reply("Error running select query, try again later.");
                     return;

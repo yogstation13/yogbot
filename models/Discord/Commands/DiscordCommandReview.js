@@ -65,7 +65,7 @@ class DiscordCommandReview extends DiscordCommand {
 					}
 				}
 				async function check_bannu(victim) {
-					let result = await query("SELECT 1 FROM `erro_ban` WHERE ckey = ? AND role IN ('Server') AND unbanned_datetime IS NULL AND (expiration_time IS NULL OR expiration_time > NOW())", [victim]);
+					let result = await query("SELECT 1 FROM `" + dbSubsystem.format_table_name("ban") + "` WHERE ckey = ? AND role IN ('Server') AND unbanned_datetime IS NULL AND (expiration_time IS NULL OR expiration_time > NOW())", [victim]);
 					if(result.length) {
 						ckeys_checked.set(victim, ckeys_checked.get(victim) + " (BANNED)");
 					}
@@ -78,7 +78,7 @@ class DiscordCommandReview extends DiscordCommand {
 					if(limiter <= 0)
 						break;
 					let this_ckey = ckeys_queue.shift();
-					let results = await query('SELECT computerid,ip FROM `erro_connection_log` WHERE ckey = ?', [this_ckey]);
+					let results = await query('SELECT computerid,ip FROM `' + dbSubsystem.format_table_name('connection_log') + '` WHERE ckey = ?', [this_ckey]);
 					let this_cids = new Set();
 					let this_ips = new Set();
 					for(let result of results) {
@@ -86,7 +86,7 @@ class DiscordCommandReview extends DiscordCommand {
 						this_ips.add(result.ip);
 					}
 					let related_keys = new Map();
-					let related_results = await query('SELECT ckey,ip,computerid FROM `erro_connection_log` WHERE computerid IN (SELECT computerid FROM `erro_connection_log` WHERE ckey = ?) OR ip IN (SELECT ip FROM `erro_connection_log` WHERE ckey = ?)', [this_ckey, this_ckey]);
+					let related_results = await query('SELECT ckey,ip,computerid FROM `' + dbSubsystem.format_table_name('connection_log') + '` WHERE computerid IN (SELECT computerid FROM `' + dbSubsystem.format_table_name('connection_log') + '` WHERE ckey = ?) OR ip IN (SELECT ip FROM `' + dbSubsystem.format_table_name('connection_log') + '` WHERE ckey = ?)', [this_ckey, this_ckey]);
 					for(let result of related_results) {
 						if(ckeys_checked.get(result.ckey))
 							continue;

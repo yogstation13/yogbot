@@ -38,7 +38,7 @@ class DiscordCommandActivity extends DiscordCommand {
 					return (str + ''.padStart(Math.floor((amt - str.length)/2))).padStart(amt, type);
 				}
 				
-				let results = await query('SELECT ckey,rank FROM erro_admin'); // get the admins
+				let results = await query('SELECT ckey,rank FROM ' + dbSubsystem.format_table_name('admin') + ''); // get the admins
 				let admins = {};
 				let adminlen = 8;
 				let ranklen = 4;
@@ -52,13 +52,13 @@ class DiscordCommandActivity extends DiscordCommand {
 						ranklen = admin.rank.length;
 				}
 				
-				results = await query ('SELECT ckey,Sum((Unix_timestamp(`left`)-Unix_timestamp(datetime))/3600) AS activity FROM erro_connection_log WHERE `left` > (Now() - INTERVAL 2 week) AND `left` IS NOT NULL GROUP BY ckey;'); // get the activity
+				results = await query ('SELECT ckey,Sum((Unix_timestamp(`left`)-Unix_timestamp(datetime))/3600) AS activity FROM ' + dbSubsystem.format_table_name('connection_log') + ' WHERE `left` > (Now() - INTERVAL 2 week) AND `left` IS NOT NULL GROUP BY ckey;'); // get the activity
 				let activity = {};
 				for(let user of results) {
 					activity[user.ckey] = +user.activity;
 				}
 				
-				results = await query('SELECT ckey from erro_loa WHERE Now() < expiry_time && revoked IS NULL;'); // get LOA
+				results = await query('SELECT ckey from ' + dbSubsystem.format_table_name('loa') + ' WHERE Now() < expiry_time && revoked IS NULL;'); // get LOA
 				let loa_admins = [];
 				for(let admin of results) {
 					loa_admins.push(ckey_ize(admin.ckey));

@@ -22,7 +22,7 @@ class DiscordCommandRemoveMentor extends DiscordCommand {
         message.reply("Error contacting database, try again later.");
       }
 
-      connection.query("SELECT discord_id FROM `erro_player` WHERE `ckey` = ?", [ckey], (error, results, fields) => {
+      connection.query('SELECT discord_id FROM `' + dbSubsystem.format_table_name('player') + '` WHERE `ckey` = ?', [ckey], (error, results, fields) => {
         if (error) {
           message.reply("Error running select query, try again later.");
           return;
@@ -47,7 +47,7 @@ class DiscordCommandRemoveMentor extends DiscordCommand {
           .catch(() => message.reply("Cannot find discord account for player"));
       })
 
-      connection.query('DELETE FROM `erro_mentor` WHERE `ckey` = ?', [ckey], (error, results, fields) => {
+      connection.query('DELETE FROM `' + dbSubsystem.format_table_name('mentor') + '` WHERE `ckey` = ?', [ckey], (error, results, fields) => {
         if (error) {
           message.reply("Error running delete query, try again later.");
         }

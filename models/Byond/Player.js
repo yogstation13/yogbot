@@ -26,7 +26,7 @@ class ByondPlayer {
 
       var error = false
 
-      connection.query('SELECT * FROM `erro_player` WHERE `ckey` = ?', [ckey], (error, rows, fields) => {
+      connection.query('SELECT * FROM `' + dbSubsystem.format_table_name('player') + '` WHERE `ckey` = ?', [ckey], (error, rows, fields) => {
         if (error) {
           error = true;
         }
@@ -40,7 +40,7 @@ class ByondPlayer {
           details.job_whitelisted = rows[0].job_whitelisted
         }
 
-        connection.query('SELECT DISTINCT `computerid` FROM `erro_connection_log` WHERE `ckey` = ?', [ckey], (error, rows, fields) => {
+        connection.query('SELECT DISTINCT `computerid` FROM `' + dbSubsystem.format_table_name('connection_log') + '` WHERE `ckey` = ?', [ckey], (error, rows, fields) => {
           if (error) {
             error = true;
           }
@@ -51,7 +51,7 @@ class ByondPlayer {
             details.cidhistory.push(row.computerid)
           }
 
-          connection.query('SELECT DISTINCT `ip` FROM `erro_connection_log` WHERE `ckey` = ?', [ckey], (error, rows, fields) => {
+          connection.query('SELECT DISTINCT `ip` FROM `' + dbSubsystem.format_table_name('connection_log') + '` WHERE `ckey` = ?', [ckey], (error, rows, fields) => {
             if (error) {
               error = true;
             }
