@@ -33,55 +33,55 @@ class DiscordCommandWhoIs extends DiscordCommand {
       var userID = auser
       
       if(userID) {
-        getByDiscordID(connection, userID, message, dbSubsystem.format_table_name('player'))
+        this.getByDiscordID(connection, userID, message)
       } else {
-        getByCkey(connection, provided_ckey, message, dbSubsystem.format_table_name('player'))
+        this.getByCkey(connection, provided_ckey, message)
       }
         
       connection.release();
     });
   }
 
-}
+  getByDiscordID(connection, user, message) {
+    connection.query('SELECT * FROM `' + this.subsystem.manager.getSubsystem("Database").format_table_name('player') + '` WHERE `discord_id` = ?', [user.id], (error, results, fields) => {
+        if (error) {
+          message.reply( "Error running select query, try again later.");
+          return;
+        }
+        if (results.length == 0) {
+          message.reply("No linked BYOND account found for this user.");
+          return;
+        }
+        if (results.length > 1) {
+          message.reply("More than one BYOND account linked to this ID. This shouldn't happen!");
+          return;
+        }
+  
+        var ckey = results[0].ckey
+        message.reply(user + " belongs to the ckey '" + ckey +"'");
+      })
+  }
+  
+  getByCkey(connection, ckey, message) {
+    connection.query('SELECT discord_id FROM `' + this.subsystem.manager.getSubsystem("Database").format_table_name('player') + '` WHERE `ckey` = ?', [ckey], (error, results, fields) => {
+        if (error) {
+          message.reply("Error running select query, try again later.");
+          return;
+        }
+        if (results.length == 0) {
+          message.reply("No user with this Ckey has a linked Discord account!");
+          return;
+        }
+        if (results.length > 1) {
+          message.reply("More than 1 of this ckey with a Discord ID, this makes no sense at all!");
+          return;
+        }
+        message.guild.fetchMember(results[0].discord_id)
+          .then((member) => message.reply(ckey + " belongs to " + member.user.username + "#" + member.user.discriminator))
+          .catch(() => message.reply("Can't resolve user from ID"));
+      })
+  }
 
-function getByDiscordID(connection, user, message, table) {
-  connection.query('SELECT * FROM `' + table + '` WHERE `discord_id` = ?', [user.id], (error, results, fields) => {
-      if (error) {
-        message.reply( "Error running select query, try again later.");
-        return;
-      }
-      if (results.length == 0) {
-        message.reply("No linked BYOND account found for this user.");
-        return;
-      }
-      if (results.length > 1) {
-        message.reply("More than one BYOND account linked to this ID. This shouldn't happen!");
-        return;
-      }
-
-      var ckey = results[0].ckey
-      message.reply(user + " belongs to the ckey '" + ckey +"'");
-    })
-}
-
-function getByCkey(connection, ckey, message, table) {
-  connection.query('SELECT discord_id FROM `' + table + '` WHERE `ckey` = ?', [ckey], (error, results, fields) => {
-      if (error) {
-        message.reply("Error running select query, try again later.");
-        return;
-      }
-      if (results.length == 0) {
-        message.reply("No user with this Ckey has a linked Discord account!");
-        return;
-      }
-      if (results.length > 1) {
-        message.reply("More than 1 of this ckey with a Discord ID, this makes no sense at all!");
-        return;
-      }
-      message.guild.fetchMember(results[0].discord_id)
-        .then((member) => message.reply(ckey + " belongs to " + member.user.username + "#" + member.user.discriminator))
-        .catch(() => message.reply("Can't resolve user from ID"));
-    })
 }
 
 module.exports = DiscordCommandWhoIs;
