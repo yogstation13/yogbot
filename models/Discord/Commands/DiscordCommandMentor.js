@@ -86,7 +86,6 @@ class DiscordCommandMentor extends DiscordCommand {
 		"https://cdn.discordapp.com/attachments/734475284446707753/736076686910685264/unknown.png",
 		"https://cdn.discordapp.com/attachments/734475284446707753/736081562755399780/unknown.png",
 		"https://cdn.discordapp.com/attachments/734475284446707753/736419384675008662/unknown.png",
-		"https://cdn.discordapp.com/attachments/624300191973113873/736459457378123857/unknown.png",
 		"https://cdn.discordapp.com/attachments/734475284446707753/736971900319825970/image0.jpg",
 		"https://cdn.discordapp.com/attachments/734475284446707753/736972365212155904/image0.jpg",
 		"https://cdn.discordapp.com/attachments/734475284446707753/736972983209295994/image0.png",
