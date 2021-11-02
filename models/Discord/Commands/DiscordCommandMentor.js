@@ -183,7 +183,9 @@ class DiscordCommandMentor extends DiscordCommand {
 	        "https://cdn.discordapp.com/attachments/378318242906636288/807082553126551612/unknown.png", //Speak with the dummy
 	        "https://cdn.discordapp.com/attachments/734475284446707753/806816158178213908/unknown.png", //Best Mentor
 	        "https://cdn.discordapp.com/attachments/734475284446707753/803104291430072340/unknown.png", //Why'd you irradiate the shuttle
-                "https://cdn.discordapp.com/attachments/734475284446707753/875103302013042729/unknown.png" //N3D6 is a complete and utter twat
+                "https://cdn.discordapp.com/attachments/734475284446707753/875103302013042729/unknown.png", //N3D6 is a complete and utter twat
+	        "https://cdn.discordapp.com/attachments/734475284446707753/893512372436754462/image0.png", //Everyone is answering Skrem 7's mhelp
+	        "https://cdn.discordapp.com/attachments/734475284446707753/903294489408466964/unknown.png" //Old mhelp
 	  ];	
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	
