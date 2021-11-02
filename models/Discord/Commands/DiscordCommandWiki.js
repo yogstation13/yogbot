@@ -78,7 +78,7 @@ class DiscordCommandWiki extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/734475284446707753/801540934017351760/beating_children.png", //Mord beats children
         "https://cdn.discordapp.com/attachments/734475284446707753/789610810464403496/unknown.png", //TG Wiki in an mhelp
         "https://cdn.discordapp.com/attachments/734475284446707753/872199346395951114/Screenshot_20210803-142719__01.png", //Perish, Vivec
-        "https://cdn.discordapp.com/attachments/734475284446707753/879735088600985670/unknown.png" //This command's cheese ratio
+        "https://cdn.discordapp.com/attachments/734475284446707753/879735088600985670/unknown.png", //This command's cheese ratio
 	"https://cdn.discordapp.com/attachments/734475284446707753/895073791091310602/This_Mord_is_trained_to_Strangle_You.png", //This Robot is trained to Strangle you
 	"https://cdn.discordapp.com/attachments/734475284446707753/885207786923892757/m4H5OVe.png" //The Anvil is harder to stop
 	];	
