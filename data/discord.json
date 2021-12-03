@@ -32,13 +32,9 @@
       "inherits": false,
       "permissions": ["mhelp", "listmentors"]
     },
-    "Mentor Council": {
-      "inherits": "mentor",
-      "permissions": ["mentorban"]
-    },
     "Head Mentor": {
-      "inherits": "Mentor Council",
-      "permissions": ["addmentor", "removementor"]
+      "inherits": "mentor",
+      "permissions": ["addmentor", "removementor", "mentorban"]
     },
     "YogPost": {
       "inherits": false,
