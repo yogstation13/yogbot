@@ -5,5 +5,6 @@
   "http_minimum_password_length": 5,
   "http_maximum_password_length": 128,
   "http_salt_length": 16,
+  "http_public_path": "https://yogbot.yogstation.net/",
   "captcha_token": "To bot, or not to bot."
 }

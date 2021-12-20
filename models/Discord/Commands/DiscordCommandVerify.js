@@ -1,6 +1,7 @@
 const fs = require('fs');
 const DiscordCommand = require('../DiscordCommand.js');
 const crypto = require('crypto');
+const {URLSearchParams, URL} = require("url");
 
 class DiscordCommandVerify extends DiscordCommand {
 
@@ -9,38 +10,32 @@ class DiscordCommandVerify extends DiscordCommand {
   }
 
   onRun(message, permissions, args) {
-    var config = this.subsystem.manager.getSubsystem("Config").config;
-    var byondConnector = this.subsystem.manager.getSubsystem("Byond Connector").byondConnector;
+    const config = this.subsystem.manager.getSubsystem("Config").config;
+    const {oauth_authorize_url, oauth_token_url, oauth_userinfo_url, http_public_path, oauth_client_id, oauth_client_secret} = config
+
     if(args.length < 1) {
       message.reply("Usage is " + config.discord_command_character + "verify [ckey]")
       return
     }
+    const ckey = args.join(" ").toLowerCase().replace(/[^a-z@\d]/g, "")
 
-    //Delete the old hash
-    if(this.subsystem.verificationMapIDToHash.has(message.author.id)) {
-      const hashtodelete = this.subsystem.verificationMapIDToHash.get(message.author.id);
-      this.subsystem.verificationMapHashToIdentity.delete(hashtodelete)
-      this.subsystem.verificationMapIDToHash.delete(message.author.id)
-    }
+    const state = crypto.randomBytes(8).toString("hex")
 
-    //Technically isn't a hash but it looks like one so im going to keep calling it that
-    var hash;
-    while(!hash) {
-      const candidate = crypto.randomBytes(8).toString("hex");
-      //This is silly, the chances of getting the same random value is near to nil but im paranoid ok
-      if(!this.subsystem.verificationMapHashToIdentity.has(candidate)) {
-        hash = candidate
-      }
-    }
+    const authorizeLink = new URL("api/verify", http_public_path)
+    //This is not a security measure, CSRF protection is done by verifying that the end user is authenticating as the proper ckey
+    authorizeLink.searchParams.set("state", state)
 
     const identity = {
-      ckey: args.join(" ").toLowerCase().replace(/[^a-z@\d]/g, ""),
-      discordsnowflake: message.author.id
+      ckey: ckey,
+      discordSnowflake: message.author.id,
+      discordAvatar: message.author.avatarURL,
+      discordTag: message.author.tag
     };
-    this.subsystem.verificationMapHashToIdentity.set(hash, identity);
-    this.subsystem.verificationMapIDToHash.set(message.author.id, hash);
+    this.subsystem.oauthState.set(state, identity)
 
-    message.reply(`Click here to complete the linking process <byond://game.yogstation.net:4133?discordlink=${hash}>`)
+
+
+    message.reply(`Click the following link to complete the linking process: ${authorizeLink}`)
   }
 
 }
