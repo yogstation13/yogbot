@@ -53,9 +53,7 @@ class DiscordCommandNotes extends DiscordCommand {
               continue;
             }
             shownNotes.push(newmsg);
-            if(message.channel.id == config.discord_channel_admin || message.channel.id == config.discord_channel_council) {
-              newmsg += "   " + result.adminckey;
-            }
+            newmsg += "   " + result.adminckey;
             newmsg += "```";
             if(msg.length + newmsg.length > 2000) {
               message.channel.send(msg);

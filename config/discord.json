@@ -18,6 +18,11 @@
   "discord_verify_role": "768196461313523727",
   "discord_ao_role": "471634210923216906",
   "discord_mentor_role": "505280515322937355",
+  "oauth_authorize_url": "https://bab.yogstation.net/auth/authorize",
+  "oauth_token_url": "https://bab.yogstation.net/auth/token",
+  "oauth_userinfo_url": "https://bab.yogstation.net/auth/userinfo",
+  "oauth_client_id": "yogstation_yogbot",
+  "oauth_client_secret": "lolno",
   "asay_webhook_url": "https://discordapp.com/api/webhooks/eW91IGFyZSBhIGh1Z2UgbmVyZCBpZiB5b3UgYXJlIHJlYWRpbmcgdGhpcw==",
   "git_update": true
 }

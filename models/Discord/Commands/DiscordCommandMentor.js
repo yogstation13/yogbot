@@ -16,9 +16,6 @@ class DiscordCommandMentor extends DiscordCommand {
 		"https://cdn.discordapp.com/attachments/613105854173937776/722262126823080036/9_crystals.png",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722262680211030046/F_U_S_I_O_N_E_R.PNG",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722262682736263218/F_U_S_I_O_N.PNG",
-		"https://cdn.discordapp.com/attachments/613105854173937776/722262829486440580/fart_fetish_2.png",
-		"https://cdn.discordapp.com/attachments/613105854173937776/722262840744083516/fart_fetish_3.png",
-		"https://cdn.discordapp.com/attachments/613105854173937776/722262859815583846/fart_fetish.png",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722263123062554684/dreamseeker_2020-05-04_02-16-13.png",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722264079225323570/dreamseeker_2020-04-02_02-39-36.png",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722264427004690467/unknown.png",
@@ -86,7 +83,6 @@ class DiscordCommandMentor extends DiscordCommand {
 		"https://cdn.discordapp.com/attachments/734475284446707753/736076686910685264/unknown.png",
 		"https://cdn.discordapp.com/attachments/734475284446707753/736081562755399780/unknown.png",
 		"https://cdn.discordapp.com/attachments/734475284446707753/736419384675008662/unknown.png",
-		"https://cdn.discordapp.com/attachments/624300191973113873/736459457378123857/unknown.png",
 		"https://cdn.discordapp.com/attachments/734475284446707753/736971900319825970/image0.jpg",
 		"https://cdn.discordapp.com/attachments/734475284446707753/736972365212155904/image0.jpg",
 		"https://cdn.discordapp.com/attachments/734475284446707753/736972983209295994/image0.png",
@@ -183,7 +179,9 @@ class DiscordCommandMentor extends DiscordCommand {
 	        "https://cdn.discordapp.com/attachments/378318242906636288/807082553126551612/unknown.png", //Speak with the dummy
 	        "https://cdn.discordapp.com/attachments/734475284446707753/806816158178213908/unknown.png", //Best Mentor
 	        "https://cdn.discordapp.com/attachments/734475284446707753/803104291430072340/unknown.png", //Why'd you irradiate the shuttle
-                "https://cdn.discordapp.com/attachments/734475284446707753/875103302013042729/unknown.png" //N3D6 is a complete and utter twat
+                "https://cdn.discordapp.com/attachments/734475284446707753/875103302013042729/unknown.png", //N3D6 is a complete and utter twat
+	        "https://cdn.discordapp.com/attachments/734475284446707753/893512372436754462/image0.png", //Everyone is answering Skrem 7's mhelp
+	        "https://cdn.discordapp.com/attachments/734475284446707753/903294489408466964/unknown.png" //Old mhelp
 	  ];	
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	
