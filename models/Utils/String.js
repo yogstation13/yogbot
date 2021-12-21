@@ -57,6 +57,17 @@ class StringUtils {
         .replace(/&quot;/g, "\"")
         .replace(/&#039;/g, "'");
 	}
+
+  static escapeHtml(s) {
+    let lookup = {
+      '&': "&amp;",
+      '"': "&quot;",
+      '\'': "&apos;",
+      '<': "&lt;",
+      '>': "&gt;"
+    };
+    return s.replace( /[&"'<>]/g, c => lookup[c] );
+  }
 }
 
 module.exports = StringUtils;
