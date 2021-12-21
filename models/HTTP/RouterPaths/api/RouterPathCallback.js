@@ -66,7 +66,7 @@ class RouterPathCallback extends RouterPath {
                     return res.send(hydrateError("Error contacting database, try again later.")).end()
                 }
 
-                connection.query("SELECT discord_id FROM `erro_player` WHERE `ckey` = ?", [identity.ckey], (error, results, fields) => {
+                connection.query("SELECT discord_id FROM `" + dbSubsystem.format_table_name('player') + "` WHERE `ckey` = ?", [identity.ckey], (error, results, fields) => {
                     if (error) {
                         return res.send(hydrateError("Error running select query, try again later.")).end()
                     }
@@ -77,7 +77,7 @@ class RouterPathCallback extends RouterPath {
                         return res.send(hydrateError("You already have a discord account linked. If you need to have this reset, please contact an admin!")).end()
                     }
 
-                    connection.query("UPDATE `erro_player` SET `discord_id` = ? WHERE `ckey` = ?", [identity.discordSnowflake, identity.ckey], (error, results, fields) => {
+                    connection.query("UPDATE `" + dbSubsystem.format_table_name('player') + "` SET `discord_id` = ? WHERE `ckey` = ?", [identity.discordSnowflake, identity.ckey], (error, results, fields) => {
                         if (error) {
                             return res.send(hydrateError("Error running update query, try again later.")).end()
                         }
