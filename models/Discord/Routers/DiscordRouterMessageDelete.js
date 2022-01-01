@@ -8,10 +8,7 @@ class DiscordRouterMessageDelete extends DiscordRouter {
 
   register() {
     this.subsystem.client.on("messageDelete", (message) => {
-
-      if (message.guild == undefined) {
-        return;
-      }
+      if(this.subsystem.isPrimaryGuild(message.guild)) return
 
       if (this.subsystem.isChannelRestricted(message.channel.id)) {
         return;

@@ -8,6 +8,8 @@ class DiscordRouterGuildMemberUpdate extends DiscordRouter {
 
   register() {
     this.subsystem.client.on("guildMemberUpdate", (oldMember, newMember) =>{
+      if(this.subsystem.isPrimaryGuild(oldMember.guild)) return
+
       var logChannel = this.subsystem.getLogChannel(newMember.guild);
       var date = new Date();
       var response = "`[" + date.getFullYear() + ":" + date.getMonth() + ":" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "]` ";

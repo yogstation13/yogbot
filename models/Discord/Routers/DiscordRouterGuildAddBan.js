@@ -8,6 +8,8 @@ class DiscordRouterGuildBanAdd extends DiscordRouter {
 
   register() {
     this.subsystem.client.on("guildBanAdd", (guild, user) =>{
+      if(this.subsystem.isPrimaryGuild(guild)) return
+
       var feedbackChannel = this.subsystem.getFeedbackChannel(guild);
       var date = new Date();
       var response = "`[" + date.getFullYear() + ":" + date.getMonth() + ":" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "]` ";
