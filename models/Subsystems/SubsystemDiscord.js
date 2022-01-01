@@ -208,6 +208,10 @@ class SubsystemDiscord extends Subsystem {
     }
   }
 
+  isPrimaryGuild(guild) {
+    return guild.id === this.manager.getSubsystem("Config").config.discord_guild
+  }
+
   isChannelRestricted(channel) {
     var restrictedChannels = this.manager.getSubsystem("Config").config.discord_restricted_channels;
     return restrictedChannels.includes(channel);
