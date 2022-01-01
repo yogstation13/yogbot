@@ -8,7 +8,7 @@ class DiscordChannelMemes extends DiscordChannel {
     };
 
     onMessage(msg) {
-         if (msg.attachments.size > 0 || msg.embeds.length > 0) {
+         if (msg.attachments.size > 0 || msg.embeds.length > 0 || msg.content.includes(".mp4") || msg.content.includes(".gif")) {
             msg.react('👍');
             msg.react('👎');
             };
