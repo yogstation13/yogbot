@@ -1,5 +1,3 @@
-/** @module SubsystemDiscord */
-
 const Subsystem = require('../Subsystem.js');
 const Discord = require('discord.js');
 const DiscordPermissionManager = require('../Discord/DiscordPermissionManager.js');
@@ -12,15 +10,10 @@ const winston = require('winston');
 const https = require('https');
 const StringUtils = require('../Utils/String.js');
 
-/**
- * Discord Subsystem
- */
 class SubsystemDiscord extends Subsystem {
   constructor(manager) {
     super("Discord", manager);
     this.client = new Discord.Client();
-    this.client.on("debug", msg => console.debug(msg))
-    this.client.on("raw", msg => console.debug(msg))
     this.permissionManager = new DiscordPermissionManager(manager);
     this.banManager = new DiscordBanManager(this);
     this.forumManager = new DiscordForumManager(this);
