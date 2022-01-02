@@ -8,7 +8,7 @@ class DiscordRouterGuildBanRemove extends DiscordRouter {
 
   register() {
     this.subsystem.client.on("guildBanRemove", (guild, user) =>{
-      if(this.subsystem.isPrimaryGuild(guild)) return
+      if(!this.subsystem.isPrimaryGuild(guild)) return
 
       var feedbackChannel = this.subsystem.getFeedbackChannel(guild);
       var date = new Date();

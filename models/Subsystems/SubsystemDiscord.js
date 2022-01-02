@@ -4,6 +4,7 @@ const DiscordPermissionManager = require('../Discord/DiscordPermissionManager.js
 const DiscordBanManager = require('../Discord/DiscordBanManager.js');
 const DiscordForumManager = require('../Discord/DiscordForumManager.js');
 const DiscordDonorManager = require('../Discord/DiscordDonorManager.js');
+const DiscordStickyRoleManager = require('../Discord/DiscordStickyRoleManager.js');
 const fs = require('fs');
 const winston = require('winston');
 const https = require('https');
@@ -17,6 +18,7 @@ class SubsystemDiscord extends Subsystem {
     this.banManager = new DiscordBanManager(this);
     this.forumManager = new DiscordForumManager(this);
     this.donorManager = new DiscordDonorManager(this);
+    this.stickyRoleManager = new DiscordStickyRoleManager(this);
     this.oauthState = new Map();
     this.logger;
 
@@ -35,6 +37,7 @@ class SubsystemDiscord extends Subsystem {
       this.banManager.setup();
       this.forumManager.setup();
       this.donorManager.setup();
+      this.stickyRoleManager.setup();
 	this.client.user.setGame("I AM GOD");
       callback();
     }).catch((err) => {
