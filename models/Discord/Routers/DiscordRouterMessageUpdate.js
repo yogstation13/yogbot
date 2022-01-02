@@ -8,7 +8,7 @@ class DiscordRouterMessageDelete extends DiscordRouter {
 
   register() {
     this.subsystem.client.on("messageUpdate", (oldMessage, newMessage) => {
-      if(this.subsystem.isPrimaryGuild(oldMessage.guild)) return
+      if(!this.subsystem.isPrimaryGuild(oldMessage.guild)) return
 
       if (this.subsystem.isChannelRestricted(newMessage.channel.id)) {
         return;

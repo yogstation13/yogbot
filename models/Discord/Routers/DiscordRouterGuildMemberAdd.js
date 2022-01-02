@@ -8,7 +8,7 @@ class DiscordRouterGuildMemberAdd extends DiscordRouter {
 
   register() {
     this.subsystem.client.on("guildMemberAdd", (member) =>{
-      if(this.subsystem.isPrimaryGuild(member.guild)) return
+      if(!this.subsystem.isPrimaryGuild(member.guild)) return
 
       var feedbackChannel = this.subsystem.getFeedbackChannel(member.guild);
       var date = new Date();
@@ -16,6 +16,8 @@ class DiscordRouterGuildMemberAdd extends DiscordRouter {
       
       this.subsystem.banManager.check(member);
       feedbackChannel.send(response + "**" + member.user.username + "#" + member.user.discriminator + "** joined the server.");
+
+      this.subsystem.stickyRoleManager.loadRoles(member);
     });
   }
 

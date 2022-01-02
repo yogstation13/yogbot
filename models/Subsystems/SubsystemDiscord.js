@@ -1,22 +1,31 @@
+/** @module SubsystemDiscord */
+
 const Subsystem = require('../Subsystem.js');
 const Discord = require('discord.js');
 const DiscordPermissionManager = require('../Discord/DiscordPermissionManager.js');
 const DiscordBanManager = require('../Discord/DiscordBanManager.js');
 const DiscordForumManager = require('../Discord/DiscordForumManager.js');
 const DiscordDonorManager = require('../Discord/DiscordDonorManager.js');
+const DiscordStickyRoleManager = require('../Discord/DiscordStickyRoleManager.js');
 const fs = require('fs');
 const winston = require('winston');
 const https = require('https');
 const StringUtils = require('../Utils/String.js');
 
+/**
+ * Discord Subsystem
+ */
 class SubsystemDiscord extends Subsystem {
   constructor(manager) {
     super("Discord", manager);
     this.client = new Discord.Client();
+    this.client.on("debug", msg => console.debug(msg))
+    this.client.on("raw", msg => console.debug(msg))
     this.permissionManager = new DiscordPermissionManager(manager);
     this.banManager = new DiscordBanManager(this);
     this.forumManager = new DiscordForumManager(this);
     this.donorManager = new DiscordDonorManager(this);
+    this.stickyRoleManager = new DiscordStickyRoleManager(this);
     this.oauthState = new Map();
     this.logger;
 
@@ -35,6 +44,7 @@ class SubsystemDiscord extends Subsystem {
       this.banManager.setup();
       this.forumManager.setup();
       this.donorManager.setup();
+      this.stickyRoleManager.setup();
 	this.client.user.setGame("I AM GOD");
       callback();
     }).catch((err) => {
