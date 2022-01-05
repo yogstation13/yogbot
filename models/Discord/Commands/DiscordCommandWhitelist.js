@@ -34,7 +34,7 @@ class DiscordCommandWhitelist extends DiscordCommand {
         message.reply("Error contacting database, try again later.");
       }
 
-      connection.query('UPDATE `erro_player` SET `job_whitelisted` = ? WHERE `ckey` = ?', [whitelistInteger, ckey], (error, results, fields) => {
+      connection.query('UPDATE `' + dbSubsystem.format_table_name('player') + '` SET `job_whitelisted` = ? WHERE `ckey` = ?', [whitelistInteger, ckey], (error, results, fields) => {
         connection.release();
 
         if (error) {

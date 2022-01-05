@@ -34,7 +34,7 @@ class DiscordCommandDNotes extends DiscordCommand {
         return;
       }
 
-      connection.query("SELECT * FROM `erro_player` WHERE `discord_id` = ?", [userID.id], (error, results, fields) => {
+      connection.query('SELECT * FROM `' + dbSubsystem.format_table_name('player') + '` WHERE `discord_id` = ?', [userID.id], (error, results, fields) => {
         if (error) {
           message.reply("Error running select query, try again later.");
           return;
@@ -50,7 +50,7 @@ class DiscordCommandDNotes extends DiscordCommand {
 
         var ckey = results[0].ckey
 
-        connection.query('SELECT * FROM `erro_messages` WHERE `targetckey` = ? AND `type`= "note" AND deleted = 0 AND (expire_timestamp > NOW() OR expire_timestamp IS NULL) ORDER BY `timestamp`', [ckey], (error, results, fields) => {
+        connection.query('SELECT * FROM `' + dbSubsystem.format_table_name('messages') + '` WHERE `targetckey` = ? AND `type`= "note" AND deleted = 0 AND (expire_timestamp > NOW() OR expire_timestamp IS NULL) ORDER BY `timestamp`', [ckey], (error, results, fields) => {
           if (error) {
             message.reply("Error running select query, try again later.");
           }

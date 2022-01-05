@@ -38,6 +38,11 @@ class SubsystemDatabase extends Subsystem {
       callback();
     });
   }
+
+  format_table_name(base_name) {
+    var config = this.manager.getSubsystem("Config").config;
+    return config.sql_prefix + base_name
+  }
 }
 
 module.exports = SubsystemDatabase;

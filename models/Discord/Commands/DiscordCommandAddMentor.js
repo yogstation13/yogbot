@@ -22,7 +22,7 @@ class DiscordCommandAddMentor extends DiscordCommand {
         message.reply("Error contacting database, try again later.");
       }
 
-      connection.query("SELECT discord_id FROM `erro_player` WHERE `ckey` = ?", [ckey], (error, results, fields) => {
+      connection.query('SELECT discord_id FROM `' + dbSubsystem.format_table_name('player') + '` WHERE `ckey` = ?', [ckey], (error, results, fields) => {
         if (error) {
           message.reply("Error running select query, try again later.");
           return;
@@ -47,7 +47,7 @@ class DiscordCommandAddMentor extends DiscordCommand {
           .catch(() => message.reply("Cannot find discord account for player"));
       })
 
-      connection.query('SELECT * FROM `erro_mentor` WHERE `ckey` = ?', [ckey], (error, results, fields) => {
+      connection.query('SELECT * FROM `' + dbSubsystem.format_table_name('mentor') + '` WHERE `ckey` = ?', [ckey], (error, results, fields) => {
         if (error) {
           message.reply("Error running select query, try again later.");
         }
@@ -56,7 +56,7 @@ class DiscordCommandAddMentor extends DiscordCommand {
           message.reply("Player already has mentor in game.");
         }
         else {
-          connection.query("INSERT INTO `erro_mentor` (`ckey`, `position`) VALUES (?, 'Mentor');", [ckey], (error, results, fields) => {
+          connection.query("INSERT INTO `" + dbSubsystem.format_table_name('mentor') + "` (`ckey`, `position`) VALUES (?, 'Mentor');", [ckey], (error, results, fields) => {
             connection.release();
 
             if (error) {
