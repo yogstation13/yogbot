@@ -49,7 +49,13 @@ class DiscordCommandLocker extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/734475284446707753/867997803882905690/image0.png", //Cards Locker
 	"https://cdn.discordapp.com/attachments/734475284446707753/871861431144972308/unknown.png", //Atmos Locker
 	"https://cdn.discordapp.com/attachments/698367324637626438/817894098806898748/unknown.png", //Not a trap
-	"https://cdn.discordapp.com/attachments/734475284446707753/796111484719464448/unknown.png" //Portable Brig
+	"https://cdn.discordapp.com/attachments/734475284446707753/796111484719464448/unknown.png", //Portable Brig
+        "https://cdn.discordapp.com/attachments/734475284446707753/926662256836620319/unknown.png", //Hot Gas
+	"https://cdn.discordapp.com/attachments/734475284446707753/924578739663306762/unknown.png", //Guillotine
+	"https://cdn.discordapp.com/attachments/134720091576205312/924547638924296282/bluespacedlocker.png", //Why are we in space
+	"https://cdn.discordapp.com/attachments/734475284446707753/916951974740627486/unknown.png", //Party locker
+	"https://cdn.discordapp.com/attachments/734475284446707753/914622487688523816/Screenshot_2021-11-28_153804.png" //Arcade Locker
+	
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
         var randomColor = Math.floor(Math.random()*16777215).toString(16);
