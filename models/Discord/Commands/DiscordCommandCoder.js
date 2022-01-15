@@ -62,7 +62,10 @@ class DiscordCommandCoder extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/734475284446707753/878472565406961684/Screenshot_20210820-225450_Discord.jpg", //Roasting stick will remain broken
 	"https://cdn.discordapp.com/attachments/734475284446707753/903265372323594290/unknown.png", //You did it!
 	"https://cdn.discordapp.com/attachments/734475284446707753/901168419574022164/unknown.png", //Theos wanna merge a fucking pr
-	"https://cdn.discordapp.com/attachments/734475284446707753/883378332157227008/image0.png" //PLEASE merge my PR
+	"https://cdn.discordapp.com/attachments/734475284446707753/883378332157227008/image0.png", //PLEASE merge my PR
+	"https://cdn.discordapp.com/attachments/734475284446707753/921906106752704592/firefox_rx9in6oPrZ.png", //Files Changed 145
+	"https://cdn.discordapp.com/attachments/734475284446707753/920021959247560744/unknown.png", //Force italian accent
+	"https://cdn.discordapp.com/attachments/734475284446707753/920021959247560744/unknown.png" //Reverts and alternatives
         ];
         var response = responses[Math.floor(Math.random() * responses.length)];
         var randomColor = Math.floor(Math.random()*16777215).toString(16);
