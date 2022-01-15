@@ -77,7 +77,7 @@ class DiscordCommandYoggers extends DiscordCommand {
 	"https://cdn.discordapp.com/attachments/734475284446707753/918046252468412427/unknown.png", //Downloading traitor maint
 	"https://cdn.discordapp.com/attachments/734475284446707753/915526833628393472/unknown.png", //We'll be right back
 	"https://media.discordapp.net/attachments/378318242906636288/908145094383796234/image0.jpg", //Do we even have a roof?
-	"https://cdn.discordapp.com/attachments/734475284446707753/905208360083787896/unknown.png", //You dumb e girl
+	"https://cdn.discordapp.com/attachments/734475284446707753/905208360083787896/unknown.png" //You dumb e girl
 	  ];	
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	
