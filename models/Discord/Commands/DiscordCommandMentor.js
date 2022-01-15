@@ -9,31 +9,18 @@ class DiscordCommandMentor extends DiscordCommand {
   		
   onRun(message, permissions, args) {
     var responses = [
-		"https://cdn.discordapp.com/attachments/613105854173937776/722261538253307955/dreamseeker_2020-06-06_19-11-08.png",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722261658197819442/dreamseeker_2020-06-03_19-56-49.png",
 		"https://cdn.discordapp.com/attachments/293085045743157248/722265835347116042/unknown.png",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722261906932367410/contained_t6.png",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722262126823080036/9_crystals.png",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722262680211030046/F_U_S_I_O_N_E_R.PNG",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722262682736263218/F_U_S_I_O_N.PNG",
-		"https://cdn.discordapp.com/attachments/613105854173937776/722263123062554684/dreamseeker_2020-05-04_02-16-13.png",
-		"https://cdn.discordapp.com/attachments/613105854173937776/722264079225323570/dreamseeker_2020-04-02_02-39-36.png",
-		"https://cdn.discordapp.com/attachments/613105854173937776/722264427004690467/unknown.png",
-		"https://cdn.discordapp.com/attachments/613105854173937776/722264898708570172/80oxjajrdpo41.png",
-		"https://cdn.discordapp.com/attachments/613105854173937776/722265156377378816/carpets.png",
-		"https://cdn.discordapp.com/attachments/613105854173937776/722265593461604372/dreamseeker_2020-03-31_21-54-51.png",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722266864771661995/dreamseeker_2020-03-19_22-30-52.png",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722269494692806747/Screenshot_57.png",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722269627861827614/mentorrevolution.png",
-		"https://cdn.discordapp.com/attachments/613105854173937776/722270066116263946/Screenshot_5.png",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722271146979885056/basicallyops.png",
-		"https://cdn.discordapp.com/attachments/613105854173937776/722271920787030026/Screenshot_109.png",
-		"https://cdn.discordapp.com/attachments/613105854173937776/722272766363041894/Screenshot_107.png",
-		"https://cdn.discordapp.com/attachments/613105854173937776/722273439465078854/Scienehasgonetoofar.png",
-		"https://cdn.discordapp.com/attachments/613105854173937776/722273689743130715/dreamseeker_2020-02-19_23-52-29.png",
 		"https://cdn.discordapp.com/attachments/613105854173937776/722267691490213929/mspaint_2020-02-23_03-21-51.png",
 		"https://i.imgur.com/PlwTm0t.png",
-	    	"https://cdn.discordapp.com/attachments/849108945196810273/859228248198086656/unknown.png",
 	    	"https://cdn.discordapp.com/attachments/134720091576205312/889351204373667860/9e37yhqlcar31.png",
 		//July 2020 Update goes here
 		"https://cdn.discordapp.com/attachments/734475284446707753/734475502995243038/legion_engine.png",
@@ -181,7 +168,11 @@ class DiscordCommandMentor extends DiscordCommand {
 	        "https://cdn.discordapp.com/attachments/734475284446707753/803104291430072340/unknown.png", //Why'd you irradiate the shuttle
                 "https://cdn.discordapp.com/attachments/734475284446707753/875103302013042729/unknown.png", //N3D6 is a complete and utter twat
 	        "https://cdn.discordapp.com/attachments/734475284446707753/893512372436754462/image0.png", //Everyone is answering Skrem 7's mhelp
-	        "https://cdn.discordapp.com/attachments/734475284446707753/903294489408466964/unknown.png" //Old mhelp
+	        "https://cdn.discordapp.com/attachments/734475284446707753/903294489408466964/unknown.png", //Old mhelp
+	        "https://cdn.discordapp.com/attachments/734475284446707753/917938535649124392/unknown.png", //Hey cuackles
+	        "https://cdn.discordapp.com/attachments/734475284446707753/916231741868478485/unknown.png", //Cutting my arms with a toolbox
+	        "https://cdn.discordapp.com/attachments/734475284446707753/914011832694493194/unknown.png", //Step 1: Die
+	        "https://cdn.discordapp.com/attachments/734475284446707753/906794257002676284/unknown.png", //I killed your gf
 	  ];	
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	
