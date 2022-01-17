@@ -15,7 +15,6 @@ class DiscordCommandYoggers extends DiscordCommand {
 	"https://cdn.discordapp.com/attachments/734475284446707753/734532569961463878/fatal_error.png",
 	"https://cdn.discordapp.com/attachments/734475284446707753/734644410909982750/aZ5RfKI.png",
 	"https://cdn.discordapp.com/attachments/734475284446707753/734744943406612541/image0.png",
-	"https://cdn.discordapp.com/attachments/734475284446707753/735028954259521546/ss13_NTPhonksuptheshuttle.PNG",
 	"https://cdn.discordapp.com/attachments/734475284446707753/735289662087757824/GOD.PNG",
 	"https://cdn.discordapp.com/attachments/734475284446707753/735556743865565267/Discord_gmXSn7s1aA.png",
 	"https://cdn.discordapp.com/attachments/734475284446707753/736973311590006894/image0.png",
@@ -70,7 +69,15 @@ class DiscordCommandYoggers extends DiscordCommand {
         "https://cdn.discordapp.com/attachments/734475284446707753/881988073691439144/unknown.png", //HUGBOX SHUTTLE
         "https://cdn.discordapp.com/attachments/734475284446707753/882113836914712616/unknown-124.png", //Normal Preternis mistaken for sling
 	"https://cdn.discordapp.com/attachments/734475284446707753/887768674776260628/unknown-157.png", //Cookie Sat
-	"https://cdn.discordapp.com/attachments/734475284446707753/904886898844119080/unknown.png" //Steal Everything
+	"https://cdn.discordapp.com/attachments/734475284446707753/904886898844119080/unknown.png", //Steal Everything
+	"https://cdn.discordapp.com/attachments/734475284446707753/931764967902941234/FeApSBt.png", //Penguin Skating 
+	"https://cdn.discordapp.com/attachments/134720091576205312/924547959377510400/unknown.png", //Sneed
+	"https://cdn.discordapp.com/attachments/821945146886717440/922385423836282950/fullofcilk.png", //Full of Cilk
+	"https://cdn.discordapp.com/attachments/734475284446707753/920246494852960256/image0.png", //8 Shards 1 Crystal
+	"https://cdn.discordapp.com/attachments/734475284446707753/918046252468412427/unknown.png", //Downloading traitor maint
+	"https://cdn.discordapp.com/attachments/734475284446707753/915526833628393472/unknown.png", //We'll be right back
+	"https://media.discordapp.net/attachments/378318242906636288/908145094383796234/image0.jpg", //Do we even have a roof?
+	"https://cdn.discordapp.com/attachments/734475284446707753/905208360083787896/unknown.png" //You dumb e girl
 	  ];	
 	var response = responses[Math.floor(Math.random() * responses.length)];
 	
