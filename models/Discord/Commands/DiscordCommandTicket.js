@@ -21,7 +21,8 @@ class DiscordCommandTicket extends DiscordCommand {
 				this.get_ticket(message, args);
 				break;
 			default:
-				message.reply(`Unkown subcommand \`${ args[0] }\``);
+				message.reply(`Unknown subcommand \`${ args[0] }\``);
+
 		}
     }
 
