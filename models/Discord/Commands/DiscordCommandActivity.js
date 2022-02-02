@@ -38,24 +38,23 @@ class DiscordCommandActivity extends DiscordCommand {
 					return (str + ''.padStart(Math.floor((amt - str.length)/2))).padStart(amt, type);
 				}
 				
-				let results = await query('SELECT ckey,rank FROM ' + dbSubsystem.format_table_name('admin') + ''); // get the admins
+				let results = await query ("/*\nMIT License\n\nCopyright (c) 2021 alexkar598\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n*/\n\nSELECT adminlist.ckey                                                  as 'Ckey',\n       COALESCE(round((SELECT SUM(rolelog.delta)\n              FROM " + dbSubsystem.format_table_name('role_time_log') + " as rolelog\n              WHERE rolelog.ckey = adminlist.ckey\n                AND rolelog.job = 'Admin'\n                AND rolelog.datetime > (Now() - INTERVAL 2 week)) / 60, 1), 0) as Activity,\n       adminlist.rank                                                  as AdminRank\nFROM " + dbSubsystem.format_table_name('admin') + " as adminlist\n         JOIN " + dbSubsystem.format_table_name('admin_ranks') + " as ranklist ON adminlist.rank = ranklist.`rank`;"); // get the activity
 				let admins = {};
+				let activity = {};
 				let adminlen = 8;
 				let ranklen = 4;
 				for(let admin of results) {
-					if(ingore_ranks.includes(admin.rank))
+					if(ingore_ranks.includes(admin.AdminRank))
 						continue;
-					admins[admin.ckey] = admin.rank
-					if(admin.ckey.length > adminlen)
-						adminlen = admin.ckey.length;
-					if(admin.rank.length > ranklen)
-						ranklen = admin.rank.length;
-				}
-				
-				results = await query ('SELECT ckey,Sum((Unix_timestamp(`left`)-Unix_timestamp(datetime))/3600) AS activity FROM ' + dbSubsystem.format_table_name('connection_log') + ' WHERE `left` > (Now() - INTERVAL 2 week) AND `left` IS NOT NULL GROUP BY ckey;'); // get the activity
-				let activity = {};
-				for(let user of results) {
-					activity[user.ckey] = +user.activity;
+					admins[admin.Ckey] = admin.AdminRank;
+					activity[admin.Ckey] = +admin.Activity;
+
+					if(admin.Ckey.length > adminlen)
+						adminlen = admin.Ckey.length;
+						console.log("Adminlen " + adminlen)
+					if(admin.AdminRank.length > ranklen)
+						ranklen = admin.AdminRank.length;
+						console.log("Ranklen " + ranklen)
 				}
 				
 				results = await query('SELECT ckey from ' + dbSubsystem.format_table_name('loa') + ' WHERE Now() < expiry_time && revoked IS NULL;'); // get LOA
