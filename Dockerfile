@@ -6,16 +6,18 @@ WORKDIR /app
 COPY ["package.json", "package-lock.json", "./"]
 RUN npm install --production
 
-FROM alpine:3.15 as final
+FROM alpine:3.12 as final
 
 RUN apk --no-cache add --upgrade nodejs~12
 
+RUN mkdir /app
+RUN chown 1000:1000 /app
+
 USER 1000
 
-RUN mkdir -p /app
 RUN mkdir /app/data
 RUN mkdir /app/config
-RUN mkdir /app/html/changelog
+RUN mkdir -p /app/html/changelog
 WORKDIR /app
 
 COPY --from=build /app/node_modules node_modules
