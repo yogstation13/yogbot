@@ -21,8 +21,6 @@ class SubsystemHTTP extends Subsystem {
   setup(callback) {
     super.setup(callback);
 
-    this.app.set('view engine', 'pug')
-
     var config = this.manager.getSubsystem("Config").config;
 
     this.userManager = new UserManager(this);
