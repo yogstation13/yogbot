@@ -18,6 +18,7 @@ jobs:
         password: ${{secrets.DOCKER_PUSH_PASSWORD}}
         registry: docker.pkg.github.com
         tags: ${{github.sha}}
+        cache: true
     - name: Deploy
       uses: Consensys/kubernetes-action@72b76db38fa0183d72d4080c2fcf63764919c688
       env:
