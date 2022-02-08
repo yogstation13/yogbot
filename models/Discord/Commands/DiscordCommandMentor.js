@@ -57,7 +57,6 @@ class DiscordCommandMentor extends DiscordCommand {
 		"https://cdn.discordapp.com/attachments/734475284446707753/734508255392301136/ss13_skewium.png",
 		"https://cdn.discordapp.com/attachments/734475284446707753/734508295309623417/ss13_skub.png",
 		"https://cdn.discordapp.com/attachments/734475284446707753/734508330898292796/ss13_golemtraps.PNG",
-		"https://cdn.discordapp.com/attachments/734475284446707753/734511998930518086/ss13_thankstrump.png",
 		"https://cdn.discordapp.com/attachments/734475284446707753/734532354915434566/FREEMINER_RESCUE.png",
 		"https://cdn.discordapp.com/attachments/734475284446707753/734532409042665552/HobbleCrystal.png",
 		//August 2020 update goes here.
