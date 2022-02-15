@@ -116,7 +116,7 @@ class DiscordCommandTicket extends DiscordCommand {
 				}
 
 				if(results.length == 0) {
-					message.reply(`{Unable to find ticket ${ticket_id} in round ${round_id}`);
+					message.reply(`Unable to find ticket ${ticket_id} in round ${round_id}`);
 					return;
 				}
 				
