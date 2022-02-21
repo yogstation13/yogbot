@@ -17,7 +17,7 @@ function hydrateError(_error) {
 }
 function hydrateConfirm(_discordTag, _discordAvatar, _state, _csrfToken) {
     const discordTag = escapeHtml(_discordTag)
-    const discordAvatar = escapeHtml(_discordAvatar ?? "")
+    const discordAvatar = escapeHtml(_discordAvatar ? _discordAvatar : "")
     const state = escapeHtml(_state)
     const csrfToken = escapeHtml(_csrfToken)
     return confirmTpl.replace(/\$usertag\$/g, discordTag).replace(/\$useravatar\$/g, discordAvatar).replace(/\$state\$/, state).replace(/\$csrftoken\$/g, csrfToken)
