@@ -17,7 +17,7 @@ function hydrateError(_error) {
 }
 function hydrateConfirm(_discordTag, _discordAvatar, _state, _csrfToken) {
     const discordTag = escapeHtml(_discordTag)
-    const discordAvatar = escapeHtml(_discordAvatar)
+    const discordAvatar = escapeHtml(_discordAvatar ? _discordAvatar : "")
     const state = escapeHtml(_state)
     const csrfToken = escapeHtml(_csrfToken)
     return confirmTpl.replace(/\$usertag\$/g, discordTag).replace(/\$useravatar\$/g, discordAvatar).replace(/\$state\$/, state).replace(/\$csrftoken\$/g, csrfToken)
@@ -72,9 +72,6 @@ class RouterPathCallback extends RouterPath {
                     }
                     if (results.length === 0) {
                         return res.send(hydrateError("New account detected, please login on the server at least once to proceed")).end()
-                    }
-                    if (results[0].discord_id) {
-                        return res.send(hydrateError("You already have a discord account linked. If you need to have this reset, please contact an admin!")).end()
                     }
 
                     connection.query("UPDATE `" + dbSubsystem.format_table_name('player') + "` SET `discord_id` = ? WHERE `ckey` = ?", [identity.discordSnowflake, identity.ckey], (error, results, fields) => {
