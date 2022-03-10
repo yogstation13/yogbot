@@ -55,7 +55,14 @@ class DiscordCommandBugReport extends DiscordChannel {
     }
 
     if(!body || !title) {
-      message.reply("No title/body detected in message. If this is a bug yell at someone!")
+      let title_or_body = !body ? "body" : "title"
+      title_or_body = (!body && !title) ? "body and title" : title_or_body
+      message.reply("No " + title_or_body +" detected in message. Did you fill it out properly? (Check the pins for the template)")
+      return
+    }
+    
+    if(!round_id) {
+      message.reply("No round ID detected. Either supply one or input N/A")
       return
     }
 
