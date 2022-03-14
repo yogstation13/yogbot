@@ -47,7 +47,7 @@ class DiscordCommandActivity extends DiscordCommand {
 					if(ingore_ranks.includes(admin.AdminRank))
 						continue;
 					admins[admin.Ckey] = admin.AdminRank;
-					activity[admin.Ckey] = +admin.Activity;
+					activity[ckey_ize(admin.Ckey)] = +admin.Activity;
 
 					if(admin.Ckey.length > adminlen)
 						adminlen = admin.Ckey.length;
