@@ -6,7 +6,7 @@
     },
     "council": {
       "inherits": "head-developer",
-      "permissions": []
+      "permissions": ["userverify"]
     },
     "head-developer": {
       "inherits": "senior admin",
@@ -18,7 +18,7 @@
     },
     "staff": {
       "inherits": "retmin",
-      "permissions": ["userverify"]
+      "permissions": []
     },
     "retmin": {
       "inherits": "maintainer",
