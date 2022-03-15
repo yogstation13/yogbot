@@ -12,8 +12,8 @@ class DiscordCommandWhitelist extends DiscordCommand {
       message.reply("Usage is `" + config.discord_command_character + "addao [ckey]`");
       return;
     }
-
-    var ckey = args[0];
+    
+    var ckey = args[0].toLowerCase().replace(/[^a-z0-9]/ig, '');
 
     var dbSubsystem = this.subsystem.manager.getSubsystem("Database");
 
