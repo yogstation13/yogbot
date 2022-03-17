@@ -55,8 +55,9 @@ class DiscordCommandBugReport extends DiscordChannel {
     }
 
     if(!body || !title) {
-      let title_or_body = !body ? "body" : "title"
-      title_or_body = (!body && !title) ? "body and title" : title_or_body
+      const title_or_body = (!body && !title) ? 
+                              "body and title" : 
+                                 !body ? "body" : "title"
       message.reply("No " + title_or_body +" detected in message. Did you fill it out properly? (Check the pins for the template)")
       return
     }
