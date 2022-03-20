@@ -78,9 +78,9 @@ class ByondConnector {
       var sizebytes = jspack.jspack.Unpack("H", sizearray); // It's packed in an unsigned short format, so unpack it as an unsigned short.
       var size = sizebytes[0] - 1; // Byte size of the string/floating-point (minus the identifier byte).
 
-      if (dbuff[4] == 0x2a) { // 4-byte big-endian floating point data.
+      if (dbuff[4] == 0x2a) { // 4-byte little-endian floating point data.
         var unpackarray = [dbuff[5], dbuff[6], dbuff[7], dbuff[8]];
-        var unpackint = jspack.jspack.Unpack("<f", unpackarray); // 4 possible bytes, add them up and unpack as a big-endian (non-network) float
+        var unpackint = jspack.jspack.Unpack("<f", unpackarray); // 4 possible bytes, add them up and unpack as a little-endian (non-network) float
         return unpackint[0];
       }
       else if (dbuff[4] = 0x06) { // ASCII String.
