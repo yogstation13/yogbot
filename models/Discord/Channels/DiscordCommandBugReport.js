@@ -62,7 +62,7 @@ class DiscordCommandBugReport extends DiscordChannel {
       return
     }
     
-    if(!round_id) {
+    if(round_id === "Not Supplied") {
       message.reply("No round ID detected. Either supply one or input N/A")
       return
     }
