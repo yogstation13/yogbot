@@ -9,7 +9,6 @@ class DiscordChannelMsay extends DiscordChannel {
   }
 
   onMessage(message) {
-    var byondConnector = this.subsystem.manager.getSubsystem("Byond Connector").byondConnector;
     var config = this.subsystem.manager.getSubsystem("Config").config;
     var data = striptags(message.content)
 	
@@ -19,11 +18,8 @@ class DiscordChannelMsay extends DiscordChannel {
 		}
 	});
 
-    byondConnector.request("?msay=" + encodeURIComponent(data) + "&admin=" + encodeURIComponent(message.member.displayName), (results) => {
-      if ('error' in results) {
-        message.channel.send(results.error);
-      }
-    });
+    const request = "?msay=" + encodeURIComponent(data) + "&admin=" + encodeURIComponent(message.member.displayName)
+    this.subsystem.manager.getSubsystem("Byond Connector").request(request).catch(message.channel.send)
   }
 
 }

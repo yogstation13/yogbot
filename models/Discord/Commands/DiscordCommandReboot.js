@@ -20,14 +20,11 @@ class DiscordCommandReboot extends DiscordCommand {
     switch (rebootOption) {
     case 'soft':
       var request = "?reboot";
-      this.subsystem.manager.getSubsystem("Byond Connector").byondConnector.request(request, (results) => {
-        if ('error' in results) {
-          message.channel.send(results.error);
-        }
-        else {
-          message.channel.send(results.data);
-        }
-      });
+      this.subsystem.manager.getSubsystem("Byond Connector").request(request)
+        .then(response => {
+          message.channel.send(response);
+        })
+        .catch(message.channel.send)
       break;
     default:
       message.reply("Use the `soft` option");

@@ -8,16 +8,13 @@ class DiscordCommandToggleOOC extends DiscordCommand {
 
   onRun(message, permissions, args) {
     var config = this.subsystem.manager.getSubsystem("Config").config;
-    var byondConnector = this.subsystem.manager.getSubsystem("Byond Connector").byondConnector;
 
-    byondConnector.request("?toggleooc", (results) => {
-      if('error' in results) {
-        message.channel.send(results.error);
-      } else {
-        var messageString = (results.data == 1)?"enabled":"disabled";
+    this.subsystem.manager.getSubsystem("Byond Connector").request("?toggleooc")
+      .then(response => {
+        var messageString = (response == 1) ? "enabled" : "disabled";
         message.reply("OOC has been " + messageString);
-      }
-    });
+      })
+      .catch(message.channel.send)
   }
 
 }
