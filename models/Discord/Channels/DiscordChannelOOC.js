@@ -9,13 +9,10 @@ class DiscordChannelOOC extends DiscordChannel {
     }
 
     onMessage(message) {
-        var byondConnector = this.subsystem.manager.getSubsystem("Byond Connector").byondConnector;
         var config = this.subsystem.manager.getSubsystem("Config").config;
-        byondConnector.request("?ooc=" + encodeURIComponent(striptags(message.content)) + "&admin=" + encodeURIComponent(message.member.displayName), (results) => {
-            if ('error' in results) {
-                message.channel.send(results.error);
-            }
-        });
+        const request = "?ooc=" + encodeURIComponent(striptags(message.content)) + "&admin=" + encodeURIComponent(message.member.displayName)
+        this.subsystem.manager.getSubsystem("Byond Connector").request(request)
+          .catch(message.channel.send)
     }
 
 }
