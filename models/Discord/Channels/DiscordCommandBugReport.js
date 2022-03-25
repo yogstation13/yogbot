@@ -22,7 +22,7 @@ class DiscordCommandBugReport extends DiscordChannel {
     //Text body of issue
     let body = "";
     //Supplied round ID
-    let round_id = "Not Supplied";
+    let round_id = null;
     //Supplied test merges
     let testmerges = "Not Supplied / None";
     //Images parsed from the Discord message relayed to GitHub
@@ -53,6 +53,7 @@ class DiscordCommandBugReport extends DiscordChannel {
       if(body) body += "\n"
       body += line;
     }
+  
 
     if(!body || !title) {
       const title_or_body = (!body && !title) ? 
@@ -62,7 +63,7 @@ class DiscordCommandBugReport extends DiscordChannel {
       return
     }
     
-    if(round_id === "Not Supplied") {
+    if(!round_id) {
       message.reply("No round ID detected. Either supply one or input N/A")
       return
     }
