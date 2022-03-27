@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+		<title>Yogstation Account Linking</title>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+	</head>
+	<body>
+		<header class="d-flex justify-content-center align-items-center"
+				style="height: 3rem;background: var(--bs-blue);">
+			<h1 style="color: rgb(255,255,255);">Yogstation Account Linking</h1>
+		</header>
+		<div class="container" style="margin-top: 2rem;">
+			<div class="card">
+				<div class="card-body d-flex flex-column justify-content-center align-items-center">
+					<h4	class="card-title">Please confirm account linking</h4>
+					<p class="card-text">Is this your discord account?</p>
+					<span th:text="${ discordTag }">User tag here</span>
+					<img class="rounded-circle d-block" th:src="${ discordAvatar }" style="margin: 0 auto;">
+					<form style="margin-top: 2rem;" method="post">
+						<input class="form-control" type="hidden" th:value="${ csrfToken }" name="csrftoken">
+						<input class="form-control" type="hidden" name="state" th:value="${ state }">
+						<button class="btn btn-danger" type="button" style="margin: 0 1rem;" onclick="window.close()">
+							No
+						</button>
+						<button class="btn btn-success" type="submit" style="margin: 0 1rem;">Yes</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>

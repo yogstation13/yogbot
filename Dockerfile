@@ -1,29 +1,14 @@
-FROM node:12-alpine as build
+ARG BUILD_HOME=/gradle_build
+FROM gradle:7.4.1-jdk17 AS compile
+ARG BUILD_HOME
+ENV APP_HOME=$BUILD_HOME
+WORKDIR $APP_HOME
+COPY --chown=gradle:gradle build.gradle settings.gradle $APP_HOME/
+COPY --chown=gradle:gradle src $APP_HOME/src
+RUN gradle --no-daemon build bootJar
 
-ENV NODE_ENV=production
-WORKDIR /app
-
-COPY ["package.json", "package-lock.json", "./"]
-RUN npm install --production
-
-FROM alpine:3.12 as final
-
-RUN apk --no-cache add --upgrade nodejs~12
-
-RUN mkdir /app
-RUN chown 1000:1000 /app
-
-USER 1000
-
-RUN mkdir /app/data
-RUN mkdir /app/config
-RUN mkdir -p /app/html/changelog
-WORKDIR /app
-
-COPY --from=build /app/node_modules node_modules
-COPY app.js app.js
-COPY models models
-COPY package.json package.json
-
-ENV NODE_ENV=production
-CMD ["node", "app.js"]
+FROM openjdk:17-alpine
+ARG BUILD_HOME
+ENV APP_HOME=$BUILD_HOME
+COPY --from=compile $APP_HOME/build/libs/Yogbot-1.0-SNAPSHOT.jar /app.jar
+ENTRYPOINT java -jar /app.jar

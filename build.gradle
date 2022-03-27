@@ -1,0 +1,64 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.flywaydb:flyway-mysql:8.5.4"
+    }
+}
+
+plugins {
+    id 'org.springframework.boot' version '2.6.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.6.20-RC2'
+    id "org.flywaydb.flyway" version "8.5.4"
+}
+
+group 'net.yogstation'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'net.yogstation.yogbot.Yogbot'
+    }
+}
+
+dependencies {
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+    implementation 'com.discord4j:discord4j-core:3.2.2'
+    implementation 'io.netty:netty-resolver-dns-native-macos:4.1.75.Final:osx-aarch_64'
+    implementation 'mysql:mysql-connector-java:8.0.28'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.apache.commons:commons-text:1.9'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "org.flywaydb:flyway-core:8.5.4"
+    implementation "org.flywaydb:flyway-mysql:8.5.4"
+    implementation "org.springframework:spring-jdbc"
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
+
+// Configuration for flyway with the default db credentials
+// Details on how to override this can be found https://flywaydb.org/documentation/usage/gradle/#installation
+flyway {
+    url = 'jdbc:mysql://localhost:3306/yogbot'
+    user = 'username'
+    password = 'password'
+    schemas = ['yogbot']
+}
+

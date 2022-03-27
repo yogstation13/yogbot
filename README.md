@@ -1,9 +1,5 @@
-# Yogbot
+# YogBot
 
-Yogbot is a nodejs based app which controls Yogstations Discord bot.
+Rewrite of the discord bot for the YogStation discord server
 
-## Installation
-
-Run `npm install` to download the dependencies.
-
-Then run `node app.js` to launch the server or `node entry_point.js` to launch the watchdog.
+Built on Discord4j and gradle
