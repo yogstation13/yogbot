@@ -10,9 +10,9 @@ class DiscordBanManager {
   }
 
   setup() {
-    setInterval(() => {
-      this.handleTempbans();
-    }, 15000);
+    // setInterval(() => {
+    //   this.handleTempbans();
+    // }, 15000);
   }
 
   save() {
@@ -25,105 +25,105 @@ class DiscordBanManager {
   }
 
   ban(guildMember, reason, time) {
-    var config = this.subsystem.manager.getSubsystem("Config").config;
-    var feedbackChannel = this.subsystem.getFeedbackChannel(guildMember.guild);
+    // var config = this.subsystem.manager.getSubsystem("Config").config;
+    // var feedbackChannel = this.subsystem.getFeedbackChannel(guildMember.guild);
 
-    var date = new Date();
+    // var date = new Date();
 
-    var expiry = time;
-    if (time) {
-      if(time > 43800)
-        time = 43800
-      expiry = date.getTime() + (time * 60000); // 1000ms in one second, and 60 seconds in one minute
-    }
+    // var expiry = time;
+    // if (time) {
+    //   if(time > 43800)
+    //     time = 43800
+    //   expiry = date.getTime() + (time * 60000); // 1000ms in one second, and 60 seconds in one minute
+    // }
 
-    var ban = {
-      userID: guildMember.user.id,
-      username: (guildMember.user.username + "#" + guildMember.user.discriminator),
-      reason: reason,
-      expires: expiry
-    }
+    // var ban = {
+    //   userID: guildMember.user.id,
+    //   username: (guildMember.user.username + "#" + guildMember.user.discriminator),
+    //   reason: reason,
+    //   expires: expiry
+    // }
 
-    var banMessage = "You have been banned from " + config.server_name + " for `" + reason + "` it will " + (time ? "expire in " + time + " minutes" : "not expire.");
+    // var banMessage = "You have been banned from " + config.server_name + " for `" + reason + "` it will " + (time ? "expire in " + time + " minutes" : "not expire.");
 
-    guildMember.user.sendMessage(banMessage);
+    // guildMember.user.sendMessage(banMessage);
 
-    feedbackChannel.send("**" + guildMember.user.username + "#" + guildMember.user.discriminator + "** Was " + (config.discord_softban ? "soft" : "hard") + "banned from the server for `" + reason + "` it will " + (time ? "expire in **" + time + "** minutes" : "not expire.") + ".")
+    // feedbackChannel.send("**" + guildMember.user.username + "#" + guildMember.user.discriminator + "** Was " + (config.discord_softban ? "soft" : "hard") + "banned from the server for `" + reason + "` it will " + (time ? "expire in **" + time + "** minutes" : "not expire.") + ".")
 
-    if (config.discord_softban) {
-      guildMember.addRole(config.discord_softban_role).then(
-        resolve => {;
-          this.bans.push(ban);
-          this.save();
-        },
-        reject => {}
-      );
-    }
-    else {
-      guildMember.addRole(config.discord_softban_role).then(
-        resolve => {},
-        reject => {}
-      );
+    // if (config.discord_softban) {
+    //   guildMember.addRole(config.discord_softban_role).then(
+    //     resolve => {;
+    //       this.bans.push(ban);
+    //       this.save();
+    //     },
+    //     reject => {}
+    //   );
+    // }
+    // else {
+    //   guildMember.addRole(config.discord_softban_role).then(
+    //     resolve => {},
+    //     reject => {}
+    //   );
 
-    }
-    return true;
+    // }
+    // return true;
 
   }
 
   unban(guild, member, reason) {
-    var config = this.subsystem.manager.getSubsystem("Config").config;
-    var feedbackChannel = this.subsystem.getFeedbackChannel(member.guild);
+    // var config = this.subsystem.manager.getSubsystem("Config").config;
+    // var feedbackChannel = this.subsystem.getFeedbackChannel(member.guild);
 
-    var newBans = [];
-    var unbanned = false;
+    // var newBans = [];
+    // var unbanned = false;
 
-    for (var ban of this.bans) {
-      if (ban.userID === member.user.id) {
-        feedbackChannel.send("**" + member.user.username + "#" + member.user.discriminator + "** Was unbanned from the server for `" + reason + "`.")
-        member.removeRole(config.discord_softban_role);
-        unbanned = true;
-      }
-      else {
-        newBans.push(ban);
-      }
-    }
+    // for (var ban of this.bans) {
+    //   if (ban.userID === member.user.id) {
+    //     feedbackChannel.send("**" + member.user.username + "#" + member.user.discriminator + "** Was unbanned from the server for `" + reason + "`.")
+    //     member.removeRole(config.discord_softban_role);
+    //     unbanned = true;
+    //   }
+    //   else {
+    //     newBans.push(ban);
+    //   }
+    // }
 
-    this.bans = newBans;
-    this.save();
+    // this.bans = newBans;
+    // this.save();
 
-    return unbanned;
+    // return unbanned;
   }
 
   handleTempbans() {
-    var bansToLift = [];
-    var date = new Date();
-    var guild = this.subsystem.getPrimaryGuild();
+    // var bansToLift = [];
+    // var date = new Date();
+    // var guild = this.subsystem.getPrimaryGuild();
 
-    for (var ban of this.bans) {
-      if (ban.expires) {
-        if (ban.expires <= date.getTime()) {
-          bansToLift.push(ban);
-        }
-      }
-    }
+    // for (var ban of this.bans) {
+    //   if (ban.expires) {
+    //     if (ban.expires <= date.getTime()) {
+    //       bansToLift.push(ban);
+    //     }
+    //   }
+    // }
 
-    for (var ban of bansToLift) {
-      guild.fetchMember(ban.userID).then(
-        resolve => {
-          this.unban(guild, resolve, "Ban expired.");
-        },
-        reject => {
-          this.subsystem.manager.logger.log("info", "Failed to change discord roles of user with ID " + ban.userID + " because their ID wasnt found on the server, the ban has been lifted from the config file.");
-        }
-      );
-    }
+    // for (var ban of bansToLift) {
+    //   guild.fetchMember(ban.userID).then(
+    //     resolve => {
+    //       this.unban(guild, resolve, "Ban expired.");
+    //     },
+    //     reject => {
+    //       this.subsystem.manager.logger.log("info", "Failed to change discord roles of user with ID " + ban.userID + " because their ID wasnt found on the server, the ban has been lifted from the config file.");
+    //     }
+    //   );
+    // }
   }
   check(member) {
-    for (var ban of this.bans) {
-      if (ban.userID === member.user.id) {
-        member.addRole(this.subsystem.manager.getSubsystem("Config").config.discord_softban_role);
-      }
-    }
+    // for (var ban of this.bans) {
+    //   if (ban.userID === member.user.id) {
+    //     member.addRole(this.subsystem.manager.getSubsystem("Config").config.discord_softban_role);
+    //   }
+    // }
   }
 }
 
