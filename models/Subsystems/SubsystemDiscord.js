@@ -1,7 +1,6 @@
 const Subsystem = require('../Subsystem.js');
 const Discord = require('discord.js');
 const DiscordPermissionManager = require('../Discord/DiscordPermissionManager.js');
-const DiscordDonorManager = require('../Discord/DiscordDonorManager.js');
 const fs = require('fs');
 const winston = require('winston');
 const https = require('https');
@@ -11,8 +10,7 @@ class SubsystemDiscord extends Subsystem {
   constructor(manager) {
     super("Discord", manager);
     this.client = new Discord.Client();
-    this.permissionManager = new DiscordPermissionManager(manager);
-    this.donorManager = new DiscordDonorManager(this);
+	  this.permissionManager = new DiscordPermissionManager(manager);
     this.oauthState = new Map();
     this.logger;
 
@@ -28,7 +26,6 @@ class SubsystemDiscord extends Subsystem {
     var config = this.manager.getSubsystem("Config").config;
     this.client.login(config.discord_token).then(atoken => {
       this.loadCommands();
-      this.donorManager.setup();
 	this.client.user.setGame("I AM GOD");
       callback();
     }).catch((err) => {
