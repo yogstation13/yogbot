@@ -16,7 +16,6 @@ class SubsystemDiscord extends Subsystem {
 
     this.commands = [];
     this.routers = [];
-    this.channels = [];
   }
 
   setup(callback) {
@@ -57,16 +56,6 @@ class SubsystemDiscord extends Subsystem {
         this.routers.push(router);
       });
     });
-
-    fs.readdir("./models/Discord/Channels/", (err, files) => {
-      files.forEach(file => {
-        var channelPath = file.split(".")[0];
-
-        const ChannelClass = require('../Discord/Channels/' + channelPath + '.js');
-        var channel = new ChannelClass(this);
-        this.channels.push(channel);
-      });
-    });
   }
 
   processMessage(message) {
@@ -76,13 +65,6 @@ class SubsystemDiscord extends Subsystem {
 
     if (message.guild == undefined) {
       return;
-    }
-
-    for (var channel of this.channels) {
-      if (channel.id === message.channel.id) {
-        channel.onMessage(message);
-        return;
-      }
     }
 
     //Make sure we have the command character and atleast one character more.
