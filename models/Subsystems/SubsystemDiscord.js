@@ -75,26 +75,6 @@ class SubsystemDiscord extends Subsystem {
     var firstCharacter = message.content.substring(0, 1);
     var content = message.content.substring(1);
     var config = this.manager.getSubsystem("Config").config;
-    var lowermsg = message.content.toLowerCase();
-    if(lowermsg.indexOf("snail") != -1) {
-      if(lowermsg.indexOf("when") != -1) {
-        message.channel.send("When you code it");
-      }
-    }
-
-    if(message.mentions.roles.has(config.discord_jester_role)) {
-      if(!message.member.roles.has(config.discord_jester_role)) {
-        message.reply("It appears you have, for the first time, engaged in the dastardly action to ping Jester! For this crime you have been assigned the role of Jester. Congratulations on your promotion!");
-        message.member.addRole(config.discord_jester_role);
-      }
-    }
-    
-    let prRegex = message.content.match(new RegExp("\\\[#([0-9]+)\\\]"))
-    if(prRegex) {
-      this.do_http("https://api.github.com/repos/yogstation13/Yogstation/pulls/" + prRegex[1]).then(response => this.postPR(JSON.parse(response), message.channel));
-      this.do_http("https://api.github.com/repos/yogstation13/Yogstation/issues/" + prRegex[1]).then(response => this.postIssue(JSON.parse(response), message.channel));
-    }
-
 
     if (firstCharacter === config.discord_command_character) {
       var split = content.split(" ");
