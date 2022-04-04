@@ -1,6 +1,6 @@
 {
   "discord_token": "notokenhere",
-  "discord_command_character": "!",
+  "discord_command_character": "$",
   "discord_softban": "true",
   "discord_softban_role": "302093934551629827",
   "discord_guild": "134720091576205312",
