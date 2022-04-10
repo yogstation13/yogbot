@@ -16,8 +16,6 @@ class DiscordRouterGuildMemberAdd extends DiscordRouter {
       
       this.subsystem.banManager.check(member);
       feedbackChannel.send(response + "**" + member.user.username + "#" + member.user.discriminator + "** joined the server.");
-
-      this.subsystem.stickyRoleManager.loadRoles(member);
     });
   }
 
