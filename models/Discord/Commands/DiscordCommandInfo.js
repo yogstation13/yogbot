@@ -83,7 +83,7 @@ class DiscordCommandInfo extends DiscordCommand {
           embed.addField("Shuttle timer:", Math.round(parseInt(shuttle_time) / 60) + " minutes", true);
         }
         embed.addField("Security level:", security_level, true);
-        embed.addField("Map:", current_map, true);
+        embed.addField("Map:", map_name, true);
         if (adminwho.trim().length) {
           embed.addField("Admins online:", adminwho, false); //this field has a dynamic size, and should be the last field ~~Nich
         }
