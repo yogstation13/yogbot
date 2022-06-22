@@ -33,6 +33,7 @@ class DiscordCommandInfo extends DiscordCommand {
         var shuttle_time = querystring.parse(status)["shuttle_timer"] || 10;
         var round_id = querystring.parse(status)["round_id"] || "Unknown";
         var security_level = querystring.parse(status)["security_level"] || "Unknown";
+        var map_name = querystring.parse(status)["map_name"] || "Unknown";
         var shuttle_modes_strings = {
           idle: "Idle",
           igniting: "Docked", //its only in this state for 10 seconds, not worth the confusion
@@ -75,12 +76,14 @@ class DiscordCommandInfo extends DiscordCommand {
         embed.addField("Current round:", round_id, true);
         embed.addField("Round duration:", round_duration_int + " minutes", true);
         embed.addField("Shuttle status:", shuttle_modes_strings[shuttle_mode], true);
+        
         // @ts-ignore
         if (timer_display.includes(shuttle_mode)) {
           // @ts-ignore
           embed.addField("Shuttle timer:", Math.round(parseInt(shuttle_time) / 60) + " minutes", true);
         }
         embed.addField("Security level:", security_level, true);
+        embed.addField("Map:", current_map, true);
         if (adminwho.trim().length) {
           embed.addField("Admins online:", adminwho, false); //this field has a dynamic size, and should be the last field ~~Nich
         }
