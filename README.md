@@ -1,3 +1,6 @@
+# Project archived
+This project has been superseeded by yogbot-kt and has been archived, it is no longer being maintained.
+
 # Yogbot
 
 Yogbot is a nodejs based app which controls Yogstations Discord bot.
